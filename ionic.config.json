@@ -1,0 +1,7 @@
+{
+  "name": "lindsDatabase",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
