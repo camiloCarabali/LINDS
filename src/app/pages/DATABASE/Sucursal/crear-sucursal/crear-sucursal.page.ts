@@ -76,6 +76,7 @@ export class CrearSucursalPage implements OnInit {
           this.interaction.presentToast('Error al registrar');
         });
     } else {
+      this.interaction.closeLoading();
       this.interaction.alertaInformativa('Los campos no pueden estar vacios');
     }
   }
