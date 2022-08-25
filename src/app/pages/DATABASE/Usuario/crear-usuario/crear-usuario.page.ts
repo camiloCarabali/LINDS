@@ -86,7 +86,7 @@ export class CrearUsuarioPage implements OnInit {
 
   validacion() {
     return this.usuario.cedula == null ||
-      this.usuario.correo == null ||
+      this.usuario.nombre == null ||
       this.usuario.empresa == null ||
       this.usuario.perfil == null ||
       this.usuario.sucursal == null
@@ -95,23 +95,24 @@ export class CrearUsuarioPage implements OnInit {
   }
 
   async crearUsuario() {
-    this.interaction.showLoading('creando...');
     console.log(this.usuario);
     
     if (this.validacion()) {
+      this.interaction.showLoading('creando...');
       const path = 'Usuarios';
       await this.firestore
         .create(this.usuario, path)
         .then((res) => {
-          this.interaction.closeLoading();
           this.interaction.presentToast('Usuario registrado con exito');
           this.dismiss();
+          this.interaction.closeLoading();
         })
         .catch((err) => {
-          this.interaction.closeLoading();
           this.interaction.presentToast('Error al registrar');
+          this.interaction.closeLoading();
         });
     } else {
+      this.interaction.closeLoading();
       this.interaction.alertaInformativa('Los campos no pueden estar vacios');
     }
     

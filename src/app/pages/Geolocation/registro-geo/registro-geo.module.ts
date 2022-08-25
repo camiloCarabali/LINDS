@@ -8,7 +8,7 @@ import { RegistroGeoPageRoutingModule } from './registro-geo-routing.module';
 
 import { RegistroGeoPage } from './registro-geo.page';
 import { CrearUsuarioPage } from '../../DATABASE/Usuario/crear-usuario/crear-usuario.page';
-import { CrearUsuarioPageModule } from '../../database/Usuario/crear-usuario/crear-usuario.module';
+import { CrearUsuarioPageModule } from '../../DATABASE/Usuario/crear-usuario/crear-usuario.module';
 
 @NgModule({
   entryComponents: [CrearUsuarioPage],

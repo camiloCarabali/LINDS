@@ -46,12 +46,9 @@ export class RegistroGeoPage implements OnInit {
       this.dismiss();
     });
     if (res) {
-      //const path = 'Usuarios';
       const id = res.user.uid;
       const email = this.usuario.correo;
-      //this.usuario.uid = id;
-      //this.usuario.password = null;
-      //await this.firestore.create(this.usuario, path);
+      this.dismiss();
       this.interaction.closeLoading();
       this.showModalCreate(email, id);
     }

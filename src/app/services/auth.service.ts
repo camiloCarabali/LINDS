@@ -3,31 +3,36 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { UserLindsDatabase, Usuario } from '../models/models';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
+  constructor(
+    private authFirebase: AngularFireAuth,
+  ) {}
 
-  constructor(private authFirebase: AngularFireAuth) { }
-
-  login(correo: string, password: string){
-    return this.authFirebase.signInWithEmailAndPassword(correo, password);
+  login(correo: string, password: string) {
+    return this.authFirebase.signInWithEmailAndPassword(correo, password)
   }
 
-  logout(){
+  logout() {
     this.authFirebase.signOut();
   }
 
-  registrarUserLindsDatabase(datos: UserLindsDatabase){
-    return this.authFirebase.createUserWithEmailAndPassword(datos.correo, datos.password);
+  registrarUserLindsDatabase(datos: UserLindsDatabase) {
+    return this.authFirebase.createUserWithEmailAndPassword(
+      datos.correo,
+      datos.password
+    );
   }
 
-  register(usuario: Usuario){
-    return this.authFirebase.createUserWithEmailAndPassword(usuario.correo, usuario.password);
+  register(usuario: Usuario) {
+    return this.authFirebase.createUserWithEmailAndPassword(
+      usuario.correo,
+      usuario.password
+    );
   }
 
   stateUser() {
     return this.authFirebase.authState;
   }
-
-
 }
