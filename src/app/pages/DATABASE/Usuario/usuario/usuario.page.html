@@ -1,0 +1,93 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Usuarios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Usuarios</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div id="titulo">Nombre</div>
+      </ion-col>
+      <ion-col>
+        <div id="titulo">Cedula</div>
+      </ion-col>
+      <ion-col>
+        <div id="titulo">Correo</div>
+      </ion-col>
+      <ion-col>
+        <div id="titulo">Perfil</div>
+      </ion-col>
+      <ion-col>
+        <div id="titulo">Empresa</div>
+      </ion-col>
+      <ion-col>
+        <div id="titulo">Sucursal</div>
+      </ion-col>
+      <ion-col>
+        <div></div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let usuario of usuarios">
+      <ion-col>
+        <div>
+          <ion-label> {{usuario.nombre}} </ion-label>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <ion-label> {{usuario.cedula}} </ion-label>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <ion-label> {{usuario.correo}} </ion-label>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <ion-label> {{usuario.perfil}} </ion-label>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <ion-label> {{usuario.empresa}} </ion-label>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <ion-label> {{usuario.sucursal}} </ion-label>
+        </div>
+      </ion-col>
+
+      <ion-col>
+        <div>
+          <ion-icon name="create" color="warning" button></ion-icon>
+          <ion-icon
+            button
+            (click)="eliminarUsuario(usuario.id)"
+            color="danger"
+            name="trash"
+          ></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add" (click)="registro()"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

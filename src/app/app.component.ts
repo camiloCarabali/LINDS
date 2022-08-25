@@ -20,12 +20,13 @@ export class AppComponent {
 
   public appPages = [
     { title: 'Empresas', url: '/empresa', icon: 'business' },
-    { title: 'Sucursales', url: '/salseucursal', icon: 'briefcase' },
-    { title: 'Personas', url: '/personas', icon: 'people' }
+    { title: 'Sucursales', url: '/sucursal', icon: 'briefcase' },
+    { title: 'Usuarios', url: '/usuario', icon: 'people' }
   ];
   constructor(private auth: AuthService,
     private interaction: UiServiceService,
     private router: Router) {
+      this.estado = "true";
       this.auth.stateUser().subscribe(res =>{
         if(res){
           console.log('Esta logeado');
@@ -40,6 +41,6 @@ export class AppComponent {
   logout() {
     this.auth.logout();
     this.interaction.presentToast('Sesion finalizada');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/database']);
   }
 }

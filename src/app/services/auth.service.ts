@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { UserLindsDatabase } from '../models/models';
+import { UserLindsDatabase, Usuario } from '../models/models';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +21,12 @@ export class AuthService {
     return this.authFirebase.createUserWithEmailAndPassword(datos.correo, datos.password);
   }
 
+  register(usuario: Usuario){
+    return this.authFirebase.createUserWithEmailAndPassword(usuario.correo, usuario.password);
+  }
+
   stateUser() {
-    return this.authFirebase.authState
+    return this.authFirebase.authState;
   }
 
 
