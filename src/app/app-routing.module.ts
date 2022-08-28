@@ -97,6 +97,7 @@ const routes: Routes = [
   },
   {
     path: 'usuario',
+    ...canActivate(onlyAdmin),
     loadChildren: () =>
       import('./pages/DATABASE/Usuario/usuario/usuario.module').then(
         (m) => m.UsuarioPageModule

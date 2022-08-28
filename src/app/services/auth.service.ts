@@ -1,17 +1,28 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { UserLindsDatabase, Usuario } from '../models/models';
+import {
+  getAuth,
+  setPersistence,
+  signInWithEmailAndPassword,
+  browserSessionPersistence,
+} from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(
-    private authFirebase: AngularFireAuth,
-  ) {}
+  constructor(private authFirebase: AngularFireAuth) {}
 
-  login(correo: string, password: string) {
-    return this.authFirebase.signInWithEmailAndPassword(correo, password)
+  async login(correo: string, password: string) {
+    const auth = getAuth();
+    await setPersistence(auth, browserSessionPersistence)
+      .then(() => {
+        return signInWithEmailAndPassword(auth, correo, password);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   logout() {

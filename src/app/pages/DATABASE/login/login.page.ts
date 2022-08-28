@@ -23,19 +23,19 @@ export class LoginPage implements OnInit {
   ngOnInit() {}
 
   async login() {
-    await this.interacion.showLoading("ingresando...");
-    const res = await this.auth
+    await this.interacion.showLoading('ingresando...');
+    this.auth
       .login(this.credenciales.correo, this.credenciales.password)
+      .then((res) => {
+        this.interacion.closeLoading();
+        this.interacion.presentToast('Ingresado con exito');
+        this.router.navigate(['/empresa']);
+        this.credenciales.correo = '';
+        this.credenciales.password = '';
+      })
       .catch((error) => {
-        this.interacion.closeLoading()
+        this.interacion.closeLoading();
         this.interacion.presentToast('Usuario o Contraseña invalido');
       });
-      if(res){
-        this.interacion.closeLoading()
-        this.interacion.presentToast('Ingresado con exito');
-        this.credenciales.correo = "";
-        this.credenciales.password = "";
-        this.router.navigate(['/empresa']);
-      }
   }
 }
