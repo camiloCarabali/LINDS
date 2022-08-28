@@ -5,7 +5,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { UiServiceService } from 'src/app/services/ui-service.service';
 import { RegistroGeoPage } from '../../../Geolocation/registro-geo/registro-geo.page';
-
+import { CrearUsuarioPage } from '../crear-usuario/crear-usuario.page';
+import { ModificarUsuarioPage } from '../modificar-usuario/modificar-usuario.page';
 
 @Component({
   selector: 'app-usuario',
@@ -71,5 +72,21 @@ export class UsuarioPage implements OnInit {
         this.interaction.presentToast('Error al eliminar.');
       });
   }
-  
+  async showModalCreate() {
+    const modal = await this.modalCtrl.create({
+      component: CrearUsuarioPage,
+    });
+    return await modal.present();
+  }
+
+  async showModalUpdate(SelectedBranch) {
+    const modal = await this.modalCtrl.create({
+      component: ModificarUsuarioPage,
+      componentProps: {
+        branch: SelectedBranch,
+      },
+    });
+    return await modal.present();
+  }
+
 }

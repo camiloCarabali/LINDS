@@ -96,7 +96,7 @@ export class CrearUsuarioPage implements OnInit {
 
   async crearUsuario() {
     console.log(this.usuario);
-    
+
     if (this.validacion()) {
       this.interaction.showLoading('creando...');
       const path = 'Usuarios';
@@ -115,6 +115,6 @@ export class CrearUsuarioPage implements OnInit {
       this.interaction.closeLoading();
       this.interaction.alertaInformativa('Los campos no pueden estar vacios');
     }
-    
+
   }
 }

@@ -73,7 +73,12 @@
 
       <ion-col>
         <div>
-          <ion-icon name="create" color="warning" button></ion-icon>
+          <ion-icon
+          name="create"
+          color="warning"
+          button
+          (click)="showModalUpdate(usuario)"
+          ></ion-icon>
           <ion-icon
             button
             (click)="eliminarUsuario(usuario.id)"
