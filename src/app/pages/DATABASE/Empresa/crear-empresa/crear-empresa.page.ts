@@ -27,7 +27,16 @@ export class CrearEmpresaPage implements OnInit {
     this.modalCtrl.dismiss();
   }
 
-  validacion() {
+  tamano() {
+    var cadena = String(this.empresa.nit);
+    if (cadena.length == 10) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  isEmpty() {
     return this.empresa.nombre == null || this.empresa.nit == null
       ? false
       : true;
@@ -35,7 +44,7 @@ export class CrearEmpresaPage implements OnInit {
 
   async crearEmpresa() {
     this.interaction.showLoading('creando...');
-    if (this.validacion()) {
+    if (this.isEmpty() && this.tamano()) {
       const path = 'Empresas';
       await this.firestore
         .create(this.empresa, path)

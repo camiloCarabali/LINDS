@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { UiServiceService } from './services/ui-service.service';
-import * as $ from "jquery";
 
 @Component({
   selector: 'app-root',
@@ -26,7 +25,6 @@ export class AppComponent {
       this.auth.stateUser().subscribe(res =>{
         if(res){
           console.log('Esta logeado');
-          console.log(res);
           this.estado = "false";
         } else {
           console.log("No esta logeado");

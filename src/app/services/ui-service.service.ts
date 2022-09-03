@@ -9,7 +9,7 @@ import {
   providedIn: 'root',
 })
 export class UiServiceService {
-  loading: any;
+  loading = false;
 
   constructor(
     private alertController: AlertController,
@@ -36,13 +36,21 @@ export class UiServiceService {
   }
 
   async showLoading(message: string) {
-    this.loading = await this.loadingCtrl.create({
+    this.loading = true;
+    return await this.loadingCtrl.create({
       message: message,
+    }).then(a => {
+      a.present().then(() => {
+        if (!this.loading) {
+          a.dismiss();
+        }
+      });
     });
-    await this.loading.present();
   }
 
   async closeLoading() {
-    await this.loading.dismiss();
+    this.loading = false;
+    return await this.loadingCtrl.dismiss();
   }
+
 }
