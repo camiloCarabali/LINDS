@@ -12,6 +12,8 @@ import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -24,6 +26,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    Geolocation,
   ],
   bootstrap: [AppComponent],
 })

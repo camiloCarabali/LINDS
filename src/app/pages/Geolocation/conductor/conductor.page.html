@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>conductor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">From</ion-label>
+    <ion-input [(ngModel)]="sourceLocation"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">To</ion-label>
+    <ion-input [(ngModel)]="destinationLocation"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="calculateAndDisplayRoute()"
+    >Get direction</ion-button
+  >
+
+  <div id="map"></div>
+  <div id="indicators"></div>
+</ion-content>
