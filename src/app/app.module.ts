@@ -26,7 +26,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    Geolocation,
+    Geolocation
   ],
   bootstrap: [AppComponent],
 })

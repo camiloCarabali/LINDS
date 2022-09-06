@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ErrorHandler, OnInit } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 declare var google;
+let marker;
+let watchID;
+let geoLoc;
+let map;
 
 @Component({
   selector: 'app-conductor',
@@ -12,7 +16,6 @@ export class ConductorPage implements OnInit {
   sourceLocation = '';
   destinationLocation = '';
 
-  map: any;
   directionsService = new google.maps.DirectionsService();
   directionsDisplay = new google.maps.DirectionsRenderer();
   lat: number;
@@ -22,24 +25,30 @@ export class ConductorPage implements OnInit {
 
   ngOnInit(): void {
     this.loadMap();
-    this.getUserLocation();
   }
 
   loadMap() {
     const mapEle: HTMLElement = document.getElementById('map');
     const indicatorsEle: HTMLElement = document.getElementById('indicators');
-    this.map = new google.maps.Map(mapEle, {
-      center: { lat: 3.374653, lng: -76.514308 },
+    const myLatLng = { lat: 3.374653, lng: -76.514308 };
+    map = new google.maps.Map(mapEle, {
+      center: myLatLng,
       zoom: 12,
     });
 
-    this.directionsDisplay.setMap(this.map);
+    this.directionsDisplay.setMap(map);
     this.directionsDisplay.setPanel(indicatorsEle);
 
-    google.maps.event.addListenerOnce(this.map, 'idle', () => {
+    google.maps.event.addListenerOnce(map, 'idle', () => {
       mapEle.classList.add('show-map');
       this.calculateAndDisplayRoute();
     });
+
+    marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+    });
+    this.getUserLocation();
   }
 
   calculateAndDisplayRoute() {
@@ -60,23 +69,30 @@ export class ConductorPage implements OnInit {
 
   getUserLocation() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.lat = position.coords.latitude;
-        this.lng = position.coords.longitude;
-        this.loadMap();
-        this.addMarker(this.lat, this.lng);
-      });
+      var options = { setTimeout: 5000 };
+      geoLoc = navigator.geolocation;
+      watchID = geoLoc.watchPosition(
+        this.showLocationOnMap,
+        this.errorHandler,
+        options
+      );
     }
   }
 
-  addMarker(x, y) {
-    return new google.maps.Marker({
-      position: {
-        lat: x,
-        lng: y,
-      },
-      map: this.map,
-      title: 'ubicacion',
-    });
+  showLocationOnMap(position) {
+    var latitud = position.coords.latitude;
+    var longitud = position.coords.longitude;
+    console.log('Latitud: ' + latitud + ' Longitud: ' + longitud);
+    const myLatLng = { lat: latitud, lng: longitud };
+    marker.setPosition(myLatLng);
+    map.setCenter(myLatLng);
+  }
+
+  errorHandler(err) {
+    if (err.code == 1) {
+      alert('Error Acceso denegado');
+    } else if (err.code == 2) {
+      alert('Error: position no existe o no se encuentra');
+    }
   }
 }

@@ -15,7 +15,7 @@ const onlyAdmin = () =>
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'database',
+    redirectTo: 'conductor',
     pathMatch: 'full',
   },
   {
