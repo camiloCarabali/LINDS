@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserLindsDatabase } from 'src/app/models/models';
-import { AuthService } from 'src/app/services/auth.service';
-import { FirestoreService } from 'src/app/services/firestore.service';
-import { UiServiceService } from 'src/app/services/ui-service.service';
+import { UserLindsDatabase } from 'app/models/models';
+import { AuthService } from 'app/services/auth.service';
+import { FirestoreService } from 'app/services/firestore.service';
+import { UiServiceService } from 'app/services/ui-service.service';
 
 @Component({
   selector: 'app-registro',

@@ -1,5 +1,4 @@
 import { Component, ErrorHandler, OnInit } from '@angular/core';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 declare var google;
 let marker;

@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { Empresa, Sucursal, Usuario } from 'src/app/models/models';
-import { FirestoreService } from 'src/app/services/firestore.service';
-import { UiServiceService } from 'src/app/services/ui-service.service';
+import { Empresa, Sucursal, Usuario } from 'app/models/models';
+import { FirestoreService } from 'app/services/firestore.service';
+import { UiServiceService } from 'app/services/ui-service.service';
 
 @Component({
   selector: 'app-modificar-usuario',

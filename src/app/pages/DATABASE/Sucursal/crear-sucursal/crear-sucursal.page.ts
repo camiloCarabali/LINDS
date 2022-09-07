@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { Empresa, Sucursal } from 'src/app/models/models';
-import { FirestoreService } from 'src/app/services/firestore.service';
-import { UiServiceService } from 'src/app/services/ui-service.service';
+import { Empresa, Sucursal } from 'app/models/models';
+import { FirestoreService } from 'app/services/firestore.service';
+import { UiServiceService } from 'app/services/ui-service.service';
 
 @Component({
   selector: 'app-crear-sucursal',

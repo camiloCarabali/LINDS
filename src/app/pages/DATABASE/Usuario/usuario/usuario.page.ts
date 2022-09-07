@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { Usuario } from 'src/app/models/models';
-import { AuthService } from 'src/app/services/auth.service';
-import { FirestoreService } from 'src/app/services/firestore.service';
-import { UiServiceService } from 'src/app/services/ui-service.service';
+import { Usuario } from 'app/models/models';
+import { AuthService } from 'app/services/auth.service';
+import { FirestoreService } from 'app/services/firestore.service';
+import { UiServiceService } from 'app/services/ui-service.service';
 import { RegistroGeoPage } from '../../../Geolocation/registro-geo/registro-geo.page';
 import { CrearUsuarioPage } from '../crear-usuario/crear-usuario.page';
 import { ModificarUsuarioPage } from '../modificar-usuario/modificar-usuario.page';

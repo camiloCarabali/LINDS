@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
-import { Empresa, Sucursal } from 'src/app/models/models';
-import { FirestoreService } from 'src/app/services/firestore.service';
-import { UiServiceService } from 'src/app/services/ui-service.service';
+import { Empresa, Sucursal } from 'app/models/models';
+import { FirestoreService } from 'app/services/firestore.service';
+import { UiServiceService } from 'app/services/ui-service.service';
 import { CrearSucursalPage } from '../crear-sucursal/crear-sucursal.page';
 import { ModificarSucursalPage } from '../modificar-sucursal/modificar-sucursal.page';
 

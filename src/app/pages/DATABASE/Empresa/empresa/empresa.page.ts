@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
-import { Empresa } from 'src/app/models/models';
-import { FirestoreService } from 'src/app/services/firestore.service';
-import { UiServiceService } from 'src/app/services/ui-service.service';
+import { Empresa } from 'app/models/models';
+import { FirestoreService } from 'app/services/firestore.service';
+import { UiServiceService } from 'app/services/ui-service.service';
 import { CrearEmpresaPage } from '../crear-empresa/crear-empresa.page';
 import { ModificarEmpresaPage } from '../modificar-empresa/modificar-empresa.page';
 
