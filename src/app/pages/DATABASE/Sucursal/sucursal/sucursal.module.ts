@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -21,6 +21,7 @@ import { ModificarSucursalPageModule } from '../modificar-sucursal/modificar-suc
     SucursalPageRoutingModule,
     ModificarSucursalPageModule
   ],
-  declarations: [SucursalPage]
+  declarations: [SucursalPage],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class SucursalPageModule {}
