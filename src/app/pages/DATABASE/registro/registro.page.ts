@@ -12,6 +12,7 @@ import { UiServiceService } from 'app/services/ui-service.service';
 })
 export class RegistroPage implements OnInit {
   datos: UserLindsDatabase = {
+    id: null,
     nombre: null,
     correo: null,
     uid: null,

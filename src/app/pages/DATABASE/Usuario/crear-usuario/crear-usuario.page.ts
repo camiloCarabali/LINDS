@@ -15,6 +15,7 @@ export class CrearUsuarioPage implements OnInit {
 
 
   usuario: Usuario = {
+    id: null,
     empresa: null,
     sucursal: null,
     uid: null,
@@ -26,6 +27,7 @@ export class CrearUsuarioPage implements OnInit {
   };
 
   sucursal: Sucursal = {
+    id: null,
     empresa: null,
     nombre: null,
     ciudad: null,
@@ -35,6 +37,7 @@ export class CrearUsuarioPage implements OnInit {
   sucursales = [];
 
   empresa: Empresa = {
+    id: null,
     nombre: null,
     nit: null,
   };

@@ -1,4 +1,5 @@
 export interface UserLindsDatabase {
+  id: string;
   nombre: string;
   correo: string;
   uid: string;
@@ -7,11 +8,13 @@ export interface UserLindsDatabase {
 }
 
 export interface Empresa {
+  id: string;
   nombre: string;
   nit: number;
 }
 
 export interface Sucursal {
+  id: string;
   empresa: string;
   nombre: string;
   ciudad: string;
@@ -19,6 +22,7 @@ export interface Sucursal {
 }
 
 export interface Usuario {
+  id: string;
   empresa: string;
   sucursal: string;
   uid: string;

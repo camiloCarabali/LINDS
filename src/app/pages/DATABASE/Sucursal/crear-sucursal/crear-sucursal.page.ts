@@ -11,6 +11,7 @@ import { UiServiceService } from 'app/services/ui-service.service';
 })
 export class CrearSucursalPage implements OnInit {
   sucursal: Sucursal = {
+    id: null,
     empresa: null,
     nombre: null,
     ciudad: null,
@@ -18,6 +19,7 @@ export class CrearSucursalPage implements OnInit {
   };
 
   empresa: Empresa = {
+    id: null,
     nombre: null,
     nit: null,
   };

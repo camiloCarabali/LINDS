@@ -13,6 +13,7 @@ import { ModificarSucursalPage } from '../modificar-sucursal/modificar-sucursal.
 })
 export class SucursalPage implements OnInit {
   susursal: Sucursal = {
+    id: null,
     empresa: null,
     nombre: null,
     ciudad: null,

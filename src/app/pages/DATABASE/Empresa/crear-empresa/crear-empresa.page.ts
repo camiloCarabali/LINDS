@@ -11,6 +11,7 @@ import { UiServiceService } from 'app/services/ui-service.service';
 })
 export class CrearEmpresaPage implements OnInit {
   empresa: Empresa = {
+    id: null,
     nombre: null,
     nit: null,
   };

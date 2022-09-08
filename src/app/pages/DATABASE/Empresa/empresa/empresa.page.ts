@@ -14,6 +14,7 @@ import { ModificarEmpresaPage } from '../modificar-empresa/modificar-empresa.pag
 })
 export class EmpresaPage implements OnInit {
   empresa: Empresa = {
+    id: null,
     nombre: null,
     nit: null,
   };

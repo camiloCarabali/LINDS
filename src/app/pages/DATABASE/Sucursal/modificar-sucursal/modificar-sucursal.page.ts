@@ -13,6 +13,7 @@ export class ModificarSucursalPage implements OnInit {
   @Input() branch;
 
   sucursal: Sucursal = {
+    id: null,
     empresa: null,
     nombre: null,
     ciudad: null,
@@ -20,6 +21,7 @@ export class ModificarSucursalPage implements OnInit {
   };
 
   empresa: Empresa = {
+    id: null,
     nombre: null,
     nit: null,
   };

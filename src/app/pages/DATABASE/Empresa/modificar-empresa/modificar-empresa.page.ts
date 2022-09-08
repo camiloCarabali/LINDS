@@ -13,6 +13,7 @@ export class ModificarEmpresaPage implements OnInit {
   @Input() business;
 
   empresa: Empresa = {
+    id: null,
     nombre: null,
     nit: null,
   };
