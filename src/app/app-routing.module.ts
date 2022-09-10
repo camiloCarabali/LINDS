@@ -114,6 +114,11 @@ const routes: Routes = [
     path: 'conductor',
     loadChildren: () => import('./pages/geolocation/conductor/conductor.module').then( m => m.ConductorPageModule)
   },
+  {
+    path: 'login-geo',
+    loadChildren: () => import('./pages/Geolocation/login-geo/login-geo.module').then( m => m.LoginGeoPageModule)
+  },
+
 ];
 
 @NgModule({
