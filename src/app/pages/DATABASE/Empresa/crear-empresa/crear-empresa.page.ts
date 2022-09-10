@@ -50,6 +50,9 @@ export class CrearEmpresaPage implements OnInit {
       await this.firestore
         .create(this.empresa, path)
         .then((res) => {
+          const id = res.id;
+          this.empresa.id = id;
+          this.firestore.update(this.empresa, path, id);
           this.interaction.closeLoading();
           this.interaction.presentToast('Empresa registrada con exito');
           this.dismiss();

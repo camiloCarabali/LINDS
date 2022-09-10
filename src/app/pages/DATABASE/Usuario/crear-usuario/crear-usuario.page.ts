@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { Empresa, Sucursal, Usuario } from 'app/models/models';
+import { AuthService } from 'app/services/auth.service';
 import { FirestoreService } from 'app/services/firestore.service';
 import { UiServiceService } from 'app/services/ui-service.service';
 
@@ -13,9 +15,7 @@ export class CrearUsuarioPage implements OnInit {
   @Input() correo;
   @Input() id;
 
-
   usuario: Usuario = {
-    id: null,
     empresa: null,
     sucursal: null,
     uid: null,
@@ -47,7 +47,9 @@ export class CrearUsuarioPage implements OnInit {
   constructor(
     public modalCtrl: ModalController,
     private firestore: FirestoreService,
-    private interaction: UiServiceService
+    private interaction: UiServiceService,
+    private auth: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -98,8 +100,6 @@ export class CrearUsuarioPage implements OnInit {
   }
 
   async crearUsuario() {
-    console.log(this.usuario);
-
     if (this.validacion()) {
       this.interaction.showLoading('creando...');
       const path = 'Usuarios';
@@ -109,6 +109,10 @@ export class CrearUsuarioPage implements OnInit {
           this.interaction.presentToast('Usuario registrado con exito');
           this.dismiss();
           this.interaction.closeLoading();
+          this.interaction.alertaInformativa(
+            'Por motivos de seguridad se debe cerrar sesion'
+          );
+          this.logout();
         })
         .catch((err) => {
           this.interaction.presentToast('Error al registrar');
@@ -118,6 +122,11 @@ export class CrearUsuarioPage implements OnInit {
       this.interaction.closeLoading();
       this.interaction.alertaInformativa('Los campos no pueden estar vacios');
     }
+  }
 
+  logout() {
+    this.auth.logout();
+    this.interaction.presentToast('Sesion finalizada');
+    this.router.navigate(['/database']);
   }
 }

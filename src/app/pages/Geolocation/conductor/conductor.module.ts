@@ -7,13 +7,19 @@ import { IonicModule } from '@ionic/angular';
 import { ConductorPageRoutingModule } from './conductor-routing.module';
 
 import { ConductorPage } from './conductor.page';
+import { IndicacionesPage } from '../indicaciones/indicaciones.page';
+import { IndicacionesPageModule } from '../indicaciones/indicaciones.module';
 
 @NgModule({
+  entryComponents: [
+    IndicacionesPage
+  ],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ConductorPageRoutingModule
+    ConductorPageRoutingModule,
+    IndicacionesPageModule
   ],
   declarations: [ConductorPage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

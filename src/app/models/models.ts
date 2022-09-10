@@ -22,7 +22,6 @@ export interface Sucursal {
 }
 
 export interface Usuario {
-  id: string;
   empresa: string;
   sucursal: string;
   uid: string;

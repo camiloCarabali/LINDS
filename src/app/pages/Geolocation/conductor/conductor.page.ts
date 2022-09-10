@@ -1,4 +1,6 @@
-import { Component, ErrorHandler, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { IndicacionesPage } from '../indicaciones/indicaciones.page';
 
 declare var google;
 let marker;
@@ -15,12 +17,17 @@ export class ConductorPage implements OnInit {
   sourceLocation = '';
   destinationLocation = '';
 
+  lugares = {
+    a: this.sourceLocation,
+    b: this.destinationLocation,
+  };
+
   directionsService = new google.maps.DirectionsService();
   directionsDisplay = new google.maps.DirectionsRenderer();
   lat: number;
   lng: number;
 
-  constructor() {}
+  constructor(public modalCtrl: ModalController) {}
 
   ngOnInit(): void {
     this.loadMap();
@@ -68,7 +75,7 @@ export class ConductorPage implements OnInit {
 
   getUserLocation() {
     if (navigator.geolocation) {
-      var options = { setTimeout: 5000 };
+      var options = { setTimeout: 10000 };
       geoLoc = navigator.geolocation;
       watchID = geoLoc.watchPosition(
         this.showLocationOnMap,
@@ -93,5 +100,16 @@ export class ConductorPage implements OnInit {
     } else if (err.code == 2) {
       alert('Error: position no existe o no se encuentra');
     }
+  }
+
+  async showModalIndicators(a, b) {
+    const modal = await this.modalCtrl.create({
+      component: IndicacionesPage,
+      componentProps: {
+        a: a,
+        b: b,
+      },
+    });
+    return await modal.present();
   }
 }

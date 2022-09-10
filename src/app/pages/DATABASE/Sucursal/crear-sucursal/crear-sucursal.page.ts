@@ -69,6 +69,9 @@ export class CrearSucursalPage implements OnInit {
       await this.firestore
         .create(this.sucursal, path)
         .then((res) => {
+          const id = res.id;
+          this.sucursal.id = id;
+          this.firestore.update(this.sucursal, path, id);
           this.interaction.closeLoading();
           this.interaction.presentToast('Sucursal registrada con exito');
           this.dismiss();

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Usuario } from 'app/models/models';
 import { AuthService } from 'app/services/auth.service';
-import { FirestoreService } from 'app/services/firestore.service';
 import { UiServiceService } from 'app/services/ui-service.service';
 import { CrearUsuarioPage } from '../../DATABASE/Usuario/crear-usuario/crear-usuario.page';
 
@@ -13,7 +12,6 @@ import { CrearUsuarioPage } from '../../DATABASE/Usuario/crear-usuario/crear-usu
 })
 export class RegistroGeoPage implements OnInit {
   usuario: Usuario = {
-    id: null,
     empresa: null,
     sucursal: null,
     uid: null,
@@ -26,7 +24,6 @@ export class RegistroGeoPage implements OnInit {
 
   constructor(
     private auth: AuthService,
-    private firestore: FirestoreService,
     private interaction: UiServiceService,
     public modalCtrl: ModalController
   ) {}

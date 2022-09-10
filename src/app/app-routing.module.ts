@@ -15,7 +15,7 @@ const onlyAdmin = () =>
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'database',
+    redirectTo: 'login',
     pathMatch: 'full',
   },
   {
@@ -112,12 +112,17 @@ const routes: Routes = [
   },
   {
     path: 'conductor',
-    loadChildren: () => import('./pages/geolocation/conductor/conductor.module').then( m => m.ConductorPageModule)
+    loadChildren: () => import('./pages/Geolocation/conductor/conductor.module').then( m => m.ConductorPageModule)
   },
   {
-    path: 'login-geo',
+    path: 'login',
     loadChildren: () => import('./pages/Geolocation/login-geo/login-geo.module').then( m => m.LoginGeoPageModule)
   },
+  {
+    path: 'indicaciones',
+    loadChildren: () => import('./pages/Geolocation/indicaciones/indicaciones.module').then( m => m.IndicacionesPageModule)
+  },
+
 
 ];
 
