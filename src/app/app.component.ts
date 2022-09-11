@@ -16,8 +16,19 @@ export class AppComponent {
   public appPages = [
     { title: 'Empresas', url: '/empresa', icon: 'business' },
     { title: 'Sucursales', url: '/sucursal', icon: 'briefcase' },
-    { title: 'Usuarios', url: '/usuario', icon: 'people' }
+    { title: 'Usuarios', url: '/usuario', icon: 'people' },
+    { title: 'Viaje', url: '/conductor', icon: 'car' },
+    { title: 'Historial de viajes', url: '/historial', icon: 'time' },
+    { title: 'Perfil', url: '/perfil', icon: 'person' },
   ];
+
+  public appPagesConductor = [
+
+    { title: 'Viaje', url: '/conductor', icon: 'car' },
+    { title: 'Historial de viajes', url: '/historial', icon: 'time' },
+    { title: 'Perfil', url: '/perfil', icon: 'person' }
+  ];
+
   constructor(private auth: AuthService,
     private interaction: UiServiceService,
     private router: Router) {

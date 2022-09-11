@@ -17,9 +17,7 @@ export class AuthService {
   async login(correo: string, password: string) {
     const auth = getAuth();
     await setPersistence(auth, browserSessionPersistence)
-      .then(() => {
-        return signInWithEmailAndPassword(auth, correo, password);
-      })
+      .then(() => signInWithEmailAndPassword(auth, correo, password))
       .catch((error) => {
         console.log(error);
       });

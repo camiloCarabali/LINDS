@@ -19,7 +19,7 @@ export class RegistroGeoPage implements OnInit {
     password: null,
     cedula: null,
     correo: null,
-    perfil: null,
+    perfil: 'conductor',
   };
 
   constructor(
@@ -36,7 +36,7 @@ export class RegistroGeoPage implements OnInit {
 
   async registrar() {
     this.interaction.showLoading('registrando...');
-    
+
     const res = await this.auth.register(this.usuario).catch((error) => {
       this.interaction.closeLoading();
       this.interaction.presentToast('Error al registrar');
@@ -49,7 +49,7 @@ export class RegistroGeoPage implements OnInit {
       this.interaction.closeLoading();
       this.showModalCreate(email, id);
     }
-    
+
   }
 
   async showModalCreate(email, id) {

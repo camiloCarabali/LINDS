@@ -44,7 +44,7 @@ const routes: Routes = [
       import('./pages/DATABASE/Empresa/empresa/empresa.module').then(
         (m) => m.EmpresaPageModule
       ),
-  }, 
+  },
   {
     path: 'crear-empresa',
     loadChildren: () =>
@@ -122,6 +122,29 @@ const routes: Routes = [
     path: 'indicaciones',
     loadChildren: () => import('./pages/Geolocation/indicaciones/indicaciones.module').then( m => m.IndicacionesPageModule)
   },
+  {
+    path: 'viaje',
+    loadChildren: () => import('./pages/Geolocation/Viaje/viaje/viaje.module').then( m => m.ViajePageModule)
+  },
+  {
+    path: 'info-viaje',
+    loadChildren: () => import('./pages/Geolocation/Viaje/info-viaje/info-viaje.module').then( m => m.InfoViajePageModule)
+  },
+  {
+    path: 'historial',
+    loadChildren: () => import('./pages/Geolocation/Historial/historial/historial.module').then( m => m.HistorialPageModule)
+  },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./pages/Geolocation/Perfil/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'modificar',
+    loadChildren: () => import('./pages/Geolocation/Perfil/modificar/modificar.module').then( m => m.ModificarPageModule)
+  },
+
+
+
 
 
 ];
