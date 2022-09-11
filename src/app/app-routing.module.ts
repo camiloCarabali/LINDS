@@ -123,14 +123,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/Geolocation/indicaciones/indicaciones.module').then( m => m.IndicacionesPageModule)
   },
   {
-    path: 'viaje',
-    loadChildren: () => import('./pages/Geolocation/Viaje/viaje/viaje.module').then( m => m.ViajePageModule)
-  },
-  {
-    path: 'info-viaje',
-    loadChildren: () => import('./pages/Geolocation/Viaje/info-viaje/info-viaje.module').then( m => m.InfoViajePageModule)
-  },
-  {
     path: 'historial',
     loadChildren: () => import('./pages/Geolocation/Historial/historial/historial.module').then( m => m.HistorialPageModule)
   },
@@ -142,10 +134,10 @@ const routes: Routes = [
     path: 'modificar',
     loadChildren: () => import('./pages/Geolocation/Perfil/modificar/modificar.module').then( m => m.ModificarPageModule)
   },
-
-
-
-
+  {
+    path: 'viaje',
+    loadChildren: () => import('./pages/Geolocation/Viaje/viaje/viaje.module').then( m => m.ViajePageModule)
+  },
 
 ];
 
