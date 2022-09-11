@@ -22,12 +22,12 @@ export class AppComponent {
     { title: 'Perfil', url: '/perfil', icon: 'person' },
   ];
 
-  public appPagesConductor = [
+  /*public appPagesConductor = [
 
     { title: 'Viaje', url: '/conductor', icon: 'car' },
     { title: 'Historial de viajes', url: '/historial', icon: 'time' },
     { title: 'Perfil', url: '/perfil', icon: 'person' }
-  ];
+  ];*/
 
   constructor(private auth: AuthService,
     private interaction: UiServiceService,

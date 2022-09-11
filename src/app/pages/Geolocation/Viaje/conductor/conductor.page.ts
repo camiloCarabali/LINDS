@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { IndicacionesPage } from '../indicaciones/indicaciones.page';
+import { IndicacionesPage } from '../../indicaciones/indicaciones.page';
 
 declare var google;
 let marker;
