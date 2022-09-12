@@ -7,6 +7,7 @@ let marker;
 let watchID;
 let geoLoc;
 let map;
+let options;
 
 @Component({
   selector: 'app-conductor',
@@ -75,7 +76,7 @@ export class ConductorPage implements OnInit {
 
   getUserLocation() {
     if (navigator.geolocation) {
-      var options = { setTimeout: 10000 };
+      options = { setTimeout: 10000 };
       geoLoc = navigator.geolocation;
       watchID = geoLoc.watchPosition(
         this.showLocationOnMap,

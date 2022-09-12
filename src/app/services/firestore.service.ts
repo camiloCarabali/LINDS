@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import {
-  AngularFirestore,
-  AngularFirestoreDocument,
-} from '@angular/fire/compat/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Injectable({
   providedIn: 'root',
@@ -35,9 +31,17 @@ export class FirestoreService {
     }
   }
 
+  async searchCargo(position, uid) {
+    try {
+      return await this.firestore.collection('Usuarios', ref => ref.where('perfil', '==', position).where('uid', '==', uid)).valueChanges();
+    } catch (error) {
+      console.log('Error en: search ', error);
+    }
+  }
+
   async delete(path: string, id: string) {
     try {
-      return await this.firestore.collection(path).doc(id).delete();
+      return await this.firestore.collection(path).doc(id).get();
     } catch (error) {
       console.log('Error en: delete ', error);
     }
@@ -50,5 +54,4 @@ export class FirestoreService {
       console.log('Error en: update ', error);
     }
   }
-
 }

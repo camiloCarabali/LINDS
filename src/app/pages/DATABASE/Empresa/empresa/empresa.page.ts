@@ -4,6 +4,7 @@ import { ModalController } from '@ionic/angular';
 import { Empresa } from 'app/models/models';
 import { FirestoreService } from 'app/services/firestore.service';
 import { UiServiceService } from 'app/services/ui-service.service';
+import { data } from 'jquery';
 import { CrearEmpresaPage } from '../crear-empresa/crear-empresa.page';
 import { ModificarEmpresaPage } from '../modificar-empresa/modificar-empresa.page';
 
@@ -24,8 +25,7 @@ export class EmpresaPage implements OnInit {
   constructor(
     private firestore: FirestoreService,
     public modalCtrl: ModalController,
-    private interaction: UiServiceService,
-    private router: Router
+    private interaction: UiServiceService
   ) {}
 
   ngOnInit() {
@@ -58,6 +58,12 @@ export class EmpresaPage implements OnInit {
         this.interaction.closeLoading();
         this.interaction.presentToast('Error al eliminar.');
       });
+  }
+
+  async buscarEmpresa(position, uid) {
+    (await this.firestore.searchCargo(position, uid)).subscribe((cargo) => {
+      console.log(cargo);
+    });
   }
 
   async showModalCreate() {
