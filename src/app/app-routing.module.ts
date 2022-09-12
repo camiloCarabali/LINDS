@@ -139,13 +139,6 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'info-viaje',
-    loadChildren: () =>
-      import('./pages/Geolocation/Viaje/info-viaje/info-viaje.module').then(
-        (m) => m.InfoViajePageModule
-      ),
-  },
-  {
     path: 'historial',
     loadChildren: () =>
       import('./pages/Geolocation/Historial/historial/historial.module').then(
