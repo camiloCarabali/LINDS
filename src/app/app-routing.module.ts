@@ -138,27 +138,6 @@ const routes: Routes = [
         (m) => m.ViajePageModule
       ),
   },
-  {
-    path: 'historial',
-    loadChildren: () =>
-      import('./pages/Geolocation/Historial/historial/historial.module').then(
-        (m) => m.HistorialPageModule
-      ),
-  },
-  {
-    path: 'perfil',
-    loadChildren: () =>
-      import('./pages/Geolocation/Perfil/perfil/perfil.module').then(
-        (m) => m.PerfilPageModule
-      ),
-  },
-  {
-    path: 'modificar',
-    loadChildren: () =>
-      import('./pages/Geolocation/Perfil/modificar/modificar.module').then(
-        (m) => m.ModificarPageModule
-      ),
-  },
 ];
 
 @NgModule({

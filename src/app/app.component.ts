@@ -15,6 +15,9 @@ export class AppComponent {
   public claseAdmin: string;
   public claseConductor: string;
 
+  public uidAdmin1 = '27CkhymwIyXBdCn50uD3I7ncuAx1';
+  public uidAdmin2 = 'fPtxVafLD8ZrvoIsS52SRItHHf32';
+
   public appPages = [
     { title: 'Empresas', url: '/empresa', icon: 'business' },
     { title: 'Sucursales', url: '/sucursal', icon: 'briefcase' },
@@ -36,6 +39,11 @@ export class AppComponent {
     this.estado = 'true';
     this.auth.stateUser().subscribe((res) => {
       if (res) {
+        if(res.uid == this.uidAdmin1 || res.uid == this.uidAdmin2){
+          this.claseAdmin = '';
+          this.claseConductor = 'ion-hide';
+        }
+        console.log(res.uid, "--", this.uidAdmin1);
         this.irCoductor(res.uid);
         this.irAdmin(res.uid);
         console.log('Esta logeado');
