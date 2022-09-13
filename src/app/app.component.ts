@@ -43,7 +43,6 @@ export class AppComponent {
           this.claseAdmin = '';
           this.claseConductor = 'ion-hide';
         }
-        console.log(res.uid, "--", this.uidAdmin1);
         this.irCoductor(res.uid);
         this.irAdmin(res.uid);
         console.log('Esta logeado');
