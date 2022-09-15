@@ -138,6 +138,19 @@ const routes: Routes = [
         (m) => m.ViajePageModule
       ),
   },
+  {
+    path: 'verify-email',
+    loadChildren: () =>
+      import('./pages/Geolocation/verify-email/verify-email.module').then(
+        (m) => m.VerifyEmailPageModule)
+  },
+  {
+    path: 'forgot-password',
+    loadChildren: () =>
+      import('./pages/Geolocation/forgot-password/forgot-password.module').then(
+        (m) => m.ForgotPasswordPageModule)
+  },
+
 ];
 
 @NgModule({

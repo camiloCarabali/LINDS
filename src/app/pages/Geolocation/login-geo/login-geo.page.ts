@@ -30,7 +30,8 @@ export class LoginGeoPage implements OnInit {
       .then((res) => {
         this.interacion.closeLoading();
         this.interacion.presentToast('Ingresado con exito');
-        this.router.navigate(['/conductor']);
+       const isVerified = this.auth.isEmailVerified(this.credenciales.correo);
+        this.redirectUser(isVerified);
         this.credenciales.correo = '';
         this.credenciales.password = '';
       })
@@ -38,6 +39,14 @@ export class LoginGeoPage implements OnInit {
         this.interacion.closeLoading();
         this.interacion.presentToast('Usuario o Contraseña invalido');
       });
+  }
+
+  redirectUser(isVerified: boolean){
+    if(isVerified){
+      this.router.navigate(['conductor']);
+    }else {
+      this.router.navigate(['verify-email']);
+    }
   }
 
 }

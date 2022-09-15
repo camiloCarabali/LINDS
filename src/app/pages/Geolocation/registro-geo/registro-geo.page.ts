@@ -12,6 +12,7 @@ import { CrearUsuarioPage } from '../../DATABASE/Usuario/crear-usuario/crear-usu
 })
 export class RegistroGeoPage implements OnInit {
   usuario: Usuario = {
+    emailVerified: null,
     empresa: null,
     sucursal: null,
     uid: null,
@@ -43,7 +44,7 @@ export class RegistroGeoPage implements OnInit {
       this.dismiss();
     });
     if (res) {
-      const id = res.user.uid;
+      const id = res.uid;
       const email = this.usuario.correo;
       this.dismiss();
       this.interaction.closeLoading();

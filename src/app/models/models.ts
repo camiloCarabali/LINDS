@@ -22,6 +22,7 @@ export interface Sucursal {
 }
 
 export interface Usuario {
+  emailVerified: boolean;
   empresa: string;
   sucursal: string;
   uid: string;

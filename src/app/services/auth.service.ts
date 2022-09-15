@@ -34,14 +34,40 @@ export class AuthService {
     );
   }
 
-  register(usuario: Usuario) {
-    return this.authFirebase.createUserWithEmailAndPassword(
-      usuario.correo,
-      usuario.password
-    );
+  async register(usuario: Usuario) {
+
+      try {
+        const { user } = await this.authFirebase.createUserWithEmailAndPassword(
+          usuario.correo, usuario.password);
+          this.sendVerification();
+          return user;
+
+      } catch (error) {
+        console.log('Error ->', error);
+      }
   }
 
   stateUser() {
     return this.authFirebase.authState;
+  }
+
+  async sendVerification(){
+    try {
+      return (await this.authFirebase.currentUser).sendEmailVerification();
+    } catch (error) {
+      console.log('Error ->', error);
+    }
+  }
+
+ isEmailVerified(email: Usuario){
+    return email.emailVerified === true ? true : false;
+  }
+
+  async resertPassword(email: string){
+    try {
+      return this.authFirebase.sendPasswordResetEmail(email);
+    } catch (error) {
+      console.log('Error ->', error);
+    }
   }
 }

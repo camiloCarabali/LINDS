@@ -16,6 +16,7 @@ export class CrearUsuarioPage implements OnInit {
   @Input() id;
 
   usuario: Usuario = {
+    emailVerified: null,
     empresa: null,
     sucursal: null,
     uid: null,

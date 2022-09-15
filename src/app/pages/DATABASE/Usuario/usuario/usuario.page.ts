@@ -14,6 +14,7 @@ import { ModificarUsuarioPage } from '../modificar-usuario/modificar-usuario.pag
 })
 export class UsuarioPage implements OnInit {
   usuario: Usuario = {
+    emailVerified: null,
     empresa: null,
     sucursal: null,
     uid: null,
