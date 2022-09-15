@@ -26,8 +26,8 @@ export class AppComponent {
 
   public appPagesConductor = [
     { title: 'Viaje', url: '/conductor', icon: 'car' },
-    { title: 'Historial de viajes', url: '/historial', icon: 'time' },
-    { title: 'Perfil', url: '/perfil', icon: 'person' },
+    { title: 'Historial de viajes', url: '#', icon: 'time' },
+    { title: 'Perfil', url: '#', icon: 'person' },
   ];
 
   constructor(
@@ -39,6 +39,7 @@ export class AppComponent {
     this.estado = 'true';
     this.auth.stateUser().subscribe((res) => {
       if (res) {
+        // eslint-disable-next-line eqeqeq
         if(res.uid == this.uidAdmin1 || res.uid == this.uidAdmin2){
           this.claseAdmin = '';
           this.claseConductor = 'ion-hide';
@@ -57,7 +58,10 @@ export class AppComponent {
   async irCoductor(uid) {
     this.cargo = 'conductor';
     (await this.firestore.searchCargo(this.cargo, uid)).subscribe((res) => {
+      console.log(res.length);
+      // eslint-disable-next-line eqeqeq
       if (res.length != 0) {
+        console.log('conductor');
         this.claseAdmin = 'ion-hide';
         this.claseConductor = '';
       }
@@ -67,6 +71,7 @@ export class AppComponent {
   async irAdmin(uid) {
     this.cargo = 'administrador';
     (await this.firestore.searchCargo(this.cargo, uid)).subscribe((res) => {
+      // eslint-disable-next-line eqeqeq
       if (res.length != 0) {
         this.claseAdmin = '';
         this.claseConductor = 'ion-hide';

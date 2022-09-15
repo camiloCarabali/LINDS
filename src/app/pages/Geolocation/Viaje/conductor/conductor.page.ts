@@ -27,6 +27,7 @@ export class ConductorPage implements OnInit {
   directionsDisplay = new google.maps.DirectionsRenderer();
   lat: number;
   lng: number;
+  validaPosicion = 0;
 
   constructor(public modalCtrl: ModalController) {}
 
@@ -72,6 +73,14 @@ export class ConductorPage implements OnInit {
       .then((response) => {
         this.directionsDisplay.setDirections(response);
       });
+
+      // eslint-disable-next-line eqeqeq
+      if(this.validaPosicion == 1){
+        this.validaPosicion=0;
+      }else {
+        this.validaPosicion=1
+      }
+      console.log(this.validaPosicion);
   }
 
   getUserLocation() {
