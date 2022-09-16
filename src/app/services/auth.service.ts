@@ -6,13 +6,29 @@ import {
   setPersistence,
   signInWithEmailAndPassword,
   browserSessionPersistence,
+  User,
 } from 'firebase/auth';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private authFirebase: AngularFireAuth) {}
+  public user$: Observable<User>;
+
+  constructor(public authFirebase: AngularFireAuth) {}
+
+  /*obser(){
+    this.user$ = this.authFirebase.authState.pipe(
+      switchMap(usuario) => {
+        if(usuario) {
+          return this.afs.doc<User>(´users/${usuario.uid}´).valueChanges();
+        }
+        return of(null);
+      } //35:48
+    );
+  }*/
 
   async login(correo: string, password: string) {
     const auth = getAuth();
