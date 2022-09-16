@@ -40,6 +40,12 @@ export class CrearSucursalPage implements OnInit {
     this.modalCtrl.dismiss();
   }
 
+  isEmpty() {
+    return this.empresa.nombre == null || this.empresa.nit == null
+      ? false
+      : true;
+  }
+
   validacion() {
     return this.sucursal.empresa == null ||
       this.sucursal.nombre == null ||
@@ -64,7 +70,7 @@ export class CrearSucursalPage implements OnInit {
 
   async crearSucursal() {
     this.interaction.showLoading('creando...');
-    if (this.validacion()) {
+    if (this.isEmpty() && this.validacion()) {
       const path = "Sucursales";
       await this.firestore
         .create(this.sucursal, path)

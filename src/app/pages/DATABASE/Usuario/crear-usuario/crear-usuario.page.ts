@@ -90,6 +90,12 @@ export class CrearUsuarioPage implements OnInit {
     this.modalCtrl.dismiss();
   }
 
+  isEmpty() {
+    return this.empresa.nombre == null || this.empresa.nit == null
+      ? false
+      : true;
+  }
+
   validacion() {
     return this.usuario.cedula == null ||
       this.usuario.nombre == null ||
@@ -101,7 +107,7 @@ export class CrearUsuarioPage implements OnInit {
   }
 
   async crearUsuario() {
-    if (this.validacion()) {
+    if (this.isEmpty() && this.validacion()) {
       this.interaction.showLoading('creando...');
       const path = 'Usuarios';
       await this.firestore

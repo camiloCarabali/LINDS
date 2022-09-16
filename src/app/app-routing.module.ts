@@ -150,6 +150,11 @@ const routes: Routes = [
       import('./pages/Geolocation/forgot-password/forgot-password.module').then(
         (m) => m.ForgotPasswordPageModule)
   },
+  {
+    path: 'administrador',
+    loadChildren: () => import('./pages/Geolocation/administrador/administrador.module').then( m => m.AdministradorPageModule)
+  },
+
 
 ];
 
