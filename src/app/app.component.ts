@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { AuthService } from './services/auth.service';
 import { FirestoreService } from './services/firestore.service';
 import { UiServiceService } from './services/ui-service.service';
@@ -34,34 +35,37 @@ export class AppComponent {
     private auth: AuthService,
     private interaction: UiServiceService,
     private router: Router,
-    private firestore: FirestoreService
+    private firestore: FirestoreService,
+
   ) {
     this.estado = 'true';
     this.auth.stateUser().subscribe((res) => {
       if (res) {
-        // eslint-disable-next-line eqeqeq
+        if(res.emailVerified == false){
+          this.estado = 'true';
+        }else{
+          this.estado = 'false';
+        }
         if(res.uid == this.uidAdmin1 || res.uid == this.uidAdmin2){
+          this.estado = 'false';
           this.claseAdmin = '';
           this.claseConductor = 'ion-hide';
         }
         this.irCoductor(res.uid);
         this.irAdmin(res.uid);
         console.log('Esta logeado');
-        this.estado = 'false';
       } else {
         console.log('No esta logeado');
         this.estado = 'true';
       }
+
     });
   }
 
   async irCoductor(uid) {
     this.cargo = 'conductor';
     (await this.firestore.searchCargo(this.cargo, uid)).subscribe((res) => {
-      console.log(res.length);
-      // eslint-disable-next-line eqeqeq
       if (res.length != 0) {
-        console.log('conductor');
         this.claseAdmin = 'ion-hide';
         this.claseConductor = '';
       }
@@ -71,7 +75,6 @@ export class AppComponent {
   async irAdmin(uid) {
     this.cargo = 'administrador';
     (await this.firestore.searchCargo(this.cargo, uid)).subscribe((res) => {
-      // eslint-disable-next-line eqeqeq
       if (res.length != 0) {
         this.claseAdmin = '';
         this.claseConductor = 'ion-hide';

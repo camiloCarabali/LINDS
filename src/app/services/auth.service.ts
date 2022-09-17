@@ -6,29 +6,13 @@ import {
   setPersistence,
   signInWithEmailAndPassword,
   browserSessionPersistence,
-  User,
 } from 'firebase/auth';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  public user$: Observable<User>;
-
   constructor(public authFirebase: AngularFireAuth) {}
-
-  /*obser(){
-    this.user$ = this.authFirebase.authState.pipe(
-      switchMap(usuario) => {
-        if(usuario) {
-          return this.afs.doc<User>(´users/${usuario.uid}´).valueChanges();
-        }
-        return of(null);
-      } //35:48
-    );
-  }*/
 
   async login(correo: string, password: string) {
     const auth = getAuth();
@@ -51,23 +35,23 @@ export class AuthService {
   }
 
   async register(usuario: Usuario) {
-
-      try {
-        const { user } = await this.authFirebase.createUserWithEmailAndPassword(
-          usuario.correo, usuario.password);
-          this.sendVerification();
-          return user;
-
-      } catch (error) {
-        console.log('Error ->', error);
-      }
+    try {
+      const { user } = await this.authFirebase.createUserWithEmailAndPassword(
+        usuario.correo,
+        usuario.password
+      );
+      this.sendVerification();
+      return user;
+    } catch (error) {
+      console.log('Error ->', error);
+    }
   }
 
   stateUser() {
     return this.authFirebase.authState;
   }
 
-  async sendVerification(){
+  async sendVerification() {
     try {
       return (await this.authFirebase.currentUser).sendEmailVerification();
     } catch (error) {
@@ -75,11 +59,7 @@ export class AuthService {
     }
   }
 
- isEmailVerified(email: Usuario){
-    return email.emailVerified === true ? true : false;
-  }
-
-  async resertPassword(email: string){
+  async resertPassword(email: string) {
     try {
       return this.authFirebase.sendPasswordResetEmail(email);
     } catch (error) {

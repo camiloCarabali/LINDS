@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'app/services/auth.service';
-import { User } from 'firebase/auth';
-import { Observable } from 'rxjs';
+import { UiServiceService } from 'app/services/ui-service.service';
 
 @Component({
   selector: 'app-verify-email',
@@ -9,25 +8,23 @@ import { Observable } from 'rxjs';
   styleUrls: ['./verify-email.page.scss'],
 })
 export class VerifyEmailPage implements OnInit {
-  user$: Observable<User>= this.authService.authFirebase.user;
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private interaction: UiServiceService
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  async onSendEmail(){
+  async onSendEmail() {
     try {
       await this.authService.sendVerification();
+      this.interaction.presentToast('Correo enviado');
     } catch (error) {
       console.log('Error->', error);
     }
   }
 
-  // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
-  ngOnDestroy(): void {
-    //Called once, before the instance is destroyed.
-    //Add 'implements OnDestroy' to the class.
+  ngOnDestroy() {
     this.authService.logout();
   }
-
 }

@@ -16,9 +16,8 @@ export class ForgotPasswordPage  {
   ) { }
 
   async reestablecer(email){
-
     try {
-      await this.auth.resertPassword(email.value);
+      await this.auth.resertPassword(email);
       this.router.navigate(['/login']);
     } catch (error) {
       console.log('Error->', error);

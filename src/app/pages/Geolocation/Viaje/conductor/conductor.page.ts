@@ -27,7 +27,9 @@ export class ConductorPage implements OnInit {
   directionsDisplay = new google.maps.DirectionsRenderer();
   lat: number;
   lng: number;
-  validaPosicion = 0;
+  estado = false;
+  clase = "ion-hide";
+  clase2 = "";
 
   constructor(public modalCtrl: ModalController) {}
 
@@ -73,14 +75,19 @@ export class ConductorPage implements OnInit {
       .then((response) => {
         this.directionsDisplay.setDirections(response);
       });
+      this.hide();
+  }
 
-      // eslint-disable-next-line eqeqeq
-      if(this.validaPosicion == 1){
-        this.validaPosicion=0;
-      }else {
-        this.validaPosicion=1
-      }
-      console.log(this.validaPosicion);
+  hide(){
+    if(this.estado == true){
+      this.clase="";
+      this.clase2 = "ion-hide";
+      this.estado=false;
+    }else {
+      this.clase="ion-hide";
+      this.clase2 = "";
+      this.estado=true;
+    }
   }
 
   getUserLocation() {

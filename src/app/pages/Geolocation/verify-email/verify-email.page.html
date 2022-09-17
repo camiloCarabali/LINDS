@@ -4,11 +4,11 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="user$ ! async as user">
+<ion-content>
   <ion-row>
     <ion-col>
       <h2>¡Gracias por registrarte!</h2>
-      <p>Nosotros te enviaremos un email de confirmación <strong>{{user.email}}</strong></p>
+      <p>Nosotros te enviaremos un email de confirmación</p>
       <p>Por favor revisa tu email y haz click en el link para verificar
         tu dirección de email</p>
     </ion-col>
@@ -16,7 +16,7 @@
 
   <ion-row>
     <ion-col>
-      <button type="submit" color="primary" (click)="onSendEmail()">Reenviar email</button>
+      <ion-button type="submit" color="primary" (click)="onSendEmail()">Reenviar email</ion-button>
     </ion-col>
   </ion-row>
 </ion-content>

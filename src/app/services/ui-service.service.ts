@@ -38,7 +38,6 @@ export class UiServiceService {
   async showLoading(message: string) {
     this.loading = true;
     return await this.loadingCtrl.create({
-      // eslint-disable-next-line object-shorthand
       message: message,
     }).then(a => {
       a.present().then(() => {

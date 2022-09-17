@@ -91,9 +91,13 @@ export class CrearUsuarioPage implements OnInit {
   }
 
   isEmpty() {
-    return this.empresa.nombre == null || this.empresa.nit == null
-      ? false
-      : true;
+    return this.usuario.cedula == null ||
+    this.usuario.nombre == null ||
+    this.usuario.empresa == null ||
+    this.usuario.perfil == null ||
+    this.usuario.sucursal == null
+    ? false
+    : true;
   }
 
   validacion() {

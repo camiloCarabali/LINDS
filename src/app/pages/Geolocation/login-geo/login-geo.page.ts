@@ -9,7 +9,6 @@ import { UiServiceService } from 'app/services/ui-service.service';
   styleUrls: ['./login-geo.page.scss'],
 })
 export class LoginGeoPage implements OnInit {
-
   credenciales = {
     correo: null,
     password: null,
@@ -30,8 +29,9 @@ export class LoginGeoPage implements OnInit {
       .then((res) => {
         this.interacion.closeLoading();
         this.interacion.presentToast('Ingresado con exito');
-       const isVerified = this.auth.isEmailVerified(this.credenciales.correo);
-        this.redirectUser(isVerified);
+        this.auth.stateUser().subscribe((res) => {
+          this.redirectUser(res.emailVerified);
+        });
         this.credenciales.correo = '';
         this.credenciales.password = '';
       })
@@ -41,12 +41,11 @@ export class LoginGeoPage implements OnInit {
       });
   }
 
-  redirectUser(isVerified: boolean){
-    if(isVerified){
-      this.router.navigate(['conductor']);
-    }else {
-      this.router.navigate(['verify-email']);
+  redirectUser(isVerified: boolean) {
+    if (isVerified) {
+      this.router.navigate(['/conductor']);
+    } else {
+      this.router.navigate(['/verify-email']);
     }
   }
-
 }

@@ -41,9 +41,12 @@ export class CrearSucursalPage implements OnInit {
   }
 
   isEmpty() {
-    return this.empresa.nombre == null || this.empresa.nit == null
-      ? false
-      : true;
+    return this.sucursal.empresa == null ||
+    this.sucursal.nombre == null ||
+    this.sucursal.ciudad == null ||
+    this.sucursal.direccion == null
+    ? false
+    : true;
   }
 
   validacion() {
