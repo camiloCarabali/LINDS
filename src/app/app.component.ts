@@ -28,7 +28,7 @@ export class AppComponent {
   public appPagesConductor = [
     { title: 'Viaje', url: '/conductor', icon: 'car' },
     { title: 'Historial de viajes', url: '#', icon: 'time' },
-    { title: 'Perfil', url: '#', icon: 'person' },
+    { title: 'Perfil', url: '/perfil', icon: 'person' },
   ];
 
   constructor(

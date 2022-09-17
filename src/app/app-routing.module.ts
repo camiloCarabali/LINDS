@@ -152,8 +152,23 @@ const routes: Routes = [
   },
   {
     path: 'administrador',
-    loadChildren: () => import('./pages/Geolocation/administrador/administrador.module').then( m => m.AdministradorPageModule)
+    loadChildren: () =>
+      import('./pages/Geolocation/administrador/administrador.module').then(
+        (m) => m.AdministradorPageModule)
   },
+  {
+    path: 'perfil',
+    loadChildren: () =>
+      import('./pages/Geolocation/perfil/perfil.module').then(
+        (m) => m.PerfilPageModule)
+  },
+  {
+    path: 'change-password',
+    loadChildren: () =>
+      import('./pages/Geolocation/change-password/change-password.module').then(
+        (m) => m.ChangePasswordPageModule)
+  },
+
 
 
 ];

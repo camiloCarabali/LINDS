@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card mode="ios">
+    <ion-card-header>
+      <ion-card-title> {{usuario.nombre}}</ion-card-title>
+      <ion-card-subtitle>{{usuario.perfil}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-col>Cedula: {{usuario.cedula}}</ion-col><br>
+      <ion-col>Correo: {{usuario.correo}}</ion-col><br>
+      <ion-col>Empresa: {{usuario.empresa}}</ion-col><br>
+      <ion-col>Sucursal: {{usuario.sucursal}}</ion-col><br>
+      <ion-col>
+        <ion-button href="/change-password" type="submit" color="primary">Cambiar contraseña</ion-button>
+      </ion-col>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
