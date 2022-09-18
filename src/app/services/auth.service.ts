@@ -16,11 +16,12 @@ export class AuthService {
 
   async login(correo: string, password: string) {
     const auth = getAuth();
-    await setPersistence(auth, browserSessionPersistence)
+    const login = await setPersistence(auth, browserSessionPersistence)
       .then(() => signInWithEmailAndPassword(auth, correo, password))
       .catch((error) => {
         console.log(error);
       });
+    return login;
   }
 
   logout() {
@@ -64,6 +65,15 @@ export class AuthService {
       return this.authFirebase.sendPasswordResetEmail(email);
     } catch (error) {
       console.log('Error ->', error);
+    }
+  }
+
+  async getUid(){
+    const user = await this.authFirebase.currentUser;
+    if(user){
+      return user.uid;
+    }else{
+      return null;
     }
   }
 }

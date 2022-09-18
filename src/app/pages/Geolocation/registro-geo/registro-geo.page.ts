@@ -12,7 +12,6 @@ import { CrearUsuarioPage } from '../../DATABASE/Usuario/crear-usuario/crear-usu
 })
 export class RegistroGeoPage implements OnInit {
   usuario: Usuario = {
-    emailVerified: null,
     empresa: null,
     sucursal: null,
     uid: null,

@@ -8,17 +8,17 @@
 </ion-header>
 
 <ion-content>
-  <ion-card mode="ios">
+  <ion-card *ngIf="info">
     <ion-card-header>
-      <ion-card-title> {{usuario.nombre}}</ion-card-title>
-      <ion-card-subtitle>{{usuario.perfil}}</ion-card-subtitle>
+      <ion-card-title>{{info.nombre}}</ion-card-title>
+      <ion-card-subtitle>{{info.perfil}}</ion-card-subtitle>
     </ion-card-header>
 
     <ion-card-content>
-      <ion-col>Cedula: {{usuario.cedula}}</ion-col><br>
-      <ion-col>Correo: {{usuario.correo}}</ion-col><br>
-      <ion-col>Empresa: {{usuario.empresa}}</ion-col><br>
-      <ion-col>Sucursal: {{usuario.sucursal}}</ion-col><br>
+      <ion-col>Cedula: {{info.cedula}}</ion-col><br>
+      <ion-col>Correo: {{info.correo}}</ion-col><br>
+      <ion-col>Empresa: {{info.empresa}}</ion-col><br>
+      <ion-col>Sucursal: {{info.sucursal}}</ion-col><br>
       <ion-col>
         <ion-button href="/change-password" type="submit" color="primary">Cambiar contraseña</ion-button>
       </ion-col>

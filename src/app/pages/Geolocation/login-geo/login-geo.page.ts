@@ -27,11 +27,16 @@ export class LoginGeoPage implements OnInit {
     this.auth
       .login(this.credenciales.correo, this.credenciales.password)
       .then((res) => {
-        this.interacion.closeLoading();
-        this.interacion.presentToast('Ingresado con exito');
-        this.auth.stateUser().subscribe((res) => {
-          this.redirectUser(res.emailVerified);
-        });
+        if (res) {
+          this.interacion.closeLoading();
+          this.interacion.presentToast('Ingresado con exito');
+          this.auth.stateUser().subscribe((user) => {
+            this.redirectUser(user.emailVerified);
+          });
+        } else {
+          this.interacion.closeLoading();
+          this.interacion.presentToast('Usuario o Contraseña invalido');
+        }
         this.credenciales.correo = '';
         this.credenciales.password = '';
       })

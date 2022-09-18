@@ -15,6 +15,14 @@ export class FirestoreService {
     }
   }
 
+  async createUser(data: any, path: string, id: string) {
+    try {
+      return await this.firestore.collection(path).doc(id).set(data);
+    } catch (error) {
+      console.log('Error en: create ', error);
+    }
+  }
+
   async read(path: string) {
     try {
       return await this.firestore.collection(path).snapshotChanges();
@@ -54,4 +62,9 @@ export class FirestoreService {
       console.log('Error en: update ', error);
     }
   }
+
+  getDoc<tipo>(path: string, id: string) {
+    return this.firestore.collection(path).doc<tipo>(id).valueChanges();
+  }
+
 }

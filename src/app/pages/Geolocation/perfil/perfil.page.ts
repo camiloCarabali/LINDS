@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Usuario } from 'app/models/models';
+import { AuthService } from 'app/services/auth.service';
 import { FirestoreService } from 'app/services/firestore.service';
 import { UiServiceService } from 'app/services/ui-service.service';
 
@@ -10,41 +11,36 @@ import { UiServiceService } from 'app/services/ui-service.service';
   styleUrls: ['./perfil.page.scss'],
 })
 export class PerfilPage implements OnInit {
-  usuario: Usuario = {
-    emailVerified: null,
-    empresa: null,
-    sucursal: null,
-    uid: null,
-    nombre: null,
-    password: null,
-    cedula: null,
-    correo: null,
-    perfil: null,
-  };
-
-  usuarios = [];
-
+  uid: string = null;
+  info: Usuario = null;
   constructor(
     private firestore: FirestoreService,
-    private interaction: UiServiceService,
-    public modalCtrl: ModalController
-  ) { }
+    public modalCtrl: ModalController,
+    private auth: AuthService
+  ) {}
 
-  ngOnInit() {
-    this.mostrarUsuario();
+  async ngOnInit() {
+    this.auth.stateUser().subscribe(() => {
+      this.getUid();
+    });
+    this.getUid();
   }
 
-  async mostrarUsuario() {
+  async getUid() {
+    const uid = await this.auth.getUid();
+    if (uid) {
+      this.uid = uid;
+      this.getInfoUser();
+    } 
+  }
+
+  getInfoUser() {
     const path = 'Usuarios';
-    this.firestore.read(path).then((firebaseResponse) => {
-      firebaseResponse.subscribe((usuariosRef) => {
-        this.usuarios = usuariosRef.map((usuarioRef) => {
-          let usuario = usuarioRef.payload.doc.data();
-          usuario['id'] = usuarioRef.payload.doc.id;
-          return usuario;
-        });
-      });
+    const id = this.uid; 
+    this.firestore.getDoc<Usuario>(path, id).subscribe((res) => {
+      if(res){
+        this.info = res;
+      }
     });
   }
-
 }

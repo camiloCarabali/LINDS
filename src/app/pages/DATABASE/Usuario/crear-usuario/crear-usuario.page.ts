@@ -16,7 +16,6 @@ export class CrearUsuarioPage implements OnInit {
   @Input() id;
 
   usuario: Usuario = {
-    emailVerified: null,
     empresa: null,
     sucursal: null,
     uid: null,
@@ -115,7 +114,7 @@ export class CrearUsuarioPage implements OnInit {
       this.interaction.showLoading('creando...');
       const path = 'Usuarios';
       await this.firestore
-        .create(this.usuario, path)
+        .createUser(this.usuario, path, this.id)
         .then((res) => {
           this.interaction.presentToast('Usuario registrado con exito');
           this.dismiss();

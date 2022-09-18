@@ -13,7 +13,6 @@ export class ModificarUsuarioPage implements OnInit {
   @Input() branch;
 
   usuario: Usuario = {
-    emailVerified: null,
     empresa: null,
     sucursal: null,
     uid: null,
