@@ -15,13 +15,13 @@
     <ion-input [(ngModel)]="destinationLocation"></ion-input>
   </ion-item>
 
-  <ion-button expand="full" (click)="calculateAndDisplayRoute()" [class]="clase2"
+  <ion-button expand="full" (click)="iniciarViaje()" [class]="clase2"
     >Iniciar Viaje</ion-button
   >
-  <ion-button expand="full" color="danger" [class]="clase"
+  <ion-button expand="full" color="danger" [class]="clase" (click)="finalizarViaje()"
     >Finalizar Viaje</ion-button
   >
-  <div id="map" [class]="clase"></div>
+  <div id="map"></div>
   <ion-fab vertical="bottom " horizontal="start" slot="fixed" [class]="clase">
     <ion-fab-button>
       <ion-icon

@@ -8,6 +8,7 @@ let watchID;
 let geoLoc;
 let map;
 let options;
+let estado2: boolean;
 
 @Component({
   selector: 'app-conductor',
@@ -15,6 +16,8 @@ let options;
   styleUrls: ['./conductor.page.scss'],
 })
 export class ConductorPage implements OnInit {
+
+
   sourceLocation = '';
   destinationLocation = '';
 
@@ -28,13 +31,13 @@ export class ConductorPage implements OnInit {
   lat: number;
   lng: number;
   estado = false;
-  clase = "ion-hide";
-  clase2 = "";
+  clase = 'ion-hide';
+  clase2 = '';
 
   constructor(public modalCtrl: ModalController) {}
 
   ngOnInit(): void {
-    this.loadMap();
+    this.hide();
   }
 
   loadMap() {
@@ -75,25 +78,25 @@ export class ConductorPage implements OnInit {
       .then((response) => {
         this.directionsDisplay.setDirections(response);
       });
-      this.hide();
+    this.hide();
   }
 
-  hide(){
-    if(this.estado == true){
-      this.clase="";
-      this.clase2 = "ion-hide";
-      this.estado=false;
-    }else {
-      this.clase="ion-hide";
-      this.clase2 = "";
-      this.estado=true;
+  hide() {
+    if (this.estado == true) {
+      this.clase = '';
+      this.clase2 = 'ion-hide';
+      this.estado = false;
+    } else {
+      this.clase = 'ion-hide';
+      this.clase2 = '';
+      this.estado = true;
     }
   }
 
   getUserLocation() {
     if (navigator.geolocation) {
-      options = { setTimeout: 10000 };
       geoLoc = navigator.geolocation;
+      options = {setTimeout: 5000}
       watchID = geoLoc.watchPosition(
         this.showLocationOnMap,
         this.errorHandler,
@@ -105,7 +108,9 @@ export class ConductorPage implements OnInit {
   showLocationOnMap(position) {
     var latitud = position.coords.latitude;
     var longitud = position.coords.longitude;
-    console.log('Latitud: ' + latitud + ' Longitud: ' + longitud);
+    if(estado2){
+      console.log('Latitud: ' + latitud + ' Longitud: ' + longitud);
+    }
     const myLatLng = { lat: latitud, lng: longitud };
     marker.setPosition(myLatLng);
     map.setCenter(myLatLng);
@@ -128,5 +133,16 @@ export class ConductorPage implements OnInit {
       },
     });
     return await modal.present();
+  }
+
+  iniciarViaje() {
+    estado2 = true;
+    this.loadMap();
+  }
+
+  finalizarViaje() {
+    estado2 = false;
+    console.log("TERMINO")
+    clearTimeout(options);
   }
 }
