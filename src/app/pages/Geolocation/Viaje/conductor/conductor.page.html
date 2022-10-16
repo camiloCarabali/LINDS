@@ -18,7 +18,14 @@
   <ion-button expand="full" (click)="iniciarViaje()" [class]="clase2"
     >Iniciar Viaje</ion-button
   >
-  <ion-button expand="full" color="danger" [class]="clase" (click)="finalizarViaje()"
+  <ion-button
+    expand="full"
+    color="danger"
+    [class]="clase"
+    (click)="finalizarViaje()"
+    routerLink="/historial"
+    routerDirection="root"
+    routerLinkActive="selected"
     >Finalizar Viaje</ion-button
   >
   <div id="map"></div>

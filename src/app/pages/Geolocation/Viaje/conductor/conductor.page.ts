@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { HistorialPage } from '../../historial/historial.page';
 import { IndicacionesPage } from '../../indicaciones/indicaciones.page';
 
 declare var google;
@@ -17,7 +19,7 @@ let estado2: boolean;
 })
 export class ConductorPage implements OnInit {
 
-
+  
   sourceLocation = '';
   destinationLocation = '';
 
@@ -34,7 +36,7 @@ export class ConductorPage implements OnInit {
   clase = 'ion-hide';
   clase2 = '';
 
-  constructor(public modalCtrl: ModalController) {}
+  constructor(public modalCtrl: ModalController, private router: Router, public task: HistorialPage) {}
 
   ngOnInit(): void {
     this.hide();
@@ -96,7 +98,7 @@ export class ConductorPage implements OnInit {
   getUserLocation() {
     if (navigator.geolocation) {
       geoLoc = navigator.geolocation;
-      options = {setTimeout: 5000}
+      options = { setTimeout: 5000 };
       watchID = geoLoc.watchPosition(
         this.showLocationOnMap,
         this.errorHandler,
@@ -108,7 +110,7 @@ export class ConductorPage implements OnInit {
   showLocationOnMap(position) {
     var latitud = position.coords.latitude;
     var longitud = position.coords.longitude;
-    if(estado2){
+    if (estado2) {
       console.log('Latitud: ' + latitud + ' Longitud: ' + longitud);
     }
     const myLatLng = { lat: latitud, lng: longitud };
@@ -137,12 +139,13 @@ export class ConductorPage implements OnInit {
 
   iniciarViaje() {
     estado2 = true;
+    this.task.addTask(this.sourceLocation, this.destinationLocation);
     this.loadMap();
   }
 
   finalizarViaje() {
     estado2 = false;
-    console.log("TERMINO")
+    console.log('TERMINO');
     clearTimeout(options);
   }
 }

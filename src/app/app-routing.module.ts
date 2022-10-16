@@ -142,35 +142,44 @@ const routes: Routes = [
     path: 'verify-email',
     loadChildren: () =>
       import('./pages/Geolocation/verify-email/verify-email.module').then(
-        (m) => m.VerifyEmailPageModule)
+        (m) => m.VerifyEmailPageModule
+      ),
   },
   {
     path: 'forgot-password',
     loadChildren: () =>
       import('./pages/Geolocation/forgot-password/forgot-password.module').then(
-        (m) => m.ForgotPasswordPageModule)
+        (m) => m.ForgotPasswordPageModule
+      ),
   },
   {
     path: 'administrador',
     loadChildren: () =>
       import('./pages/Geolocation/administrador/administrador.module').then(
-        (m) => m.AdministradorPageModule)
+        (m) => m.AdministradorPageModule
+      ),
   },
   {
     path: 'perfil',
     loadChildren: () =>
       import('./pages/Geolocation/perfil/perfil.module').then(
-        (m) => m.PerfilPageModule)
+        (m) => m.PerfilPageModule
+      ),
   },
   {
     path: 'change-password',
     loadChildren: () =>
       import('./pages/Geolocation/change-password/change-password.module').then(
-        (m) => m.ChangePasswordPageModule)
+        (m) => m.ChangePasswordPageModule
+      ),
   },
-
-
-
+  {
+    path: 'historial',
+    loadChildren: () =>
+      import('./pages/Geolocation/historial/historial.module').then(
+        (m) => m.HistorialPageModule
+      ),
+  },
 ];
 
 @NgModule({

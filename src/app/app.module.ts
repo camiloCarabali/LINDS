@@ -15,6 +15,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { HistorialPage } from './pages/Geolocation/historial/historial.page';
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,6 +40,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Geolocation,
+    HistorialPage
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

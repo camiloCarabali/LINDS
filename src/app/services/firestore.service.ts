@@ -49,7 +49,7 @@ export class FirestoreService {
 
   async delete(path: string, id: string) {
     try {
-      return await this.firestore.collection(path).doc(id).get();
+      return await this.firestore.collection(path).doc(id).delete()
     } catch (error) {
       console.log('Error en: delete ', error);
     }

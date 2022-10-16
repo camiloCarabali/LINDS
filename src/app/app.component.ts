@@ -27,7 +27,7 @@ export class AppComponent {
 
   public appPagesConductor = [
     { title: 'Viaje', url: '/conductor', icon: 'car' },
-    { title: 'Historial de viajes', url: '#', icon: 'time' },
+    { title: 'Historial de viajes', url: '/historial', icon: 'time' },
     { title: 'Perfil', url: '/perfil', icon: 'person' },
   ];
 
@@ -35,18 +35,17 @@ export class AppComponent {
     private auth: AuthService,
     private interaction: UiServiceService,
     private router: Router,
-    private firestore: FirestoreService,
-
+    private firestore: FirestoreService
   ) {
     this.estado = 'true';
     this.auth.stateUser().subscribe((res) => {
       if (res) {
-        if(res.emailVerified == false){
+        if (res.emailVerified == false) {
           this.estado = 'true';
-        }else{
+        } else {
           this.estado = 'false';
         }
-        if(res.uid == this.uidAdmin1 || res.uid == this.uidAdmin2){
+        if (res.uid == this.uidAdmin1 || res.uid == this.uidAdmin2) {
           this.estado = 'false';
           this.claseAdmin = '';
           this.claseConductor = 'ion-hide';
@@ -58,7 +57,6 @@ export class AppComponent {
         console.log('No esta logeado');
         this.estado = 'true';
       }
-
     });
   }
 
