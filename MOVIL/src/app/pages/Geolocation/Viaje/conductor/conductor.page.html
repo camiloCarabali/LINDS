@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Conductor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">From</ion-label>
+    <ion-input [(ngModel)]="sourceLocation"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">To</ion-label>
+    <ion-input [(ngModel)]="destinationLocation"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="iniciarViaje()" [class]="clase2"
+    >Iniciar Viaje</ion-button
+  >
+  <ion-button
+    expand="full"
+    color="danger"
+    [class]="clase"
+    (click)="finalizarViaje()"
+    routerLink="/historial"
+    routerDirection="root"
+    routerLinkActive="selected"
+    >Finalizar Viaje</ion-button
+  >
+  <div id="map"></div>
+  <ion-fab vertical="bottom " horizontal="start" slot="fixed" [class]="clase">
+    <ion-fab-button>
+      <ion-icon
+        name="compass"
+        (click)="showModalIndicators(sourceLocation, destinationLocation)"
+      ></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
