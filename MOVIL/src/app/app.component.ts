@@ -12,11 +12,7 @@ import { UiServiceService } from './services/ui-service.service';
 export class AppComponent {
   public estado: string;
   public cargo: string;
-  public claseAdmin: string;
   public claseConductor: string;
-
-  public uidAdmin1 = '27CkhymwIyXBdCn50uD3I7ncuAx1';
-  public uidAdmin2 = 'fPtxVafLD8ZrvoIsS52SRItHHf32';
 
   public appPagesConductor = [
     { title: 'Viaje', url: '/conductor', icon: 'car' },
@@ -40,13 +36,7 @@ labels: any;
         } else {
           this.estado = 'false';
         }
-        if (res.uid == this.uidAdmin1 || res.uid == this.uidAdmin2) {
-          this.estado = 'false';
-          this.claseAdmin = '';
-          this.claseConductor = 'ion-hide';
-        }
         this.irCoductor(res.uid);
-        this.irAdmin(res.uid);
         console.log('Esta logeado');
       } else {
         console.log('No esta logeado');
@@ -59,18 +49,7 @@ labels: any;
     this.cargo = 'conductor';
     (await this.firestore.searchCargo(this.cargo, uid)).subscribe((res) => {
       if (res.length != 0) {
-        this.claseAdmin = 'ion-hide';
         this.claseConductor = '';
-      }
-    });
-  }
-
-  async irAdmin(uid) {
-    this.cargo = 'administrador';
-    (await this.firestore.searchCargo(this.cargo, uid)).subscribe((res) => {
-      if (res.length != 0) {
-        this.claseAdmin = '';
-        this.claseConductor = 'ion-hide';
       }
     });
   }

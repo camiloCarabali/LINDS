@@ -1,0 +1,36 @@
+.contenedor{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background: rgb(252, 249, 249);
+}
+
+.contenedor-botones{
+  display: flex;
+  flex-direction: column;
+}
+
+#logo {
+  width: 180px;
+  height: 180px;
+  margin-right: auto;
+  margin-left: auto;
+
+}
+
+#card {
+  width: 400px;
+  height: 480px;
+  //background: #EAECEE;
+
+}
+
+#boton {
+  opacity: 0;
+}
+
+.label{
+  cursor: pointer;
+}

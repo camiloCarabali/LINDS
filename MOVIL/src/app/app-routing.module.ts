@@ -3,15 +3,6 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { canActivate } from '@angular/fire/compat/auth-guard';
 
-const uidAdmin1 = '27CkhymwIyXBdCn50uD3I7ncuAx1';
-const uidAdmin2 = 'fPtxVafLD8ZrvoIsS52SRItHHf32';
-
-const onlyAdmin = () =>
-  map(
-    (user: any) =>
-      (!!user && user.uid === uidAdmin1) || (!!user && user.uid === uidAdmin2)
-  );
-
 const routes: Routes = [
   {
     path: '',
@@ -24,10 +15,9 @@ const routes: Routes = [
     import('./pages/home/home.module').then( (m) => m.HomePageModule)
   },
   {
-    path: 'aministrador',
+    path: 'login-geo',
     loadChildren: () =>
-      import('./pages/Geolocation/aministrador/aministrador.module').then(
-        (m) => m.AministradorPageModule)
+    import('./pages/Geolocation/login-geo/login-geo.module').then( (m) => m.LoginGeoPageModule)
   },
   {
     path: 'change-password',
