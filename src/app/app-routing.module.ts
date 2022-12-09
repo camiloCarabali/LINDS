@@ -132,13 +132,6 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'viaje',
-    loadChildren: () =>
-      import('./pages/Geolocation/Viaje/viaje/viaje.module').then(
-        (m) => m.ViajePageModule
-      ),
-  },
-  {
     path: 'verify-email',
     loadChildren: () =>
       import('./pages/Geolocation/verify-email/verify-email.module').then(

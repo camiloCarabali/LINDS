@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { Viaje } from 'app/models/models';
+import { FirestoreService } from 'app/services/firestore.service';
 import { HistorialPage } from '../../historial/historial.page';
 import { IndicacionesPage } from '../../indicaciones/indicaciones.page';
 
@@ -19,7 +21,6 @@ let estado2: boolean;
 })
 export class ConductorPage implements OnInit {
 
-  
   sourceLocation = '';
   destinationLocation = '';
 
@@ -36,7 +37,12 @@ export class ConductorPage implements OnInit {
   clase = 'ion-hide';
   clase2 = '';
 
-  constructor(public modalCtrl: ModalController, private router: Router, public task: HistorialPage) {}
+  constructor(
+    public modalCtrl: ModalController,
+    private router: Router,
+    public task: HistorialPage,
+    private firestore: FirestoreService
+  ) {}
 
   ngOnInit(): void {
     this.hide();
@@ -98,7 +104,7 @@ export class ConductorPage implements OnInit {
   getUserLocation() {
     if (navigator.geolocation) {
       geoLoc = navigator.geolocation;
-      options = { setTimeout: 5000 };
+      options = { setTimeout: 10000 };
       watchID = geoLoc.watchPosition(
         this.showLocationOnMap,
         this.errorHandler,
@@ -107,16 +113,33 @@ export class ConductorPage implements OnInit {
     }
   }
 
+  saveCoords(){
+    console.log("a");
+    /*
+    const viaje: Viaje = {
+      id: '001',
+      coordenada: {
+        latitud: latitud,
+        longitud: longitud
+      }
+    };
+    */
+    //this.firestore.coord(viaje, 'Viajes', 'ejemplo');
+  }
+
   showLocationOnMap(position) {
     var latitud = position.coords.latitude;
     var longitud = position.coords.longitude;
     if (estado2) {
+      
       console.log('Latitud: ' + latitud + ' Longitud: ' + longitud);
     }
     const myLatLng = { lat: latitud, lng: longitud };
     marker.setPosition(myLatLng);
     map.setCenter(myLatLng);
   }
+
+
 
   errorHandler(err) {
     if (err.code == 1) {
