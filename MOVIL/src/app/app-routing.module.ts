@@ -6,7 +6,7 @@ import { canActivate } from '@angular/fire/compat/auth-guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login-geo',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -15,7 +15,7 @@ const routes: Routes = [
     import('./pages/home/home.module').then( (m) => m.HomePageModule)
   },
   {
-    path: 'login-geo',
+    path: 'login',
     loadChildren: () =>
     import('./pages/Geolocation/login-geo/login-geo.module').then( (m) => m.LoginGeoPageModule)
   },
@@ -60,12 +60,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/Geolocation/Viaje/conductor/conductor.module').then(
         (m) => m.ConductorPageModule)
-  },
-  {
-    path: 'viaje',
-    loadChildren: () =>
-      import('./pages/Geolocation/Viaje/viaje/viaje.module').then(
-        (m) => m.ViajePageModule)
   }
 ];
 

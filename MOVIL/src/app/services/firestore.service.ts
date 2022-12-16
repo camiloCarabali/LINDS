@@ -15,6 +15,11 @@ export class FirestoreService {
     }
   }
 
+  coord(data: any, path: string, id: string) {
+    const collection = this.firestore.collection(path);
+    return collection.doc(id).set(data);
+  }
+
   async createUser(data: any, path: string, id: string) {
     try {
       return await this.firestore.collection(path).doc(id).set(data);
