@@ -48,7 +48,7 @@ export class FirestoreService {
     try {
       return await this.firestore.collection('Usuarios', ref => ref.where('perfil', '==', position).where('uid', '==', uid)).valueChanges();
     } catch (error) {
-      console.log('Error en: search ', error);
+      console.log('Error en: search cargo ', error);
     }
   }
 
