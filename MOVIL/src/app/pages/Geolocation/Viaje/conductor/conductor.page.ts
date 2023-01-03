@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
-//import { Viaje } from 'app/models/models';
-//import { FirestoreService } from 'app/services/firestore.service';
+import { Viaje } from 'app/models/models';
+import { FirestoreService } from 'app/services/firestore.service';
 import { HistorialPage } from '../../historial/historial.page';
 import { IndicacionesPage } from '../../indicaciones/indicaciones.page';
 
@@ -13,6 +13,7 @@ let geoLoc;
 let map;
 let options;
 let estado2: boolean;
+var lista = []
 
 @Component({
   selector: 'app-conductor',
@@ -36,12 +37,13 @@ export class ConductorPage implements OnInit {
   estado = false;
   clase = 'ion-hide';
   clase2 = '';
+  
 
   constructor(
     public modalCtrl: ModalController,
     private router: Router,
     public task: HistorialPage,
-    //private firestore: FirestoreService
+    private firestore: FirestoreService
   ) {}
 
   ngOnInit(): void {
@@ -112,19 +114,39 @@ export class ConductorPage implements OnInit {
       );
     }
   }
-
+/*
+  saveCoords(latitud, longitud){
+    console.log("a");
+    
+    const viaje: Viaje = {
+      id: '001',
+      coordenada: {
+        latitud: latitud,
+        longitud: longitud
+      }
+    };
+    this.firestore.coord(viaje, 'Viajes', 'ejemplo');
+  }
+*/
   showLocationOnMap(position) {
     var latitud = position.coords.latitude;
     var longitud = position.coords.longitude;
     if (estado2) {
+      
+      var viaje: Viaje = {
+        id: '001',
+        coordenada: {
+          latitud: latitud,
+          longitud: longitud
+        }
+      };
+      lista.push(viaje);
       console.log('Latitud: ' + latitud + ' Longitud: ' + longitud);
     }
     const myLatLng = { lat: latitud, lng: longitud };
     marker.setPosition(myLatLng);
     map.setCenter(myLatLng);
   }
-
-
 
   errorHandler(err) {
     if (err.code == 1) {
@@ -154,6 +176,9 @@ export class ConductorPage implements OnInit {
   finalizarViaje() {
     estado2 = false;
     console.log('TERMINO');
+    const object = Object.assign({}, lista);
+    this.firestore.coord(object, 'Viajes', 'ejemplo2');
+    lista.splice(0, lista.length);
     clearTimeout(options);
   }
 }
