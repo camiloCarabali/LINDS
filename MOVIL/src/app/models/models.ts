@@ -31,3 +31,11 @@ export interface Usuario {
   password: string;
   perfil: string;
 }
+
+export interface Viaje {
+  id?: string;
+  coordenada: {
+    latitud: any; 
+    longitud: any
+  }
+}

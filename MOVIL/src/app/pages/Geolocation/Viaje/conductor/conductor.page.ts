@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
-import { Viaje } from 'app/models/models';
-import { FirestoreService } from 'app/services/firestore.service';
+import { Viaje } from 'src/app/models/models';
+import { FirestoreService } from 'src/app/services/firestore.service';
 import { HistorialPage } from '../../historial/historial.page';
 import { IndicacionesPage } from '../../indicaciones/indicaciones.page';
 
@@ -114,20 +114,7 @@ export class ConductorPage implements OnInit {
       );
     }
   }
-/*
-  saveCoords(latitud, longitud){
-    console.log("a");
-    
-    const viaje: Viaje = {
-      id: '001',
-      coordenada: {
-        latitud: latitud,
-        longitud: longitud
-      }
-    };
-    this.firestore.coord(viaje, 'Viajes', 'ejemplo');
-  }
-*/
+
   showLocationOnMap(position) {
     var latitud = position.coords.latitude;
     var longitud = position.coords.longitude;
