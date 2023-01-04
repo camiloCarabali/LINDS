@@ -16,6 +16,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 //import { ServiceWorkerModule } from '@angular/service-worker';
 import { HistorialPage } from './pages/Geolocation/historial/historial.page';
 
+import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions/ngx';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -42,7 +44,8 @@ import { HistorialPage } from './pages/Geolocation/historial/historial.page';
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Geolocation,
-    HistorialPage
+    HistorialPage,
+    AndroidPermissions
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { FirestoreService } from './services/firestore.service';
 import { UiServiceService } from './services/ui-service.service';
+import { AndroidPermissions } from '@awesome-cordova-plugins/android-permissions/ngx';
 
 @Component({
   selector: 'app-root',
@@ -35,8 +36,10 @@ export class AppComponent {
     private auth: AuthService,
     private interaction: UiServiceService,
     private router: Router,
-    private firestore: FirestoreService
+    private firestore: FirestoreService,
+    private permissions: AndroidPermissions
   ) {
+
     this.estado = 'true';
     this.auth.stateUser().subscribe((res) => {
       if (res) {
@@ -85,4 +88,24 @@ export class AppComponent {
     this.interaction.presentToast('Sesion finalizada');
     this.router.navigate(['/login']);
   }
+
+  ngOnInit() {
+    this.permissions
+      .checkPermission(this.permissions.PERMISSION.ACCESS_FINE_LOCATION)
+      .then(
+        (result) => {
+          if (!result.hasPermission ) {
+            this.permissions.requestPermission(
+              this.permissions.PERMISSION.ACCESS_FINE_LOCATION
+            );
+          }
+        },
+        (err) => {
+          this.permissions.requestPermission(
+            this.permissions.PERMISSION.ACCESS_FINE_LOCATION
+          );
+        }
+      );
+  }
+
 }
