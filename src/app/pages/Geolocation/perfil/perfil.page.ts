@@ -3,7 +3,6 @@ import { ModalController } from '@ionic/angular';
 import { Usuario } from 'app/models/models';
 import { AuthService } from 'app/services/auth.service';
 import { FirestoreService } from 'app/services/firestore.service';
-import { UiServiceService } from 'app/services/ui-service.service';
 
 @Component({
   selector: 'app-perfil',

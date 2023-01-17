@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { Viaje } from 'app/models/models';
+import { AuthService } from 'app/services/auth.service';
 import { FirestoreService } from 'app/services/firestore.service';
+import { UiServiceService } from 'app/services/ui-service.service';
 import { HistorialPage } from '../../historial/historial.page';
 import { IndicacionesPage } from '../../indicaciones/indicaciones.page';
 
@@ -13,7 +15,7 @@ let geoLoc;
 let map;
 let options;
 let estado2: boolean;
-var lista = []
+var lista = [];
 
 @Component({
   selector: 'app-conductor',
@@ -21,6 +23,7 @@ var lista = []
   styleUrls: ['./conductor.page.scss'],
 })
 export class ConductorPage implements OnInit {
+  uid: string = null;
 
   sourceLocation = '';
   destinationLocation = '';
@@ -35,19 +38,29 @@ export class ConductorPage implements OnInit {
   lat: number;
   lng: number;
   estado = false;
+  disabled = true;
   clase = 'ion-hide';
   clase2 = '';
-  
 
   constructor(
     public modalCtrl: ModalController,
     private router: Router,
     public task: HistorialPage,
-    private firestore: FirestoreService
+    private firestore: FirestoreService,
+    private interaction: UiServiceService,
+    private auth: AuthService
   ) {}
 
   ngOnInit(): void {
+    this.getUid();
     this.hide();
+  }
+
+  async getUid(){
+    const uid = await this.auth.getUid();
+    if(uid){
+      this.uid = uid;
+    }
   }
 
   loadMap() {
@@ -91,6 +104,12 @@ export class ConductorPage implements OnInit {
     this.hide();
   }
 
+  isEmpty() {
+    return this.sourceLocation == '' || this.destinationLocation == ''
+      ? false
+      : true;
+  }
+
   hide() {
     if (this.estado == true) {
       this.clase = '';
@@ -114,31 +133,16 @@ export class ConductorPage implements OnInit {
       );
     }
   }
-/*
-  saveCoords(latitud, longitud){
-    console.log("a");
-    
-    const viaje: Viaje = {
-      id: '001',
-      coordenada: {
-        latitud: latitud,
-        longitud: longitud
-      }
-    };
-    this.firestore.coord(viaje, 'Viajes', 'ejemplo');
-  }
-*/
+
   showLocationOnMap(position) {
     var latitud = position.coords.latitude;
     var longitud = position.coords.longitude;
     if (estado2) {
-      
       var viaje: Viaje = {
-        id: '001',
         coordenada: {
           latitud: latitud,
-          longitud: longitud
-        }
+          longitud: longitud,
+        },
       };
       lista.push(viaje);
       console.log('Latitud: ' + latitud + ' Longitud: ' + longitud);
@@ -168,16 +172,22 @@ export class ConductorPage implements OnInit {
   }
 
   iniciarViaje() {
-    estado2 = true;
-    this.task.addTask(this.sourceLocation, this.destinationLocation);
-    this.loadMap();
+    if (this.isEmpty()) {
+      estado2 = true;
+      this.task.addTask(this.sourceLocation, this.destinationLocation);
+      this.loadMap();
+    } else {
+      this.interaction.alertaInformativa(
+        'Los campos no pueden estar vacios'
+      );
+    }
   }
 
   finalizarViaje() {
     estado2 = false;
     console.log('TERMINO');
     const object = Object.assign({}, lista);
-    this.firestore.coord(object, 'Viajes', 'ejemplo2');
+    this.firestore.coord(object, 'Viajes', this.uid);
     lista.splice(0, lista.length);
     clearTimeout(options);
   }

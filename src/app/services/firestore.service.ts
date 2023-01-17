@@ -15,7 +15,7 @@ export class FirestoreService {
     }
   }
 
-  coord(data: any, path: string, id: string) {
+  coord(data: any, path: string, id: any) {
     const collection = this.firestore.collection(path);
     return collection.doc(id).set(data);
   }

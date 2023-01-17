@@ -33,7 +33,6 @@ export interface Usuario {
 }
 
 export interface Viaje {
-  id?: string;
   coordenada: {
     latitud: any; 
     longitud: any
