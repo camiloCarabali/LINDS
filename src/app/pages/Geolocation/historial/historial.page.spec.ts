@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { HistorialPage } from './historial.page';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('HistorialPage', () => {
   let component: HistorialPage;
@@ -10,7 +11,8 @@ describe('HistorialPage', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ HistorialPage ],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot(),
+      RouterTestingModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(HistorialPage);
