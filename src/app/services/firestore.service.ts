@@ -52,6 +52,14 @@ export class FirestoreService {
     }
   }
 
+  async showSucursales(position) {
+    try {
+      return await this.firestore.collection('Sucursales', ref => ref.where('empresa', '==', position)).valueChanges();
+    } catch (error) {
+      console.log('Error en: show sucursal ', error);
+    }
+  }
+
   async delete(path: string, id: string) {
     try {
       return await this.firestore.collection(path).doc(id).delete()

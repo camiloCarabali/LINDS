@@ -13,7 +13,7 @@
             <ion-list-header>Bienvenido</ion-list-header>
             <ion-menu-toggle
               auto-hide="false"
-              *ngFor="let p of appPages; let i = index"
+              *ngFor="let p of getArray()"
             >
               <ion-item
                 routerDirection="root"
@@ -31,6 +31,8 @@
               </ion-item>
             </ion-menu-toggle>
           </div>
+<!--
+
 
           <div [class]="claseConductor">
             <ion-list-header>Bienvenido</ion-list-header>
@@ -54,7 +56,7 @@
               </ion-item>
             </ion-menu-toggle>
           </div>
-
+-->
         </ion-list>
       </ion-content>
       <ion-button color="danger" (click)="logout()" id="btnLogin"

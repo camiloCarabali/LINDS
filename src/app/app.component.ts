@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
+import {Location} from '@angular/common';
 import { AuthService } from './services/auth.service';
 import { FirestoreService } from './services/firestore.service';
 import { UiServiceService } from './services/ui-service.service';
@@ -15,11 +15,11 @@ export class AppComponent {
   public cargo: string;
   public claseAdmin: string;
   public claseConductor: string;
-
+  public i: number; 
   public uidAdmin1 = '27CkhymwIyXBdCn50uD3I7ncuAx1';
   public uidAdmin2 = 'fPtxVafLD8ZrvoIsS52SRItHHf32';
 
-  public appPages = [
+  public appPagesDatabase = [
     { title: 'Empresas', url: '/empresa', icon: 'business' },
     { title: 'Sucursales', url: '/sucursal', icon: 'briefcase' },
     { title: 'Usuarios', url: '/usuario', icon: 'people' },
@@ -31,11 +31,17 @@ export class AppComponent {
     { title: 'Perfil', url: '/perfil', icon: 'person' },
   ];
 
+  public appPagesAdministrador = [
+    { title: 'Viajes', url: '/administrador', icon: 'bus' },
+    { title: 'Perfil', url: '/perfil', icon: 'person' },
+  ];
+
   constructor(
     private auth: AuthService,
     private interaction: UiServiceService,
     private router: Router,
-    private firestore: FirestoreService
+    private firestore: FirestoreService,
+    private location: Location
   ) {
     this.estado = 'true';
     this.auth.stateUser().subscribe((res) => {
@@ -48,24 +54,39 @@ export class AppComponent {
         if (res.uid == this.uidAdmin1 || res.uid == this.uidAdmin2) {
           this.estado = 'false';
           this.claseAdmin = '';
-          this.claseConductor = 'ion-hide';
+          //this.claseConductor = 'ion-hide';
+          this.i = 1;
+          this.getArray();
+        }else{
+          this.irCoductor(res.uid);
+          this.irAdmin(res.uid);
         }
-        this.irCoductor(res.uid);
-        this.irAdmin(res.uid);
-        console.log('Esta logeado');
       } else {
-        console.log('No esta logeado');
         this.estado = 'true';
       }
     });
   }
 
+  getArray(){
+    if(this.i == 1){
+      return this.appPagesDatabase;
+    } else if(this.i == 2){
+      return this.appPagesAdministrador;
+    } else {
+      return this.appPagesConductor;
+    }
+  }
+
   async irCoductor(uid) {
+    
     this.cargo = 'conductor';
     (await this.firestore.searchCargo(this.cargo, uid)).subscribe((res) => {
       if (res.length != 0) {
-        this.claseAdmin = 'ion-hide';
-        this.claseConductor = '';
+        this.i=3;
+        this.getArray();
+        this.claseAdmin = '';
+        //this.claseAdmin = 'ion-hide';
+        //this.claseConductor = '';
       }
     });
   }
@@ -74,8 +95,10 @@ export class AppComponent {
     this.cargo = 'administrador';
     (await this.firestore.searchCargo(this.cargo, uid)).subscribe((res) => {
       if (res.length != 0) {
+        this.i=2;
+        this.getArray();
         this.claseAdmin = '';
-        this.claseConductor = 'ion-hide';
+        //this.claseConductor = 'ion-hide';
       }
     });
   }
@@ -84,5 +107,8 @@ export class AppComponent {
     this.auth.logout();
     this.interaction.presentToast('Sesion finalizada');
     this.router.navigate(['/login']);
+    //window.location.reload();
+    
+    
   }
 }

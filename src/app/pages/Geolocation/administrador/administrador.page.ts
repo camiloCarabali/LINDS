@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'app/services/auth.service';
+import { FirestoreService } from 'app/services/firestore.service';
+
 
 @Component({
   selector: 'app-administrador',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdministradorPage implements OnInit {
 
-  constructor() { }
+  today: number = Date.now();
+
+  constructor(private firestore: FirestoreService, private auth: AuthService) { }
 
   ngOnInit() {
   }
+  
+  //async 
 
 }

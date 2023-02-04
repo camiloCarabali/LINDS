@@ -12,7 +12,7 @@ describe('RegistroGeoPage', () => {
     TestBed.configureTestingModule({
       declarations: [ RegistroGeoPage ],
       imports: [IonicModule.forRoot(),
-      RegistroGeoPage]
+      RouterTestingModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(RegistroGeoPage);

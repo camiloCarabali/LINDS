@@ -5,8 +5,12 @@ import { AuthService } from './auth.service';
 
 describe('AuthService', () => {
   let service: AuthService;
+  let taxServiceSpy;
 
   beforeEach(() => {
+    taxServiceSpy = jasmine.createSpyObj('TaxService', {
+
+    })
     TestBed.configureTestingModule({});
     service = TestBed.inject(AuthService);
   });

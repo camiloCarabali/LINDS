@@ -1,6 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Administrador</ion-title>
+    <ion-item lines="none">
+      <ion-label style="font-weight: 800; font-size: 3em">
+        Today
+        <p>{{today | date:'fullDate'}}</p>
+      </ion-label>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 

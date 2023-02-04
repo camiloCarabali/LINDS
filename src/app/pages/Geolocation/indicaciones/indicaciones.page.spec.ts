@@ -1,24 +1,28 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {  async ,ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 
 import { IndicacionesPage } from './indicaciones.page';
-import { RouterTestingModule } from '@angular/router/testing';
 
 describe('IndicacionesPage', () => {
   let component: IndicacionesPage;
   let fixture: ComponentFixture<IndicacionesPage>;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [ IndicacionesPage ],
-      imports: [IonicModule.forRoot(),
-      RouterTestingModule]
+      imports: [IonicModule.forRoot()],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
+  });
 
+    
+  beforeEach(() =>{
     fixture = TestBed.createComponent(IndicacionesPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  }));
+  })
+  
 
   it('should create', () => {
     expect(component).toBeTruthy();

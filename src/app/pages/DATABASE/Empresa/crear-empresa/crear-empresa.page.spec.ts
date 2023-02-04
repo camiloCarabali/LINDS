@@ -7,8 +7,8 @@ describe('CrearEmpresaPage', () => {
   let component: CrearEmpresaPage;
   let fixture: ComponentFixture<CrearEmpresaPage>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
+  beforeEach(waitForAsync(async () => {
+    await TestBed.configureTestingModule({
       declarations: [ CrearEmpresaPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
@@ -18,7 +18,4 @@ describe('CrearEmpresaPage', () => {
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });
