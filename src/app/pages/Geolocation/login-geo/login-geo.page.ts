@@ -48,7 +48,7 @@ export class LoginGeoPage implements OnInit {
 
   redirectUser(isVerified: boolean) {
     if (isVerified) {
-      this.router.navigate(['/conductor']);
+      this.router.navigate(['/perfil']);
     } else {
       this.router.navigate(['/verify-email']);
     }
