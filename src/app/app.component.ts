@@ -54,7 +54,6 @@ export class AppComponent {
         if (res.uid == this.uidAdmin1 || res.uid == this.uidAdmin2) {
           this.estado = 'false';
           this.claseAdmin = '';
-          //this.claseConductor = 'ion-hide';
           this.i = 1;
           this.getArray();
         }else{
@@ -85,8 +84,6 @@ export class AppComponent {
         this.i=3;
         this.getArray();
         this.claseAdmin = '';
-        //this.claseAdmin = 'ion-hide';
-        //this.claseConductor = '';
       }
     });
   }
@@ -98,7 +95,6 @@ export class AppComponent {
         this.i=2;
         this.getArray();
         this.claseAdmin = '';
-        //this.claseConductor = 'ion-hide';
       }
     });
   }
