@@ -53,6 +53,7 @@ export class ModificarUsuarioPage implements OnInit {
     this.usuario.cedula = this.branch.cedula;
     this.usuario.correo = this.branch.correo;
     this.usuario.perfil = this.branch.perfil;
+    this.usuario.uid = this.branch.id;
     this.mostrarEmpresas();
     this.mostrarSucursales();
   }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 import { AuthService } from './services/auth.service';
 import { FirestoreService } from './services/firestore.service';
 import { UiServiceService } from './services/ui-service.service';
@@ -15,7 +15,7 @@ export class AppComponent {
   public cargo: string;
   public claseAdmin: string;
   public claseConductor: string;
-  public i: number; 
+  public i: number;
   public uidAdmin1 = '27CkhymwIyXBdCn50uD3I7ncuAx1';
   public uidAdmin2 = 'fPtxVafLD8ZrvoIsS52SRItHHf32';
 
@@ -40,8 +40,7 @@ export class AppComponent {
     private auth: AuthService,
     private interaction: UiServiceService,
     private router: Router,
-    private firestore: FirestoreService,
-    private location: Location
+    private firestore: FirestoreService
   ) {
     this.estado = 'true';
     this.auth.stateUser().subscribe((res) => {
@@ -56,7 +55,7 @@ export class AppComponent {
           this.claseAdmin = '';
           this.i = 1;
           this.getArray();
-        }else{
+        } else {
           this.irCoductor(res.uid);
           this.irAdmin(res.uid);
         }
@@ -66,10 +65,10 @@ export class AppComponent {
     });
   }
 
-  getArray(){
-    if(this.i == 1){
+  getArray() {
+    if (this.i == 1) {
       return this.appPagesDatabase;
-    } else if(this.i == 2){
+    } else if (this.i == 2) {
       return this.appPagesAdministrador;
     } else {
       return this.appPagesConductor;
@@ -77,11 +76,10 @@ export class AppComponent {
   }
 
   async irCoductor(uid) {
-    
     this.cargo = 'conductor';
     (await this.firestore.searchCargo(this.cargo, uid)).subscribe((res) => {
       if (res.length != 0) {
-        this.i=3;
+        this.i = 3;
         this.getArray();
         this.claseAdmin = '';
       }
@@ -92,7 +90,7 @@ export class AppComponent {
     this.cargo = 'administrador';
     (await this.firestore.searchCargo(this.cargo, uid)).subscribe((res) => {
       if (res.length != 0) {
-        this.i=2;
+        this.i = 2;
         this.getArray();
         this.claseAdmin = '';
       }
@@ -103,8 +101,5 @@ export class AppComponent {
     this.auth.logout();
     this.interaction.presentToast('Sesion finalizada');
     this.router.navigate(['/login']);
-    //window.location.reload();
-    
-    
   }
 }
