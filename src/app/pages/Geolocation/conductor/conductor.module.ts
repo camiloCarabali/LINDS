@@ -7,8 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { ConductorPageRoutingModule } from './conductor-routing.module';
 
 import { ConductorPage } from './conductor.page';
-import { IndicacionesPage } from '../../indicaciones/indicaciones.page';
-import { IndicacionesPageModule } from '../../indicaciones/indicaciones.module';
+import { IndicacionesPage } from '../indicaciones/indicaciones.page';
+import { IndicacionesPageModule } from '../indicaciones/indicaciones.module';
 
 @NgModule({
   entryComponents: [

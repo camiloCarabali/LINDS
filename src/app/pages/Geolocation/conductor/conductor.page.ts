@@ -5,8 +5,8 @@ import { Viaje } from 'app/models/models';
 import { AuthService } from 'app/services/auth.service';
 import { FirestoreService } from 'app/services/firestore.service';
 import { UiServiceService } from 'app/services/ui-service.service';
-import { HistorialPage } from '../../historial/historial.page';
-import { IndicacionesPage } from '../../indicaciones/indicaciones.page';
+import { HistorialPage } from '../historial/historial.page';
+import { IndicacionesPage } from '../indicaciones/indicaciones.page';
 
 declare var google;
 let marker;
@@ -56,9 +56,9 @@ export class ConductorPage implements OnInit {
     this.hide();
   }
 
-  async getUid(){
+  async getUid() {
     const uid = await this.auth.getUid();
-    if(uid){
+    if (uid) {
       this.uid = uid;
     }
   }
@@ -71,7 +71,6 @@ export class ConductorPage implements OnInit {
       center: myLatLng,
       zoom: 12,
     });
-
     this.directionsDisplay.setMap(map);
     this.directionsDisplay.setPanel(indicatorsEle);
 
@@ -84,6 +83,7 @@ export class ConductorPage implements OnInit {
       position: myLatLng,
       map: map,
     });
+
     this.getUserLocation();
   }
 
@@ -125,7 +125,7 @@ export class ConductorPage implements OnInit {
   getUserLocation() {
     if (navigator.geolocation) {
       geoLoc = navigator.geolocation;
-      options = { setTimeout: 10000 };
+      options = { setTimeout: 30000 };
       watchID = geoLoc.watchPosition(
         this.showLocationOnMap,
         this.errorHandler,
@@ -137,17 +137,12 @@ export class ConductorPage implements OnInit {
   showLocationOnMap(position) {
     var latitud = position.coords.latitude;
     var longitud = position.coords.longitude;
+    const myLatLng = { lat: latitud, lng: longitud };
+    
     if (estado2) {
-      var viaje: Viaje = {
-        coordenada: {
-          latitud: latitud,
-          longitud: longitud,
-        },
-      };
-      lista.push(viaje);
+      lista.push(myLatLng);
       console.log('Latitud: ' + latitud + ' Longitud: ' + longitud);
     }
-    const myLatLng = { lat: latitud, lng: longitud };
     marker.setPosition(myLatLng);
     map.setCenter(myLatLng);
   }
@@ -177,17 +172,20 @@ export class ConductorPage implements OnInit {
       this.task.addTask(this.sourceLocation, this.destinationLocation);
       this.loadMap();
     } else {
-      this.interaction.alertaInformativa(
-        'Los campos no pueden estar vacios'
-      );
+      this.interaction.alertaInformativa('Los campos no pueden estar vacios');
     }
   }
 
   finalizarViaje() {
+    var viaje: Viaje = {
+      uid: this.uid,
+      inicio: this.sourceLocation,
+      llegada: this.destinationLocation,
+      coordenada: lista
+    }
     estado2 = false;
     console.log('TERMINO');
-    const object = Object.assign({}, lista);
-    this.firestore.coord(object, 'Viajes', this.uid);
+    this.firestore.coord(viaje, 'Viajes', this.uid);
     lista.splice(0, lista.length);
     clearTimeout(options);
   }

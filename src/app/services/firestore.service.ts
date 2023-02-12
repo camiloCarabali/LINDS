@@ -46,15 +46,41 @@ export class FirestoreService {
 
   async searchCargo(position, uid) {
     try {
-      return await this.firestore.collection('Usuarios', ref => ref.where('perfil', '==', position).where('uid', '==', uid)).valueChanges();
+      return await this.firestore
+        .collection('Usuarios', (ref) =>
+          ref.where('perfil', '==', position).where('uid', '==', uid)
+        )
+        .valueChanges();
     } catch (error) {
       console.log('Error en: search cargo ', error);
     }
   }
 
+  async searchConductor(branch) {
+    try {
+      return await this.firestore
+        .collection('Usuarios', (ref) =>
+          ref.where('sucursal', '==', branch).where('perfil', '==', 'conductor')
+        )
+        .snapshotChanges()
+    } catch (error) {
+      console.log('Error en: search conductor ', error);
+    }
+  }
+
+  async searchViaje(uid) {
+    try {
+      return await this.firestore.collection('Viajes').doc(uid).get();
+    } catch (error) {
+      console.log('Error en: search viajes ', error);
+    }
+  }
+
   async showSucursales(position) {
     try {
-      return await this.firestore.collection('Sucursales', ref => ref.where('empresa', '==', position)).valueChanges();
+      return await this.firestore
+        .collection('Sucursales', (ref) => ref.where('empresa', '==', position))
+        .valueChanges();
     } catch (error) {
       console.log('Error en: show sucursal ', error);
     }
@@ -62,7 +88,7 @@ export class FirestoreService {
 
   async delete(path: string, id: string) {
     try {
-      return await this.firestore.collection(path).doc(id).delete()
+      return await this.firestore.collection(path).doc(id).delete();
     } catch (error) {
       console.log('Error en: delete ', error);
     }
@@ -79,5 +105,4 @@ export class FirestoreService {
   getDoc<tipo>(path: string, id: string) {
     return this.firestore.collection(path).doc<tipo>(id).valueChanges();
   }
-
 }

@@ -19,6 +19,7 @@ import { HistorialPage } from './pages/Geolocation/historial/historial.page';
 import { provideFirebaseApp } from '@angular/fire/app';
 import { initializeApp } from 'firebase/app';
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [

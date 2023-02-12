@@ -35,6 +35,7 @@
     "cordova-plugin-geolocation": "^4.1.0",
     "firebase": "^9.9.3",
     "jquery": "^3.6.0",
+    "ngx-socket-io": "^4.4.0",
     "rxjs": "~6.6.0",
     "timers": "^0.1.1",
     "timers-browserify": "^2.0.12",

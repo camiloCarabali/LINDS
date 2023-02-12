@@ -33,8 +33,8 @@ export interface Usuario {
 }
 
 export interface Viaje {
-  coordenada: {
-    latitud: any; 
-    longitud: any
-  }
+  uid:any;
+  inicio: any;
+  llegada: any
+  coordenada: any
 }

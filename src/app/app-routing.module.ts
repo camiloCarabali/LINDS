@@ -113,7 +113,7 @@ const routes: Routes = [
   {
     path: 'conductor',
     loadChildren: () =>
-      import('./pages/Geolocation/Viaje/conductor/conductor.module').then(
+      import('./pages/Geolocation/conductor/conductor.module').then(
         (m) => m.ConductorPageModule
       ),
   },
