@@ -102,7 +102,7 @@ export class FirestoreService {
     }
   }
 
-  getDoc<tipo>(path: string, id: string) {
+  getDoc<tipo>(path: string, id: any) {
     return this.firestore.collection(path).doc<tipo>(id).valueChanges();
   }
 }
