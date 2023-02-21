@@ -141,7 +141,6 @@ export class ConductorPage implements OnInit {
     
     if (estado2) {
       lista.push(myLatLng);
-      console.log('Latitud: ' + latitud + ' Longitud: ' + longitud);
     }
     marker.setPosition(myLatLng);
     map.setCenter(myLatLng);

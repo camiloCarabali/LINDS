@@ -61,9 +61,7 @@ export class EmpresaPage implements OnInit {
   }
 
   async buscarEmpresa(position, uid) {
-    (await this.firestore.searchCargo(position, uid)).subscribe((cargo) => {
-      console.log(cargo);
-    });
+    (await this.firestore.searchCargo(position, uid)).subscribe((cargo) => {});
   }
 
   async showModalCreate() {

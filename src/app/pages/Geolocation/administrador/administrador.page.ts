@@ -3,7 +3,6 @@ import { AuthService } from 'app/services/auth.service';
 import { FirestoreService } from 'app/services/firestore.service';
 import { Usuario } from 'app/models/models';
 import { Viaje } from 'app/models/models';
-import { data } from 'jquery';
 
 declare var google;
 let map;
@@ -103,7 +102,6 @@ export class AdministradorPage implements OnInit {
       this.result2 = this.nombres.filter((item, index) => {
         return this.nombres.indexOf(item) === index;
       });
-      console.log(this.result2);
     });
   }
 
