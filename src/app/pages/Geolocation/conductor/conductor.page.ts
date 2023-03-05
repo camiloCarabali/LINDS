@@ -41,6 +41,8 @@ export class ConductorPage implements OnInit {
   disabled = true;
   clase = 'ion-hide';
   clase2 = '';
+  clase3 = 'false';
+  clase4 = 'true';
 
   constructor(
     public modalCtrl: ModalController,
@@ -83,8 +85,6 @@ export class ConductorPage implements OnInit {
       position: myLatLng,
       map: map,
     });
-
-    this.getUserLocation();
   }
 
   calculateAndDisplayRoute() {
@@ -101,7 +101,6 @@ export class ConductorPage implements OnInit {
       .then((response) => {
         this.directionsDisplay.setDirections(response);
       });
-    this.hide();
   }
 
   isEmpty() {
@@ -141,6 +140,7 @@ export class ConductorPage implements OnInit {
     
     if (estado2) {
       lista.push(myLatLng);
+      console.log(lista)
     }
     marker.setPosition(myLatLng);
     map.setCenter(myLatLng);
@@ -165,14 +165,22 @@ export class ConductorPage implements OnInit {
     return await modal.present();
   }
 
-  iniciarViaje() {
+  
+  crearViaje(){
     if (this.isEmpty()) {
-      estado2 = true;
-      this.task.addTask(this.sourceLocation, this.destinationLocation);
+      this.clase3 = 'true';
+      this.clase4 = 'false';
       this.loadMap();
     } else {
       this.interaction.alertaInformativa('Los campos no pueden estar vacios');
     }
+  }
+
+  iniciarViaje() {
+    estado2=true;
+    this.task.addTask(this.sourceLocation, this.destinationLocation);
+    this.hide();
+    this.getUserLocation();
   }
 
   finalizarViaje() {
