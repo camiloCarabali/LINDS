@@ -1,5 +1,4 @@
 export interface UserLindsDatabase {
-  id: string;
   nombre: string;
   correo: string;
   uid: string;

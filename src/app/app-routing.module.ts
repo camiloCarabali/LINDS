@@ -3,8 +3,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { canActivate } from '@angular/fire/compat/auth-guard';
 
-const uidAdmin1 = '27CkhymwIyXBdCn50uD3I7ncuAx1';
-const uidAdmin2 = 'fPtxVafLD8ZrvoIsS52SRItHHf32';
+const uidAdmin1 = 'A5Mku9lBMqdaLwnclmn0w4tWh2b2';
+const uidAdmin2 = 'W1MmTn4ICkV6EhbU9oveDSE12d62';
 
 const onlyAdmin = () =>
   map(

@@ -16,8 +16,8 @@ export class AppComponent {
   public claseAdmin: string;
   public claseConductor: string;
   public i: number;
-  public uidAdmin1 = '27CkhymwIyXBdCn50uD3I7ncuAx1';
-  public uidAdmin2 = 'fPtxVafLD8ZrvoIsS52SRItHHf32';
+  public uidAdmin1 = 'A5Mku9lBMqdaLwnclmn0w4tWh2b2';
+  public uidAdmin2 = 'W1MmTn4ICkV6EhbU9oveDSE12d62';
 
   public appPagesDatabase = [
     { title: 'Empresas', url: '/empresa', icon: 'business' },

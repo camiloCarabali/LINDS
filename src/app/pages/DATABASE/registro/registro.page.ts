@@ -12,7 +12,6 @@ import { UiServiceService } from 'app/services/ui-service.service';
 })
 export class RegistroPage implements OnInit {
   datos: UserLindsDatabase = {
-    id: null,
     nombre: null,
     correo: null,
     uid: null,
@@ -38,7 +37,7 @@ export class RegistroPage implements OnInit {
         this.interaction.presentToast('Error al registrar');
       });
     if (res) {
-      const path = 'UsuariosLidnsDatabase';
+      const path = 'UsuariosLindsDatabase';
       const id = res.user.uid;
       this.datos.uid = id;
       this.datos.password = null;
