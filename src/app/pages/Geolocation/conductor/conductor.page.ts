@@ -68,7 +68,7 @@ export class ConductorPage implements OnInit {
   loadMap() {
     const mapEle: HTMLElement = document.getElementById('map');
     const indicatorsEle: HTMLElement = document.getElementById('indicators');
-    const myLatLng = { lat: 3.374653, lng: -76.514308 };
+    const myLatLng = { lat: 3.440018, lng: -76.519073 };
     map = new google.maps.Map(mapEle, {
       center: myLatLng,
       zoom: 12,

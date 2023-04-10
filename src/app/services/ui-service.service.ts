@@ -53,4 +53,9 @@ export class UiServiceService {
     return await this.loadingCtrl.dismiss();
   }
 
+  async closeToast() {
+    //this.loading = false;
+    return await this.toastController.dismiss();
+  }
+
 }
