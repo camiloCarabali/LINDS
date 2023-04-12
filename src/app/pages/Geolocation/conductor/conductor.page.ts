@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { Viaje } from 'app/models/models';
 import { AuthService } from 'app/services/auth.service';
@@ -25,8 +25,8 @@ var lista = [];
 export class ConductorPage implements OnInit {
   uid: string = null;
 
-  sourceLocation = '';
-  destinationLocation = '';
+  sourceLocation = localStorage.getItem('rutaInicio');
+  destinationLocation = localStorage.getItem('rutaLlegada');
 
   lugares = {
     a: this.sourceLocation,
@@ -58,6 +58,7 @@ export class ConductorPage implements OnInit {
     this.hide();
   }
 
+
   async getUid() {
     const uid = await this.auth.getUid();
     if (uid) {
@@ -70,7 +71,7 @@ export class ConductorPage implements OnInit {
     const indicatorsEle: HTMLElement = document.getElementById('indicators');
     const myLatLng = { lat: 3.440018, lng: -76.519073 };
     map = new google.maps.Map(mapEle, {
-      center: myLatLng,
+      center: '',
       zoom: 12,
     });
     this.directionsDisplay.setMap(map);
@@ -103,8 +104,8 @@ export class ConductorPage implements OnInit {
       });
   }
 
-  isEmpty() {
-    return this.sourceLocation == '' || this.destinationLocation == ''
+  isEmpty() { 
+    return this.sourceLocation == null || this.destinationLocation == null
       ? false
       : true;
   }
@@ -140,7 +141,6 @@ export class ConductorPage implements OnInit {
     
     if (estado2) {
       lista.push(myLatLng);
-      console.log(lista)
     }
     marker.setPosition(myLatLng);
     map.setCenter(myLatLng);
@@ -167,20 +167,35 @@ export class ConductorPage implements OnInit {
 
   
   crearViaje(){
+    
+  }
+
+  async iniciarViaje() {
     if (this.isEmpty()) {
-      this.clase3 = 'true';
+      this.clase3 = 'false';
       this.clase4 = 'false';
       this.loadMap();
+      await this.firestore.delete('Solicitudes', this.uid);
+      localStorage.removeItem('rutaInicio');
+      localStorage.removeItem('rutaLlegada');
+      this.clase3 = 'true';
+      estado2=true;
+      this.task.addTask(this.sourceLocation, this.destinationLocation);
+      this.hide();
+      this.getUserLocation();
     } else {
       this.interaction.alertaInformativa('Los campos no pueden estar vacios');
     }
   }
 
-  iniciarViaje() {
-    estado2=true;
-    this.task.addTask(this.sourceLocation, this.destinationLocation);
-    this.hide();
-    this.getUserLocation();
+  unique(arr){
+    let result = [];
+  for (let str of arr) {
+    if (!result.includes(str)) {
+      result.push(str);
+    }
+  }
+  return result;
   }
 
   finalizarViaje() {
@@ -188,10 +203,9 @@ export class ConductorPage implements OnInit {
       uid: this.uid,
       inicio: this.sourceLocation,
       llegada: this.destinationLocation,
-      coordenada: lista
+      coordenada: this.unique(lista)
     }
     estado2 = false;
-    console.log('TERMINO');
     this.firestore.coord(viaje, 'Viajes', this.uid);
     lista.splice(0, lista.length);
     clearTimeout(options);

@@ -19,11 +19,6 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'home',
-    loadChildren: () =>
-      import('./pages/home/home.module').then((m) => m.HomePageModule),
-  },
-  {
     path: 'database',
     loadChildren: () =>
       import('./pages/DATABASE/login/login.module').then(
@@ -173,6 +168,11 @@ const routes: Routes = [
         (m) => m.HistorialPageModule
       ),
   },
+  {
+    path: 'crear-viaje',
+    loadChildren: () => import('./pages/Geolocation/crear-viaje/crear-viaje.module').then( m => m.CrearViajePageModule)
+  },
+
 ];
 
 @NgModule({

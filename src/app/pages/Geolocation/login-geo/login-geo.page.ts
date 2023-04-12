@@ -70,6 +70,7 @@ export class LoginGeoPage implements OnInit {
                 this.interacion.presentToast(
                   'Para poder usar las funciones de conductor tiene que ingresar con nuestra aplicacion movil.'
                 );
+                
                 this.auth.stateUser().subscribe((user) => {
                   this.redirectUser(user.emailVerified);
                 });

@@ -37,3 +37,9 @@ export interface Viaje {
   llegada: any
   coordenada: any
 }
+
+export interface Solicitud {
+  inicio: string;
+  llegada: string;
+  uid: any;
+}

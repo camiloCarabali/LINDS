@@ -20,6 +20,11 @@ export class FirestoreService {
     return collection.doc(id).set(data);
   }
 
+  createViaje(data: any, path: string, id: any) {
+    const collection = this.firestore.collection(path);
+    return collection.doc(id).set(data);
+  }
+
   async createUser(data: any, path: string, id: string) {
     try {
       return await this.firestore.collection(path).doc(id).set(data);
@@ -76,6 +81,14 @@ export class FirestoreService {
     }
   }
 
+  async searchSolicitud(uid) {
+    try {
+      return this.firestore.collection('Solicitudes').doc(uid).get()
+    } catch (error) {
+      console.log('Error en: search solicitudes ', error);
+    }
+  }
+
   async showSucursales(position) {
     try {
       return await this.firestore
@@ -106,3 +119,4 @@ export class FirestoreService {
     return this.firestore.collection(path).doc<tipo>(id).valueChanges();
   }
 }
+

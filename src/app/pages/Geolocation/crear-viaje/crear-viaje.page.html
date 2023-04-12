@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Asignar Viaje</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-select placeholder="seleccione el conductor" [(ngModel)]="viaje">
+      <ion-select-option *ngFor="let item of result; index as i" [value]="item">
+        {{result2[i]}}
+      </ion-select-option>
+    </ion-select>
+    <ion-item>
+      <ion-input placeholder="Digite el lugar de salida" [(ngModel)]="lugarSalida" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="Digite el lugar del destino" [(ngModel)]="lugarDestino" required></ion-input>
+    </ion-item>
+    <ion-button (click)="crearViaje()">Visualización</ion-button>
+    <ion-button (click)="asignarViaje(viaje)">Asignar</ion-button>
+  </ion-card>
+  <div id="map"></div>
+</ion-content>

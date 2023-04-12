@@ -10,14 +10,26 @@
 </ion-header>
 
 <ion-content>
+  <ion-card *ngIf="info" class="creacion">
+    <ion-card-header>
+      <ion-card-title>NUEVO VIAJE</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-col>INICIO: {{info.inicio}}</ion-col><br>
+      <ion-col>LLEGADA: {{info.llegada}}</ion-col><br>
+      <ion-button color="warning" (click)="cargarViaje()">Realizar Viaje</ion-button>
+    </ion-card-content>
+  </ion-card>
+
   <ion-card *ngFor="let item of todoList" class="ion-margin">
     <ion-card-header>
       <ion-card-subtitle> {{ item.itemDate | date:'fullDate' }} </ion-card-subtitle>
-      <ion-item>
+      <ion-item id="info">
         <ion-icon name="trail-sign"></ion-icon>
         <ion-label>{{item.itemFrom}}</ion-label>
       </ion-item>
-      <ion-item>
+      <ion-item id="info">
         <ion-icon name="trail-sign"></ion-icon>
         <ion-label>{{item.itemTo}}</ion-label>
       </ion-item>

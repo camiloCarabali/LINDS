@@ -9,6 +9,10 @@ import { UiServiceService } from 'app/services/ui-service.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+
+  correo1 = 'carabalijuancamilo@gmail.com'
+  correo2 = 'ospinamj707@gmail.com'
+
   credenciales = {
     correo: null,
     password: null,
@@ -23,19 +27,23 @@ export class LoginPage implements OnInit {
   ngOnInit() {}
 
   async login() {
-    await this.interacion.showLoading('ingresando...');
-    this.auth
-      .login(this.credenciales.correo, this.credenciales.password)
-      .then((res) => {
-        this.interacion.closeLoading();
-        this.interacion.presentToast('Ingresado con exito');
-        this.router.navigate(['/empresa']);
-        this.credenciales.correo = '';
-        this.credenciales.password = '';
-      })
-      .catch((error) => {
-        this.interacion.closeLoading();
-        this.interacion.presentToast('Usuario o Contraseña invalido');
-      });
+    if(this.credenciales.correo==this.correo1 || this.credenciales.correo==this.correo2){
+      await this.interacion.showLoading('ingresando...');
+      this.auth
+        .login(this.credenciales.correo, this.credenciales.password)
+        .then((res) => {
+          this.interacion.closeLoading();
+          this.interacion.presentToast('Ingresado con exito');
+          this.router.navigate(['/empresa']);
+          this.credenciales.correo = '';
+          this.credenciales.password = '';
+        })
+        .catch((error) => {
+          this.interacion.closeLoading();
+          this.interacion.presentToast('Usuario o Contraseña invalido');
+        });
+    }else{
+      this.interacion.alertaInformativa("No cuenta con los permisos suficientes para ingresar.");
+    }
   }
 }

@@ -35,7 +35,7 @@ export class AdministradorPage implements OnInit {
     this.getUid();
   }
 
-  loadMap(to, from, coord) {
+  loadMap(to, from) {
     const mapEle: HTMLElement = document.getElementById('map');
     const indicatorsEle: HTMLElement = document.getElementById('indicators');
     const myLatLng = { lat: 3.374653, lng: -76.514308 };
@@ -50,23 +50,13 @@ export class AdministradorPage implements OnInit {
       mapEle.classList.add('show-map');
       this.calculateAndDisplayRoute(to, from);
     });
-    /*
-    marker = new google.maps.Marker({
-      position: this.coord[0],
-      map: map,
-    });
-*/
   }
 
   calculateAndDisplayRoute(to, from) {
     this.directionsService
       .route({
-        origin: {
-          query: to,
-        },
-        destination: {
-          query: from,
-        },
+        origin: to,
+        destination: from,
         travelMode: google.maps.TravelMode.DRIVING,
       })
       .then((response) => {
@@ -85,7 +75,7 @@ export class AdministradorPage implements OnInit {
         this.to = res.inicio;
         this.from = res.llegada;
         this.coord = res.coordenada;
-        this.loadMap(this.to, this.from, this.coord);
+        this.loadMap(this.to, this.from);
       }
     });
   }

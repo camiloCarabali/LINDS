@@ -27,12 +27,13 @@ export class AppComponent {
 
   public appPagesConductor = [
     { title: 'Viaje', url: '/conductor', icon: 'car' },
-    { title: 'Historial de viajes', url: '/historial', icon: 'time' },
+    { title: 'Seleccion de viaje', url: '/historial', icon: 'time' },
     { title: 'Perfil', url: '/perfil', icon: 'person' },
   ];
 
   public appPagesAdministrador = [
-    { title: 'Viajes', url: '/administrador', icon: 'bus' },
+    { title: 'Asignar viaje', url: '/crear-viaje', icon: 'add-circle' },
+    { title: 'Historial de viajes', url: '/administrador', icon: 'bus' },
     { title: 'Perfil', url: '/perfil', icon: 'person' },
   ];
 
