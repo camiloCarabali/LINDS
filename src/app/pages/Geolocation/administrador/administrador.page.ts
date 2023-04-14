@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from 'app/services/auth.service';
 import { FirestoreService } from 'app/services/firestore.service';
 import { Usuario } from 'app/models/models';
-import { Viaje } from 'app/models/models';
+import { IonButton } from '@ionic/angular';
 
 declare var google;
 let map;
@@ -14,6 +14,7 @@ let marker;
   styleUrls: ['./administrador.page.scss'],
 })
 export class AdministradorPage implements OnInit {
+
   today: number = Date.now();
 
   directionsService = new google.maps.DirectionsService();
@@ -24,10 +25,14 @@ export class AdministradorPage implements OnInit {
   nombres = [];
   result = [];
   result2 = [];
+  historiales = [];
+  historialesId = [];
+  dataHistorial = [];
   viaje: string;
   public coord = [];
   public to: string;
   public from: string;
+  public viajeHistorial = { inicio: '', llegada: '' };
 
   constructor(private firestore: FirestoreService, private auth: AuthService) {}
 
@@ -35,7 +40,14 @@ export class AdministradorPage implements OnInit {
     this.getUid();
   }
 
-  loadMap(to, from) {
+  unique(array) {
+    const valores = new Set(array);
+    let result = [...valores];
+    return result;
+  }
+
+  loadMap(to, from, coord?) {
+    this.unique(coord);
     const mapEle: HTMLElement = document.getElementById('map');
     const indicatorsEle: HTMLElement = document.getElementById('indicators');
     const myLatLng = { lat: 3.374653, lng: -76.514308 };
@@ -48,15 +60,16 @@ export class AdministradorPage implements OnInit {
 
     google.maps.event.addListenerOnce(map, 'idle', () => {
       mapEle.classList.add('show-map');
-      this.calculateAndDisplayRoute(to, from);
+      this.calculateAndDisplayRoute(to, from, coord);
     });
   }
 
-  calculateAndDisplayRoute(to, from) {
+  calculateAndDisplayRoute(to, from, coord) {
     this.directionsService
       .route({
         origin: to,
         destination: from,
+        //waypoints: this.unique(coord),
         travelMode: google.maps.TravelMode.DRIVING,
       })
       .then((response) => {
@@ -64,20 +77,32 @@ export class AdministradorPage implements OnInit {
       });
   }
 
+  async cargarHistorial(uid) {
+    this.historialesId.splice(0, this.historialesId.length);
+    this.dataHistorial.splice(0, this.dataHistorial.length);
+    this.firestore.showHistorial(uid).then((firebaseResponse) => {
+      firebaseResponse.subscribe((historialesRef) => {
+        this.historiales = historialesRef.map((historialRef) => {
+          this.historialesId.push(historialRef.payload.doc.id);
+          this.dataHistorial.push(historialRef.payload.doc.data());
+        });
+      });
+    });
+  }
+
   async getUid() {
     const uid = await this.auth.getUid();
     this.getInfoUser(uid);
   }
 
+  async mostrarViaje(historial) {
+    this.viajeHistorial.inicio = historial.inicio;
+    this.viajeHistorial.llegada = historial.llegada;
+    this.loadMap(this.viajeHistorial.inicio, this.viajeHistorial.llegada);
+  }
+
   async buscarViaje(id: string) {
-    this.firestore.getDoc<Viaje>('Viajes', id.trim()).subscribe((res) => {
-      if (res) {
-        this.to = res.inicio;
-        this.from = res.llegada;
-        this.coord = res.coordenada;
-        this.loadMap(this.to, this.from);
-      }
-    });
+    this.cargarHistorial(id);
   }
 
   getNameUser(uid) {

@@ -30,7 +30,7 @@ export class UiServiceService {
     const toast = await this.toastController.create({
       message,
       position: 'top',
-      duration: 1500,
+      duration: 5000,
     });
     toast.present();
   }
@@ -54,7 +54,7 @@ export class UiServiceService {
   }
 
   async closeToast() {
-    //this.loading = false;
+    this.loading = false;
     return await this.toastController.dismiss();
   }
 

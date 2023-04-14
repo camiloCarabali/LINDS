@@ -3,13 +3,13 @@ import { AuthService } from 'app/services/auth.service';
 import { FirestoreService } from 'app/services/firestore.service';
 import { Usuario } from 'app/models/models';
 import { UiServiceService } from 'app/services/ui-service.service';
+import { Router } from '@angular/router';
 
 declare var google;
 let marker;
 let watchID;
 let geoLoc;
 let map;
-
 
 @Component({
   selector: 'app-crear-viaje',
@@ -32,7 +32,12 @@ export class CrearViajePage implements OnInit {
   lat: number;
   lng: number;
 
-  constructor(private firestore: FirestoreService, private auth: AuthService, private interacion: UiServiceService,) { }
+  constructor(
+    private firestore: FirestoreService,
+    private auth: AuthService,
+    private interacion: UiServiceService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.getUid();
@@ -42,7 +47,6 @@ export class CrearViajePage implements OnInit {
     const uid = await this.auth.getUid();
     this.getInfoUser(uid);
   }
-
 
   getNameUser(uid) {
     const path = 'Usuarios';
@@ -87,17 +91,19 @@ export class CrearViajePage implements OnInit {
     });
   }
 
-  asignarViaje(uid){
+  asignarViaje(uid) {
     var viaje = {
       uid: uid,
       inicio: this.lugarSalida,
       llegada: this.lugarDestino,
-    }
-    this.firestore.createViaje(viaje, 'Solicitudes', uid)
-    if(this.lugarSalida !='' && this.lugarDestino!=''){
-      this.interacion.presentToast('Asignación realizada correctamente')
+    };
+    this.firestore.createHistorial(viaje, 'Historial');
+    this.firestore.createViaje(viaje, 'Solicitudes', uid);
+    if (this.lugarSalida != '' && this.lugarDestino != '') {
+      this.interacion.presentToast('Asignación realizada correctamente');
       this.lugarSalida = '';
       this.lugarDestino = '';
+      this.router.navigate(['/perfil']);
     }
   }
 
@@ -139,7 +145,7 @@ export class CrearViajePage implements OnInit {
       });
   }
 
-  crearViaje(){
+  crearViaje() {
     this.loadMap();
   }
 }

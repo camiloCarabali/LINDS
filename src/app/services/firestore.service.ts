@@ -43,7 +43,7 @@ export class FirestoreService {
 
   async search(collection, id) {
     try {
-      return await this.firestore.collection(collection).doc(id).get();
+      return await this.firestore.collection(collection).doc(id);
     } catch (error) {
       console.log('Error en: search ', error);
     }
@@ -112,6 +112,24 @@ export class FirestoreService {
       return await this.firestore.collection(path).doc(id).set(data);
     } catch (error) {
       console.log('Error en: update ', error);
+    }
+  }
+
+  async createHistorial(data: any, path: string) {
+    try {
+      return await this.firestore.collection(path).add(data)
+    } catch (error) {
+      console.log('Error en: create ', error);
+    }
+  }
+
+  async showHistorial(uid){
+    try {
+      return await this.firestore
+        .collection('Historial', (ref) => ref.where('uid', '==', uid))
+        .snapshotChanges();
+    } catch (error) {
+      console.log('Error en: show historial ', error);
     }
   }
 
