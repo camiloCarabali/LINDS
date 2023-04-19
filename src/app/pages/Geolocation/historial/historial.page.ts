@@ -15,12 +15,15 @@ export class HistorialPage implements OnInit {
   rutaLlegada: string = '';
   info: Solicitud = null;
   todoList = [];
+  historiales = [];
+  historialesId = [];
+  dataHistorial = [];
   uid: string = null;
   taskObject;
   today: number = Date.now();
 
   constructor(private firestore: FirestoreService, private auth: AuthService, private router: Router) {
-    this.cargarStorage();
+    //this.cargarStorage();
   }
 
   ngOnInit() {
@@ -34,6 +37,7 @@ export class HistorialPage implements OnInit {
     if (uid) {
       this.uid = uid;
     }
+    this.cargarHistorial(uid);
     this.cargarSolicitudes();
   }
 
@@ -67,6 +71,20 @@ export class HistorialPage implements OnInit {
     localStorage.setItem('rutaInicio', this.rutaInicio)
     localStorage.setItem('rutaLlegada', this.rutaLlegada)
     this.router.navigate(['/conductor']);
+  }
+
+
+  async cargarHistorial(uid) {
+    this.historialesId.splice(0, this.historialesId.length);
+    this.dataHistorial.splice(0, this.dataHistorial.length);
+    this.firestore.showHistorial(uid).then((firebaseResponse) => {
+      firebaseResponse.subscribe((historialesRef) => {
+        this.historiales = historialesRef.map((historialRef) => {
+          this.historialesId.push(historialRef.payload.doc.id);
+          this.dataHistorial.push(historialRef.payload.doc.data());
+        });
+      });
+    });
   }
 
   async cargarSolicitudes() {

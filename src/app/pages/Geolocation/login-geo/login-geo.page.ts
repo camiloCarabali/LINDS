@@ -65,7 +65,7 @@ export class LoginGeoPage implements OnInit {
                   this.redirectUser(user.emailVerified);
                 });
               }else{
-                this.estado = true;
+                this.estado = false;
                 this.interacion.closeLoading();
                 this.interacion.presentToast(
                   'Para poder usar las funciones de conductor tiene que ingresar con nuestra aplicacion movil.'

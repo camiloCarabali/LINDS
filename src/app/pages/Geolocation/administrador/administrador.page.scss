@@ -4,13 +4,7 @@ ion-content {
     height: 400px;
     opacity: 1;
     transition: opacity 150ms ease-in;
-    display: block;
-  }
-  #indicators {
-    padding: 16px;
-    height: 40%;
-    width: 100%;
-    overflow-y: auto;
-    display: block;
+    position: fixed;
+    top: 0;
   }
 }

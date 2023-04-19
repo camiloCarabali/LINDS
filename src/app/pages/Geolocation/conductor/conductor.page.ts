@@ -43,6 +43,10 @@ export class ConductorPage implements OnInit {
   clase2 = '';
   clase3 = 'false';
   clase4 = 'true';
+  idDocHistorial = '';
+  listaHistorial = [];
+
+  today: number = Date.now();
 
   constructor(
     public modalCtrl: ModalController,
@@ -169,12 +173,8 @@ export class ConductorPage implements OnInit {
     return await modal.present();
   }
 
-  
-  crearViaje(){
-    
-  }
-
   async iniciarViaje() {
+
     if (this.isEmpty()) {
       this.clase3 = 'false';
       this.clase4 = 'false';
@@ -203,6 +203,23 @@ export class ConductorPage implements OnInit {
   }
 
   finalizarViaje() {
+    this.firestore.consultarIdHistorial(this.uid, this.sourceLocation, this.destinationLocation).then((firebaseResponse)=>{
+      firebaseResponse.subscribe((listaFirebaseRef) =>{
+        this.listaHistorial = listaFirebaseRef.map((historialRef) =>{
+          this.idDocHistorial = historialRef.payload.doc.id;
+          this.firestore.update(historial, 'Historial', this.idDocHistorial);
+        })
+      })
+    })
+
+    var historial = {
+      uid: this.uid,
+      inicio: this.sourceLocation,
+      llegada: this.destinationLocation,
+      fecha: this.today,
+      estado: true
+    }
+
     var viaje: Viaje = {
       uid: this.uid,
       inicio: this.sourceLocation,

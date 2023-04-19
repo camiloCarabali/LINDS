@@ -32,6 +32,8 @@ export class CrearViajePage implements OnInit {
   lat: number;
   lng: number;
 
+  today: number = Date.now();
+
   constructor(
     private firestore: FirestoreService,
     private auth: AuthService,
@@ -96,6 +98,8 @@ export class CrearViajePage implements OnInit {
       uid: uid,
       inicio: this.lugarSalida,
       llegada: this.lugarDestino,
+      fecha: this.today,
+      estado: false
     };
     this.firestore.createHistorial(viaje, 'Historial');
     this.firestore.createViaje(viaje, 'Solicitudes', uid);
@@ -112,7 +116,7 @@ export class CrearViajePage implements OnInit {
     const indicatorsEle: HTMLElement = document.getElementById('indicators');
     const myLatLng = { lat: 3.440018, lng: -76.519073 };
     map = new google.maps.Map(mapEle, {
-      center: '',
+      center: myLatLng,
       zoom: 12,
     });
     this.directionsDisplay.setMap(map);

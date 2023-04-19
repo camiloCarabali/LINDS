@@ -67,7 +67,7 @@ export class FirestoreService {
         .collection('Usuarios', (ref) =>
           ref.where('sucursal', '==', branch).where('perfil', '==', 'conductor')
         )
-        .snapshotChanges()
+        .snapshotChanges();
     } catch (error) {
       console.log('Error en: search conductor ', error);
     }
@@ -83,7 +83,7 @@ export class FirestoreService {
 
   async searchSolicitud(uid) {
     try {
-      return this.firestore.collection('Solicitudes').doc(uid).get()
+      return this.firestore.collection('Solicitudes').doc(uid).get();
     } catch (error) {
       console.log('Error en: search solicitudes ', error);
     }
@@ -117,13 +117,13 @@ export class FirestoreService {
 
   async createHistorial(data: any, path: string) {
     try {
-      return await this.firestore.collection(path).add(data)
+      return await this.firestore.collection(path).add(data);
     } catch (error) {
       console.log('Error en: create ', error);
     }
   }
 
-  async showHistorial(uid){
+  async showHistorial(uid) {
     try {
       return await this.firestore
         .collection('Historial', (ref) => ref.where('uid', '==', uid))
@@ -133,8 +133,23 @@ export class FirestoreService {
     }
   }
 
+  async consultarIdHistorial(uid, inicio, llegada) {
+    try {
+      return await this.firestore
+        .collection('Historial', (ref) =>
+          ref
+            .where('uid', '==', uid)
+            .where('inicio', '==', inicio)
+            .where('llegada', '==', llegada)
+            .where('estado', '==', false)
+        )
+        .snapshotChanges();
+    } catch (error) {
+      console.log('Error en: consultar id historial ', error);
+    }
+  }
+
   getDoc<tipo>(path: string, id: any) {
     return this.firestore.collection(path).doc<tipo>(id).valueChanges();
   }
 }
-

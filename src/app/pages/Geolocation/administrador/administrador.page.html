@@ -23,6 +23,9 @@
     <ion-row>
       <ion-col size-md="6">
         <ion-card *ngFor="let historial of dataHistorial">
+          <ion-card-header>
+            <ion-card-title>{{historial.fecha | date:'fullDate'}}</ion-card-title>
+          </ion-card-header>
           <ion-card-content>
             <ion-col>INICIO: {{historial.inicio}} </ion-col><br>
             <ion-col>LLEGADA: {{historial.llegada}}</ion-col><br>
@@ -31,7 +34,9 @@
         </ion-card>
       </ion-col>
       <ion-col size-md="6">
-        <div id="map"></div>
+        <div class="sticky-top">
+          <div id="map"></div>
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>

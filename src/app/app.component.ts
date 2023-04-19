@@ -33,7 +33,7 @@ export class AppComponent {
 
   public appPagesAdministrador = [
     { title: 'Asignar viaje', url: '/crear-viaje', icon: 'add-circle' },
-    { title: 'Historial de viajes', url: '/administrador', icon: 'bus' },
+    { title: 'Historial de conductores', url: '/administrador', icon: 'bus' },
     { title: 'Perfil', url: '/perfil', icon: 'person' },
   ];
 
