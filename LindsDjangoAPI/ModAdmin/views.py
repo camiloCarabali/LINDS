@@ -47,3 +47,44 @@ def eliminarPais(request, id=0):
         pais = Pais.objects.get(Id=id)
         pais.delete()
         return JsonResponse("Pais Eliminado", safe=False)
+
+"""
+/---------------------------------------------------------------/
+"""
+
+def mostrarDepartamento(request):
+    if request.method == 'GET':
+        departamentos = Departamento.objects.all()
+        departamentos_serializers = DepartamentoSerializer(departamentos, many=True)
+        return JsonResponse(departamentos_serializers.data, safe=False)
+
+
+@csrf_exempt
+def crearDepartamento(request):
+    if request.method == 'POST':
+        departamento_data = JSONParser().parse(request)
+        departamento_serializers = DepartamentoSerializer(data=departamento_data)
+        if departamento_serializers.is_valid():
+            departamento_serializers.save()
+            return JsonResponse("Departamento añadido", safe=False)
+        return JsonResponse("Fallo al añadir departamento", safe=False)
+
+
+@csrf_exempt
+def modificarDepartamento(request):
+    if request.method == 'PUT':
+        departamento_data = JSONParser().parse(request)
+        departamento = Departamento.objects.get(Id=departamento_data['Id'])
+        departamento_serializers = PaisSerializer(departamento, data=departamento_data)
+        if departamento_serializers.is_valid():
+            departamento_serializers.save()
+            return JsonResponse("Departamento Modificado", safe=False)
+        return JsonResponse("Fallo al modificar departamento", safe=False)
+
+
+@csrf_exempt
+def eliminarDepartamento(request, id=0):
+    if request.method == 'DELETE':
+        departamento = Departamento.objects.get(Id=id)
+        departamento.delete()
+        return JsonResponse("Departamento Eliminado", safe=False)
