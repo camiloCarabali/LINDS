@@ -75,7 +75,7 @@ def modificarDepartamento(request):
     if request.method == 'PUT':
         departamento_data = JSONParser().parse(request)
         departamento = Departamento.objects.get(Id=departamento_data['Id'])
-        departamento_serializers = PaisSerializer(departamento, data=departamento_data)
+        departamento_serializers = DepartamentoSerializer(departamento, data=departamento_data)
         if departamento_serializers.is_valid():
             departamento_serializers.save()
             return JsonResponse("Departamento Modificado", safe=False)
@@ -88,3 +88,45 @@ def eliminarDepartamento(request, id=0):
         departamento = Departamento.objects.get(Id=id)
         departamento.delete()
         return JsonResponse("Departamento Eliminado", safe=False)
+
+
+"""
+/---------------------------------------------------------------/
+"""
+
+def mostrarMunicipio(request):
+    if request.method == 'GET':
+        municipios = Departamento.objects.all()
+        municipios_serializers = MunicipioSerializer(municipios, many=True)
+        return JsonResponse(municipios_serializers.data, safe=False)
+
+
+@csrf_exempt
+def crearMunicipio(request):
+    if request.method == 'POST':
+        municipio_data = JSONParser().parse(request)
+        municipio_serializers = MunicipioSerializer(data=municipio_data)
+        if municipio_serializers.is_valid():
+            municipio_serializers.save()
+            return JsonResponse("Municipio añadido", safe=False)
+        return JsonResponse("Fallo al añadir municipio", safe=False)
+
+
+@csrf_exempt
+def modificarMunicipio(request):
+    if request.method == 'PUT':
+        municipio_data = JSONParser().parse(request)
+        municipio = Municipio.objects.get(Id=municipio_data['Id'])
+        municipio_serializers = MunicipioSerializer(municipio, data=municipio_data)
+        if municipio_serializers.is_valid():
+            municipio_serializers.save()
+            return JsonResponse("Municipio Modificado", safe=False)
+        return JsonResponse("Fallo al modificar municipio", safe=False)
+
+
+@csrf_exempt
+def eliminarMunicipio(request, id=0):
+    if request.method == 'DELETE':
+        municipio = Municipio.objects.get(Id=id)
+        municipio.delete()
+        return JsonResponse("Municipio Eliminado", safe=False)

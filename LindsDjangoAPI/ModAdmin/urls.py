@@ -10,4 +10,8 @@ urlpatterns = [
     path('crearDepartamento/', views.crearDepartamento),
     path('modificarDepartamento/', views.modificarDepartamento),
     path('eliminarDepartamento/<id>', views.eliminarDepartamento),
+    path('municipio/', views.mostrarMunicipio),
+    path('crearMunicipio/', views.crearMunicipio),
+    path('modificarMunicipio/', views.modificarMunicipio),
+    path('eliminarMunicipio/<id>', views.eliminarMunicipio),
 ]
