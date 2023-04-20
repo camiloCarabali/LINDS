@@ -36,7 +36,7 @@ class SucursalSerializer(serializers.ModelSerializer):
 class RolSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rol
-        fields = ('Id', 'Nombre')
+        fields = ('Id', 'nombre')
 
 
 class UsuarioSerializer(serializers.ModelSerializer):

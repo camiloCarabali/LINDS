@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cec2a83-20d1-47e2-b041-20ecb4bc8243" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/LINDS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/LINDS.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ModAdmin/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ModAdmin/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ModAdmin/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/views.py" afterDir="false" />
     </list>
@@ -26,15 +26,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/CamiloCarabali/Documents/GitHub/LINDS/LindsDjangoAPI",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/CamiloCarabali/Documents/GitHub/LINDS/LindsDjangoAPI&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Python.runserver">
     <configuration name="makemigrations ModAdmin" type="PythonConfigurationType" factoryName="Python">
       <module name="LindsDjangoAPI" />

@@ -14,4 +14,8 @@ urlpatterns = [
     path('crearMunicipio/', views.crearMunicipio),
     path('modificarMunicipio/', views.modificarMunicipio),
     path('eliminarMunicipio/<id>', views.eliminarMunicipio),
+    path('rol/', views.mostrarRol),
+    path('crearRol/', views.crearRol),
+    path('modificarRol/', views.modificarRol),
+    path('eliminarRol/<id>', views.eliminarRol),
 ]

@@ -96,7 +96,7 @@ def eliminarDepartamento(request, id=0):
 
 def mostrarMunicipio(request):
     if request.method == 'GET':
-        municipios = Departamento.objects.all()
+        municipios = Municipio.objects.all()
         municipios_serializers = MunicipioSerializer(municipios, many=True)
         return JsonResponse(municipios_serializers.data, safe=False)
 
@@ -130,3 +130,45 @@ def eliminarMunicipio(request, id=0):
         municipio = Municipio.objects.get(Id=id)
         municipio.delete()
         return JsonResponse("Municipio Eliminado", safe=False)
+
+
+"""
+/---------------------------------------------------------------/
+"""
+
+def mostrarRol(request):
+    if request.method == 'GET':
+        roles = Rol.objects.all()
+        roles_serializers = RolSerializer(roles, many=True)
+        return JsonResponse(roles_serializers.data, safe=False)
+
+
+@csrf_exempt
+def crearRol(request):
+    if request.method == 'POST':
+        rol_data = JSONParser().parse(request)
+        rol_serializers = RolSerializer(data=rol_data)
+        if rol_serializers.is_valid():
+            rol_serializers.save()
+            return JsonResponse("rol añadido", safe=False)
+        return JsonResponse("Fallo al añadir rol", safe=False)
+
+
+@csrf_exempt
+def modificarRol(request):
+    if request.method == 'PUT':
+        rol_data = JSONParser().parse(request)
+        rol = Rol.objects.get(Id=rol_data['Id'])
+        rol_serializers = RolSerializer(rol, data=rol_data)
+        if rol_serializers.is_valid():
+            rol_serializers.save()
+            return JsonResponse("Rol Modificado", safe=False)
+        return JsonResponse("Fallo al modificar rol", safe=False)
+
+
+@csrf_exempt
+def eliminarRol(request, id=0):
+    if request.method == 'DELETE':
+        rol = Rol.objects.get(Id=id)
+        rol.delete()
+        return JsonResponse("Rol Eliminado", safe=False)
