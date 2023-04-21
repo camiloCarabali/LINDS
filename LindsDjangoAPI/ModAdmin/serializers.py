@@ -1,63 +1,69 @@
 from rest_framework import serializers
 from ModAdmin.models import Pais, Departamento, Municipio, Empresa, Viaje, DetalleViaje, Usuario, Rol, Sucursal, \
-    PuntoEntrega
+    PuntoEntrega, Camion
 
 
 class PaisSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pais
-        fields = ('Id', 'Nombre')
+        fields = ('id', 'nombre')
 
 
 class DepartamentoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Departamento
-        fields = ('Id', 'Nombre', 'Pais')
+        fields = ('id', 'nombre', 'pais')
 
 
 class MunicipioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Municipio
-        fields = ('Id', 'Nombre', 'Departamento')
+        fields = ('id', 'nombre', 'departamento')
 
 
 class EmpresaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Empresa
-        fields = ('NIT', 'Nombre', 'Pais')
+        fields = ('NIT', 'nombre', 'estado', 'pais')
 
 
 class SucursalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Sucursal
-        fields = ('Id', 'Nombre', 'Direccion', 'Empresa', 'Departamento', 'Municipio')
+        fields = ('id', 'nombre', 'direccion', 'estado', 'empresa', 'municipio')
 
 
 class RolSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rol
-        fields = ('Id', 'nombre')
+        fields = ('id', 'nombre')
 
 
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
-        fields = ('Cedula', 'Nombre', 'Apellido', 'Correo', 'Password', 'Sucursal', 'Rol')
+        fields = ('cedula', 'nombre', 'apellido', 'correo', 'password', 'estado', 'sucursal', 'rol')
 
 
 class ViajeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Viaje
-        fields = ('Id', 'Estado', 'Inicio', 'Llegada', 'Fecha', 'Placa_Camion', 'Usuario')
+        fields = ('id', 'estado', 'inicio', 'llegada', 'fecha', 'camion', 'usuario')
 
 
 class PuntoEntregaSerializer(serializers.ModelSerializer):
     class Meta:
         model = PuntoEntrega
-        fields = ('Id', 'Direccion', 'Nombre', 'Numero_Lote_Entrega', 'Estado', 'Viaje')
+        fields = ('id', 'direccion', 'nombre', 'numero_lote_entrega', 'estado', 'viaje')
 
 
 class DetalleViajeSerializer(serializers.ModelSerializer):
     class Meta:
         model = DetalleViaje
-        fields = ('Id', 'Direccion', 'Fecha', 'Descanso', 'Viaje')
+        fields = ('id', 'direccion', 'fecha', 'descanso', 'descripcion', 'viaje')
+
+
+class CamionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Camion
+        fields = ('matricula', 'modelo', 'tipo', 'color', 'almacenamiento')

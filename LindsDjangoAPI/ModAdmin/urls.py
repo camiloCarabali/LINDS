@@ -18,4 +18,16 @@ urlpatterns = [
     path('crearRol/', views.crearRol),
     path('modificarRol/', views.modificarRol),
     path('eliminarRol/<id>', views.eliminarRol),
+    path('empresa/', views.mostrarEmpresa),
+    path('crearEmpresa/', views.crearEmpresa),
+    path('modificarEmpresa/', views.modificarEmpresa),
+    path('eliminarEmpresa/<id>', views.eliminarEmpresa),
+    path('sucursal/', views.mostrarSucursal),
+    path('crearSucursal/', views.crearSucursal),
+    path('modificarSucursal/', views.modificarSucursal),
+    path('eliminarSucursal/<id>', views.eliminarSucursal),
+    path('usuario/', views.mostrarUsuario),
+    path('crearUsuario/', views.crearUsuario),
+    path('modificarUsuario/', views.modificarUsuario),
+    path('eliminarUsuario/<id>', views.eliminarUsuario)
 ]
