@@ -32,7 +32,7 @@ class Empresa(models.Model):
     NIT = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=100,  null=False)
     estado = models.BooleanField(default=True,  null=False)
-    Pais = models.ForeignKey(Pais, on_delete=models.CASCADE)
+    pais = models.ForeignKey(Pais, on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'empresa'

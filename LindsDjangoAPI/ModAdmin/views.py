@@ -23,7 +23,7 @@ def crearPais(request):
     if request.method == 'POST':
         pais_data = JSONParser().parse(request)
         pais_serializers = PaisSerializer(data=pais_data)
-        if pais_serializers.is_val():
+        if pais_serializers.is_valid():
             pais_serializers.save()
             return JsonResponse("Pais añadido", safe=False)
         return JsonResponse("Fallo al añadir pais", safe=False)
@@ -203,7 +203,7 @@ def crearEmpresa(request):
 def modificarEmpresa(request):
     if request.method == 'PUT':
         empresa_data = JSONParser().parse(request)
-        empresa = Empresa.objects.get(id=empresa_data['id'])
+        empresa = Empresa.objects.get(NIT=empresa_data['NIT'])
         empresa_serializers = EmpresaSerializer(empresa, data=empresa_data)
         if empresa_serializers.is_valid():
             empresa_serializers.save()
@@ -290,7 +290,7 @@ def crearUsuario(request):
 def modificarUsuario(request):
     if request.method == 'PUT':
         usuario_data = JSONParser().parse(request)
-        usuario = Usuario.objects.get(id=usuario_data['id'])
+        usuario = Usuario.objects.get(cedula=usuario_data['cedula'])
         usuario_serializers = UsuarioSerializer(usuario, data=usuario_data)
         if usuario_serializers.is_valid():
             usuario_serializers.save()
