@@ -6,13 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0cec2a83-20d1-47e2-b041-20ecb4bc8243" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LindsDjangoAPI/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/LindsDjangoAPI/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ModAdmin/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ModAdmin/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ModAdmin/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ModAdmin/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ModAdmin/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +35,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "dev",
-    "last_opened_file_path": "C:/Users/camil/OneDrive/Documentos/GitHub/LINDS/LindsDjangoAPI",
+    "last_opened_file_path": "C:/Users/CamiloCarabali/Documents/GitHub/Mapa",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
