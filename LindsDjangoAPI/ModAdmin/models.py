@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 
 # Create your models here.
@@ -58,15 +59,19 @@ class Rol(models.Model):
         db_table = 'rol'
 
 
-class Usuario(models.Model):
+class Usuario(AbstractUser):
     cedula = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=100, null=False)
     apellido = models.CharField(max_length=100, null=False)
-    correo = models.CharField(max_length=100, null=False)
+    correo = models.CharField(max_length=100, null=False, unique=True)
     password = models.CharField(max_length=100, null=False)
     estado = models.BooleanField(default=True, null=False)
     sucursal = models.ForeignKey(Sucursal, on_delete=models.CASCADE)
     rol = models.ForeignKey(Rol, on_delete=models.CASCADE)
+    username = None
+
+    USERNAME_FIELD = 'correo'
+    REQUIRED_FIELDS = []
 
     class Meta:
         db_table = 'usuario'

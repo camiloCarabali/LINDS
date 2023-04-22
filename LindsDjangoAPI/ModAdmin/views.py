@@ -5,6 +5,10 @@ from ModAdmin.models import Empresa, Sucursal, Usuario, Pais, Departamento, Muni
 from ModAdmin.serializers import EmpresaSerializer, SucursalSerializer, UsuarioSerializer, PaisSerializer, \
     DepartamentoSerializer, MunicipioSerializer, RolSerializer
 from django.http.response import JsonResponse
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework.exceptions import AuthenticationFailed
+import jwt, datetime
 
 
 # Create your views here.
@@ -48,9 +52,11 @@ def eliminarPais(request, id=0):
         pais.delete()
         return JsonResponse("Pais Eliminado", safe=False)
 
+
 """
 /---------------------------------------------------------------/
 """
+
 
 def mostrarDepartamento(request):
     if request.method == 'GET':
@@ -93,6 +99,7 @@ def eliminarDepartamento(request, id=0):
 """
 /---------------------------------------------------------------/
 """
+
 
 @csrf_exempt
 def mostrarMunicipio(request):
@@ -137,6 +144,7 @@ def eliminarMunicipio(request, id=0):
 /---------------------------------------------------------------/
 """
 
+
 @csrf_exempt
 def mostrarRol(request):
     if request.method == 'GET':
@@ -179,6 +187,7 @@ def eliminarRol(request, id=0):
 """
 /---------------------------------------------------------------/
 """
+
 
 @csrf_exempt
 def mostrarEmpresa(request):
@@ -223,6 +232,7 @@ def eliminarEmpresa(request, id=0):
 /---------------------------------------------------------------/
 """
 
+
 @csrf_exempt
 def mostrarSucursal(request):
     if request.method == 'GET':
@@ -262,10 +272,10 @@ def eliminarSucursal(request, id=0):
         return JsonResponse("Sucursal Eliminada", safe=False)
 
 
-
 """
 /---------------------------------------------------------------/
 """
+
 
 @csrf_exempt
 def mostrarUsuario(request):
@@ -304,3 +314,68 @@ def eliminarUsuario(request, id=0):
         usuario = Usuario.objects.get(id=id)
         usuario.delete()
         return JsonResponse("Usuario Eliminado", safe=False)
+
+
+class registro(APIView):
+    def post(self, request):
+        usuario_data = JSONParser().parse(request)
+        registro_serializers = UsuarioSerializer(data=usuario_data)
+        registro_serializers.is_valid(raise_exception=True)
+        registro_serializers.save()
+        return Response(registro_serializers.data)
+
+
+class login(APIView):
+    def post(self, request):
+        correo = request.data['correo']
+        password = request.data['password']
+        user = Usuario.objects.filter(correo=correo).first()
+
+        if user is None:
+            raise AuthenticationFailed('User not found!')
+
+        if not user.check_password(password):
+            raise AuthenticationFailed('Incorrect password!')
+
+        payload = {
+            'cedula': user.cedula,
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=60),
+            'iat': datetime.datetime.utcnow()
+        }
+
+        token = jwt.encode(payload, 'secret', algorithm='HS256').decode('utf-8')
+
+        response = Response()
+
+        response.set_cookie(key='jwt', value=token, httponly=True)
+        response.data = {
+            'jwt': token
+        }
+        return response
+
+
+class usuario(APIView):
+    def get(self, request):
+        token = request.COOKIES.get('jwt')
+
+        if not token:
+            raise AuthenticationFailed('Unauthenticated!')
+
+        try:
+            payload = jwt.decode(token, 'secret', algorithm=['HS256'])
+        except jwt.ExpiredSignatureError:
+            raise AuthenticationFailed('Unauthenticated!')
+
+        user = Usuario.objects.filter(cedula=payload['cedula']).first()
+        serializer = UsuarioSerializer(user)
+        return Response(serializer.data)
+
+
+class logout(APIView):
+    def post(self, request):
+        response = Response()
+        response.delete_cookie('jwt')
+        response.data = {
+            'message': 'success'
+        }
+        return response

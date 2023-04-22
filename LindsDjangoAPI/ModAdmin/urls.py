@@ -29,5 +29,9 @@ urlpatterns = [
     path('usuario/', views.mostrarUsuario),
     path('crearUsuario/', views.crearUsuario),
     path('modificarUsuario/', views.modificarUsuario),
-    path('eliminarUsuario/<id>', views.eliminarUsuario)
+    path('eliminarUsuario/<id>', views.eliminarUsuario),
+    path('registro/', views.registro.as_view()),
+    path('login', views.login.as_view()),
+    path('users', views.usuario.as_view()),
+    path('logout', views.logout.as_view())
 ]
