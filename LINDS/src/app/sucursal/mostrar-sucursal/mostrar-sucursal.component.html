@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Sucursal </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-grid [fixed]="true">
+    <ion-button id="open-modal">Crear</ion-button>
+    <ion-modal trigger="open-modal">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-buttons slot="end">
+              <ion-button [strong]="true" (click)="cancel()">Cancel</ion-button>
+            </ion-buttons>
+            <ion-title>Crear Sucursal</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          <app-crear-editar-sucursal></app-crear-editar-sucursal>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+    
+    <ion-row class="main">
+      <ion-col>NOMBRE</ion-col>
+      <ion-col>EMPRESA</ion-col>
+      <ion-col>DIRECCION</ion-col>
+      <ion-col>CIUDAD</ion-col>
+      <ion-col>ACCIONES</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let dataItem of sucursalList">
+      <ion-col>{{ dataItem.nombre }}</ion-col>
+      <ion-col>{{ dataItem.empresa }}</ion-col>
+      <ion-col>{{ dataItem.direccion }}</ion-col>
+      <ion-col>{{ dataItem.municipio }}</ion-col>
+      <ion-col>
+        <ion-icon name="create"></ion-icon>
+        <ion-icon name="trash"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
