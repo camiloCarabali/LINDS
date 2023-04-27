@@ -6,6 +6,7 @@ from ModAdmin.serializers import EmpresaSerializer, SucursalSerializer, UsuarioS
     DepartamentoSerializer, MunicipioSerializer, RolSerializer
 from django.http.response import JsonResponse
 from rest_framework.response import Response
+from rest_framework.renderers import JSONRenderer
 from rest_framework.views import APIView
 from rest_framework.exceptions import AuthenticationFailed
 import jwt, datetime
@@ -289,9 +290,9 @@ def mostrarUsuario(request):
 def crearUsuario(request):
     if request.method == 'POST':
         usuario_data = JSONParser().parse(request)
-        ussuario_serializers = UsuarioSerializer(data=usuario_data)
-        if ussuario_serializers.is_valid():
-            ussuario_serializers.save()
+        usuario_serializers = UsuarioSerializer(data=usuario_data)
+        if usuario_serializers.is_valid():
+            usuario_serializers.save()
             return JsonResponse("Usuario añadido", safe=False)
         return JsonResponse("Fallo al añadir usuario", safe=False)
 
@@ -314,6 +315,19 @@ def eliminarUsuario(request, id=0):
         usuario = Usuario.objects.get(id=id)
         usuario.delete()
         return JsonResponse("Usuario Eliminado", safe=False)
+
+@csrf_exempt
+def buscarEmpresa(request, NIT):
+    empresa = Empresa.objects.get(NIT=NIT)
+    nombre = empresa.nombre
+    response_data = {'nombre': nombre}
+    return JsonResponse(response_data)
+
+def buscarMunicipio(request, id):
+    municipio = Municipio.objects.get(id=id)
+    nombre = municipio.nombre
+    response_data = {'nombre': nombre}
+    return JsonResponse(response_data)
 
 
 class registro(APIView):

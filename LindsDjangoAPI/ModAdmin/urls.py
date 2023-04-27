@@ -30,6 +30,8 @@ urlpatterns = [
     path('crearUsuario/', views.crearUsuario),
     path('modificarUsuario/', views.modificarUsuario),
     path('eliminarUsuario/<id>', views.eliminarUsuario),
+    path('buscarEmpresa/<NIT>', views.buscarEmpresa),
+    path('buscarMunicipio/<id>', views.buscarMunicipio),
     path('registro', views.registro.as_view()),
     path('login', views.login.as_view()),
     path('users', views.usuario.as_view()),
