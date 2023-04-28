@@ -5,18 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cec2a83-20d1-47e2-b041-20ecb4bc8243" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/0.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/1.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/1.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/2.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/2.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/3.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/4.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/4.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/5.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/5.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/6.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/6.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/index.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LINDS/node_modules/__ngcc_entry_points__.json" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/node_modules/__ngcc_entry_points__.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ModAdmin/migrations/0002_rename_almacenamiento_camion_capacidad_and_more.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/sucursal/crear-editar-sucursal/crear-editar-sucursal.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/sucursal/crear-editar-sucursal/crear-editar-sucursal.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/sucursal/mostrar-sucursal/mostrar-sucursal.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/sucursal/mostrar-sucursal/mostrar-sucursal.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ModAdmin/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ModAdmin/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ModAdmin/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +37,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "camilo",
-    "last_opened_file_path": "C:/Users/camil/OneDrive/Documentos/GitHub/mapa2/Django--GoogleMapsApi-main",
+    "last_opened_file_path": "C:/Users/CamiloCarabali/Documents/GitHub/LINDS/LindsDjangoAPI",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>

@@ -14,7 +14,7 @@ class Pais(models.Model):
 class Departamento(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100, null=False)
-    pais = models.ForeignKey(Pais, on_delete=models.CASCADE)
+    pais = models.CharField(max_length=100, null=False)
 
     class Meta:
         db_table = 'departamento'
@@ -22,8 +22,8 @@ class Departamento(models.Model):
 
 class Municipio(models.Model):
     id = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=100,  null=False)
-    departamento = models.ForeignKey(Departamento, on_delete=models.CASCADE)
+    nombre = models.CharField(max_length=100, null=False)
+    departamento = models.CharField(max_length=100, null=False)
 
     class Meta:
         db_table = 'municipio'
@@ -32,8 +32,8 @@ class Municipio(models.Model):
 class Empresa(models.Model):
     NIT = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=100,  null=False)
-    estado = models.BooleanField(default=True,  null=False)
-    pais = models.ForeignKey(Pais, on_delete=models.CASCADE)
+    estado = models.BooleanField(default=True, null=False)
+    pais = models.CharField(max_length=100, null=False)
 
     class Meta:
         db_table = 'empresa'
@@ -44,8 +44,8 @@ class Sucursal(models.Model):
     nombre = models.CharField(max_length=100, null=False)
     direccion = models.CharField(max_length=100, null=False)
     estado = models.BooleanField(default=True, null=False)
-    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE)
-    municipio = models.ForeignKey(Municipio, on_delete=models.CASCADE)
+    empresa = models.CharField(max_length=100, null=False)
+    municipio = models.CharField(max_length=100, null=False)
 
     class Meta:
         db_table = 'sucursal'
@@ -66,8 +66,8 @@ class Usuario(AbstractUser):
     correo = models.CharField(max_length=100, null=False, unique=True)
     password = models.CharField(max_length=100, null=False)
     estado = models.BooleanField(default=True, null=False)
-    sucursal = models.ForeignKey(Sucursal, on_delete=models.CASCADE)
-    rol = models.ForeignKey(Rol, on_delete=models.CASCADE)
+    sucursal = models.CharField(max_length=100, null=False)
+    rol = models.CharField(max_length=100, null=False)
     username = None
 
     USERNAME_FIELD = 'correo'
@@ -82,7 +82,7 @@ class Camion(models.Model):
     modelo = models.CharField(max_length=100, null=False)
     tipo = models.CharField(max_length=100)
     color = models.CharField(max_length=100)
-    almacenamiento = models.IntegerField(null=False)
+    capacidad = models.IntegerField(null=False)
 
     class Meta:
         db_table = 'camion'
@@ -94,8 +94,8 @@ class Viaje(models.Model):
     inicio = models.CharField(max_length=100, null=False)
     llegada = models.CharField(max_length=100, null=False)
     fecha = models.DateTimeField()
-    camion = models.ForeignKey(Camion, on_delete=models.CASCADE)
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    camion = models.CharField(max_length=100, null=False)
+    usuario = models.CharField(max_length=100, null=False)
 
     class Meta:
         db_table = 'viaje'
@@ -107,7 +107,7 @@ class PuntoEntrega(models.Model):
     nombre = models.CharField(max_length=100, null=False)
     numero_lote_entrega = models.IntegerField(null=False)
     estado = models.BooleanField(default=False, null=False)
-    viaje = models.ForeignKey(Viaje, on_delete=models.CASCADE)
+    viaje = models.CharField(max_length=100, null=False)
 
     class Meta:
         db_table = 'puntoEntrega'
@@ -119,7 +119,7 @@ class DetalleViaje(models.Model):
     fecha = models.DateTimeField()
     descripcion = models.CharField(max_length=500, null=False)
     descanso = models.BooleanField(default=False, null=False)
-    viaje = models.ForeignKey(Viaje, on_delete=models.CASCADE)
+    viaje = models.CharField(max_length=500, null=False)
 
     class Meta:
         db_table = 'detalleViaje'

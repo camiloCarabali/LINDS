@@ -21,8 +21,6 @@ export class MostrarSucursalComponent implements OnInit {
   constructor(private service: SharedService) {}
 
   sucursalList: any = [];
-  nombreEmpresas: any = [];
-  nombreMunicipio: any = [];
 
   modalTitle: string = '';
   ActivateCrearEditarSucursalComp: boolean = false;
@@ -74,18 +72,6 @@ export class MostrarSucursalComponent implements OnInit {
 
   refreshSucursalList() {
     this.service.getSucursalList().subscribe((data) => {
-      for (let i = 0; i < data.length; i++) {
-        this.service.getBuscarEmpresa(data[i].empresa).subscribe((data) => {
-          this.nombreEmpresas.push(data);
-          this.sucursalList[i].empresa = this.nombreEmpresas[i].nombre;
-          this.listWithoutFilter[i].empresa = this.nombreEmpresas[i].nombre;
-        });
-        this.service.getBuscarMunicipio(data[i].municipio).subscribe((data) => {
-          this.nombreMunicipio.push(data);
-          this.sucursalList[i].municipio = this.nombreMunicipio[i].nombre;
-          this.listWithoutFilter[i].municipio = this.nombreMunicipio[i].nombre;
-        });
-      }
       this.sucursalList = data;
       this.listWithoutFilter = data;
     });
