@@ -25,7 +25,7 @@ urlpatterns = [
     path('sucursal/', views.mostrarSucursal),
     path('crearSucursal/', views.crearSucursal),
     path('modificarSucursal/', views.modificarSucursal),
-    path('eliminarSucursal/<id>', views.eliminarSucursal),
+    path('inactivarSucursal/<id>', views.inactivarSucursal),
     path('usuario/', views.mostrarUsuario),
     path('crearUsuario/', views.crearUsuario),
     path('modificarUsuario/', views.modificarUsuario),

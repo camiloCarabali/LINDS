@@ -5,6 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cec2a83-20d1-47e2-b041-20ecb4bc8243" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/0.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/1.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/1.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/2.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/2.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/3.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/4.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/4.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/5.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/5.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/6.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/6.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/.angular/cache/15.2.6/angular-webpack/7007dd3892db0ec2adb6d1f639555b26998f8f17/index.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/node_modules/__ngcc_entry_points__.json" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/node_modules/__ngcc_entry_points__.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ModAdmin/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ModAdmin/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/views.py" afterDir="false" />
@@ -28,17 +37,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/camil/OneDrive/Documentos/GitHub/mapa2/Django--GoogleMapsApi-main&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "camilo",
+    "last_opened_file_path": "C:/Users/camil/OneDrive/Documentos/GitHub/mapa2/Django--GoogleMapsApi-main",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Python.runserver">
     <configuration name="makemigrations ModAdmin" type="PythonConfigurationType" factoryName="Python">
       <module name="LindsDjangoAPI" />

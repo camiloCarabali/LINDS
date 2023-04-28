@@ -266,11 +266,12 @@ def modificarSucursal(request):
 
 
 @csrf_exempt
-def eliminarSucursal(request, id=0):
-    if request.method == 'DELETE':
+def inactivarSucursal(request, id=0):
+    if request.method == 'PUT':
         sucursal = Sucursal.objects.get(id=id)
-        sucursal.delete()
-        return JsonResponse("Sucursal Eliminada", safe=False)
+        sucursal.estado = False
+        sucursal.save()
+        return JsonResponse("Sucursal Inactivada", safe=False)
 
 
 """
