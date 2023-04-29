@@ -30,21 +30,21 @@
       <ion-input placeholder="Buscar" [(ngModel)]="nombreFilter" (keyup)="FilterFn()"></ion-input>
     </ion-item>
     <ion-row class="main">
-      <ion-col>NOMBRE</ion-col>
-      <ion-col>APELLIDO</ion-col>
-      <ion-col>CORREO</ion-col>
-      <ion-col>ROL</ion-col>
-      <ion-col>SUCURSAL</ion-col>
-      <ion-col>ACCIONES</ion-col>
+      <ion-col size="1">NOMBRES</ion-col>
+      <ion-col size="2">APELLIDOS</ion-col>
+      <ion-col size="3">CORREO</ion-col>
+      <ion-col size="2">ROL</ion-col>
+      <ion-col size="2">SUCURSAL</ion-col>
+      <ion-col size="2">ACCIONES</ion-col>
     </ion-row>
     <ng-container *ngFor="let dataItem of usuarioList">
       <ion-row *ngIf="dataItem.estado">
-        <ion-col>{{ dataItem.nombre }}</ion-col>
-        <ion-col>{{ dataItem.apellido }}</ion-col>
-        <ion-col>{{ dataItem.correo }}</ion-col>
-        <ion-col>{{ dataItem.rol }}</ion-col>
-        <ion-col>{{ dataItem.sucursal }}</ion-col>
-        <ion-col>
+        <ion-col size="1">{{ dataItem.nombre }}</ion-col>
+        <ion-col size="2">{{ dataItem.apellido }}</ion-col>
+        <ion-col size="3">{{ dataItem.correo }}</ion-col>
+        <ion-col size="2">{{ dataItem.rol }}</ion-col>
+        <ion-col size="2">{{ dataItem.sucursal }}</ion-col>
+        <ion-col size="2">
           <ion-icon
             name="create"
             id="open-modal"

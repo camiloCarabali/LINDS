@@ -10,6 +10,10 @@ export class SharedService {
 
   constructor(private http: HttpClient) {}
 
+  getRolList(): Observable<any[]> {
+    return this.http.get<any[]>(this.APIURL + '/rol/');
+  }
+
   getMunicipioList(): Observable<any[]> {
     return this.http.get<any[]>(this.APIURL + '/municipio/');
   }
@@ -24,6 +28,10 @@ export class SharedService {
 
   getBuscarMunicipio(val: String) {
     return this.http.get<any[]>(this.APIURL + 'buscarMunicipio/' + val);
+  }
+
+  getBuscarSucursal(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'buscarSucursal/' + val);
   }
 
   getSucursalList(): Observable<any[]> {
@@ -47,7 +55,7 @@ export class SharedService {
   }
 
   addUsuario(val: any) {
-    return this.http.post<any[]>(this.APIURL + '/crearUsuario/', val);
+    return this.http.post<any[]>(this.APIURL + '/registro', val);
   }
 
   updateUsuario(val: any) {

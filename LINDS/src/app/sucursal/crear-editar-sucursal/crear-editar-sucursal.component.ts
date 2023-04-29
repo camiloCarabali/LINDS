@@ -19,6 +19,7 @@ export class CrearEditarSucursalComponent implements OnInit {
   direccion: string = '';
   municipio: any;
 
+  
   ngOnInit() {
     this.id = this.sucursal.id;
     this.nombre = this.sucursal.nombre;

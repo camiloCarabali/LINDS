@@ -45,6 +45,7 @@ export class MostrarUsuarioComponent  implements OnInit {
       nombre: '',
       apellido: '',
       correo: '',
+      password: '',
       rol: '',
       sucursal: '',
     };

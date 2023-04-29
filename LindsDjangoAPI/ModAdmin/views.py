@@ -317,6 +317,11 @@ def eliminarUsuario(request, id=0):
         usuario.delete()
         return JsonResponse("Usuario Eliminado", safe=False)
 
+
+"""
+/---------------------------------------------------------------/
+"""
+
 @csrf_exempt
 def buscarEmpresa(request, NIT):
     empresa = Empresa.objects.get(NIT=NIT)
@@ -330,6 +335,16 @@ def buscarMunicipio(request, id):
     response_data = {'nombre': nombre}
     return JsonResponse(response_data)
 
+def buscarSucursal(request, empresa):
+    if request.method == 'GET':
+        sucursales = Sucursal.objects.filter(empresa=empresa)
+        sucursales_serializers = SucursalSerializer(sucursales, many=True)
+        return JsonResponse(sucursales_serializers.data, safe=False)
+
+"""
+/---------------------------------------------------------------/
+"""
+
 
 class registro(APIView):
     def post(self, request):
@@ -338,7 +353,6 @@ class registro(APIView):
         registro_serializers.is_valid(raise_exception=True)
         registro_serializers.save()
         return Response(registro_serializers.data)
-
 
 class login(APIView):
     def post(self, request):
