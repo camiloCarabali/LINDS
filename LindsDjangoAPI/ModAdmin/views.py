@@ -368,7 +368,7 @@ class login(APIView):
 
         payload = {
             'cedula': user.cedula,
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=60),
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=180),
             'iat': datetime.datetime.utcnow()
         }
 
