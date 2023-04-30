@@ -32,16 +32,16 @@
     <ion-row class="main">
       <ion-col>NOMBRE</ion-col>
       <ion-col>EMPRESA</ion-col>
-      <ion-col>DIRECCION</ion-col>
       <ion-col>CIUDAD</ion-col>
+      <ion-col>DIRECCION</ion-col>
       <ion-col>ACCIONES</ion-col>
     </ion-row>
     <ng-container *ngFor="let dataItem of sucursalList">
       <ion-row *ngIf="dataItem.estado">
         <ion-col>{{ dataItem.nombre }}</ion-col>
         <ion-col>{{ dataItem.empresa }}</ion-col>
-        <ion-col>{{ dataItem.direccion }}</ion-col>
         <ion-col>{{ dataItem.municipio }}</ion-col>
+        <ion-col>{{ dataItem.direccion }}</ion-col>
         <ion-col>
           <ion-icon
             name="create"

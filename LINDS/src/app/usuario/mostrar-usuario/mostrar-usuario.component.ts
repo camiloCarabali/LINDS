@@ -47,6 +47,7 @@ export class MostrarUsuarioComponent  implements OnInit {
       correo: '',
       password: '',
       rol: '',
+      empresa: '',
       sucursal: '',
     };
     this.modalTitle = 'Añadir Usuario';
@@ -65,7 +66,7 @@ export class MostrarUsuarioComponent  implements OnInit {
   delete(item: any) {
     console.log(item.id);
     if (confirm('Desea inactivar este usuario?')) {
-      this.service.inactivarSucursal(item.id).subscribe((data) => {
+      this.service.inactivarUsuario(item.cedula).subscribe((data) => {
         alert(data.toString());
         this.refreshUsuarioList();
       });

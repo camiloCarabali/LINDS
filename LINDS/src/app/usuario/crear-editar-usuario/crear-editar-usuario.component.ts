@@ -14,8 +14,6 @@ export class CrearEditarUsuarioComponent implements OnInit {
   sucursalList: any = [];
   empresaList: any = [];
 
-  empresa: any;
-
   @Input() usuario: any;
   id: string = '';
   cedula: string = '';
@@ -24,6 +22,7 @@ export class CrearEditarUsuarioComponent implements OnInit {
   correo: string = '';
   password: string = '';
   rol: any;
+  empresa: any;
   sucursal: any;
 
   ngOnInit() {
@@ -35,6 +34,7 @@ export class CrearEditarUsuarioComponent implements OnInit {
     this.password = this.usuario.password;
     this.rol = this.usuario.rol;
     this.sucursal = this.usuario.sucursal;
+    this.empresa = this.usuario.empresa;
     this.cargarRol();
     this.cargarEmpresa();
     this.cargarSucursal();
@@ -48,6 +48,7 @@ export class CrearEditarUsuarioComponent implements OnInit {
       correo: this.correo,
       password: this.password,
       rol: this.rol,
+      empresa: this.empresa,
       sucursal: this.sucursal,
     };
     console.log(val)
@@ -65,6 +66,7 @@ export class CrearEditarUsuarioComponent implements OnInit {
       correo: this.correo,
       password: this.password,
       rol: this.rol,
+      empresa: this.empresa,
       sucursal: this.sucursal,
     };
     this.service.updateUsuario(val).subscribe((res) => {

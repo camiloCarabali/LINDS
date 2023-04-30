@@ -311,11 +311,12 @@ def modificarUsuario(request):
 
 
 @csrf_exempt
-def eliminarUsuario(request, id=0):
-    if request.method == 'DELETE':
-        usuario = Usuario.objects.get(id=id)
-        usuario.delete()
-        return JsonResponse("Usuario Eliminado", safe=False)
+def inactivarUsuario(request, cedula):
+    if request.method == 'PUT':
+        usuario = Usuario.objects.get(cedula=cedula)
+        usuario.estado = False
+        usuario.save()
+        return JsonResponse("Usuario Inactivado", safe=False)
 
 
 """
@@ -329,11 +330,11 @@ def buscarEmpresa(request, NIT):
     response_data = {'nombre': nombre}
     return JsonResponse(response_data)
 
-def buscarMunicipio(request, id):
-    municipio = Municipio.objects.get(id=id)
-    nombre = municipio.nombre
-    response_data = {'nombre': nombre}
-    return JsonResponse(response_data)
+def buscarMunicipio(request, departamento):
+    if request.method == 'GET':
+        municipios = Municipio.objects.filter(departamento=departamento)
+        municipios_serializers = MunicipioSerializer(municipios, many=True)
+        return JsonResponse(municipios_serializers.data, safe=False)
 
 def buscarSucursal(request, empresa):
     if request.method == 'GET':

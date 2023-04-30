@@ -10,6 +10,10 @@ export class SharedService {
 
   constructor(private http: HttpClient) {}
 
+  getDepartamentoList(): Observable<any[]> {
+    return this.http.get<any[]>(this.APIURL + 'departamento/');
+  }
+
   getRolList(): Observable<any[]> {
     return this.http.get<any[]>(this.APIURL + '/rol/');
   }
@@ -62,8 +66,8 @@ export class SharedService {
     return this.http.put<any[]>(this.APIURL + '/modificarUsuario/', val);
   }
 
-  deleteUsuario(val: any) {
-    return this.http.delete<any[]>(this.APIURL + '/eliminarUsuario/', val);
+  inactivarUsuario(val: any) {
+    return this.http.put<any[]>(this.APIURL + 'inactivarUsuario/' + val, val);
   }
 
   getAllUsuarioNames(): Observable<any[]> {

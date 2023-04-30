@@ -41,10 +41,11 @@ class Empresa(models.Model):
 
 class Sucursal(models.Model):
     id = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=100, null=False)
+    nombre = models.CharField(max_length=100, null=False, unique=True)
     direccion = models.CharField(max_length=100, null=False)
     estado = models.BooleanField(default=True, null=False)
     empresa = models.CharField(max_length=100, null=False)
+    departamento = models.CharField(max_length=100, null=False)
     municipio = models.CharField(max_length=100, null=False)
 
     class Meta:
@@ -66,6 +67,7 @@ class Usuario(AbstractUser):
     correo = models.CharField(max_length=100, null=False, unique=True)
     password = models.CharField(max_length=100, null=False)
     estado = models.BooleanField(default=True, null=False)
+    empresa = models.CharField(max_length=100, null=False)
     sucursal = models.CharField(max_length=100, null=False)
     rol = models.CharField(max_length=100, null=False)
     username = None
