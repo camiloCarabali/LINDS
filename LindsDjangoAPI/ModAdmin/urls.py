@@ -21,7 +21,7 @@ urlpatterns = [
     path('empresa/', views.mostrarEmpresa),
     path('crearEmpresa/', views.crearEmpresa),
     path('modificarEmpresa/', views.modificarEmpresa),
-    path('eliminarEmpresa/<id>', views.eliminarEmpresa),
+    path('inactivarEmpresa/<NIT>', views.inactivarEmpresa),
     path('sucursal/', views.mostrarSucursal),
     path('crearSucursal/', views.crearSucursal),
     path('modificarSucursal/', views.modificarSucursal),

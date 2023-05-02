@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SharedService } from 'src/services/shared.service';
 import { IonModal } from '@ionic/angular';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -27,7 +26,7 @@ export class MostrarEmpresaComponent  implements OnInit {
   Activate_CrearEditar_EmpresaComp: boolean = false;
   empresa: any;
 
-  nameFilter: string = '';
+  nombreFilter: string = '';
   listWithoutFilter: any =[];
 
   ngOnInit() {
@@ -38,7 +37,7 @@ export class MostrarEmpresaComponent  implements OnInit {
     this.empresa ={
       id: 0,
       nombre: '',
-      nit: '',
+      NIT: '',
       pais: '',
     };
     this.modalTitle = 'Añadir Empresa';
@@ -55,11 +54,9 @@ export class MostrarEmpresaComponent  implements OnInit {
   }
 
   inactive(item: any){
-    console.log(item.id);
     if(confirm('¿Desea inactivar esta empresa?')){
-      this.service.inactivarEmpresa(item.id).subscribe((data) => {
+      this.service.inactivarEmpresa(item.NIT).subscribe((data) => {
         alert(data.toString());
-        this.refreshEmpresaList();
       });
     }
   }
@@ -71,18 +68,14 @@ export class MostrarEmpresaComponent  implements OnInit {
     });
   }
 
-  filterFn(){
-    var nameFilter = this.nameFilter;
+  FilterFn(){
+    var nameFilter = this.nombreFilter;
     this.empresaList = this.listWithoutFilter.filter(function (el:any){
       return el.nombre
       .toString()
       .toLowerCase()
       .includes(nameFilter.toString().trim().toLowerCase());
     });
-  }
-
-  cerrar(){
-    this.router.navigate(['/inicio']);
   }
 
 }

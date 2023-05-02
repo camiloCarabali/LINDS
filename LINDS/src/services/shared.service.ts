@@ -12,7 +12,7 @@ export class SharedService {
 
 
   getEmpresaList(): Observable<any[]> {
-    return this.http.get<any[]>(this.APIURL + '/empresa/');
+    return this.http.get<any[]>(this.APIURL + 'empresa/');
   }
 
   getBuscarEmpresa(val: String) {
@@ -24,7 +24,7 @@ export class SharedService {
   }
 
   updateEmpresa(val: any) {
-    return this.http.put<any[]>(this.APIURL + '/modificarEmpresa/', val);
+    return this.http.put<any[]>(this.APIURL + 'modificarEmpresa/', val);
   }
 
   inactivarEmpresa(val: string) {
@@ -32,7 +32,7 @@ export class SharedService {
   }
 
   getPaisList(): Observable<any[]> {
-    return this.http.get<any[]>(this.APIURL + '/pais/');
+    return this.http.get<any[]>(this.APIURL + 'pais/');
   }
 
   getBuscarPais(val: String) {

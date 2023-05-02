@@ -222,11 +222,12 @@ def modificarEmpresa(request):
 
 
 @csrf_exempt
-def eliminarEmpresa(request, id=0):
-    if request.method == 'DELETE':
-        empresa = Empresa.objects.get(id=id)
-        empresa.delete()
-        return JsonResponse("Empresa Eliminada", safe=False)
+def inactivarEmpresa(request, NIT):
+    if request.method == 'PUT':
+        empresa = Empresa.objects.get(NIT=NIT)
+        empresa.estado = False
+        empresa.save()
+        return JsonResponse("Empresa Inactivada", safe=False)
 
 
 """

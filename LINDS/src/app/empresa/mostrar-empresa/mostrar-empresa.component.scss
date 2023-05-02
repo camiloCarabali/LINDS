@@ -1,3 +1,4 @@
+/*
 @import url('https://fonts.googleapis.com/css2?family=Dangrek&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@500&display=swap');
@@ -87,3 +88,18 @@ ion-card-title{
   color: #003B71;
 }
 
+*/
+
+ion-col {
+  border: solid 1px #000000;
+  text-align: center;
+}
+
+.main {
+  font-weight: bold;
+}
+
+ion-icon {
+  font-size: 35px;
+  cursor: pointer;
+}

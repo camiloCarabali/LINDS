@@ -1,4 +1,24 @@
 <ion-item>
+  <ion-label position="floating">NIT</ion-label>
+  <ion-input placeholder="Escriba el NIT" type="number" [disabled]="empresa.id !== 0" [(ngModel)]="NIT"></ion-input>
+</ion-item>
+
+<ion-item>
   <ion-label position="floating">Nombre</ion-label>
   <ion-input placeholder="Escriba el nombre" [(ngModel)]="nombre"></ion-input>
 </ion-item>
+
+<ion-list>
+  <ion-item>
+    <ion-select placeholder="Seleccione el pais" [(ngModel)]="pais">
+      <ion-select-option
+        value="{{ pais.nombre }}"
+        *ngFor="let pais of paisList"
+        >{{ pais.nombre }}</ion-select-option
+      >
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+<ion-button (click)="add()" *ngIf="empresa.id === 0">Añadir</ion-button>
+<ion-button (click)="edit()" *ngIf="empresa.id !== 0">Editar</ion-button>

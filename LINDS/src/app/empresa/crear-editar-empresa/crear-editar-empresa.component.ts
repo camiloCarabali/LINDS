@@ -16,13 +16,13 @@ export class CrearEditarEmpresaComponent  implements OnInit {
   @Input() empresa: any;
   id: string = '';
   nombre: string = '';
-  nit: string = '';
+  NIT: string = '';
   pais: any;
 
   ngOnInit() {
     this.id = this.empresa.id;
     this.nombre = this.empresa.nombre;
-    this.nit = this.empresa.nit;
+    this.NIT = this.empresa.NIT;
     this.pais = this.empresa.pais;
     this.loadPaises();
   }
@@ -31,7 +31,7 @@ export class CrearEditarEmpresaComponent  implements OnInit {
     var val = {
       id: this.id,
       nombre: this.nombre,
-      nit: this.nit,
+      NIT: this.NIT,
       pais: this.pais,
     };
     this.service.addEmpresa(val).subscribe((res) => {
@@ -41,9 +41,8 @@ export class CrearEditarEmpresaComponent  implements OnInit {
 
   edit(){
     var val = {
-      id: this.id,
+      NIT: this.NIT,
       nombre: this.nombre,
-      nit: this.nit,
       pais: this.pais,
     };
     this.service.updateEmpresa(val).subscribe((res) => {
