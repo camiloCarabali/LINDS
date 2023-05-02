@@ -8,8 +8,11 @@ ion-toolbar{
 
 .new-background-color{
   --background: #85C1EC;
-  font-size: 50px;
   font-family: 'Dangrek', cursive;
+}
+
+ion-title {
+  font-size: 25px;
 }
 
 #container {
