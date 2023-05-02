@@ -10,6 +10,7 @@
       <change beforePath="$PROJECT_DIR$/../LINDS/src/app/empresa/mostrar-empresa/mostrar-empresa.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/empresa/mostrar-empresa/mostrar-empresa.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../LINDS/src/app/empresa/mostrar-empresa/mostrar-empresa.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/empresa/mostrar-empresa/mostrar-empresa.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LindsDjangoAPI/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/LindsDjangoAPI/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ModAdmin/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ModAdmin/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/views.py" afterDir="false" />
     </list>

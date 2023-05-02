@@ -1,3 +1,4 @@
+from django.core.mail import send_mail
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
@@ -10,6 +11,8 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework.views import APIView
 from rest_framework.exceptions import AuthenticationFailed
 import jwt, datetime
+from LindsDjangoAPI import settings
+
 
 
 # Create your views here.
@@ -330,6 +333,36 @@ def buscarMunicipio(request, id):
     nombre = municipio.nombre
     response_data = {'nombre': nombre}
     return JsonResponse(response_data)
+def buscarMunicipio(request, departamento):
+    if request.method == 'GET':
+        municipios = Municipio.objects.filter(departamento=departamento)
+        municipios_serializers = MunicipioSerializer(municipios, many=True)
+        return JsonResponse(municipios_serializers.data, safe=False)
+
+def buscarSucursal(request, empresa):
+    if request.method == 'GET':
+        sucursales = Sucursal.objects.filter(empresa=empresa)
+        sucursales_serializers = SucursalSerializer(sucursales, many=True)
+        return JsonResponse(sucursales_serializers.data, safe=False)
+
+"""
+/---------------------------------------------------------------/
+"""
+@csrf_exempt
+def correo(request):
+    if request.method == 'POST':
+        data = JSONParser().parse(request)
+        correo = data['correo']
+        password = data['password']
+        subject = "BIENVENIDO A LINDS"
+        message = "Bienvenido a la beta de la herramienta prototipo LINDS, sus credenciales son las siguientes:\n" \
+                  "Correo: " + correo + "\n" \
+                                        "Contraseña: " + password + "\n" \
+                                                                    "Cualquier inconveniente con la herramienta por favor comunicarse al correo " + settings.EMAIL_HOST_USER
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [correo]
+        send_mail(subject, message, email_from, recipient_list)
+        return JsonResponse("Correo enviado", safe=False)
 
 
 class registro(APIView):
@@ -339,6 +372,7 @@ class registro(APIView):
         registro_serializers.is_valid(raise_exception=True)
         registro_serializers.save()
         return Response(registro_serializers.data)
+
 
 
 class login(APIView):
