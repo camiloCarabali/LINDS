@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SharedService } from 'src/services/shared.service';
-import { CLIENT_RENEG_LIMIT } from 'tls';
 
 @Component({
   selector: 'app-crear-editar-usuario',
@@ -51,10 +50,15 @@ export class CrearEditarUsuarioComponent implements OnInit {
       empresa: this.empresa,
       sucursal: this.sucursal,
     };
-    console.log(val)
+    var correo = {
+      correo: this.correo,
+      password: this.password,
+    }
     this.service.addUsuario(val).subscribe((res) => {
       alert(res.toString());
     });
+
+    this.service.correo(correo).subscribe((res) => {});
   }
 
   editar() {

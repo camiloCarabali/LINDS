@@ -30,19 +30,19 @@
       <ion-input placeholder="Buscar" [(ngModel)]="nombreFilter" (keyup)="FilterFn()"></ion-input>
     </ion-item>
     <ion-row class="main">
-      <ion-col size="2">NOMBRES</ion-col>
+      <ion-col size="1">NOMBRES</ion-col>
       <ion-col size="2">APELLIDOS</ion-col>
       <ion-col size="3">CORREO</ion-col>
-      <ion-col size="1">ROL</ion-col>
+      <ion-col size="2">ROL</ion-col>
       <ion-col size="2">SUCURSAL</ion-col>
       <ion-col size="2">ACCIONES</ion-col>
     </ion-row>
     <ng-container *ngFor="let dataItem of usuarioList">
       <ion-row *ngIf="dataItem.estado">
-        <ion-col size="2">{{ dataItem.nombre }}</ion-col>
+        <ion-col size="1">{{ dataItem.nombre }}</ion-col>
         <ion-col size="2">{{ dataItem.apellido }}</ion-col>
         <ion-col size="3">{{ dataItem.correo }}</ion-col>
-        <ion-col size="1">{{ dataItem.rol }}</ion-col>
+        <ion-col size="2">{{ dataItem.rol }}</ion-col>
         <ion-col size="2">{{ dataItem.sucursal }}</ion-col>
         <ion-col size="2">
           <ion-icon

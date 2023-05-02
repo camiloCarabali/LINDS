@@ -33,6 +33,7 @@ urlpatterns = [
     path('buscarEmpresa/<NIT>', views.buscarEmpresa),
     path('buscarMunicipio/<departamento>', views.buscarMunicipio),
     path('buscarSucursal/<empresa>', views.buscarSucursal),
+    path('correo/', views.correo),
     path('registro', views.registro.as_view()),
     path('login', views.login.as_view()),
     path('users', views.usuario.as_view()),

@@ -70,6 +70,10 @@ export class SharedService {
     return this.http.put<any[]>(this.APIURL + 'inactivarUsuario/' + val, val);
   }
 
+  correo(val: any) {
+    return this.http.post<any[]>(this.APIURL + 'correo/', val);
+  }
+
   getAllUsuarioNames(): Observable<any[]> {
     return this.http.get<any[]>(this.APIURL + '/sucursal/');
   }
