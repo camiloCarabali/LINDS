@@ -1,0 +1,75 @@
+<ion-content [fullscreen]="true">
+
+  <ion-header [translucent]="true">
+    <ion-toolbar class="new-background-color">
+      <ion-navbar>
+        <ion-title>
+          LINDS TRACK
+        </ion-title>
+      </ion-navbar>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+   <div id="izquierda">
+    <div class="titulo1">
+      <strong class="text-title">RASTREA TUS FLOTAS DE VEHICULOS</strong>
+    </div>
+    <p id="text-conten">Servicio de rastreo y visualización de una flota de <br> vehiculos permitiendo mejorar la logistica de estos.</p>
+    <ion-img src="../../../assets/logistica.png" id="logo"></ion-img>
+   </div>
+
+   <div id="derecha">
+    <div class="titulo1">
+      <strong class="text-title-1">Iniciar sesión</strong>
+    </div>
+          <ion-item>
+            <ion-label position="floating" id="text-conten">Email</ion-label>
+            <ion-input
+              type="email"
+              placeholder="Digite su Email">
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating" shape="round">Contraseña</ion-label>
+            <ion-input
+              type="password"
+              placeholder="Digite su Contraseña">
+            </ion-input>
+          </ion-item>
+          <div class="contenedor-botones">
+            <ion-button class="button-background-color" (click)="login()" id="text-conten" shape="round">Entrar</ion-button>
+          </div>
+          <div class="aaa">
+            <a href="#" id="text-conten">¿Olvido la contraseña?</a>
+          </div>
+
+   </div>
+  </div>
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar class="footer-background-color">
+    <ion-grid [fixed]="true">
+      <ion-row>
+        <ion-col>
+          <h1>Ayuda</h1>
+          <a href="https://docs.google.com/document/d/1iRsesqagnUvTHN2-ErPkWwtxvXtj1kAE/edit?usp=sharing&ouid=104740629279790515923&rtpof=true&sd=true" target="_blank">¿Cómo funciona?</a>
+        </ion-col>
+        <ion-col>
+          <h1>Contactanos</h1>
+          <a href="https://www.google.com/intl/es-419/gmail/about/" target="_blank"><ion-icon name="mail-outline"></ion-icon></a>
+          <a href="https://es-la.facebook.com/" target="_blank"><ion-icon name="logo-facebook"></ion-icon></a>
+          <a href="https://www.instagram.com/" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a>
+        </ion-col>
+        <ion-col>
+          <ul>
+            <li><a href="https://www.icontec.org/terminos-y-condiciones/" target="_blank">Terminos y condiciones</a></li>
+            <li><a href="https://www.caf.com/es/politica-de-privacidad-de-datos/" target="_blank">Politica de privacidad</a></li>
+           </ul>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

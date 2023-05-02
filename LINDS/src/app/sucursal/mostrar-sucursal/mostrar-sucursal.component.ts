@@ -45,7 +45,6 @@ export class MostrarSucursalComponent implements OnInit {
       nombre: '',
       empresa: '',
       direccion: '',
-      departamento: '',
       municipio: '',
     };
     this.modalTitle = 'Añadir Sucursal';

@@ -25,18 +25,6 @@
 
 <ion-list>
   <ion-item>
-    <ion-select placeholder="Seleccione el departamento" [(ngModel)]="departamento" (ionChange)="cargarMunicipio()">
-      <ion-select-option
-        value="{{ departamento.nombre }}"
-        *ngFor="let departamento of departamentoList"
-        >{{ departamento.nombre }}</ion-select-option
-      >
-    </ion-select>
-  </ion-item>
-</ion-list>
-
-<ion-list>
-  <ion-item>
     <ion-select placeholder="Seleccione la ciudad" [(ngModel)]="municipio">
       <ion-select-option
         value="{{ municipio.nombre }}"
@@ -47,5 +35,5 @@
   </ion-item>
 </ion-list>
 
-<ion-button (click)="add()" *ngIf="sucursal.id == 0">Añadir</ion-button>
-<ion-button (click)="editar()" *ngIf="sucursal.id != 0">Editar</ion-button>
+<ion-button (click)="add()" *ngIf="sucursal.id === 0">Añadir</ion-button>
+<ion-button (click)="editar()" *ngIf="sucursal.id !== 0">Editar</ion-button>

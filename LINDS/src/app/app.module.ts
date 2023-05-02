@@ -14,11 +14,15 @@ import { UsuarioComponent } from './usuario/usuario.component';
 import { MostrarUsuarioComponent } from './usuario/mostrar-usuario/mostrar-usuario.component';
 import { CrearEditarUsuarioComponent } from './usuario/crear-editar-usuario/crear-editar-usuario.component';
 import { SharedService } from 'src/services/shared.service';
+import { InicioComponent } from './inicio/inicio.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { EmpresaComponent } from './empresa/empresa.component';
+import { MostrarEmpresaComponent } from './empresa/mostrar-empresa/mostrar-empresa.component';
+import { CrearEditarEmpresaComponent } from './empresa/crear-editar-empresa/crear-editar-empresa.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,11 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     UsuarioComponent,
     MostrarUsuarioComponent,
     CrearEditarUsuarioComponent,
+    EmpresaComponent,
+    MostrarEmpresaComponent,
+    CrearEditarEmpresaComponent,
+    InicioComponent,
+
   ],
   imports: [
     BrowserModule,

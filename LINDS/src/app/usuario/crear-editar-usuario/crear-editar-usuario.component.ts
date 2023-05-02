@@ -1,3 +1,4 @@
+import { Component, OnInit } from '@angular/core';
 import { Component, Input, OnInit } from '@angular/core';
 import { SharedService } from 'src/services/shared.service';
 
@@ -6,24 +7,13 @@ import { SharedService } from 'src/services/shared.service';
   templateUrl: './crear-editar-usuario.component.html',
   styleUrls: ['./crear-editar-usuario.component.scss'],
 })
-export class CrearEditarUsuarioComponent implements OnInit {
-  constructor(private service: SharedService) {}
+export class CrearEditarUsuarioComponent  implements OnInit {
 
-  rolList: any = [];
-  sucursalList: any = [];
-  empresaList: any = [];
+  constructor() { }
 
-  @Input() usuario: any;
-  id: string = '';
-  cedula: string = '';
-  nombre: string = '';
-  apellido: string = '';
-  correo: string = '';
-  password: string = '';
-  rol: any;
-  empresa: any;
-  sucursal: any;
+  ngOnInit() {}
 
+}
   ngOnInit() {
     this.id = this.usuario.id;
     this.cedula = this.usuario.cedula;

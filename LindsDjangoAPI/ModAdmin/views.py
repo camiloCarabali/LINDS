@@ -225,11 +225,12 @@ def modificarEmpresa(request):
 
 
 @csrf_exempt
-def eliminarEmpresa(request, id=0):
-    if request.method == 'DELETE':
-        empresa = Empresa.objects.get(id=id)
-        empresa.delete()
-        return JsonResponse("Empresa Eliminada", safe=False)
+def inactivarEmpresa(request, NIT):
+    if request.method == 'PUT':
+        empresa = Empresa.objects.get(NIT=NIT)
+        empresa.estado = False
+        empresa.save()
+        return JsonResponse("Empresa Inactivada", safe=False)
 
 
 """
@@ -314,17 +315,11 @@ def modificarUsuario(request):
 
 
 @csrf_exempt
-def inactivarUsuario(request, cedula):
-    if request.method == 'PUT':
-        usuario = Usuario.objects.get(cedula=cedula)
-        usuario.estado = False
-        usuario.save()
-        return JsonResponse("Usuario Inactivado", safe=False)
-
-
-"""
-/---------------------------------------------------------------/
-"""
+def eliminarUsuario(request, id=0):
+    if request.method == 'DELETE':
+        usuario = Usuario.objects.get(id=id)
+        usuario.delete()
+        return JsonResponse("Usuario Eliminado", safe=False)
 
 @csrf_exempt
 def buscarEmpresa(request, NIT):
@@ -333,6 +328,11 @@ def buscarEmpresa(request, NIT):
     response_data = {'nombre': nombre}
     return JsonResponse(response_data)
 
+def buscarMunicipio(request, id):
+    municipio = Municipio.objects.get(id=id)
+    nombre = municipio.nombre
+    response_data = {'nombre': nombre}
+    return JsonResponse(response_data)
 def buscarMunicipio(request, departamento):
     if request.method == 'GET':
         municipios = Municipio.objects.filter(departamento=departamento)
@@ -389,7 +389,7 @@ class login(APIView):
 
         payload = {
             'cedula': user.cedula,
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=180),
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=60),
             'iat': datetime.datetime.utcnow()
         }
 
