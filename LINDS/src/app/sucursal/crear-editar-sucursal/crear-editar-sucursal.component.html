@@ -35,5 +35,5 @@
   </ion-item>
 </ion-list>
 
-<ion-button (click)="add()" *ngIf="sucursal.id == 0">Añadir</ion-button>
-<ion-button (click)="editar()" *ngIf="sucursal.id != 0">Editar</ion-button>
+<ion-button (click)="add()" *ngIf="sucursal.id === 0">Añadir</ion-button>
+<ion-button (click)="editar()" *ngIf="sucursal.id !== 0">Editar</ion-button>

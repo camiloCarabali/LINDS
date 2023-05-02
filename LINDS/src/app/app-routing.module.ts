@@ -3,8 +3,24 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 import { SucursalComponent } from './sucursal/sucursal.component';
 import { UsuarioComponent } from './usuario/usuario.component';
+import { EmpresaComponent } from './empresa/empresa.component';
+import { InicioComponent } from './inicio/inicio.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'inicio',
+    pathMatch: 'full'
+
+  },
+  {
+    path: 'inicio',
+    component: InicioComponent
+  },
+  {
+    path: 'empresa',
+    component: EmpresaComponent
+  },
   {
     path: 'sucursal',
     component: SucursalComponent
