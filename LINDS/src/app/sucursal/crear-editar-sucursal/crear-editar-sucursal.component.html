@@ -1,3 +1,51 @@
-<p>
-  crear-editar-sucursal works!
-</p>
+<ion-item>
+  <ion-label position="floating">Nombre</ion-label>
+  <ion-input placeholder="Escriba el nombre" [(ngModel)]="nombre"></ion-input>
+</ion-item>
+
+<ion-list>
+  <ion-item>
+    <ion-select placeholder="Seleccione la empresa" [(ngModel)]="empresa">
+      <ion-select-option
+        value="{{ empresa.nombre }}"
+        *ngFor="let empresa of empresaList"
+        >{{ empresa.nombre }}</ion-select-option
+      >
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+<ion-item>
+  <ion-label position="floating">Direccion</ion-label>
+  <ion-input
+    placeholder="Escriba la Direccion"
+    [(ngModel)]="direccion"
+  ></ion-input>
+</ion-item>
+
+<ion-list>
+  <ion-item>
+    <ion-select placeholder="Seleccione el departamento" [(ngModel)]="departamento" (ionChange)="cargarMunicipio()">
+      <ion-select-option
+        value="{{ departamento.nombre }}"
+        *ngFor="let departamento of departamentoList"
+        >{{ departamento.nombre }}</ion-select-option
+      >
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-select placeholder="Seleccione la ciudad" [(ngModel)]="municipio">
+      <ion-select-option
+        value="{{ municipio.nombre }}"
+        *ngFor="let municipio of municipioList"
+        >{{ municipio.nombre }}</ion-select-option
+      >
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+<ion-button (click)="add()" *ngIf="sucursal.id == 0">Añadir</ion-button>
+<ion-button (click)="editar()" *ngIf="sucursal.id != 0">Editar</ion-button>

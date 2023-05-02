@@ -1,3 +1,4 @@
+from django.core.mail import send_mail
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
@@ -10,6 +11,8 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework.views import APIView
 from rest_framework.exceptions import AuthenticationFailed
 import jwt, datetime
+from LindsDjangoAPI import settings
+
 
 
 # Create your views here.
@@ -266,11 +269,12 @@ def modificarSucursal(request):
 
 
 @csrf_exempt
-def eliminarSucursal(request, id=0):
-    if request.method == 'DELETE':
+def inactivarSucursal(request, id=0):
+    if request.method == 'PUT':
         sucursal = Sucursal.objects.get(id=id)
-        sucursal.delete()
-        return JsonResponse("Sucursal Eliminada", safe=False)
+        sucursal.estado = False
+        sucursal.save()
+        return JsonResponse("Sucursal Inactivada", safe=False)
 
 
 """
@@ -310,11 +314,17 @@ def modificarUsuario(request):
 
 
 @csrf_exempt
-def eliminarUsuario(request, id=0):
-    if request.method == 'DELETE':
-        usuario = Usuario.objects.get(id=id)
-        usuario.delete()
-        return JsonResponse("Usuario Eliminado", safe=False)
+def inactivarUsuario(request, cedula):
+    if request.method == 'PUT':
+        usuario = Usuario.objects.get(cedula=cedula)
+        usuario.estado = False
+        usuario.save()
+        return JsonResponse("Usuario Inactivado", safe=False)
+
+
+"""
+/---------------------------------------------------------------/
+"""
 
 @csrf_exempt
 def buscarEmpresa(request, NIT):
@@ -323,11 +333,36 @@ def buscarEmpresa(request, NIT):
     response_data = {'nombre': nombre}
     return JsonResponse(response_data)
 
-def buscarMunicipio(request, id):
-    municipio = Municipio.objects.get(id=id)
-    nombre = municipio.nombre
-    response_data = {'nombre': nombre}
-    return JsonResponse(response_data)
+def buscarMunicipio(request, departamento):
+    if request.method == 'GET':
+        municipios = Municipio.objects.filter(departamento=departamento)
+        municipios_serializers = MunicipioSerializer(municipios, many=True)
+        return JsonResponse(municipios_serializers.data, safe=False)
+
+def buscarSucursal(request, empresa):
+    if request.method == 'GET':
+        sucursales = Sucursal.objects.filter(empresa=empresa)
+        sucursales_serializers = SucursalSerializer(sucursales, many=True)
+        return JsonResponse(sucursales_serializers.data, safe=False)
+
+"""
+/---------------------------------------------------------------/
+"""
+@csrf_exempt
+def correo(request):
+    if request.method == 'POST':
+        data = JSONParser().parse(request)
+        correo = data['correo']
+        password = data['password']
+        subject = "BIENVENIDO A LINDS"
+        message = "Bienvenido a la beta de la herramienta prototipo LINDS, sus credenciales son las siguientes:\n" \
+                  "Correo: " + correo + "\n" \
+                                        "Contraseña: " + password + "\n" \
+                                                                    "Cualquier inconveniente con la herramienta por favor comunicarse al correo " + settings.EMAIL_HOST_USER
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [correo]
+        send_mail(subject, message, email_from, recipient_list)
+        return JsonResponse("Correo enviado", safe=False)
 
 
 class registro(APIView):
@@ -337,6 +372,7 @@ class registro(APIView):
         registro_serializers.is_valid(raise_exception=True)
         registro_serializers.save()
         return Response(registro_serializers.data)
+
 
 
 class login(APIView):
@@ -353,7 +389,7 @@ class login(APIView):
 
         payload = {
             'cedula': user.cedula,
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=60),
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=180),
             'iat': datetime.datetime.utcnow()
         }
 
