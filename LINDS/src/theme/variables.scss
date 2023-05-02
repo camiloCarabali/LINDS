@@ -76,6 +76,20 @@
   --ion-color-light-tint: #f5f6f9;
 }
 
+.custom-header {
+  --ion-color-base: #85C1EC; /* Cambiar el color base a rojo */
+}
+
+
+$colors: (
+  primary:    #488aff,
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222,
+  my-color:   #85C1EC,
+);
+
 @media (prefers-color-scheme: dark) {
   /*
    * Dark Colors

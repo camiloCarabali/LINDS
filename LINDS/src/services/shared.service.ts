@@ -10,32 +10,41 @@ export class SharedService {
 
   constructor(private http: HttpClient) {}
 
-  getDepartamentoList(): Observable<any[]> {
-    return this.http.get<any[]>(this.APIURL + 'departamento/');
-  }
-
-  getRolList(): Observable<any[]> {
-    return this.http.get<any[]>(this.APIURL + '/rol/');
-  }
-
-  getMunicipioList(): Observable<any[]> {
-    return this.http.get<any[]>(this.APIURL + '/municipio/');
-  }
 
   getEmpresaList(): Observable<any[]> {
-    return this.http.get<any[]>(this.APIURL + '/empresa/');
+    return this.http.get<any[]>(this.APIURL + 'empresa/');
   }
 
   getBuscarEmpresa(val: String) {
     return this.http.get<any[]>(this.APIURL + 'buscarEmpresa/' + val);
   }
 
-  getBuscarMunicipio(val: String) {
-    return this.http.get<any[]>(this.APIURL + 'buscarMunicipio/' + val);
+  addEmpresa(val: any) {
+    return this.http.post<any[]>(this.APIURL + '/crearEmpresa/', val);
   }
 
-  getBuscarSucursal(val: String) {
-    return this.http.get<any[]>(this.APIURL + 'buscarSucursal/' + val);
+  updateEmpresa(val: any) {
+    return this.http.put<any[]>(this.APIURL + 'modificarEmpresa/', val);
+  }
+
+  inactivarEmpresa(val: string) {
+    return this.http.put<any[]>(this.APIURL + 'inactivarEmpresa/' + val, val);
+  }
+
+  getPaisList(): Observable<any[]> {
+    return this.http.get<any[]>(this.APIURL + 'pais/');
+  }
+
+  getBuscarPais(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'buscarPais/' + val);
+  }
+
+  getMunicipioList(): Observable<any[]> {
+    return this.http.get<any[]>(this.APIURL + '/municipio/');
+  }
+
+  getBuscarMunicipio(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'buscarMunicipio/' + val);
   }
 
   getSucursalList(): Observable<any[]> {
@@ -59,15 +68,15 @@ export class SharedService {
   }
 
   addUsuario(val: any) {
-    return this.http.post<any[]>(this.APIURL + '/registro', val);
+    return this.http.post<any[]>(this.APIURL + '/crearUsuario/', val);
   }
 
   updateUsuario(val: any) {
     return this.http.put<any[]>(this.APIURL + '/modificarUsuario/', val);
   }
 
-  inactivarUsuario(val: any) {
-    return this.http.put<any[]>(this.APIURL + 'inactivarUsuario/' + val, val);
+  deleteUsuario(val: any) {
+    return this.http.delete<any[]>(this.APIURL + '/eliminarUsuario/', val);
   }
 
   correo(val: any) {
@@ -76,5 +85,5 @@ export class SharedService {
 
   getAllUsuarioNames(): Observable<any[]> {
     return this.http.get<any[]>(this.APIURL + '/sucursal/');
-  }
+ }
 }
