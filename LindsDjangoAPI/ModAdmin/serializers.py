@@ -30,7 +30,7 @@ class EmpresaSerializer(serializers.ModelSerializer):
 class SucursalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Sucursal
-        fields = ('id', 'nombre', 'direccion', 'estado', 'empresa', 'municipio')
+        fields = ('id', 'nombre', 'direccion', 'estado', 'empresa', 'departamento', 'municipio')
 
 
 class RolSerializer(serializers.ModelSerializer):
@@ -42,10 +42,11 @@ class RolSerializer(serializers.ModelSerializer):
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
-        fields = ('cedula', 'nombre', 'apellido', 'correo', 'password', 'estado', 'sucursal', 'rol')
-        extra_kwargs = {
-            'password': {'write_only': True}
-        }
+        fields = ('cedula', 'nombre', 'apellido', 'correo', 'password', 'estado', 'empresa', 'sucursal', 'rol')
+
+        # extra_kwargs = {
+        #     'password': {'write_only': True}
+        # }
 
     def create(self, validated_data):
         password = validated_data.pop('password', None)

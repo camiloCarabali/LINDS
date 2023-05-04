@@ -9,6 +9,7 @@ from django.http.response import JsonResponse
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer
 from rest_framework.views import APIView
+from rest_framework import status
 from rest_framework.exceptions import AuthenticationFailed
 import jwt, datetime
 from LindsDjangoAPI import settings
@@ -315,11 +316,17 @@ def modificarUsuario(request):
 
 
 @csrf_exempt
-def eliminarUsuario(request, id=0):
-    if request.method == 'DELETE':
-        usuario = Usuario.objects.get(id=id)
-        usuario.delete()
-        return JsonResponse("Usuario Eliminado", safe=False)
+def inactivarUsuario(request, cedula):
+    if request.method == 'PUT':
+        usuario = Usuario.objects.get(cedula=cedula)
+        usuario.estado = False
+        usuario.save()
+        return JsonResponse("Usuario Inactivado", safe=False)
+
+
+"""
+/---------------------------------------------------------------/
+"""
 
 @csrf_exempt
 def buscarEmpresa(request, NIT):
@@ -367,7 +374,7 @@ class registro(APIView):
         registro_serializers = UsuarioSerializer(data=usuario_data)
         registro_serializers.is_valid(raise_exception=True)
         registro_serializers.save()
-        return Response(registro_serializers.data)
+        return Response(registro_serializers.data, status=status.HTTP_200_OK)
 
 
 
@@ -385,7 +392,7 @@ class login(APIView):
 
         payload = {
             'cedula': user.cedula,
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=60),
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=180),
             'iat': datetime.datetime.utcnow()
         }
 

@@ -75,18 +75,18 @@ export class SharedService {
   }
 
   addUsuario(val: any) {
-    return this.http.post<any[]>(this.APIURL + '/crearUsuario/', val);
+    return this.http.post<any[]>(this.APIURL + 'registro', val, { observe: 'response' });
   }
 
   updateUsuario(val: any) {
     return this.http.put<any[]>(this.APIURL + '/modificarUsuario/', val);
   }
 
-  deleteUsuario(val: any) {
-    return this.http.delete<any[]>(this.APIURL + '/eliminarUsuario/', val);
+  inactivarUsuario(val: any) {
+    return this.http.put<any[]>(this.APIURL + 'inactivarUsuario/'+ val, val);
   }
 
-  getAllUsuarioNames(): Observable<any[]> {
-    return this.http.get<any[]>(this.APIURL + '/sucursal/');
- }
+  correo(val: any) {
+    return this.http.post<any[]>(this.APIURL + 'correo/', val);
+  }
 }
