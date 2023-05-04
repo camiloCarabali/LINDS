@@ -328,11 +328,7 @@ def buscarEmpresa(request, NIT):
     response_data = {'nombre': nombre}
     return JsonResponse(response_data)
 
-def buscarMunicipio(request, id):
-    municipio = Municipio.objects.get(id=id)
-    nombre = municipio.nombre
-    response_data = {'nombre': nombre}
-    return JsonResponse(response_data)
+
 def buscarMunicipio(request, departamento):
     if request.method == 'GET':
         municipios = Municipio.objects.filter(departamento=departamento)

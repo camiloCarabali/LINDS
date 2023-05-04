@@ -10,6 +10,9 @@ export class SharedService {
 
   constructor(private http: HttpClient) {}
 
+  getRolList(): Observable<any[]> {
+    return this.http.get<any[]>(this.APIURL + '/rol/');
+  }
 
   getEmpresaList(): Observable<any[]> {
     return this.http.get<any[]>(this.APIURL + 'empresa/');
@@ -17,6 +20,10 @@ export class SharedService {
 
   getBuscarEmpresa(val: String) {
     return this.http.get<any[]>(this.APIURL + 'buscarEmpresa/' + val);
+  }
+
+  getBuscarSucursal(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'buscarSucursal/' + val);
   }
 
   addEmpresa(val: any) {
@@ -77,10 +84,6 @@ export class SharedService {
 
   deleteUsuario(val: any) {
     return this.http.delete<any[]>(this.APIURL + '/eliminarUsuario/', val);
-  }
-
-  correo(val: any) {
-    return this.http.post<any[]>(this.APIURL + 'correo/', val);
   }
 
   getAllUsuarioNames(): Observable<any[]> {
