@@ -29,7 +29,7 @@ urlpatterns = [
     path('usuario/', views.mostrarUsuario),
     path('crearUsuario/', views.crearUsuario),
     path('modificarUsuario/', views.modificarUsuario),
-    path('eliminarUsuario/<id>', views.eliminarUsuario),
+    path('inactivarUsuario/<cedula>', views.inactivarUsuario),
     path('buscarEmpresa/<NIT>', views.buscarEmpresa),
     path('buscarMunicipio/<id>', views.buscarMunicipio),
     path('buscarMunicipio/<departamento>', views.buscarMunicipio),

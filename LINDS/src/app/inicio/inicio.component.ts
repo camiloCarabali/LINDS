@@ -22,14 +22,8 @@ export class InicioComponent  implements OnInit {
 
   async login(){
 
-    //await this.interaction.showLoading('Verificando datos...');
-    //await this.interaction.showLoading('Ingresando...');
-
     if(this.rol == 'Administrador'){
       console.log("Administrador");
-      //this.interaction.closeLoading();
-      //this.interaction.presentToast('Ingresado con exito');
-      //this.router.navigate(['/empresa']);
     }
     else if(this.rol == 'Logistica'){
       console.log("Logistica")
@@ -39,9 +33,6 @@ export class InicioComponent  implements OnInit {
     } else{
       this.interaction.alertaInformativa("No cuenta con los permisos suficientes para ingresar.");
     }
-
-    this.router.navigate(['/empresa']);
-
 
   }
 
