@@ -2,41 +2,48 @@ import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { SharedService } from 'src/services/shared.service';
 import { UiServiceService } from 'src/services/ui-service.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.scss'],
 })
-export class InicioComponent  implements OnInit {
-
-  rol = ''
-
+export class InicioComponent implements OnInit {
   constructor(
-    private share: SharedService,
-    private router: Router,
-    private interaction: UiServiceService
-  ) { }
+    private service: SharedService,
+    private cookieService: CookieService
+  ) {}
+
+  credenciales: any;
+  correo: string = '';
+  password: string = '';
 
   ngOnInit() {}
 
-  async login(){
+  login() {
+    const credenciales = {
+      correo: this.correo,
+      password: this.password,
+    };
 
-    if(this.rol == 'Administrador'){
-      console.log("Administrador");
-    }
-    else if(this.rol == 'Logistica'){
-      console.log("Logistica")
-    }
-    else if(this.rol == 'Conductor'){
-      console.log("Conductor")
-    } else{
-      this.interaction.alertaInformativa("No cuenta con los permisos suficientes para ingresar.");
-    }
-
+    this.service.login(credenciales).subscribe(
+      (token) => {
+        this.cookieService.set('jwt', token.jwt);
+        const jwt = this.cookieService.get('jwt');
+        this.service.user(jwt).subscribe((res: any) => {
+          if (res.rol == 'Administrador') {
+            console.log('Administrador');
+          } else if (res.rol == 'Conductor') {
+            console.log('Conductor');
+          } else if (res.rol == 'Logistico') {
+            console.log('Logistico');
+          }
+        });
+      },
+      (error) => {
+        console.error('Error en el inicio de sesión:', error);
+      }
+    );
   }
-
-
 }
-
-

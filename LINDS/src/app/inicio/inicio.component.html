@@ -27,14 +27,16 @@
             <ion-label position="floating" id="text-conten">Email</ion-label>
             <ion-input
               type="email"
-              placeholder="Digite su Email">
+              placeholder="Digite su Email"
+              [(ngModel)] = "correo">
             </ion-input>
           </ion-item>
           <ion-item>
             <ion-label position="floating" shape="round">Contraseña</ion-label>
             <ion-input
               type="password"
-              placeholder="Digite su Contraseña">
+              placeholder="Digite su Contraseña"
+              [(ngModel)] = "password">
             </ion-input>
           </ion-item>
           <div class="contenedor-botones">

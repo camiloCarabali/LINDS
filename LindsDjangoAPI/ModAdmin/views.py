@@ -408,16 +408,16 @@ class login(APIView):
 
 
 class usuario(APIView):
-    def get(self, request):
-        token = request.COOKIES.get('jwt')
+    def get(self, request, token):
+        #token = request.COOKIES.get('jwt')
 
         if not token:
-            raise AuthenticationFailed('Unauthenticated!')
+            raise AuthenticationFailed('Unauthenticated 1!')
 
         try:
             payload = jwt.decode(token, 'secret', algorithm=['HS256'])
         except jwt.ExpiredSignatureError:
-            raise AuthenticationFailed('Unauthenticated!')
+            raise AuthenticationFailed('Unauthenticated 2!')
 
         user = Usuario.objects.filter(cedula=payload['cedula']).first()
         serializer = UsuarioSerializer(user)

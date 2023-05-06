@@ -89,4 +89,12 @@ export class SharedService {
   correo(val: any) {
     return this.http.post<any[]>(this.APIURL + 'correo/', val);
   }
+
+  login(val: any): Observable<any> {
+    return this.http.post<any>(this.APIURL + 'login', val);
+  }
+
+  user(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'user/' + val);
+  }
 }

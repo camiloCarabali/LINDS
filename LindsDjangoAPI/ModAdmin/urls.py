@@ -37,6 +37,6 @@ urlpatterns = [
     path('correo/', views.correo),
     path('registro', views.registro.as_view()),
     path('login', views.login.as_view()),
-    path('users', views.usuario.as_view()),
+    path('user/<token>', views.usuario.as_view()),
     path('logout', views.logout.as_view())
 ]
