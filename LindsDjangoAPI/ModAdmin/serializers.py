@@ -78,4 +78,4 @@ class DetalleViajeSerializer(serializers.ModelSerializer):
 class CamionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Camion
-        fields = ('matricula', 'modelo', 'tipo', 'color', 'almacenamiento')
+        fields = ('matricula', 'modelo', 'tipo', 'color', 'almacenamiento', 'empresa', 'sucursal')

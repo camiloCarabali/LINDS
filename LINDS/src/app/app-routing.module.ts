@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
-import { SucursalComponent } from './sucursal/sucursal.component';
-import { UsuarioComponent } from './usuario/usuario.component';
-import { EmpresaComponent } from './empresa/empresa.component';
+import { SucursalComponent } from './ADMINISTRADOR/sucursal/sucursal.component';
+import { UsuarioComponent } from './ADMINISTRADOR/usuario/usuario.component';
+import { EmpresaComponent } from './ADMINISTRADOR/empresa/empresa.component';
 import { InicioComponent } from './inicio/inicio.component';
 
 const routes: Routes = [

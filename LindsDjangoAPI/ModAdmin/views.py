@@ -2,9 +2,9 @@ from django.core.mail import send_mail
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
-from ModAdmin.models import Empresa, Sucursal, Usuario, Pais, Departamento, Municipio, Rol
+from ModAdmin.models import Empresa, Sucursal, Usuario, Pais, Departamento, Municipio, Rol, Camion
 from ModAdmin.serializers import EmpresaSerializer, SucursalSerializer, UsuarioSerializer, PaisSerializer, \
-    DepartamentoSerializer, MunicipioSerializer, RolSerializer
+    DepartamentoSerializer, MunicipioSerializer, RolSerializer, CamionSerializer
 from django.http.response import JsonResponse
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer
@@ -291,7 +291,6 @@ def mostrarUsuario(request):
         usuarios_serializers = UsuarioSerializer(usuarios, many=True)
         return JsonResponse(usuarios_serializers.data, safe=False)
 
-
 @csrf_exempt
 def crearUsuario(request):
     if request.method == 'POST':
@@ -327,6 +326,55 @@ def inactivarUsuario(request, cedula):
 """
 /---------------------------------------------------------------/
 """
+
+@csrf_exempt
+def mostrarCamion(request):
+    if request.method == 'GET':
+        camiones = Camion.objects.all()
+        camiones_serializers = CamionSerializer(camiones, many=True)
+        return JsonResponse(camiones_serializers.data, safe=False)
+
+def buscarCamion(request, sucursal):
+    if request.method == 'GET':
+        camiones = Camion.objects.filter(sucursal=sucursal)
+        camiones_serializers = CamionSerializer(camiones, many=True)
+        return JsonResponse(camiones_serializers.data, safe=False)
+
+@csrf_exempt
+def crearCamion(request):
+    if request.method == 'POST':
+        camion_data = JSONParser().parse(request)
+        camion_serializers = CamionSerializer(data=camion_data)
+        if camion_serializers.is_valid():
+            camion_serializers.save()
+            return JsonResponse("Camion añadido", safe=False)
+        return JsonResponse("Fallo al añadir camion", safe=False)
+
+
+@csrf_exempt
+def modificarCamion(request):
+    if request.method == 'PUT':
+        camion_data = JSONParser().parse(request)
+        camion = Camion.objects.get(matricula=camion_data['matricula'])
+        camion_serializers = CamionSerializer(camion, data=camion_data)
+        if camion_serializers.is_valid():
+            camion_serializers.save()
+            return JsonResponse("Camion Modificado", safe=False)
+        return JsonResponse("Fallo al modificar camion", safe=False)
+
+
+@csrf_exempt
+def EliminarCamion(request, matricula):
+    if request.method == 'DELETE':
+        camion = Camion.objects.get(matricula=matricula)
+        camion.delete()
+        return JsonResponse("Camion Eliminado", safe=False)
+
+
+"""
+/---------------------------------------------------------------/
+"""
+
 
 @csrf_exempt
 def buscarEmpresa(request, NIT):
@@ -412,12 +460,12 @@ class usuario(APIView):
         #token = request.COOKIES.get('jwt')
 
         if not token:
-            raise AuthenticationFailed('Unauthenticated 1!')
+            raise AuthenticationFailed('Unauthenticated!')
 
         try:
             payload = jwt.decode(token, 'secret', algorithm=['HS256'])
         except jwt.ExpiredSignatureError:
-            raise AuthenticationFailed('Unauthenticated 2!')
+            raise AuthenticationFailed('Unauthenticated!')
 
         user = Usuario.objects.filter(cedula=payload['cedula']).first()
         serializer = UsuarioSerializer(user)

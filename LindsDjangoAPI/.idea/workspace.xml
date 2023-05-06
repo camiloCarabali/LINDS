@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cec2a83-20d1-47e2-b041-20ecb4bc8243" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../LINDS/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LINDS/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/inicio/inicio.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/inicio/inicio.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/inicio/inicio.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/inicio/inicio.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../LINDS/src/services/shared.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/services/shared.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ModAdmin/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ModAdmin/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ModAdmin/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ModAdmin/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -130,6 +126,17 @@
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="requirements.txt" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

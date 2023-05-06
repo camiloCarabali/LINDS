@@ -75,7 +75,9 @@ export class SharedService {
   }
 
   addUsuario(val: any) {
-    return this.http.post<any[]>(this.APIURL + 'registro', val, { observe: 'response' });
+    return this.http.post<any[]>(this.APIURL + 'registro', val, {
+      observe: 'response',
+    });
   }
 
   updateUsuario(val: any) {
@@ -83,7 +85,7 @@ export class SharedService {
   }
 
   inactivarUsuario(val: any) {
-    return this.http.put<any[]>(this.APIURL + 'inactivarUsuario/'+ val, val);
+    return this.http.put<any[]>(this.APIURL + 'inactivarUsuario/' + val, val);
   }
 
   correo(val: any) {

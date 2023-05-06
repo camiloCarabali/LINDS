@@ -85,6 +85,8 @@ class Camion(models.Model):
     tipo = models.CharField(max_length=100)
     color = models.CharField(max_length=100)
     capacidad = models.IntegerField(null=False)
+    empresa = models.CharField(max_length=100, null=False)
+    sucursal = models.CharField(max_length=100, null=False)
 
     class Meta:
         db_table = 'camion'
