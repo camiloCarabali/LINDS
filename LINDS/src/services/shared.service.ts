@@ -50,6 +50,10 @@ export class SharedService {
     return this.http.get<any[]>(this.APIURL + '/municipio/');
   }
 
+  getDepartamentoList(): Observable<any[]> {
+    return this.http.get<any[]>(this.APIURL + 'departamento/');
+  }
+
   getBuscarMunicipio(val: String) {
     return this.http.get<any[]>(this.APIURL + 'buscarMunicipio/' + val);
   }
@@ -98,5 +102,25 @@ export class SharedService {
 
   user(val: String) {
     return this.http.get<any[]>(this.APIURL + 'user/' + val);
+  }
+
+  getCamionList(): Observable<any[]> {
+    return this.http.get<any[]>(this.APIURL + 'camion/');
+  }
+
+  addCamion(val: any) {
+    return this.http.post<any[]>(this.APIURL + 'crearCamion/', val);
+  }
+
+  updateCamion(val: any) {
+    return this.http.put<any[]>(this.APIURL + 'modificarCamion/', val);
+  }
+
+  eliminarCamion(val: string) {
+    return this.http.delete<any[]>(this.APIURL + 'eliminarCamion/' + val);
+  }
+
+  getBuscarCamion(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'buscarCamion/' + val);
   }
 }

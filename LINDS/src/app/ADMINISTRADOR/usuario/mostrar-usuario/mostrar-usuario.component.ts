@@ -7,7 +7,7 @@ import { SharedService } from 'src/services/shared.service';
   templateUrl: './mostrar-usuario.component.html',
   styleUrls: ['./mostrar-usuario.component.scss'],
 })
-export class MostrarUsuarioComponent  implements OnInit {
+export class MostrarUsuarioComponent implements OnInit {
   @ViewChild(IonModal)
   modal!: IonModal;
 
@@ -17,7 +17,7 @@ export class MostrarUsuarioComponent  implements OnInit {
     this.isModalOpen = isOpen;
   }
 
-  constructor(private service: SharedService) { }
+  constructor(private service: SharedService) {}
 
   usuarioList: any = [];
 

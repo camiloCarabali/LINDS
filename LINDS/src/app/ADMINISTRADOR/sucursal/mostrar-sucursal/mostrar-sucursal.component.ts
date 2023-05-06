@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SharedService } from 'src/services/shared.service';
 import { IonModal } from '@ionic/angular';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @Component({
   selector: 'app-mostrar-sucursal',
@@ -35,7 +34,7 @@ export class MostrarSucursalComponent implements OnInit {
 
   cancel() {
     this.ActivateCrearEditarSucursalComp = false;
-    this.modal.dismiss(null, 'cancel');
+    this.setOpen(false)
     this.refreshSucursalList();
   }
 
@@ -45,6 +44,7 @@ export class MostrarSucursalComponent implements OnInit {
       nombre: '',
       empresa: '',
       direccion: '',
+      departamento: '',
       municipio: '',
     };
     this.modalTitle = 'Añadir Sucursal';

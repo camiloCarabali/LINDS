@@ -10,6 +10,7 @@ export class CrearEditarSucursalComponent implements OnInit {
   constructor(private service: SharedService) {}
 
   empresaList: any = [];
+  departamentoList: any = [];
   municipioList: any = [];
 
   @Input() sucursal: any;
@@ -17,6 +18,7 @@ export class CrearEditarSucursalComponent implements OnInit {
   nombre: string = '';
   empresa: any;
   direccion: string = '';
+  departamento: any;
   municipio: any;
 
   ngOnInit() {
@@ -24,9 +26,11 @@ export class CrearEditarSucursalComponent implements OnInit {
     this.nombre = this.sucursal.nombre;
     this.empresa = this.sucursal.empresa;
     this.direccion = this.sucursal.direccion;
+    this.departamento = this.sucursal.departamento;
     this.municipio = this.sucursal.municipio;
     this.cargarEmpresas();
-    this.cargarMunicipios();
+    this.cargarDepartamentos();
+    this.cargarMunicipio();
   }
 
   add() {
@@ -35,6 +39,7 @@ export class CrearEditarSucursalComponent implements OnInit {
       nombre: this.nombre,
       empresa: this.empresa,
       direccion: this.direccion,
+      departamento: this.departamento,
       municipio: this.municipio,
     };
     this.service.addSucursal(val).subscribe((res) => {
@@ -48,6 +53,7 @@ export class CrearEditarSucursalComponent implements OnInit {
       nombre: this.nombre,
       empresa: this.empresa,
       direccion: this.direccion,
+      departamento: this.departamento,
       municipio: this.municipio,
     };
     this.service.updateSucursal(val).subscribe((res) => {
@@ -61,8 +67,14 @@ export class CrearEditarSucursalComponent implements OnInit {
     });
   }
 
-  cargarMunicipios() {
-    this.service.getMunicipioList().subscribe((data) => {
+  cargarDepartamentos() {
+    this.service.getDepartamentoList().subscribe((data) => {
+      this.departamentoList = data;
+    });
+  }
+
+  cargarMunicipio() {
+    this.service.getBuscarMunicipio(this.departamento).subscribe((data) => {
       this.municipioList = data;
     });
   }

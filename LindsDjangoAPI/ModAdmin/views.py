@@ -364,7 +364,7 @@ def modificarCamion(request):
 
 
 @csrf_exempt
-def EliminarCamion(request, matricula):
+def eliminarCamion(request, matricula):
     if request.method == 'DELETE':
         camion = Camion.objects.get(matricula=matricula)
         camion.delete()

@@ -13,6 +13,9 @@ import { CrearEditarSucursalComponent } from './ADMINISTRADOR/sucursal/crear-edi
 import { UsuarioComponent } from './ADMINISTRADOR/usuario/usuario.component';
 import { MostrarUsuarioComponent } from './ADMINISTRADOR/usuario/mostrar-usuario/mostrar-usuario.component';
 import { CrearEditarUsuarioComponent } from './ADMINISTRADOR/usuario/crear-editar-usuario/crear-editar-usuario.component';
+
+import { CamionComponent } from './LOGISTICO/camion/camion.component';
+
 import { SharedService } from 'src/services/shared.service';
 import { InicioComponent } from './inicio/inicio.component';
 
@@ -23,6 +26,9 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { EmpresaComponent } from './ADMINISTRADOR/empresa/empresa.component';
 import { MostrarEmpresaComponent } from './ADMINISTRADOR/empresa/mostrar-empresa/mostrar-empresa.component';
 import { CrearEditarEmpresaComponent } from './ADMINISTRADOR/empresa/crear-editar-empresa/crear-editar-empresa.component';
+
+import { MostrarCamionComponent } from './LOGISTICO/camion/mostrar-camion/mostrar-camion.component';
+import { CrearEditarCamionComponent } from './LOGISTICO/camion/crear-editar-camion/crear-editar-camion.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +43,9 @@ import { CrearEditarEmpresaComponent } from './ADMINISTRADOR/empresa/crear-edita
     MostrarEmpresaComponent,
     CrearEditarEmpresaComponent,
     InicioComponent,
-
+    CamionComponent,
+    MostrarCamionComponent,
+    CrearEditarCamionComponent,
   ],
   imports: [
     BrowserModule,

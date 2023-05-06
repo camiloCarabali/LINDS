@@ -5,6 +5,7 @@ import { SucursalComponent } from './ADMINISTRADOR/sucursal/sucursal.component';
 import { UsuarioComponent } from './ADMINISTRADOR/usuario/usuario.component';
 import { EmpresaComponent } from './ADMINISTRADOR/empresa/empresa.component';
 import { InicioComponent } from './inicio/inicio.component';
+import { CamionComponent } from './LOGISTICO/camion/camion.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'usuario',
     component: UsuarioComponent
+  },
+  {
+    path: 'camion',
+    component: CamionComponent
   },
 ];
 
