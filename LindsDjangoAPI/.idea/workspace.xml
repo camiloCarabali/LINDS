@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cec2a83-20d1-47e2-b041-20ecb4bc8243" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ModAdmin/migrations/0006_remove_viaje_llegada_alter_puntoentrega_viaje.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ModAdmin/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ModAdmin/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ModAdmin/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,13 +33,10 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;git-widget-placeholder&quot;: &quot;camilo&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/CamiloCarabali/Documents/GitHub/LINDS/LindsDjangoAPI/manage.py&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
   <component name="RunManager" selected="Python.runserver">
     <configuration name="makemigrations ModAdmin" type="PythonConfigurationType" factoryName="Python">
       <module name="LindsDjangoAPI" />
