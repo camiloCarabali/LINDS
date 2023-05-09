@@ -123,4 +123,22 @@ export class SharedService {
   getBuscarCamion(val: String) {
     return this.http.get<any[]>(this.APIURL + 'buscarCamion/' + val);
   }
+
+  getViajeList(): Observable<any[]> {
+    return this.http.get<any[]>(this.APIURL + 'viaje/');
+  }
+
+  addViaje(val: any) {
+    return this.http.post<any[]>(this.APIURL + 'crearViaje/', val);
+  }
+
+  updateViaje(val: any) {
+    return this.http.put<any[]>(this.APIURL + 'modificarViaje/', val);
+  }
+
+  inactivarViaje(val: string) {
+    return this.http.delete<any[]>(this.APIURL + 'inactivarViaje/' + val);
+  }
+
+
 }
