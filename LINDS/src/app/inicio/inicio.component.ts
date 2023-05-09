@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Route, Router } from '@angular/router';
 import { SharedService } from 'src/services/shared.service';
-import { UiServiceService } from 'src/services/ui-service.service';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({

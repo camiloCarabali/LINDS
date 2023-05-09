@@ -16,6 +16,7 @@ import { CrearEditarUsuarioComponent } from './ADMINISTRADOR/usuario/crear-edita
 
 import { CamionComponent } from './LOGISTICO/camion/camion.component';
 
+
 import { SharedService } from 'src/services/shared.service';
 import { InicioComponent } from './inicio/inicio.component';
 
@@ -29,6 +30,15 @@ import { CrearEditarEmpresaComponent } from './ADMINISTRADOR/empresa/crear-edita
 
 import { MostrarCamionComponent } from './LOGISTICO/camion/mostrar-camion/mostrar-camion.component';
 import { CrearEditarCamionComponent } from './LOGISTICO/camion/crear-editar-camion/crear-editar-camion.component';
+
+import { PuntoEntregaComponent } from './LOGISTICO/punto-entrega/punto-entrega.component';
+import { MostrarPuntoEntregaComponent } from './LOGISTICO/punto-entrega/mostrar-punto-entrega/mostrar-punto-entrega.component';
+import { CrearEditarPuntoEntregaComponent } from './LOGISTICO/punto-entrega/crear-editar-punto-entrega/crear-editar-punto-entrega.component';
+
+import { ViajeComponent } from './LOGISTICO/viaje/viaje.component';
+import { MostrarViajeComponent } from './LOGISTICO/viaje/mostrar-viaje/mostrar-viaje.component';
+import { CrearEditarViajeComponent } from './LOGISTICO/viaje/crear-editar-viaje/crear-editar-viaje.component';
+
 
 @NgModule({
   declarations: [
@@ -46,6 +56,12 @@ import { CrearEditarCamionComponent } from './LOGISTICO/camion/crear-editar-cami
     CamionComponent,
     MostrarCamionComponent,
     CrearEditarCamionComponent,
+    PuntoEntregaComponent,
+    MostrarPuntoEntregaComponent,
+    CrearEditarPuntoEntregaComponent,
+    ViajeComponent,
+    MostrarViajeComponent,
+    CrearEditarViajeComponent,
   ],
   imports: [
     BrowserModule,
