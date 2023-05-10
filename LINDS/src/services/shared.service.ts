@@ -144,4 +144,24 @@ export class SharedService {
     return this.http.get<any[]>(this.APIURL + 'buscarConductor/');
   }
 
+  getPuntoEntregaList(): Observable<any[]> {
+    return this.http.get<any[]>(this.APIURL + 'puntoEntrega/');
+  }
+
+  addPuntoEntrega(val: any) {
+    return this.http.post<any[]>(this.APIURL + 'crearPuntoEntrega/', val);
+  }
+
+  updatePuntoEntrega(val: any) {
+    return this.http.put<any[]>(this.APIURL + 'modificarPuntoEntrega/', val);
+  }
+
+  inactivarPuntoEntrega(val: string) {
+    return this.http.put<any[]>(this.APIURL + 'inactivarPuntoEntrega/' + val, val);
+  }
+
+  activarPuntoEntrega(val: string) {
+    return this.http.put<any[]>(this.APIURL + 'activarPuntoEntrega/' + val, val);
+  }
+
 }
