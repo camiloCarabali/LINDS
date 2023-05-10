@@ -123,4 +123,45 @@ export class SharedService {
   getBuscarCamion(val: String) {
     return this.http.get<any[]>(this.APIURL + 'buscarCamion/' + val);
   }
+
+  getViajeList(): Observable<any[]> {
+    return this.http.get<any[]>(this.APIURL + 'viaje/');
+  }
+
+  addViaje(val: any) {
+    return this.http.post<any[]>(this.APIURL + 'crearViaje/', val);
+  }
+
+  updateViaje(val: any) {
+    return this.http.put<any[]>(this.APIURL + 'modificarViaje/', val);
+  }
+
+  inactivarViaje(val: string) {
+    return this.http.delete<any[]>(this.APIURL + 'inactivarViaje/' + val);
+  }
+
+  getBuscarConductor(): Observable<any[]> {
+    return this.http.get<any[]>(this.APIURL + 'buscarConductor/');
+  }
+
+  getPuntoEntregaList(): Observable<any[]> {
+    return this.http.get<any[]>(this.APIURL + 'puntoEntrega/');
+  }
+
+  addPuntoEntrega(val: any) {
+    return this.http.post<any[]>(this.APIURL + 'crearPuntoEntrega/', val);
+  }
+
+  updatePuntoEntrega(val: any) {
+    return this.http.put<any[]>(this.APIURL + 'modificarPuntoEntrega/', val);
+  }
+
+  inactivarPuntoEntrega(val: string) {
+    return this.http.put<any[]>(this.APIURL + 'inactivarPuntoEntrega/' + val, val);
+  }
+
+  activarPuntoEntrega(val: string) {
+    return this.http.put<any[]>(this.APIURL + 'activarPuntoEntrega/' + val, val);
+  }
+
 }

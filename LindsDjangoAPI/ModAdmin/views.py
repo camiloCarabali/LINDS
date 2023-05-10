@@ -419,6 +419,13 @@ def inactivarPuntoEntrega(request, id):
         punto_entrega.save()
         return JsonResponse("Punto de entrega Inactivado", safe=False)
 
+def activarPuntoEntrega(request, id):
+    if request.method == 'PUT':
+        punto_entrega = PuntoEntrega.objects.get(id=id)
+        punto_entrega.estado = True
+        punto_entrega.save()
+        return JsonResponse("Punto de entrega Activado", safe=False)
+
 
 """
 /---------------------------------------------------------------/
@@ -490,6 +497,12 @@ def buscarSucursal(request, empresa):
         sucursales = Sucursal.objects.filter(empresa=empresa)
         sucursales_serializers = SucursalSerializer(sucursales, many=True)
         return JsonResponse(sucursales_serializers.data, safe=False)
+
+def buscarConductor(request):
+    if request.method == 'GET':
+        conductores = Usuario.objects.filter(rol="Conductor")
+        conductores_serializers = UsuarioSerializer(conductores, many=True)
+        return JsonResponse(conductores_serializers.data, safe=False)
 
 
 """

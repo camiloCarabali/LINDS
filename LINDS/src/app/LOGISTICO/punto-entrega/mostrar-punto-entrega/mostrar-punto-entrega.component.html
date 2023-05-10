@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Punto de Entrega </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid [fixed]="true">
+    <ion-button id="open-modal" (click)="add()">Crear</ion-button>
+    <ion-modal [isOpen]="isModalOpen">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>{{ modalTitle }}</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="cancel()">Close</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          <app-crear-editar-punto-entrega
+            [puntoEntrega]="puntoEntrega"
+            *ngIf="Activate_CrearEditar_PuntoEntregaComp"
+          ></app-crear-editar-punto-entrega>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+
+    <ion-row class="main">
+      <ion-col>ID</ion-col>
+      <ion-col>DIRECCION</ion-col>
+      <ion-col>NOMBRE</ion-col>
+      <ion-col>LOTE</ion-col>
+      <ion-col>VIAJE</ion-col>
+      <ion-col>ACCIONES</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let dataItem of puntoEntregaList">
+      <ion-col>{{ dataItem.id }}</ion-col>
+      <ion-col>{{ dataItem.direccion }}</ion-col>
+      <ion-col>{{ dataItem.nombre }}</ion-col>
+      <ion-col>{{ dataItem.numero_lote_entrega }}</ion-col>
+      <ion-col>{{ dataItem.viaje }}</ion-col>
+      <ion-col>
+        <ion-icon
+          name="create"
+          id="open-modal"
+          (click)="edit(dataItem)"
+        ></ion-icon>
+        <ion-icon name="trash" (click)="delete(dataItem)"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
