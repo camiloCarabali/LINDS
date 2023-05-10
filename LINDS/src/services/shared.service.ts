@@ -140,5 +140,8 @@ export class SharedService {
     return this.http.delete<any[]>(this.APIURL + 'inactivarViaje/' + val);
   }
 
+  getBuscarConductor(): Observable<any[]> {
+    return this.http.get<any[]>(this.APIURL + 'buscarConductor/');
+  }
 
 }

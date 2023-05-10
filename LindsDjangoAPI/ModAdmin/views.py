@@ -491,6 +491,12 @@ def buscarSucursal(request, empresa):
         sucursales_serializers = SucursalSerializer(sucursales, many=True)
         return JsonResponse(sucursales_serializers.data, safe=False)
 
+def buscarConductor(request):
+    if request.method == 'GET':
+        conductores = Usuario.objects.filter(rol="Conductor")
+        conductores_serializers = UsuarioSerializer(conductores, many=True)
+        return JsonResponse(conductores_serializers.data, safe=False)
+
 
 """
 /---------------------------------------------------------------/
