@@ -24,7 +24,9 @@ export class MostrarPuntoEntregaComponent implements OnInit {
   nombreFilter: string = '';
   listWithoutFilter: any = [];
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.refreshPuntoEntregaList();
+  }
 
   add() {
     this.puntoEntrega = {
@@ -73,7 +75,7 @@ export class MostrarPuntoEntregaComponent implements OnInit {
   }
 
   refreshPuntoEntregaList() {
-    this.service.getViajeList().subscribe((data) => {
+    this.service.getPuntoEntregaList().subscribe((data) => {
       this.puntoEntregaList = data;
       this.listWithoutFilter = data;
     });

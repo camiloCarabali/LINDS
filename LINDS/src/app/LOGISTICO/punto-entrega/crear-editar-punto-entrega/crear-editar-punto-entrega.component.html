@@ -1,3 +1,39 @@
-<p>
-  crear-editar-punto-entrega works!
-</p>
+<ion-item>
+  <ion-label position="floating">Direccion</ion-label>
+  <ion-input
+    placeholder="Escriba la direccion del punto de entrega"
+    [(ngModel)]="direccion"
+  ></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label position="floating">Nombre</ion-label>
+  <ion-input
+    placeholder="Escriba el nombre"
+    [(ngModel)]="nombre"
+  ></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label position="floating">Numero de lote</ion-label>
+  <ion-input
+    placeholder="Escriba el numero de lote"
+    [(ngModel)]="numero_lote_entrega"
+    type = "number"
+  ></ion-input>
+</ion-item>
+
+<ion-list>
+  <ion-item>
+    <ion-select placeholder="Seleccione el viaje" [(ngModel)]="viaje">
+      <ion-select-option
+        value="{{ viaje.id }}"
+        *ngFor="let viaje of viajeList"
+        >{{ viaje.id }}</ion-select-option
+      >
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+<ion-button (click)="add()" *ngIf="puntoEntrega.id == 0">Añadir</ion-button>
+<ion-button (click)="edit()" *ngIf="puntoEntrega.id != 0">Editar</ion-button>

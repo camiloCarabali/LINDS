@@ -13,6 +13,12 @@ export class MostrarViajeComponent  implements OnInit {
     this.isModalOpen = isOpen;
   }
 
+  isModalOpen1 = false;
+
+  setOpen1(isOpen1: boolean) {
+    this.isModalOpen1 = isOpen1;
+  }
+
   constructor(private service: SharedService) { }
 
   viajeList: any = [];

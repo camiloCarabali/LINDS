@@ -426,6 +426,20 @@ def activarPuntoEntrega(request, id):
         punto_entrega.save()
         return JsonResponse("Punto de entrega Activado", safe=False)
 
+def waypoints(request, viaje):
+    if request.method == 'GET':
+        waypoints = []
+        entregas = PuntoEntrega.objects.filter(viaje=viaje)
+        for n in range(len(entregas)):
+            waypoints.append(entregas[n].direccion)
+        return JsonResponse(waypoints, safe=False)
+
+'''
+empresa = Empresa.objects.get(NIT=NIT)
+    nombre = empresa.nombre
+    response_data = {'nombre': nombre}
+'''
+
 
 """
 /---------------------------------------------------------------/
