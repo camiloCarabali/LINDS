@@ -57,6 +57,7 @@ export class MapaViajeComponent implements OnInit {
         });
       }
       this.llegada = data[data.length - 1];
+      waypoints.pop()
 
       this.directionsService
         .route({

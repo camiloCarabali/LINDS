@@ -412,19 +412,11 @@ def modificarPuntoEntrega(request):
 
 
 @csrf_exempt
-def inactivarPuntoEntrega(request, id):
-    if request.method == 'PUT':
+def eliminarPuntoEntrega(request, id):
+    if request.method == 'DELETE':
         punto_entrega = PuntoEntrega.objects.get(id=id)
-        punto_entrega.estado = False
-        punto_entrega.save()
-        return JsonResponse("Punto de entrega Inactivado", safe=False)
-
-def activarPuntoEntrega(request, id):
-    if request.method == 'PUT':
-        punto_entrega = PuntoEntrega.objects.get(id=id)
-        punto_entrega.estado = True
-        punto_entrega.save()
-        return JsonResponse("Punto de entrega Activado", safe=False)
+        punto_entrega.delete()
+        return JsonResponse("Punto de entrega eliminado", safe=False)
 
 def waypoints(request, viaje):
     if request.method == 'GET':

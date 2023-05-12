@@ -57,8 +57,8 @@ export class MostrarPuntoEntregaComponent implements OnInit {
   }
 
   delete(item: any) {
-    if (confirm('Desea inactivar este punto de entrega?')) {
-      this.service.inactivarPuntoEntrega(item.id).subscribe((data) => {
+    if (confirm('Desea eliminar este punto de entrega?')) {
+      this.service.eliminarPuntoEntrega(item.id).subscribe((data) => {
         alert(data.toString());
         this.refreshPuntoEntregaList();
       });
