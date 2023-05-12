@@ -16,7 +16,6 @@ import { CrearEditarUsuarioComponent } from './ADMINISTRADOR/usuario/crear-edita
 
 import { CamionComponent } from './LOGISTICO/camion/camion.component';
 
-
 import { SharedService } from 'src/services/shared.service';
 import { InicioComponent } from './inicio/inicio.component';
 
@@ -38,7 +37,7 @@ import { CrearEditarPuntoEntregaComponent } from './LOGISTICO/punto-entrega/crea
 import { ViajeComponent } from './LOGISTICO/viaje/viaje.component';
 import { MostrarViajeComponent } from './LOGISTICO/viaje/mostrar-viaje/mostrar-viaje.component';
 import { CrearEditarViajeComponent } from './LOGISTICO/viaje/crear-editar-viaje/crear-editar-viaje.component';
-
+import { MapaViajeComponent } from './LOGISTICO/viaje/mapa-viaje/mapa-viaje.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +61,7 @@ import { CrearEditarViajeComponent } from './LOGISTICO/viaje/crear-editar-viaje/
     ViajeComponent,
     MostrarViajeComponent,
     CrearEditarViajeComponent,
+    MapaViajeComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,8 +76,6 @@ import { CrearEditarViajeComponent } from './LOGISTICO/viaje/crear-editar-viaje/
     SharedService,
   ],
   bootstrap: [AppComponent],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
-  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

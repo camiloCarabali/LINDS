@@ -434,12 +434,6 @@ def waypoints(request, viaje):
             waypoints.append(entregas[n].direccion)
         return JsonResponse(waypoints, safe=False)
 
-'''
-empresa = Empresa.objects.get(NIT=NIT)
-    nombre = empresa.nombre
-    response_data = {'nombre': nombre}
-'''
-
 
 """
 /---------------------------------------------------------------/

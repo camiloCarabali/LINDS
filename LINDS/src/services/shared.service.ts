@@ -164,4 +164,8 @@ export class SharedService {
     return this.http.put<any[]>(this.APIURL + 'activarPuntoEntrega/' + val, val);
   }
 
+  waypoints(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'waypoints/' + val);
+  }
+
 }
