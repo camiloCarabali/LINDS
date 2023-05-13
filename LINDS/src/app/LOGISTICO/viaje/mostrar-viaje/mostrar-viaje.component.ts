@@ -32,6 +32,8 @@ export class MostrarViajeComponent implements OnInit {
 
   nombreFilter: string = '';
   listWithoutFilter: any = [];
+  almacenamiento: any = [];
+  capacidad: any = [];
 
   ngOnInit() {
     this.refreshViajeList();
@@ -75,9 +77,26 @@ export class MostrarViajeComponent implements OnInit {
   }
 
   refreshViajeList() {
-    this.service.getViajeList().subscribe((data) => {
+    this.service.getViajeList().subscribe((data: any) => {
       this.viajeList = data;
       this.listWithoutFilter = data;
+      for (let peso of this.viajeList) {
+        this.almacenamiento = [
+          {
+            matricula: peso.camion,
+          },
+        ];
+      }
+
+      for (let item of this.almacenamiento) {
+        this.buscarPeso(item.matricula);
+      }
+    });
+  }
+
+  buscarPeso(matricula: any) {
+    this.service.getBuscarPeso(matricula).subscribe((data: any) => {
+      this.capacidad = [data];
     });
   }
 

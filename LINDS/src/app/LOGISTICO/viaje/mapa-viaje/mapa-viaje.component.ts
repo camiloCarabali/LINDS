@@ -28,9 +28,7 @@ export class MapaViajeComponent implements OnInit {
   }
 
   loadMap() {
-    // create a new map by passing HTMLElement
     const mapEle = document.getElementById('map') as HTMLElement;
-    // create map
     this.map = new google.maps.Map(mapEle, {
       center: {
         query: this.inicio,

@@ -168,4 +168,8 @@ export class SharedService {
     return this.http.get<any[]>(this.APIURL + 'waypoints/' + val);
   }
 
+  getBuscarPeso(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'buscarPeso/' + val);
+  }
+
 }
