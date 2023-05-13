@@ -412,19 +412,19 @@ def modificarPuntoEntrega(request):
 
 
 @csrf_exempt
-def inactivarPuntoEntrega(request, id):
-    if request.method == 'PUT':
+def eliminarPuntoEntrega(request, id):
+    if request.method == 'DELETE':
         punto_entrega = PuntoEntrega.objects.get(id=id)
-        punto_entrega.estado = False
-        punto_entrega.save()
-        return JsonResponse("Punto de entrega Inactivado", safe=False)
+        punto_entrega.delete()
+        return JsonResponse("Punto de entrega eliminado", safe=False)
 
-def activarPuntoEntrega(request, id):
-    if request.method == 'PUT':
-        punto_entrega = PuntoEntrega.objects.get(id=id)
-        punto_entrega.estado = True
-        punto_entrega.save()
-        return JsonResponse("Punto de entrega Activado", safe=False)
+def waypoints(request, viaje):
+    if request.method == 'GET':
+        waypoints = []
+        entregas = PuntoEntrega.objects.filter(viaje=viaje)
+        for n in range(len(entregas)):
+            waypoints.append(entregas[n].direccion)
+        return JsonResponse(waypoints, safe=False)
 
 
 """
@@ -503,6 +503,13 @@ def buscarConductor(request):
         conductores = Usuario.objects.filter(rol="Conductor")
         conductores_serializers = UsuarioSerializer(conductores, many=True)
         return JsonResponse(conductores_serializers.data, safe=False)
+
+def buscarPeso(request, matricula):
+    if request.method == 'GET':
+        camion = Camion.objects.get(matricula=matricula)
+        capacidad = camion.capacidad
+        response_data = {'capacidad': capacidad}
+        return JsonResponse(response_data)
 
 
 """
