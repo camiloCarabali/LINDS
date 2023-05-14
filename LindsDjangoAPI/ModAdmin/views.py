@@ -504,6 +504,13 @@ def buscarConductor(request):
         conductores_serializers = UsuarioSerializer(conductores, many=True)
         return JsonResponse(conductores_serializers.data, safe=False)
 
+def buscarPeso(request, matricula):
+    if request.method == 'GET':
+        camion = Camion.objects.get(matricula=matricula)
+        capacidad = camion.capacidad
+        response_data = {'capacidad': capacidad}
+        return JsonResponse(response_data)
+
 
 """
 /---------------------------------------------------------------/
