@@ -109,7 +109,7 @@ class PuntoEntrega(models.Model):
     direccion = models.CharField(max_length=100, null=False)
     nombre = models.CharField(max_length=100, null=False)
     numero_lote_entrega = models.IntegerField(null=False)
-    estado = models.BooleanField(default=False, null=False)
+    estado = models.BooleanField(default=True, null=False)
     viaje = models.CharField(max_length=100, null=True)
 
     class Meta:

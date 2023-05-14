@@ -156,12 +156,16 @@ export class SharedService {
     return this.http.put<any[]>(this.APIURL + 'modificarPuntoEntrega/', val);
   }
 
-  inactivarPuntoEntrega(val: string) {
-    return this.http.put<any[]>(this.APIURL + 'inactivarPuntoEntrega/' + val, val);
+  eliminarPuntoEntrega(val: string) {
+    return this.http.delete<any[]>(this.APIURL + 'eliminarPuntoEntrega/' + val);
   }
 
   activarPuntoEntrega(val: string) {
     return this.http.put<any[]>(this.APIURL + 'activarPuntoEntrega/' + val, val);
+  }
+
+  waypoints(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'waypoints/' + val);
   }
 
 }

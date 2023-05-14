@@ -6,19 +6,28 @@ import { SharedService } from 'src/services/shared.service';
   templateUrl: './mostrar-viaje.component.html',
   styleUrls: ['./mostrar-viaje.component.scss'],
 })
-export class MostrarViajeComponent  implements OnInit {
+export class MostrarViajeComponent implements OnInit {
   isModalOpen = false;
 
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
   }
 
-  constructor(private service: SharedService) { }
+  isModalOpen1 = false;
+
+  setOpen1(isOpen1: boolean) {
+    this.isModalOpen1 = isOpen1;
+  }
+
+  constructor(private service: SharedService) {}
 
   viajeList: any = [];
 
+  waypoints = [];
+
   modalTitle: string = '';
   Activate_CrearEditar_ViajeComp: boolean = false;
+  Activate_Mapa_ViajeComp: boolean = false;
   viaje: any;
 
   nombreFilter: string = '';
@@ -44,7 +53,7 @@ export class MostrarViajeComponent  implements OnInit {
 
   cancel() {
     this.Activate_CrearEditar_ViajeComp = false;
-    this.setOpen(false)
+    this.setOpen(false);
     this.refreshViajeList();
   }
 
@@ -82,5 +91,9 @@ export class MostrarViajeComponent  implements OnInit {
     });
   }
 
-
+  map(item: any) {
+    this.setOpen1(true);
+    this.Activate_Mapa_ViajeComp = true;
+    this.viaje = item;
+  }
 }
