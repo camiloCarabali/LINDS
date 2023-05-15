@@ -33,7 +33,7 @@ export class MostrarPuntoEntregaComponent implements OnInit {
       id: 0,
       direccion: '',
       nombre: '',
-      numero_lote_entrega: '',
+      peso: '',
       viaje: '',
       estado: '',
     };
