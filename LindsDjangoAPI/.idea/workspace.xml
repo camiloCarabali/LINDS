@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cec2a83-20d1-47e2-b041-20ecb4bc8243" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ModAdmin/migrations/0007_alter_puntoentrega_estado.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ModAdmin/migrations/0008_rename_numero_lote_entrega_puntoentrega_peso.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/viaje/mapa-viaje/mapa-viaje.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/viaje/mapa-viaje/mapa-viaje.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/viaje/mostrar-viaje/mostrar-viaje.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/viaje/mostrar-viaje/mostrar-viaje.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/viaje/mostrar-viaje/mostrar-viaje.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/viaje/mostrar-viaje/mostrar-viaje.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LINDS/src/services/shared.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/services/shared.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/LindsDjangoAPI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LindsDjangoAPI.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ModAdmin/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ModAdmin/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ModAdmin/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,13 +35,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "git-widget-placeholder": "camilo",
-    "last_opened_file_path": "C:/Users/camil/OneDrive/Documentos/GitHub/mapa2/Django--GoogleMapsApi-main",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
   <component name="RunManager" selected="Python.runserver">
     <configuration name="makemigrations ModAdmin" type="PythonConfigurationType" factoryName="Python">
       <module name="LindsDjangoAPI" />

@@ -74,6 +74,7 @@ export class MostrarSucursalComponent implements OnInit {
     this.service.getSucursalList().subscribe((data) => {
       this.sucursalList = data;
       this.listWithoutFilter = data;
+      console.log("SUCURSALES:", this.sucursalList)
     });
   }
 
