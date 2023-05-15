@@ -16,14 +16,14 @@ export class CrearEditarPuntoEntregaComponent  implements OnInit {
   id: string = '';
   direccion: string = '';
   nombre: string = '';
-  numero_lote_entrega: string = '';
+  peso: string = '';
   viaje: any;
 
   ngOnInit() {
     this.id = this.puntoEntrega.id
     this.direccion = this.puntoEntrega.direccion
     this.nombre = this.puntoEntrega.nombre
-    this.numero_lote_entrega = this.puntoEntrega.numero_lote_entrega
+    this.peso = this.puntoEntrega.peso
     this.viaje = this.puntoEntrega.viaje
     this.cargarViaje()
   }
@@ -32,7 +32,7 @@ export class CrearEditarPuntoEntregaComponent  implements OnInit {
     var val = {
       direccion: this.direccion,
       nombre: this.nombre,
-      numero_lote_entrega: this.numero_lote_entrega,
+      peso: this.peso,
       viaje: this.viaje
     }
     this.service.addPuntoEntrega(val).subscribe((res: any) => {
@@ -45,7 +45,7 @@ export class CrearEditarPuntoEntregaComponent  implements OnInit {
       id: this.id,
       direccion: this.direccion,
       nombre: this.nombre,
-      numero_lote_entrega: this.numero_lote_entrega,
+      peso: this.peso,
       viaje: this.viaje
     };
     this.service.updatePuntoEntrega(val).subscribe((res) => {

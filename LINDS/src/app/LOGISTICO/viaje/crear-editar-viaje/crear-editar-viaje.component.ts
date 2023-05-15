@@ -47,6 +47,7 @@ export class CrearEditarViajeComponent  implements OnInit {
 
   edit() {
     var val = {
+      id: this.id,
       inicio: this.inicio,
       fecha: this.fecha,
       camion: this.camion,
