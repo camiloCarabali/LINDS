@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Dangrek&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@500&display=swap');
+
+
+#nav-header {
+  background-color: #85C1EC;
+  font-family: 'Dangrek', cursive;
+  color: white;
+}
+
+h2 {
+  font-size: 35px;
+  margin-left: 5%;
+  margin-right: 15%;
+  margin-top: 10px;
+}
+
+dropdown {
+  align-items: center;
+}
+
+button {
+  font-family: 'Josefin Sans', sans-serif;
+  background: none;
+  border: none;
+  margin-left: 15%;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+a {
+   text-decoration: none;
+   color: white;
+   font-family: 'Darker Grotesque', sans-serif;
+   margin-left: 10%;
+   font-size: 20px;
+   margin-top: 10px;
+}
+
+.dropdown-menu{
+  font-family: 'Josefin Sans', sans-serif;
+  overflow-y: auto;
+  background-color:  rgba(62, 158, 228, 0.92);
+  align-items: center;
+}
+
+dropdown-item {
+  background: none;
+}
+
+ul{
+  list-style-type: none;
+}
