@@ -2,10 +2,11 @@ from django.core.mail import send_mail
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
-from ModAdmin.models import Empresa, Sucursal, Usuario, Pais, Departamento, Municipio, Rol, Camion, PuntoEntrega, Viaje
+from ModAdmin.models import Empresa, Sucursal, Usuario, Pais, Departamento, Municipio, Rol, Camion, PuntoEntrega, Viaje, \
+    Mercancia
 from ModAdmin.serializers import EmpresaSerializer, SucursalSerializer, UsuarioSerializer, PaisSerializer, \
     DepartamentoSerializer, MunicipioSerializer, RolSerializer, CamionSerializer, PuntoEntregaSerializer, \
-    ViajeSerializer
+    ViajeSerializer, MercanciaSerializer
 from django.http.response import JsonResponse
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer
@@ -418,6 +419,7 @@ def eliminarPuntoEntrega(request, id):
         punto_entrega.delete()
         return JsonResponse("Punto de entrega eliminado", safe=False)
 
+
 def waypoints(request, viaje):
     if request.method == 'GET':
         waypoints = []
@@ -485,6 +487,7 @@ def buscarEmpresa(request, NIT):
     return JsonResponse(response_data)
 
 
+@csrf_exempt
 def buscarMunicipio(request, departamento):
     if request.method == 'GET':
         municipios = Municipio.objects.filter(departamento=departamento)
@@ -492,24 +495,80 @@ def buscarMunicipio(request, departamento):
         return JsonResponse(municipios_serializers.data, safe=False)
 
 
+@csrf_exempt
 def buscarSucursal(request, empresa):
     if request.method == 'GET':
         sucursales = Sucursal.objects.filter(empresa=empresa)
         sucursales_serializers = SucursalSerializer(sucursales, many=True)
         return JsonResponse(sucursales_serializers.data, safe=False)
 
+
+@csrf_exempt
 def buscarConductor(request):
     if request.method == 'GET':
         conductores = Usuario.objects.filter(rol="Conductor")
         conductores_serializers = UsuarioSerializer(conductores, many=True)
         return JsonResponse(conductores_serializers.data, safe=False)
 
+
+@csrf_exempt
 def buscarPeso(request, matricula):
     if request.method == 'GET':
         camion = Camion.objects.get(matricula=matricula)
         capacidad = camion.capacidad
         response_data = {'capacidad': capacidad}
         return JsonResponse(response_data)
+
+
+"""
+/---------------------------------------------------------------/
+"""
+
+
+@csrf_exempt
+def buscarMercancia(request, id):
+    mercancia = Mercancia.objects.get(id=id)
+    mercancia_serializers = MercanciaSerializer(mercancia, many=True)
+    return JsonResponse(mercancia_serializers.data, safe=False)
+
+
+@csrf_exempt
+def mostrarMercancia(request):
+    if request.method == 'GET':
+        mercancias = Viaje.objects.all()
+        mercancias_serializers = MercanciaSerializer(mercancias, many=True)
+        return JsonResponse(mercancias_serializers.data, safe=False)
+
+
+@csrf_exempt
+def crearMercancia(request):
+    if request.method == 'POST':
+        mercancia_data = JSONParser().parse(request)
+        mercancia_serializers = MercanciaSerializer(data=mercancia_data)
+        if mercancia_serializers.is_valid():
+            mercancia_serializers.save()
+            return JsonResponse("Mercancia asignada", safe=False)
+        return JsonResponse("Fallo al asignar una mercancia", safe=False)
+
+
+@csrf_exempt
+def modificarMercancia(request):
+    if request.method == 'PUT':
+        mercancia_data = JSONParser().parse(request)
+        mercancia = Mercancia.objects.get(id=mercancia_data['id'])
+        mercancia_serializers = MercanciaSerializer(mercancia, data=mercancia_data)
+        if mercancia_serializers.is_valid():
+            mercancia_serializers.save()
+            return JsonResponse("Mercancia modificada", safe=False)
+        return JsonResponse("Fallo al modificar Mercancia", safe=False)
+
+
+@csrf_exempt
+def eliminarMercancia(request, id):
+    if request.method == 'DELETE':
+        mercancia = Mercancia.objects.get(id=id)
+        mercancia.delete()
+        return JsonResponse("Mercancia Eliminada", safe=False)
 
 
 """
