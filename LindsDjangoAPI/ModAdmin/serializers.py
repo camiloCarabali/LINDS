@@ -68,6 +68,7 @@ class PuntoEntregaSerializer(serializers.ModelSerializer):
         model = PuntoEntrega
         fields = ('id', 'direccion', 'estado', 'viaje')
 
+
 class MercanciaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mercancia

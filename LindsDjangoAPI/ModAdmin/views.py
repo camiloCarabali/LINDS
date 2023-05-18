@@ -535,7 +535,7 @@ def buscarMercancia(request, id):
 @csrf_exempt
 def mostrarMercancia(request):
     if request.method == 'GET':
-        mercancias = Viaje.objects.all()
+        mercancias = Mercancia.objects.all()
         mercancias_serializers = MercanciaSerializer(mercancias, many=True)
         return JsonResponse(mercancias_serializers.data, safe=False)
 

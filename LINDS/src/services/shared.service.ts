@@ -172,4 +172,20 @@ export class SharedService {
     return this.http.get<any[]>(this.APIURL + 'buscarPeso/' + val);
   }
 
+  getMercanciaList(): Observable<any[]> {
+    return this.http.get<any[]>(this.APIURL + 'mercancia/');
+  }
+
+  addMercancia(val: any) {
+    return this.http.post<any[]>(this.APIURL + 'crearMercancia/', val);
+  }
+
+  updateMercancia(val: any) {
+    return this.http.put<any[]>(this.APIURL + 'modificarMercancia/', val);
+  }
+
+  eliminarMercancia(val: string) {
+    return this.http.delete<any[]>(this.APIURL + 'eliminarMercancia/' + val);
+  }
+
 }

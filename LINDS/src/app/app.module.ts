@@ -39,6 +39,10 @@ import { MostrarViajeComponent } from './LOGISTICO/viaje/mostrar-viaje/mostrar-v
 import { CrearEditarViajeComponent } from './LOGISTICO/viaje/crear-editar-viaje/crear-editar-viaje.component';
 import { MapaViajeComponent } from './LOGISTICO/viaje/mapa-viaje/mapa-viaje.component';
 
+import { MercanciaComponent } from './LOGISTICO/mercancia/mercancia.component';
+import { MostrarMercanciaComponent } from './LOGISTICO/mercancia/mostrar-mercancia/mostrar-mercancia.component';
+import { CrearEditarMercanciaComponent } from './LOGISTICO/mercancia/crear-editar-mercancia/crear-editar-mercancia.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,6 +66,9 @@ import { MapaViajeComponent } from './LOGISTICO/viaje/mapa-viaje/mapa-viaje.comp
     MostrarViajeComponent,
     CrearEditarViajeComponent,
     MapaViajeComponent,
+    MercanciaComponent,
+    MostrarMercanciaComponent,
+    CrearEditarMercanciaComponent,
   ],
   imports: [
     BrowserModule,

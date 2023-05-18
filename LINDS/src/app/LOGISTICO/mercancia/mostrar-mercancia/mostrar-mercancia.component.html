@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> Punto de Entrega </ion-title>
+    <ion-title> Mercancia </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -18,25 +18,27 @@
           </ion-toolbar>
         </ion-header>
         <ion-content class="ion-padding">
-          <app-crear-editar-punto-entrega
-            [puntoEntrega]="puntoEntrega"
-            *ngIf="Activate_CrearEditar_PuntoEntregaComp"
-          ></app-crear-editar-punto-entrega>
+          <app-crear-editar-mercancia
+            [mercancia]="mercancia"
+            *ngIf="Activate_CrearEditar_MercanciaComp"
+          ></app-crear-editar-mercancia>
         </ion-content>
       </ng-template>
     </ion-modal>
 
     <ion-row class="main">
-      <ion-col size="1">ID</ion-col>
-      <ion-col>DIRECCION</ion-col>
-      <ion-col size="1">VIAJE</ion-col>
-      <ion-col size="2">ACCIONES</ion-col>
+      <ion-col>ID</ion-col>
+      <ion-col>NOMBRE</ion-col>
+      <ion-col>PESO</ion-col>
+      <ion-col>PUNTO DE ENTREGA</ion-col>
+      <ion-col>ACCIONES</ion-col>
     </ion-row>
-    <ion-row *ngFor="let dataItem of puntoEntregaList">
-      <ion-col  size="1">{{ dataItem.id }}</ion-col>
-      <ion-col>{{ dataItem.direccion }}</ion-col>
-      <ion-col size="1">{{ dataItem.viaje }}</ion-col>
-      <ion-col size="2">
+    <ion-row *ngFor="let dataItem of mercanciaList">
+      <ion-col>{{ dataItem.id }}</ion-col>
+      <ion-col>{{ dataItem.nombre }}</ion-col>
+      <ion-col>{{ dataItem.peso }}</ion-col>
+      <ion-col>{{ dataItem.puntoEntrega }}</ion-col>
+      <ion-col>
         <ion-icon
           name="create"
           id="open-modal"
