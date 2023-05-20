@@ -1,14 +1,5 @@
-<ion-header [translucent]="true">
-  <ion-toolbar class="new-background-color">
-    <ion-navbar>
-      <ion-title>
-        LINDS TRACK
-      </ion-title>
-    </ion-navbar>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true" >
+<app-header-normal></app-header-normal>
+<ion-content [fullscreen]="true">
   <div class="container">
     <div id="izquierda">
       <div class="titulo1">
@@ -23,12 +14,11 @@
       <div class="titulo1">
         <strong class="text-title-1">Iniciar sesión</strong>
       </div>
-      <ion-item>
-        <ion-label position="floating" id="text-conten">Email</ion-label>
-        <ion-input type="email" placeholder="Digite su Email" [(ngModel)]="correo">
-        </ion-input>
+      <ion-item color="labelcolor">
+        <ion-input type="email" label="Email" labelPlacement="floating" placeholder="Digite su Email"
+          errorText="Email Invalido" ngModel email></ion-input>
       </ion-item>
-      <ion-item>
+      <ion-item color="labelcolor">
         <ion-label position="floating" shape="round">Contraseña</ion-label>
         <ion-input type="password" placeholder="Digite su Contraseña" [(ngModel)]="password">
         </ion-input>

@@ -41,6 +41,7 @@ import { MapaViajeComponent } from './LOGISTICO/viaje/mapa-viaje/mapa-viaje.comp
 import { CabezaheaderComponent } from './estiloHF/cabezaheader/cabezaheader.component';
 import { PiefooterComponent } from './estiloHF/piefooter/piefooter.component';
 import { MenuComponent } from './estiloHF/menu/menu.component';
+import { HeaderNormalComponent } from './estiloHF/header-normal/header-normal.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { MenuComponent } from './estiloHF/menu/menu.component';
     MapaViajeComponent,
     CabezaheaderComponent,
     PiefooterComponent,
-    MenuComponent
+    MenuComponent,
+    HeaderNormalComponent
   ],
   imports: [
     BrowserModule,

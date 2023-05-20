@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@500&display=swap');
 
+
 ion-toolbar{
   color: white;
 }
@@ -28,10 +29,6 @@ ion-content {
   --padding-end:var(--padding-end:0);
 }
 
-ion-main {
-  background-color: aqua;
-}
-
 .container {
   display: flex;
   width: 100%;
@@ -39,7 +36,6 @@ ion-main {
   background-color: brown;
   padding: 0%;
   margin: 0%;
-
 }
 
 #izquierda{
@@ -58,6 +54,12 @@ ion-main {
   padding: 0%;
   margin: 0%;
 
+}
+
+ion-input {
+  color: white;
+  font-size: 20px;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 .text-title {
@@ -87,7 +89,8 @@ ion-main {
 }
 
 .titulo1 {
-  margin-top: 25px;
+  margin-top: 15%;
+
 }
 
 #derecha ion-item {
@@ -130,13 +133,4 @@ h1 {
   margin-left: 12%;
 }
 
-main {
-  display: none;
-  background-color: darkslateblue;
-}
-
-/** ESTILO LABELS*/
-ion-input {
-  background-color: darkmagenta;
-}
 
