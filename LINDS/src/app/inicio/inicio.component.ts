@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/services/shared.service';
 import { CookieService } from 'ngx-cookie-service';
+import { RouterModule, Routes } from '@angular/router';
+
 
 @Component({
   selector: 'app-inicio',
@@ -12,6 +14,9 @@ export class InicioComponent implements OnInit {
     private service: SharedService,
     private cookieService: CookieService
   ) {}
+
+
+  
 
   credenciales: any;
   correo: string = '';

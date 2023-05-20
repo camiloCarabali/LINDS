@@ -1,15 +1,15 @@
-<ion-content [fullscreen]="true">
-  <ion-header [translucent]="true">
-    <ion-toolbar class="new-background-color">
-      <ion-navbar>
-        <ion-title>
-          LINDS TRACK
-        </ion-title>
-      </ion-navbar>
-    </ion-toolbar>
-  </ion-header>
+<ion-header [translucent]="true">
+  <ion-toolbar class="new-background-color">
+    <ion-navbar>
+      <ion-title>
+        LINDS TRACK
+      </ion-title>
+    </ion-navbar>
+  </ion-toolbar>
+</ion-header>
 
-  <div id="container">
+<ion-content [fullscreen]="true" >
+  <div class="container">
     <div id="izquierda">
       <div class="titulo1">
         <strong class="text-title">RASTREA TUS FLOTAS DE VEHICULOS</strong>
@@ -34,14 +34,13 @@
         </ion-input>
       </ion-item>
       <div class="contenedor-botones">
-        <ion-button class="button-background-color" (click)="login()" id="text-conten" shape="round">Entrar</ion-button>
+        <ion-button class="button-background-color" id="text-conten" shape="round">Entrar</ion-button>
       </div>
       <div class="aaa">
         <a href="#" id="text-conten">¿Olvido la contraseña?</a>
       </div>
-
     </div>
   </div>
-  <app-piefooter></app-piefooter>
-
 </ion-content>
+
+<app-piefooter></app-piefooter>
