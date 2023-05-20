@@ -32,8 +32,6 @@ export class MostrarPuntoEntregaComponent implements OnInit {
     this.puntoEntrega = {
       id: 0,
       direccion: '',
-      nombre: '',
-      peso: '',
       viaje: '',
       estado: '',
     };

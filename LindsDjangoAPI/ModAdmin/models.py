@@ -121,7 +121,7 @@ class Mercancia(models.Model):
     estado = models.BooleanField(default=True, null=False)
     carga = models.BooleanField(default=False, null=False)
     descarga = models.BooleanField(default=False, null=False)
-    puntoEntrega = models.IntegerField(null=True)
+    puntoEntrega = models.CharField(max_length=100, null=False)
 
     class Meta:
         db_table = 'mercancia'

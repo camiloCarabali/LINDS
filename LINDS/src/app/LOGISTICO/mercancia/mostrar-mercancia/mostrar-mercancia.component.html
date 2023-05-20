@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Mercancia </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid [fixed]="true">
+    <ion-button id="open-modal" (click)="add()">Crear</ion-button>
+    <ion-modal [isOpen]="isModalOpen">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>{{ modalTitle }}</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="cancel()">Close</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          <app-crear-editar-mercancia
+            [mercancia]="mercancia"
+            *ngIf="Activate_CrearEditar_MercanciaComp"
+          ></app-crear-editar-mercancia>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+
+    <ion-row class="main">
+      <ion-col>ID</ion-col>
+      <ion-col>NOMBRE</ion-col>
+      <ion-col>PESO</ion-col>
+      <ion-col>PUNTO DE ENTREGA</ion-col>
+      <ion-col>ACCIONES</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let dataItem of mercanciaList">
+      <ion-col>{{ dataItem.id }}</ion-col>
+      <ion-col>{{ dataItem.nombre }}</ion-col>
+      <ion-col>{{ dataItem.peso }}</ion-col>
+      <ion-col>{{ dataItem.puntoEntrega }}</ion-col>
+      <ion-col>
+        <ion-icon
+          name="create"
+          id="open-modal"
+          (click)="edit(dataItem)"
+        ></ion-icon>
+        <ion-icon name="trash" (click)="delete(dataItem)"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

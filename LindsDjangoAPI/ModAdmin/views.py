@@ -524,6 +524,12 @@ def buscarPeso(request, matricula):
 /---------------------------------------------------------------/
 """
 
+@csrf_exempt
+def historialViaje(request, usuario):
+    if request.method == 'GET':
+        viajes = Viaje.objects.filter(usuario=usuario)
+        viajes_serializers = ViajeSerializer(viajes, many=True)
+        return JsonResponse(viajes_serializers.data, safe=False)
 
 @csrf_exempt
 def buscarMercancia(request, id):
@@ -535,7 +541,7 @@ def buscarMercancia(request, id):
 @csrf_exempt
 def mostrarMercancia(request):
     if request.method == 'GET':
-        mercancias = Viaje.objects.all()
+        mercancias = Mercancia.objects.all()
         mercancias_serializers = MercanciaSerializer(mercancias, many=True)
         return JsonResponse(mercancias_serializers.data, safe=False)
 

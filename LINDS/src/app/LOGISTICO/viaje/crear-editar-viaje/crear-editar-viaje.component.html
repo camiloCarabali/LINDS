@@ -22,7 +22,7 @@
   <ion-item>
     <ion-select placeholder="Seleccione el conductor" [(ngModel)]="usuario">
       <ion-select-option
-        value="{{ user.nombre }}"
+        value="{{ user.cedula }}"
         *ngFor="let user of conductorList"
         >{{ user.nombre }}</ion-select-option
       >

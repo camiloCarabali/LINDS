@@ -1,136 +1,53 @@
-@import url('https://fonts.googleapis.com/css2?family=Dangrek&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Dangrek&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@500&display=swap");
 
-
-ion-toolbar{
+.new-background-color {
+  --background: #85c1ec;
+  font-family: "Dangrek", cursive;
   color: white;
-}
-
-.new-background-color{
-  --background: #85C1EC;
-  font-family: 'Dangrek', cursive;
 }
 
 ion-title {
-  font-size: 35px;
-  margin-left: 5%;
+  font-size: 25px;
+  height: 75px;
 }
 
-
-ion-content {
-  background-color: white;
-  width: 100vw;
-  padding: 0%;
-  margin: 0%;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  --padding-end:var(--padding-end:0);
-}
-
-.container {
-  display: flex;
-  width: 100%;
+ion-col {
+  border: solid 1px #fff;
   height: 100%;
-  background-color: brown;
-  padding: 0%;
-  margin: 0%;
-}
-
-#izquierda{
-  width: 65%;
-  height: 100%;
-  background-color: white;
   text-align: center;
-  justify-content: center;
 }
 
-#derecha{
-  background-color: #C3E0F6;
-  width: 35%;
-  text-align: center;
-  height: 100%;
-  padding: 0%;
-  margin: 0%;
-
-}
-
-ion-input {
-  color: white;
-  font-size: 20px;
-  font-family: 'Josefin Sans', sans-serif;
-}
-
-.text-title {
-  font-family: 'Dangrek', cursive;
-  color: #413E3E;
-  font-size: 32px;
-  margin-top: 10px;
-}
-
-.text-title-1 {
-  font-family: 'Darker Grotesque', sans-serif;
-  color: #413E3E;
-  font-size: 32px;
-  margin-top: 50%;
-}
-
-#text-conten{
-  font-family: 'Josefin Sans', sans-serif;
+.col-left {
+  height: 100vh;
+  padding: 50px;
+  display: flex;
   align-items: center;
-  color: #413E3E;
-  font-size: 20px;
+  justify-content: center;
+  flex-direction: column;
 }
 
-#logo{
-  width: 28%;
-  margin-left: 35%;
+.col-right {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.titulo1 {
-  margin-top: 15%;
-
+.container1 {
+  font-family: "Dangrek", cursive;
 }
 
-#derecha ion-item {
-  margin-top: 15%;
-  background-color: #85C1EC;
+.container2 {
+  font-family: "Josefin Sans", sans-serif;
 }
 
-.button-background-color{
-  --background: #ffffff;
-  size: 40px;
-  margin-top: 30px;
+.container3 {
+  padding: 40px;
 }
 
-.aaa {
-  margin-top: 30px;
-  margin: 11.6%;
+#logo {
+  width: 300px;
 }
-
-.footer-background-color{
-  --background: #85C1EC;
-  size: 40px;
-  font-family: 'Josefin Sans', sans-serif;
-}
-
-ion-col a{
-  text-decoration: none;
-  font-size: 15px;
-  color: white;
-  margin-left: 10%;
-}
-
-ul{
-  list-style-type: none;
-}
-
-h1 {
-  margin-top: 1px;
-  font-size: 20px;
-  font-weight: bold;
-  margin-left: 12%;
-}
-
-

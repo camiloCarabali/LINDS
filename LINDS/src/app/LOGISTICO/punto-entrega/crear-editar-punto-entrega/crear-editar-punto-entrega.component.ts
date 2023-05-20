@@ -15,15 +15,11 @@ export class CrearEditarPuntoEntregaComponent  implements OnInit {
   @Input() puntoEntrega: any;
   id: string = '';
   direccion: string = '';
-  nombre: string = '';
-  peso: string = '';
   viaje: any;
 
   ngOnInit() {
     this.id = this.puntoEntrega.id
     this.direccion = this.puntoEntrega.direccion
-    this.nombre = this.puntoEntrega.nombre
-    this.peso = this.puntoEntrega.peso
     this.viaje = this.puntoEntrega.viaje
     this.cargarViaje()
   }
@@ -31,8 +27,6 @@ export class CrearEditarPuntoEntregaComponent  implements OnInit {
   add() {
     var val = {
       direccion: this.direccion,
-      nombre: this.nombre,
-      peso: this.peso,
       viaje: this.viaje
     }
     this.service.addPuntoEntrega(val).subscribe((res: any) => {
@@ -44,8 +38,6 @@ export class CrearEditarPuntoEntregaComponent  implements OnInit {
     var val = {
       id: this.id,
       direccion: this.direccion,
-      nombre: this.nombre,
-      peso: this.peso,
       viaje: this.viaje
     };
     this.service.updatePuntoEntrega(val).subscribe((res) => {
