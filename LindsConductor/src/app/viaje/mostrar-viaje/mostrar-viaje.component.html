@@ -1,0 +1,12 @@
+<ng-container *ngFor="let item of viaje">
+  <ion-card class="ion-margin" *ngIf="item.estado==false">
+    <ion-card-header>
+      <ion-card-title>NUEVO VIAJE</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-col>INICIO: {{item.inicio}}</ion-col><br />
+      <ion-button color="warning">Realizar Viaje</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ng-container>
