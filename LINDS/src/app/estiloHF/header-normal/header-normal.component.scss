@@ -6,6 +6,11 @@ ion-toolbar{
   color: white;
 }
 
+ion-navbar {
+  display: flex;
+  flex-flow: row;
+}
+
 .new-background-color{
   --background: #85C1EC;
   font-family: 'Dangrek', cursive;
@@ -14,4 +19,12 @@ ion-toolbar{
 ion-title {
   font-size: 35px;
   margin-left: 5%;
+}
+
+.button-style {
+  color: white !important;
+  font-size: 20px;
+  margin-top: 7px;
+  font-family: 'Darker Grotesque', sans-serif;
+  border: none;
 }

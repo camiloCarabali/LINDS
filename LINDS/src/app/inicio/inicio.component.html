@@ -1,7 +1,9 @@
-<ion-header collapse="fade">
+<ion-header [translucent]="true">
   <ion-toolbar class="new-background-color">
     <ion-navbar>
-      <ion-title> LINDS TRACK </ion-title>
+      <ion-title>
+        LINDS TRACK
+      </ion-title>
     </ion-navbar>
   </ion-toolbar>
 </ion-header>
@@ -10,50 +12,48 @@
   <ion-grid>
     <ion-row>
       <ion-col size="9" class="col-left">
-        <div class="container1">
-          <h1>CONTROLA TU FLOTA DE VEHICULOS</h1>
+        <div>
+          <h1><strong>CONTROLA TU FLOTA DE VEHICULOS</strong></h1>
         </div>
-        <div class="container2">
-          <h1>
-            Servicio de seguimiento y control de una flota de <br />
+        <div class="text-conten">
+          <p>
+            Servicio de seguimiento y control de una flota de <br>
             vehiculos permitiendo mejorar la logistica de estos.
-          </h1>
+          </p>
         </div>
-        <div class="container3">
+        <div class="logo">
           <ion-img src="../../../assets/logistica.png" id="logo"></ion-img>
         </div>
       </ion-col>
+
       <ion-col size="3" class="col-right">
-        <ion-item>
+        <div class="titulo1">
+          <strong class="text-title">Iniciar sesión</strong>
+        </div>
+        <ion-item color="labelcolor">
           <ion-label position="floating" id="text-conten">Email</ion-label>
           <ion-input
             type="email"
             placeholder="Digite su Email"
             [(ngModel)]="correo"
-          >
+          required>
           </ion-input>
         </ion-item>
-        <ion-item>
+        <ion-item color="labelcolor">
           <ion-label position="floating" shape="round">Contraseña</ion-label>
           <ion-input
             type="password"
             placeholder="Digite su Contraseña"
             [(ngModel)]="password"
-          >
+            required>
           </ion-input>
         </ion-item>
         <ion-button
-          class="button-background-color"
+          class="button-in"
           id="text-conten"
-          shape="round"
-          >Entrar</ion-button
-        >
+          shape="round" [routerLink]="['/empresa']">Entrar</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
-<ion-footer collapse="fade">
-  <ion-toolbar class="new-background-color">
-    <ion-title>Footer Toolbar</ion-title>
-  </ion-toolbar>
-</ion-footer>
+<app-piefooter></app-piefooter>

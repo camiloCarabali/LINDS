@@ -39,14 +39,14 @@ export class MostrarEmpresaComponent  implements OnInit {
       NIT: '',
       pais: '',
     };
-    this.modalTitle = 'Añadir Empresa';
+    this.modalTitle = 'Registrar Empresa';
     this.Activate_CrearEditar_EmpresaComp = true;
     this.setOpen(true);
   }
 
   edit(item: any){
     this.empresa = item;
-    this.modalTitle = 'Editar Empresa';
+    this.modalTitle = 'Actualizar Empresa';
     this.Activate_CrearEditar_EmpresaComp = true;
     this.setOpen(true);
     this.refreshEmpresaList();

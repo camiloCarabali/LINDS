@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Dangrek&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@500&display=swap');
+
+/** STYLE BUTTON*/
+
+ion-button{
+  background-color: #717B82;
+  color: white;
+  width: 28%;
+  height: 60px;
+  font-size: 20px;
+  font-family: 'Josefin Sans', sans-serif;
+  margin-right: 50px;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-top: 5%;
+  margin-left: 35%;
+}
+
+ion-input {
+  color: white;
+  font-size: 25px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+ion-list {
+  color: white;
+  font-size: 25px;
+  font-family: 'Josefin Sans', sans-serif;
+}

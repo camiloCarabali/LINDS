@@ -43,6 +43,11 @@ import { MercanciaComponent } from './LOGISTICO/mercancia/mercancia.component';
 import { MostrarMercanciaComponent } from './LOGISTICO/mercancia/mostrar-mercancia/mostrar-mercancia.component';
 import { CrearEditarMercanciaComponent } from './LOGISTICO/mercancia/crear-editar-mercancia/crear-editar-mercancia.component';
 
+import { PiefooterComponent } from './estiloHF/piefooter/piefooter.component';
+import { MenuComponent } from './estiloHF/menu/menu.component';
+import { HeaderNormalComponent } from './estiloHF/header-normal/header-normal.component';
+import { CabezaheaderComponent } from './estiloHF/cabezaheader/cabezaheader.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,6 +74,10 @@ import { CrearEditarMercanciaComponent } from './LOGISTICO/mercancia/crear-edita
     MercanciaComponent,
     MostrarMercanciaComponent,
     CrearEditarMercanciaComponent,
+    HeaderNormalComponent,
+    CabezaheaderComponent,
+    MenuComponent,
+    PiefooterComponent,
   ],
   imports: [
     BrowserModule,
