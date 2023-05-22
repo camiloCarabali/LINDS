@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 declare var google: any;
+let marker: any;
+let watchID;
+let geoLoc;
+let map: any;
 
 @Component({
   selector: 'app-mostrar-mapa',
@@ -8,23 +12,108 @@ declare var google: any;
   styleUrls: ['./mostrar-mapa.component.scss'],
 })
 export class MostrarMapaComponent implements OnInit {
-  map = null;
+  isModalOpen = false;
+
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
+
+  modalTitle: string = '';
+  Activate_Indicaciones_MapaComp: boolean = false;
+
+  sourceLocation = localStorage.getItem('rutaInicio');
+  destinationLocation = localStorage.getItem('rutaLlegada');
+  waypoints: any = [];
+
+  directionsService = new google.maps.DirectionsService();
+  directionsDisplay = new google.maps.DirectionsRenderer();
 
   constructor() {}
 
-  ngOnInit() {
-    this.loadMap();
-  }
+  ngOnInit() {}
 
   loadMap() {
     const mapEle = document.getElementById('map') as HTMLElement;
-    const myLatLng = { lat: 4.658383846282959, lng: -74.09394073486328 };
-    this.map = new google.maps.Map(mapEle, {
-      center: myLatLng,
+    const myLatLng = { lat: 3.440018, lng: -76.519073 };
+    map = new google.maps.Map(mapEle, {
+      center: {
+        query: this.sourceLocation,
+      },
       zoom: 12,
     });
-    google.maps.event.addListenerOnce(this.map, 'idle', () => {
+
+    this.directionsDisplay.setMap(map);
+
+    google.maps.event.addListenerOnce(map, 'idle', () => {
       mapEle.classList.add('show-map');
+      this.calculateRoute();
     });
+
+    marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+    });
+    this.getPosition();
+  }
+
+  getPosition() {
+    if (navigator.geolocation) {
+      var options = { timeout: 10000 };
+      geoLoc = navigator.geolocation;
+      watchID = geoLoc.watchPosition(
+        this.showLocationOnMap,
+        this.errorHandler,
+        options
+      );
+    }
+  }
+
+  showLocationOnMap(position: any) {
+    var latitud = position.coords.latitude;
+    var longitud = position.coords.longitude;
+
+    const myLatLng = { lat: latitud, lng: longitud };
+    marker.setPosition(myLatLng);
+    map.setCenter(myLatLng);
+  }
+
+  errorHandler(err: any) {
+    if (err.code == 1) {
+      alert('Error Acceso denegado');
+    } else if (err.code == 2) {
+      alert('Error: position no existe o no se encuentra');
+    }
+  }
+
+  private calculateRoute() {
+    const puntosEntrega: string = localStorage.getItem('waypoints')!;
+    this.waypoints = JSON.parse(puntosEntrega);
+    this.directionsService
+      .route({
+        origin: {
+          query: this.sourceLocation,
+        },
+        destination: {
+          query: this.destinationLocation,
+        },
+        waypoints: this.waypoints,
+        optimizeWaypoints: true,
+        travelMode: google.maps.TravelMode.DRIVING,
+      })
+      .then((response: any) => {
+        this.directionsDisplay.setDirections(response);
+      });
+  }
+
+  iniciarViaje() {
+    this.sourceLocation = localStorage.getItem('rutaInicio');
+    this.destinationLocation = localStorage.getItem('rutaLlegada');
+    this.loadMap();
+  }
+
+  indicaciones() {
+    this.setOpen(true)
+    this.modalTitle = 'Indicaciones';
+    this.Activate_Indicaciones_MapaComp = true
   }
 }

@@ -7,15 +7,36 @@
 <ion-content [fullscreen]="true" class="ion-padding">
   <ion-item>
     <ion-label position="floating">Salida</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="sourceLocation" [disabled]="true"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label position="floating">Destino</ion-label>
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="destinationLocation" [disabled]="true"></ion-input>
   </ion-item>
 
-  <ion-button expand="full">Iniciar Viaje</ion-button>
-  
+  <ion-button expand="full" (click)="iniciarViaje()">Iniciar Viaje</ion-button>
+
   <div id="map"></div>
+
+  <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>{{ modalTitle }}</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpen(false)">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <app-mostrar-indicaciones *ngIf="Activate_Indicaciones_MapaComp"></app-mostrar-indicaciones>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed" (click)="indicaciones()">
+    <ion-fab-button>
+      <ion-icon name="compass"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SharedService } from 'src/services/shared.service';
-import { CLIENT_RENEG_LIMIT } from 'tls';
 
 @Component({
   selector: 'app-crear-editar-usuario',

@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SharedService } from 'src/services/shared.service';
-import { __classPrivateFieldGet } from 'tslib';
 
 declare var google: any;
 

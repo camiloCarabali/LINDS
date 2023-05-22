@@ -4,6 +4,8 @@ import { MapaComponent } from './mapa/mapa.component';
 import { HistorialComponent } from './historial/historial.component';
 import { ViajeComponent } from './viaje/viaje.component';
 import { LoginComponent } from './login/login.component';
+import { IndicacionesComponent } from './indicaciones/indicaciones.component';
+import { EntregasComponent } from './entregas/entregas.component';
 
 const routes: Routes = [
   {
@@ -27,6 +29,15 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent
   },
+  {
+    path: 'indicaciones',
+    component: IndicacionesComponent
+  },
+  {
+    path: 'entregas',
+    component: EntregasComponent
+  },
+
 ];
 
 @NgModule({

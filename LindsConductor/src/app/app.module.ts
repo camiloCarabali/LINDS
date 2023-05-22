@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedService } from 'src/services/shared.service';
 import { FormsModule } from '@angular/forms';
 
-import {CookieService} from 'ngx-cookie-service';
+import { CookieService } from 'ngx-cookie-service';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -26,6 +26,11 @@ import { MostrarViajeComponent } from './viaje/mostrar-viaje/mostrar-viaje.compo
 import { LoginComponent } from './login/login.component';
 import { MostrarLoginComponent } from './login/mostrar-login/mostrar-login.component';
 
+import { IndicacionesComponent } from './indicaciones/indicaciones.component';
+import { MostrarIndicacionesComponent } from './indicaciones/mostrar-indicaciones/mostrar-indicaciones.component';
+
+import { EntregasComponent } from './entregas/entregas.component';
+import { MostrarEntregasComponent } from './entregas/mostrar-entregas/mostrar-entregas.component';
 
 @NgModule({
   declarations: [
@@ -37,14 +42,18 @@ import { MostrarLoginComponent } from './login/mostrar-login/mostrar-login.compo
     ViajeComponent,
     MostrarViajeComponent,
     LoginComponent,
-    MostrarLoginComponent
+    MostrarLoginComponent,
+    IndicacionesComponent,
+    MostrarIndicacionesComponent,
+    EntregasComponent,
+    MostrarEntregasComponent,
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

@@ -22,4 +22,9 @@ export class SharedService {
   user(val: String) {
     return this.http.get<any[]>(this.APIURL + 'user/' + val);
   }
+
+  waypoints(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'waypoints/' + val);
+  }
+
 }
