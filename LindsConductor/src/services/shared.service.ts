@@ -14,4 +14,12 @@ export class SharedService {
   getHistorial(val: String) {
     return this.http.get<any[]>(this.APIURL + 'historialViaje/' + val);
   }
+
+  login(val: any): Observable<any> {
+    return this.http.post<any>(this.APIURL + 'login', val);
+  }
+
+  user(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'user/' + val);
+  }
 }

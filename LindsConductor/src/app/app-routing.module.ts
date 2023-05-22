@@ -3,11 +3,12 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { MapaComponent } from './mapa/mapa.component';
 import { HistorialComponent } from './historial/historial.component';
 import { ViajeComponent } from './viaje/viaje.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'historial',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'viaje',
     component: ViajeComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
 ];
 

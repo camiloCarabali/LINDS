@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { SharedService } from 'src/services/shared.service';
 
 @Component({
@@ -7,7 +8,10 @@ import { SharedService } from 'src/services/shared.service';
   styleUrls: ['./mostrar-historial.component.scss'],
 })
 export class MostrarHistorialComponent implements OnInit {
-  constructor(private service: SharedService) {}
+  constructor(
+    private service: SharedService,
+    private cookieService: CookieService
+  ) {}
 
   historial: any = [];
 
@@ -16,8 +20,11 @@ export class MostrarHistorialComponent implements OnInit {
   }
 
   refreshHistorial() {
-    this.service.getHistorial('1000000').subscribe((data: any) => {
-      this.historial = data;
+    const jwt = this.cookieService.get('jwt');
+    this.service.user(jwt).subscribe((res: any) => {
+      this.service.getHistorial(res.cedula).subscribe((data: any) => {
+        this.historial = data;
+      });
     });
   }
 }
