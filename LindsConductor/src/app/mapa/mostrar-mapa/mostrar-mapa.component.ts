@@ -35,10 +35,20 @@ export class MostrarMapaComponent implements OnInit {
   directionsService = new google.maps.DirectionsService();
   directionsDisplay = new google.maps.DirectionsRenderer();
 
-  constructor() {}
+  constructor() {
 
-  ngOnInit() {}
+  }
 
+  ngOnInit() {
+    //this.reload();
+    this.sourceLocation = localStorage.getItem('rutaInicio');
+    this.destinationLocation = localStorage.getItem('rutaLlegada');
+  }
+
+  reload(){
+    location.reload();
+  }
+  
   loadMap() {
     const mapEle = document.getElementById('map') as HTMLElement;
     const myLatLng = { lat: 3.440018, lng: -76.519073 };

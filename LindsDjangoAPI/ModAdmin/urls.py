@@ -54,6 +54,8 @@ urlpatterns = [
     path('crearMercancia/', views.crearMercancia),
     path('buscarMercancia/<puntoEntrega>', views.buscarMercancia),
     path('modificarMercancia/', views.modificarMercancia),
+    path('cargaMercancia/<id>', views.cargaMercancia),
+    path('descargaMercancia/<id>', views.descargaMercancia),
     path('eliminarMercancia/', views.eliminarMercancia),
     path('historialViaje/<usuario>', views.historialViaje),
     path('asignacionViaje/<usuario>', views.asignacionViaje),

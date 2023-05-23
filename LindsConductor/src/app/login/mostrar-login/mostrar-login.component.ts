@@ -36,18 +36,15 @@ export class MostrarLoginComponent implements OnInit {
         const jwt = this.cookieService.get('jwt');
         this.service.user(jwt).subscribe((res: any) => {
           if (res.rol == 'Administrador') {
-            console.log(res.rol);
             this.interaction.closeLoading();
             this.interaction.presentAlert(
               'Para poder usar las funciones de administrador debes ingresar con nuestra aplicación web.'
             );
           } else if (res.rol == 'Conductor') {
-            console.log(res.rol);
             this.interaction.closeLoading();
             this.interaction.presentToast('top', 'Ingresado con Exito');
             this.router.navigate(['/historial']);
           } else if (res.rol == 'Logistico') {
-            console.log(res.rol);
             this.interaction.closeLoading();
             this.interaction.presentAlert(
               'Para poder usar las funciones de logistica debes ingresar con nuestra aplicación web.'

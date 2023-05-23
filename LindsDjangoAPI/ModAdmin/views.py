@@ -596,6 +596,23 @@ def eliminarMercancia(request, id):
         return JsonResponse("Mercancia Eliminada", safe=False)
 
 
+@csrf_exempt
+def cargaMercancia(request, id):
+    if request.method == 'PUT':
+        mercancia = Mercancia.objects.get(id=id)
+        mercancia.carga = True
+        mercancia.save()
+        return JsonResponse("Mercancia cargada", safe=False, status=status.HTTP_200_OK)
+
+@csrf_exempt
+def descargaMercancia(request, id):
+    if request.method == 'PUT':
+        mercancia = Mercancia.objects.get(id=id)
+        mercancia.descarga = True
+        mercancia.save()
+        return JsonResponse("Mercancia descargada", safe=False, status=status.HTTP_200_OK)
+
+
 """
 /---------------------------------------------------------------/
 """

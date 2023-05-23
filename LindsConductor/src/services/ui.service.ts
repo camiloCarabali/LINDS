@@ -4,17 +4,20 @@ import {
   LoadingController,
   ToastController,
 } from '@ionic/angular';
+import { SharedService } from './shared.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UiService {
+  handlerMessage = '';
   loading = false;
 
   constructor(
     private alertController: AlertController,
     private toastController: ToastController,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private service: SharedService
   ) {}
 
   async presentAlert(message: string) {
@@ -26,6 +29,33 @@ export class UiService {
     });
     await alert.present();
   }
+
+  async presentDecisionAlert(message: string) {
+    const alert = await this.alertController.create({
+      header: 'Alerta',
+      subHeader: 'Mensaje Importante',
+      message: message,
+      buttons: this.buttonsOn,
+    });
+    alert.present();
+  }
+
+  public buttonsOn: any = [
+    {
+      text: 'OK',
+      role: 'confirm',
+      handler: () => {
+        this.handlerMessage = 'OK';
+      },
+    },
+    {
+      text: 'Cancel',
+      role: 'cancel',
+      handler: () => {
+        this.handlerMessage = 'Cancel';
+      },
+    },
+  ];
 
   async presentToast(position: 'top' | 'middle' | 'bottom', message: string) {
     const toast = await this.toastController.create({
@@ -42,7 +72,7 @@ export class UiService {
       message: message,
     });
 
-    loading.present();
+    await loading.present();
   }
 
   async closeLoading() {
