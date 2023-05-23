@@ -38,7 +38,7 @@ export class MostrarCamionComponent implements OnInit {
       empresa: '',
       sucursal: '',
     };
-    this.modalTitle = 'Añadir Camion';
+    this.modalTitle = 'Agregar Vehículo';
     this.Activate_CrearEditar_CamionComp = true;
     this.setOpen(true);
   }
@@ -51,14 +51,14 @@ export class MostrarCamionComponent implements OnInit {
 
   edit(item: any) {
     this.camion = item;
-    this.modalTitle = 'Editar Camion';
+    this.modalTitle = 'Actualizar Vehículo';
     this.Activate_CrearEditar_CamionComp = true;
     this.setOpen(true);
     this.refreshCamionList();
   }
 
   delete(item: any) {
-    if (confirm('Desea eliminar este camion?')) {
+    if (confirm('¿Desea eliminar este Vehículo?')) {
       this.service.eliminarCamion(item.matricula).subscribe((data) => {
         alert(data.toString());
         this.refreshCamionList();

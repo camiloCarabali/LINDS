@@ -2,52 +2,84 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@500&display=swap');
 
-ion-col {
-  height: 100%;
+/** MENU STYLE **/
+.menu-conten {
+  background-color: #C9E3F7;
+  color: #4B5399;
+  font-family: 'Dangrek', cursive;
   text-align: center;
+  height: 100vh;
 }
 
-.col-left {
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.col-right {
-  height: auto;
-  padding: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+.col-right{
   background-color: white;
+  color: black;
+}
+
+.button-style1 {
+  width: 100%;
+  height: 66px;
+  color: white;
+  font-size: 18px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: bold;
+}
+
+.button-style {
+  width: 100%;
+  height: 66px;
+  color: #4B5399;
+  font-size: 18px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: bold;
+}
+
+.botones-menu {
+ margin-top: 20%;
 }
 
 /** ROW STYLE*/
+
+.btn {
+  color: black;
+}
+
+.row-content {
+  margin: 15px;
+  text-align: center;
+}
 
 .main {
   color: #4B5399;
   font-size: 20px;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: bold;
-  margin-top: 20px;
 }
 
 .content-user {
   background-color: #BEDEF1;
   color: #224C72;
   font-size: 16px;
-  margin-top: 13px;
   border-radius: 15px;
   width: 100%;
   height: 60px;
   padding-top: 16px;
   text-align: center;
+  margin-top: 13px;
 }
 
-/** MODAL */
+.button-add {
+  margin-left: 90%;
+}
+
+.icons-button {
+  margin-top: 10px;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+/** MODAL STYLE **/
 ion-toolbar {
   --background: #AAC1D0;
   font-family: 'Dangrek', cursive;
@@ -63,15 +95,6 @@ ion-content {
   background-color: white;
 }
 
-.ions-style {
-  display: flex;
-  justify-content: space-around;
-  padding-top: 6px;
-  text-align: center;
-}
-
-ion-button {
-  color: white;
-  font-size: 20px;
-  margin-top: 5%;
+.ion-padding {
+  --background: #AAC1D0;
 }

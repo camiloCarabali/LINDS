@@ -2,75 +2,110 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@500&display=swap');
 
-ion-toolbar{
-  color: white;
-}
 
-.new-background-color{
-  --background: #85C1EC;
+/** MENU STYLE **/
+.menu-conten {
+  background-color: #C9E3F7;
+  color: #4B5399;
   font-family: 'Dangrek', cursive;
-}
-
-ion-title {
-  font-size: 25px;
-}
-
-.general{
-  display: flex;
-}
-
-.derecha{
-  align-items: center;
   text-align: center;
-  background-color: #E3F1FA;
-  width: 100%;
-  height: 500px;
+  height: 100vh;
 }
 
-h4 {
-  font-family: 'Dangrek', cursive;
-  font-size: 20px;
-  margin-top: 8px;
+.col-right{
+  background-color: white;
+  color: black;
+}
+
+.button-style1 {
+  width: 100%;
+  height: 66px;
+  color: white;
+  font-size: 18px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: bold;
+}
+
+.button-style {
+  width: 100%;
+  height: 66px;
   color: #4B5399;
+  font-size: 18px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: bold;
 }
 
-h2 {
-  font-family: 'Dangrek', cursive;
-  font-size: 32px;
-  margin-top: 8px;
-  color: #4B5399;
+.botones-menu {
+ margin-top: 15%;
 }
 
-#boton-menu {
-  height: 80px;
-  width: 100%;
-  background: none;
+h3 {
+  margin-top: 5%;
 }
 
-.boton-crear {
-  border-radius: 100%;
-  margin-top: 40%;
-  margin-left: 90%;
+/** ROW STYLE*/
+
+.btn {
+  color: black;
 }
 
-#boton-menu2 {
-  height: 80px;
-  width: 100%;
-  background-color: #8DC5EE;
-}
-
-
-ion-col {
-    border: solid 1px #000000;
-    text-align: center;
+.row-content {
+  margin: 15px;
+  text-align: center;
 }
 
 .main {
-    font-weight: bold;
+  color: #4B5399;
+  font-size: 20px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: bold;
 }
 
-ion-icon {
-    padding: 5px;
-    font-size: 35px;
-    cursor: pointer;
+.content-travel {
+  background-color: #BEDEF1;
+  color: #224C72;
+  font-size: 16px;
+  border-radius: 15px;
+  width: 100%;
+  height: 73px;
+  padding-top: 16px;
+  text-align: center;
+  margin-top: 13px;
+}
+
+.button-add {
+  margin-left: 90%;
+  margin-top: 15px;
+}
+
+.icons-button {
+  margin-top: 10px;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+/** MODAL STYLE **/
+ion-toolbar {
+  --background: #AAC1D0;
+  font-family: 'Dangrek', cursive;
+  color: white;
+}
+
+ion-title {
+  margin-left: 20px;
+  font-size: 32px;
+}
+
+ion-content {
+  background-color: white;
+}
+
+.ion-padding {
+  --background: #AAC1D0;
+}
+
+.close-button {
+  font-size: 20px;
+  font-weight: bold;
 }

@@ -1,50 +1,61 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title> Mercancia </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-cabezaheader></app-cabezaheader>
 
 <ion-content [fullscreen]="true">
-  <ion-grid [fixed]="true">
-    <ion-button id="open-modal" (click)="add()">Crear</ion-button>
-    <ion-modal [isOpen]="isModalOpen">
-      <ng-template>
-        <ion-header>
-          <ion-toolbar>
-            <ion-title>{{ modalTitle }}</ion-title>
-            <ion-buttons slot="end">
-              <ion-button (click)="cancel()">Close</ion-button>
-            </ion-buttons>
-          </ion-toolbar>
-        </ion-header>
-        <ion-content class="ion-padding">
-          <app-crear-editar-mercancia
-            [mercancia]="mercancia"
-            *ngIf="Activate_CrearEditar_MercanciaComp"
-          ></app-crear-editar-mercancia>
-        </ion-content>
-      </ng-template>
-    </ion-modal>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="menu-conten" size="3">
+        <h3>Logistica</h3>
+        <h1>NOMBRE DEL PERFIL</h1>
+        <div class="botones-menu">
+          <ion-button class="button-style1" [routerLink]="['/merccancia']">RECEPCIÓN MERCANCIA</ion-button>
+        </div>
+      </ion-col>
+      <ion-col class="col-right" size="9">
+        <div class="row-content">
 
-    <ion-row class="main">
-      <ion-col>ID</ion-col>
-      <ion-col>NOMBRE</ion-col>
-      <ion-col>PESO</ion-col>
-      <ion-col>PUNTO DE ENTREGA</ion-col>
-      <ion-col>ACCIONES</ion-col>
-    </ion-row>
-    <ion-row *ngFor="let dataItem of mercanciaList">
-      <ion-col>{{ dataItem.id }}</ion-col>
-      <ion-col>{{ dataItem.nombre }}</ion-col>
-      <ion-col>{{ dataItem.peso }}</ion-col>
-      <ion-col>{{ dataItem.puntoEntrega }}</ion-col>
-      <ion-col>
-        <ion-icon
-          name="create"
-          id="open-modal"
-          (click)="edit(dataItem)"
-        ></ion-icon>
-        <ion-icon name="trash" (click)="delete(dataItem)"></ion-icon>
+          <ion-row class="main">
+            <ion-col>ID</ion-col>
+            <ion-col>NOMBRE</ion-col>
+            <ion-col>PESO</ion-col>
+            <ion-col>PUNTO DE ENTREGA</ion-col>
+            <ion-col>ACCIONES</ion-col>
+          </ion-row>
+
+          <ion-row *ngFor="let dataItem of mercanciaList" class="content-commodity">
+            <ion-col>{{ dataItem.id }}</ion-col>
+            <ion-col>{{ dataItem.nombre }}</ion-col>
+            <ion-col>{{ dataItem.peso }}</ion-col>
+            <ion-col>{{ dataItem.puntoEntrega }}</ion-col>
+            <ion-col class="icons-button">
+              <ion-icon
+                name="create"
+                id="open-modal"
+                (click)="edit(dataItem)"
+              ></ion-icon>
+              <ion-icon name="trash" (click)="delete(dataItem)"></ion-icon>
+            </ion-col>
+          </ion-row>
+
+          <ion-button class="button-add" id="open-modal" (click)="add()"><ion-icon name="add-outline"></ion-icon></ion-button>
+          <ion-modal [isOpen]="isModalOpen">
+            <ng-template>
+              <ion-header>
+                <ion-toolbar>
+                  <ion-title>{{ modalTitle }}</ion-title>
+                  <ion-buttons slot="end">
+                    <ion-button (click)="cancel()"><ion-icon name="close-sharp"></ion-icon></ion-button>
+                  </ion-buttons>
+                </ion-toolbar>
+              </ion-header>
+              <ion-content class="ion-padding">
+                <app-crear-editar-mercancia
+                  [mercancia]="mercancia"
+                  *ngIf="Activate_CrearEditar_MercanciaComp"
+                ></app-crear-editar-mercancia>
+              </ion-content>
+            </ng-template>
+          </ion-modal>
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>

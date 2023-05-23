@@ -7,15 +7,15 @@
     <list default="true" id="0cec2a83-20d1-47e2-b041-20ecb4bc8243" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../LINDS/src/app/ADMINISTRADOR/empresa/mostrar-empresa/mostrar-empresa.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/ADMINISTRADOR/empresa/mostrar-empresa/mostrar-empresa.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../LINDS/src/app/ADMINISTRADOR/empresa/mostrar-empresa/mostrar-empresa.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/ADMINISTRADOR/empresa/mostrar-empresa/mostrar-empresa.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/app.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/app.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/estiloHF/cabezaheader/cabezaheader.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/estiloHF/cabezaheader/cabezaheader.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/estiloHF/cabezaheader/cabezaheader.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/estiloHF/cabezaheader/cabezaheader.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../LINDS/src/app/estiloHF/header-normal/header-normal.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/estiloHF/header-normal/header-normal.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../LINDS/src/app/estiloHF/header-normal/header-normal.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/estiloHF/header-normal/header-normal.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/estiloHF/menu/menu.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/estiloHF/menu/menu.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/estiloHF/menu/menu.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/estiloHF/menu/menu.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/estiloHF/menu/menu.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/estiloHF/menu/menu.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/estiloHF/menu/menu.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/estiloHF/menu/menu.component.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../LINDS/src/app/inicio/inicio.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/inicio/inicio.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/inicio/inicio.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/inicio/inicio.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LINDS/src/theme/variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/theme/variables.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

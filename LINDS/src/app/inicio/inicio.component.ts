@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/services/shared.service';
 import { CookieService } from 'ngx-cookie-service';
-import { Router } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 
 
 @Component({
@@ -28,7 +28,8 @@ export class InicioComponent implements OnInit {
 
   login() {
 
-    this.router.navigate(['/empresa']);
+    //this.router.navigate(['/empresa']);
+    this.router.navigate(['/viaje']);
     /**const credenciales = {
       correo: this.correo,
       password: this.password,

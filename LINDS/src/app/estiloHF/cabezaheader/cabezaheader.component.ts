@@ -16,4 +16,8 @@ export class CabezaheaderComponent  implements OnInit {
 
   ngOnInit() {}
 
+  viajes(){
+    this.router.navigate(['/viajes'])
+  }
+
 }

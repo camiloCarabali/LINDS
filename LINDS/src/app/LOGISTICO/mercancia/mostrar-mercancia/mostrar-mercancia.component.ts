@@ -38,7 +38,7 @@ export class MostrarMercanciaComponent implements OnInit {
       descarga: '',
       puntoEntrega: '',
     };
-    this.modalTitle = 'Añadir Mercancia';
+    this.modalTitle = 'Agregar Mercancia';
     this.Activate_CrearEditar_MercanciaComp = true;
     this.setOpen(true);
   }
@@ -51,14 +51,14 @@ export class MostrarMercanciaComponent implements OnInit {
 
   edit(item: any) {
     this.mercancia = item;
-    this.modalTitle = 'Editar Mercancia';
+    this.modalTitle = 'Actualizar Mercancia';
     this.Activate_CrearEditar_MercanciaComp = true;
     this.setOpen(true);
     this.refreshMercanciaList();
   }
 
   delete(item: any) {
-    if (confirm('Desea eliminar esta mercancia?')) {
+    if (confirm('¿Desea eliminar esta mercancia?')) {
       this.service.eliminarMercancia(item.id).subscribe((data) => {
         alert(data.toString());
         this.refreshMercanciaList();

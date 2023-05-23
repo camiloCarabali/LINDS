@@ -1,86 +1,86 @@
 <app-cabezaheader></app-cabezaheader>
 <ion-content [fullscreen]="true">
-  <div class="general">
-    <div class="derecha">
-      <div class="derecha-menu">
-        <h4>LOGISTICA</h4>
-        <h2>NOMBRE DEL PERFIL</h2>
-      </div>
-      <div class="izquierda-menu">
-        <ion-button id="boton-menu2">ASIGNACIÓN DE VIAJE</ion-button>
-        <ion-button id="boton-menu">VIAJES</ion-button>
-        <ion-button id="boton-menu">HISTORIAL DE VIAJE</ion-button>
-      </div>
-    </div>
-    <div class="izquierda">
-      <ion-grid [fixed]="true">
-        <ion-row class="main">
-          <ion-col size="1">ID</ion-col>
-          <ion-col>INICIO</ion-col>
-          <ion-col>FECHA</ion-col>
-          <ion-col>CAMION</ion-col>
-          <ion-col>CAPACIDAD</ion-col>
-          <ion-col>CONDUCTOR</ion-col>
-          <ion-col>ACCIONES</ion-col>
-        </ion-row>
-        <ng-container *ngFor="let dataItem of viajeList">
-          <ion-row *ngFor="let data of capacidad">
-            <ion-col size="1">{{ dataItem.id }}</ion-col>
-            <ion-col>{{ dataItem.inicio }}</ion-col>
-            <ion-col>{{ dataItem.fecha }}</ion-col>
-            <ion-col>{{ dataItem.camion }}</ion-col>
-            <ion-col>{{ data.capacidad }}</ion-col>
-            <ion-col>{{ dataItem.usuario }}</ion-col>
-            <ion-col>
-              <ion-icon name="map-outline" (click)="map(dataItem)"></ion-icon>
-              <ion-icon
-                name="create"
-                id="open-modal"
-                (click)="edit(dataItem)"
-              ></ion-icon>
-              <ion-icon name="trash" (click)="delete(dataItem)"></ion-icon>
-            </ion-col>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="menu-conten" size="3">
+        <h3>Logistica</h3>
+        <h1>NOMBRE DEL PERFIL</h1>
+        <div class="botones-menu">
+          <ion-button class="button-style1" [routerLink]="['/viaje']">VIAJES</ion-button>
+          <ion-button class="button-style" fill="clear" [routerLink]="['/punto-entrega']">PUNTOS DE ENTREGA</ion-button>
+          <ion-button class="button-style" fill="clear" [routerLink]="['/ver-historial']">HISTORIAL DE VIAJE</ion-button>
+        </div>
+      </ion-col>
+      <ion-col class="col-right" size="9">
+        <div class="row-content">
+          <ion-row class="main">
+            <ion-col size="1">ID</ion-col>
+            <ion-col>INICIO</ion-col>
+            <ion-col>FECHA</ion-col>
+            <ion-col>CAMION</ion-col>
+            <ion-col>CAPACIDAD</ion-col>
+            <ion-col>CONDUCTOR</ion-col>
+            <ion-col>ACCIONES</ion-col>
           </ion-row>
-        </ng-container>
-      </ion-grid>
 
-      <ion-button class="boton-crear" id="open-modal" (click)="add()"><ion-icon name="add-outline"></ion-icon></ion-button>
-      <ion-modal [isOpen]="isModalOpen">
-        <ng-template>
-          <ion-header>
-            <ion-toolbar>
-              <ion-title>{{ modalTitle }}</ion-title>
-              <ion-buttons slot="end">
-                <ion-button (click)="cancel()"><ion-icon name="close-outline"></ion-icon></ion-button>
-              </ion-buttons>
-            </ion-toolbar>
-          </ion-header>
-          <ion-content class="ion-padding">
-            <app-crear-editar-viaje
-              [viaje]="viaje"
-              *ngIf="Activate_CrearEditar_ViajeComp"
-            ></app-crear-editar-viaje>
-          </ion-content>
-        </ng-template>
-      </ion-modal>
+          <ng-container *ngFor="let dataItem of viajeList">
+            <ion-row *ngFor="let data of capacidad" class="content-travel">
+              <ion-col size="1">{{ dataItem.id }}</ion-col>
+              <ion-col>{{ dataItem.inicio }}</ion-col>
+              <ion-col>{{ dataItem.fecha }}</ion-col>
+              <ion-col>{{ dataItem.camion }}</ion-col>
+              <ion-col>{{ data.capacidad }}</ion-col>
+              <ion-col>{{ dataItem.usuario }}</ion-col>
+              <ion-col class="icons-button">
+                <ion-icon name="map-outline" (click)="map(dataItem)"></ion-icon>
+                <ion-icon
+                  name="pencil-sharp"
+                  id="open-modal"
+                  (click)="edit(dataItem)"
+                ></ion-icon>
+                <ion-icon name="trash" (click)="delete(dataItem)"></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ng-container>
 
-      <ion-modal [isOpen]="isModalOpen1">
-        <ng-template>
-          <ion-header>
-            <ion-toolbar>
-              <ion-title>Ruta</ion-title>
-              <ion-buttons slot="end">
-                <ion-button (click)="setOpen1(false)">Close</ion-button>
-              </ion-buttons>
-            </ion-toolbar>
-          </ion-header>
-          <ion-content class="ion-padding">
-            <app-mapa-viaje [viaje]="viaje" *ngIf="Activate_Mapa_ViajeComp">
-            </app-mapa-viaje>
-          </ion-content>
-        </ng-template>
-      </ion-modal>
+          <ion-button class="button-add" id="open-modal" (click)="add()"><ion-icon name="add-outline"></ion-icon></ion-button>
+          <ion-modal [isOpen]="isModalOpen">
+            <ng-template>
+              <ion-header>
+                <ion-toolbar>
+                  <ion-title>{{ modalTitle }}</ion-title>
+                  <ion-buttons slot="end">
+                    <ion-button class="close-button" (click)="cancel()"><ion-icon name="close-outline"></ion-icon></ion-button>
+                  </ion-buttons>
+                </ion-toolbar>
+              </ion-header>
+              <ion-content class="ion-padding">
+                <app-crear-editar-viaje
+                  [viaje]="viaje"
+                  *ngIf="Activate_CrearEditar_ViajeComp"
+                ></app-crear-editar-viaje>
+              </ion-content>
+            </ng-template>
+          </ion-modal>
 
-    </div>
-  </div>
+          <ion-modal [isOpen]="isModalOpen1">
+            <ng-template>
+              <ion-header>
+                <ion-toolbar>
+                  <ion-title>Ruta</ion-title>
+                  <ion-buttons slot="end">
+                    <ion-button (click)="setOpen1(false)"><ion-icon name="close-sharp"></ion-icon></ion-button>
+                  </ion-buttons>
+                </ion-toolbar>
+              </ion-header>
+              <ion-content class="ion-padding">
+                <app-mapa-viaje [viaje]="viaje" *ngIf="Activate_Mapa_ViajeComp">
+                </app-mapa-viaje>
+              </ion-content>
+            </ng-template>
+          </ion-modal>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

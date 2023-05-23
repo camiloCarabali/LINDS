@@ -1,50 +1,43 @@
 <ion-header [translucent]="true">
-  <ion-navbar class="d-flex flex-row"  id="nav-header">
-      <h2 class="text-white">
+  <ion-toolbar class="new-background-color">
+    <ion-navbar>
+      <ion-title>
         LINDS TRACK
-      </h2>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          MERCANCIA
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="#">RECEPCIÓN DE MERCACIA</a></li>
-          <li><a class="dropdown-item" href="#">CARGA DE MERCANCIA</a></li>
-        </ul>
-      </div>
+      </ion-title>
+      <ul>
+        <li><ion-button fill="clear" [routerLink]="['/viaje']"><a>VIAJES</a></ion-button></li>
+        <li><ion-button fill="clear" [routerLink]="['/mercancia']"><a>MERCANCIA</a></ion-button></li>
+        <li><ion-button fill="clear" [routerLink]="['/camion']"><a>VEHICULOS</a></ion-button></li>
+        <li><ion-button fill="clear" [disabled]="true"><a>ESTADISTICAS</a></ion-button></li>
+      </ul>
 
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          VEHICULOS
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="">VEHICULOS EN VIAJE</a></li>
-          <li><a class="dropdown-item" href="">GESTIÓN DE VEHICULOS</a></li>
+     <!--<nav id="menu">
+        <ul>
+          <li><a>VIAJES</a>
+            <ul>
+              <li><ion-button fill="clear" [routerLink]="['/viaje']">ASIGNACIÓN DE VIAJES</ion-button></li>
+              <li><ion-button fill="clear" [routerLink]="['/punto-entrega']">AGREGAR PUNTO DE ENTREGA</ion-button></li>
+              <li><ion-button fill="clear" [routerLink]="['/ver-historial']">HISTORIAL DE VIAJES</ion-button></li>
+            </ul>
+          </li>
+          <li><a>MERCANCIA</a>
+            <ul>
+              <li><ion-button fill="clear" [routerLink]="['/mercancia']">RECEPCIÓN MERCANCIA</ion-button></li>
+            </ul>
+          </li>
+          <li><a>VEHICULOS</a></li>
+          <ul>
+            <li><ion-button fill="clear" [routerLink]="['/camion']">GESTIÓN DE VEHICULOS</ion-button></li>
+          </ul>
+          <li><a>ESTADISTICAS</a>
+            <ul>
+              <li><ion-button fill="clear" [disabled]="true" >ESTADISTICAS DE VIAJES</ion-button></li>
+            </ul>
+          </li>
         </ul>
-      </div>
-
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          ASIGNACIÓN
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="#">ASIGNACIÓN DE VIAJE</a></li>
-          <li><a class="dropdown-item" href="#">VIAJES</a></li>
-          <li><a class="dropdown-item" href="#">HISTORIAL DE VIAJES</a></li>
-        </ul>
-      </div>
-
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button"  [disabled]="true" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          ESTADISTICAS
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="#">Acción</a></li>
-          <li><a class="dropdown-item" href="#">Otra acción</a></li>
-          <li><a class="dropdown-item" href="#">Algo más aqui</a></li>
-        </ul>
-      </div>
-
+      </nav>
+      -->
       <a href="#">CERRAR SESIÓN</a>
     </ion-navbar>
+  </ion-toolbar>
 </ion-header>

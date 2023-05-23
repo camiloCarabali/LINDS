@@ -16,16 +16,46 @@ ion-button{
   font-weight: bold;
   margin-top: 5%;
   margin-left: 35%;
+  border: none;
+}
+
+ion-label {
+  color: white;
+  font-size: 25px;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 ion-input {
   color: white;
+  font-size: 20px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+ion-select {
+  color: white;
   font-size: 25px;
   font-family: 'Josefin Sans', sans-serif;
 }
 
-ion-list {
+ion-select-option {
   color: white;
   font-size: 25px;
   font-family: 'Josefin Sans', sans-serif;
+}
+
+ion-item {
+  --background: #717B82;
+  margin-top: 10px;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.style-btn{
+  height: 70px;
+  margin-top: 30px;
+}
+
+ion-list {
+  background-color: #AAC1D0;
+  margin-top: 10px;
 }
