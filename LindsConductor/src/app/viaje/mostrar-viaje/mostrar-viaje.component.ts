@@ -27,7 +27,7 @@ export class MostrarViajeComponent implements OnInit {
   refreshViaje() {
     const jwt = this.cookieService.get('jwt');
     this.service.user(jwt).subscribe((res: any) => {
-      this.service.getHistorial(res.cedula).subscribe((data: any) => {
+      this.service.getAsignacion(res.cedula).subscribe((data: any) => {
         this.viaje = data;
       });
     });
@@ -38,26 +38,24 @@ export class MostrarViajeComponent implements OnInit {
     const waypoints: any = [];
     const jwt = this.cookieService.get('jwt');
     this.service.user(jwt).subscribe((res: any) => {
-      this.service.getHistorial(res.cedula).subscribe((data: any) => {
+      this.service.getAsignacion(res.cedula).subscribe((data: any) => {
         this.viaje = data;
         for (let i of this.viaje) {
-          if (i.estado) {
-            this.inicio = i.inicio;
-            this.id = i.id;
-            this.service.waypoints(this.id).subscribe((datax) => {
-              for (let x = 0; x < datax.length; x++) {
-                waypoints.push({
-                  location: datax[x],
-                  stopover: true,
-                });
-              }
-              this.llegada = datax[datax.length - 1];
-              waypoints.pop();
-              localStorage.setItem('rutaInicio', this.inicio);
-              localStorage.setItem('rutaLlegada', this.llegada);
-              localStorage.setItem('waypoints', JSON.stringify(waypoints));
-            });
-          }
+          this.inicio = i.inicio;
+          this.id = i.id;
+          this.service.waypoints(this.id).subscribe((request) => {
+            for (let j = 0; j < request.length; j++) {
+              waypoints.push({
+                location: request[j],
+                stopover: true,
+              });
+            }
+            this.llegada = request[request.length - 1];
+            waypoints.pop();
+            localStorage.setItem('rutaInicio', this.inicio);
+            localStorage.setItem('rutaLlegada', this.llegada);
+            localStorage.setItem('waypoints', JSON.stringify(waypoints));
+          });
         }
       });
     });

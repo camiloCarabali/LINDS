@@ -6,44 +6,48 @@ import { ViajeComponent } from './viaje/viaje.component';
 import { LoginComponent } from './login/login.component';
 import { IndicacionesComponent } from './indicaciones/indicaciones.component';
 import { EntregasComponent } from './entregas/entregas.component';
+import { MercanciaComponent } from './mercancia/mercancia.component';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'login',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'mapa',
-    component: MapaComponent
+    component: MapaComponent,
   },
   {
     path: 'historial',
-    component: HistorialComponent
+    component: HistorialComponent,
   },
   {
     path: 'viaje',
-    component: ViajeComponent
+    component: ViajeComponent,
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path: 'indicaciones',
-    component: IndicacionesComponent
+    component: IndicacionesComponent,
   },
   {
     path: 'entregas',
-    component: EntregasComponent
+    component: EntregasComponent,
   },
-
+  {
+    path: 'mercancia',
+    component: MercanciaComponent,
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

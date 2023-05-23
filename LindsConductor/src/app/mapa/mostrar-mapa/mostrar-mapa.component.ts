@@ -18,8 +18,15 @@ export class MostrarMapaComponent implements OnInit {
     this.isModalOpen = isOpen;
   }
 
+  isModalOpen1 = false;
+
+  setOpen1(isOpen: boolean) {
+    this.isModalOpen1 = isOpen;
+  }
+
   modalTitle: string = '';
   Activate_Indicaciones_MapaComp: boolean = false;
+  Activate_Entregas_MapaComp: boolean = false;
 
   sourceLocation = localStorage.getItem('rutaInicio');
   destinationLocation = localStorage.getItem('rutaLlegada');
@@ -112,8 +119,14 @@ export class MostrarMapaComponent implements OnInit {
   }
 
   indicaciones() {
-    this.setOpen(true)
+    this.setOpen(true);
     this.modalTitle = 'Indicaciones';
-    this.Activate_Indicaciones_MapaComp = true
+    this.Activate_Indicaciones_MapaComp = true;
+  }
+
+  entregas() {
+    this.setOpen1(true);
+    this.modalTitle = 'Puntos de Entregas';
+    this.Activate_Entregas_MapaComp = true;
   }
 }

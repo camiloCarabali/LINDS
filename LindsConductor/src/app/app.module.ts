@@ -32,6 +32,10 @@ import { MostrarIndicacionesComponent } from './indicaciones/mostrar-indicacione
 import { EntregasComponent } from './entregas/entregas.component';
 import { MostrarEntregasComponent } from './entregas/mostrar-entregas/mostrar-entregas.component';
 
+import { MercanciaComponent } from './mercancia/mercancia.component';
+import { MostrarMercanciaComponent } from './mercancia/mostrar-mercancia/mostrar-mercancia.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +51,8 @@ import { MostrarEntregasComponent } from './entregas/mostrar-entregas/mostrar-en
     MostrarIndicacionesComponent,
     EntregasComponent,
     MostrarEntregasComponent,
+    MercanciaComponent,
+    MostrarMercanciaComponent
   ],
   imports: [
     BrowserModule,

@@ -15,6 +15,10 @@ export class SharedService {
     return this.http.get<any[]>(this.APIURL + 'historialViaje/' + val);
   }
 
+  getAsignacion(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'asignacionViaje/' + val);
+  }
+
   login(val: any): Observable<any> {
     return this.http.post<any>(this.APIURL + 'login', val);
   }
@@ -25,6 +29,18 @@ export class SharedService {
 
   waypoints(val: String) {
     return this.http.get<any[]>(this.APIURL + 'waypoints/' + val);
+  }
+
+  getEntregas(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'buscarPuntoEntrega/' + val);
+  }
+
+  getMercanciaList(): Observable<any[]> {
+    return this.http.get<any[]>(this.APIURL + 'mercancia/');
+  }
+
+  buscarMercancia(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'buscarMercancia/' + val);
   }
 
 }
