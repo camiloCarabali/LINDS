@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 import { CookieService } from 'ngx-cookie-service';
 import { SharedService } from 'src/services/shared.service';
 
@@ -14,11 +15,16 @@ export class MostrarPerfilComponent implements OnInit {
   constructor(
     private cookieService: CookieService,
     private service: SharedService,
-    private router: Router
+    private router: Router,
+    private menuCtrl: MenuController
   ) {}
 
   ngOnInit() {
     this.perfil();
+  }
+
+  onClick() {
+    this.menuCtrl.toggle();
   }
 
   perfil() {
@@ -28,9 +34,14 @@ export class MostrarPerfilComponent implements OnInit {
     });
   }
 
+  ionViewDidEnter() {
+    this.menuCtrl.enable(false);
+  }
+
   logout() {
+    this.ionViewDidEnter()
     this.cookieService.delete('jwt');
-    this.service.logout().subscribe((data) => {})
+    this.service.logout().subscribe((data) => {});
     this.router.navigate(['/login']);
   }
 }

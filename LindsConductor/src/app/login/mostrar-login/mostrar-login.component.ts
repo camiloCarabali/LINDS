@@ -3,6 +3,7 @@ import { SharedService } from 'src/services/shared.service';
 import { CookieService } from 'ngx-cookie-service';
 import { UiService } from 'src/services/ui.service';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-mostrar-login',
@@ -18,10 +19,17 @@ export class MostrarLoginComponent implements OnInit {
     private service: SharedService,
     private cookieService: CookieService,
     private interaction: UiService,
-    private router: Router
+    private router: Router,
+    public menuCtrl: MenuController
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.ionViewDidEnter();
+  }
+
+  ionViewDidEnter() {
+    this.menuCtrl.enable(false);
+  }
 
   async login() {
     await this.interaction.showLoading('Validando...');

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController } from '@ionic/angular';
 import { UiService } from 'src/services/ui.service';
 
 declare var google: any;
@@ -39,16 +40,25 @@ export class MostrarMapaComponent implements OnInit {
   directionsService = new google.maps.DirectionsService();
   directionsDisplay = new google.maps.DirectionsRenderer();
 
-  constructor(private interaction: UiService) {}
+  constructor(
+    private interaction: UiService,
+    public menuCtrl: MenuController
+  ) {}
 
   ngOnInit() {
+    this.ionViewDidEnter();
     this.sourceLocation = localStorage.getItem('rutaInicio');
     this.destinationLocation = localStorage.getItem('rutaLlegada');
   }
 
-  reload(){
+  ionViewDidEnter() {
+    this.menuCtrl.enable(false);
   }
-  
+
+  ionViewWillLeave() {
+    this.menuCtrl.enable(true);
+  }
+
   loadMap() {
     const mapEle = document.getElementById('map') as HTMLElement;
     const myLatLng = { lat: 3.440018, lng: -76.519073 };
@@ -75,7 +85,7 @@ export class MostrarMapaComponent implements OnInit {
 
   getPosition() {
     if (navigator.geolocation) {
-      var options = { enableHighAccuracy : true, timeout: 10000 };
+      var options = { enableHighAccuracy: true, timeout: 10000 };
       geoLoc = navigator.geolocation;
       watchID = geoLoc.watchPosition(
         this.showLocationOnMap,
@@ -123,15 +133,18 @@ export class MostrarMapaComponent implements OnInit {
   }
 
   iniciarViaje() {
-    this.class_inicio = 'ion-hide'
-    this.class_fin = ''
+    this.class_inicio = 'ion-hide';
+    this.class_fin = '';
     this.sourceLocation = localStorage.getItem('rutaInicio');
     this.destinationLocation = localStorage.getItem('rutaLlegada');
     this.loadMap();
   }
 
   finalizarViaje() {
-    this.interaction.presentDecisionAlert("Estas seguro que quieres finalizar el viaje?")
+    this.ionViewWillLeave();
+    this.interaction.presentDecisionAlert(
+      'Estas seguro que quieres finalizar el viaje?'
+    );
   }
 
   indicaciones() {

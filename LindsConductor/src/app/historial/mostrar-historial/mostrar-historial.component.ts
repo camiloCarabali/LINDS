@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController } from '@ionic/angular';
 import { CookieService } from 'ngx-cookie-service';
 import { SharedService } from 'src/services/shared.service';
 
@@ -10,13 +11,23 @@ import { SharedService } from 'src/services/shared.service';
 export class MostrarHistorialComponent implements OnInit {
   constructor(
     private service: SharedService,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private menuCtrl: MenuController
   ) {}
 
   historial: any = [];
 
   ngOnInit() {
     this.refreshHistorial();
+    this.ionViewWillLeave();
+  }
+
+  ionViewWillLeave() {
+    this.menuCtrl.enable(true);
+  }
+
+  onClick(){
+    this.menuCtrl.toggle()
   }
 
   refreshHistorial() {
