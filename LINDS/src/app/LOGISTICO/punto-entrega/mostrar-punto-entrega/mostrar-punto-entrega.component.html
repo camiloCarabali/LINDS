@@ -1,48 +1,63 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title> Punto de Entrega </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-cabezaheader></app-cabezaheader>
 
 <ion-content [fullscreen]="true">
-  <ion-grid [fixed]="true">
-    <ion-button id="open-modal" (click)="add()">Crear</ion-button>
-    <ion-modal [isOpen]="isModalOpen">
-      <ng-template>
-        <ion-header>
-          <ion-toolbar>
-            <ion-title>{{ modalTitle }}</ion-title>
-            <ion-buttons slot="end">
-              <ion-button (click)="cancel()">Close</ion-button>
-            </ion-buttons>
-          </ion-toolbar>
-        </ion-header>
-        <ion-content class="ion-padding">
-          <app-crear-editar-punto-entrega
-            [puntoEntrega]="puntoEntrega"
-            *ngIf="Activate_CrearEditar_PuntoEntregaComp"
-          ></app-crear-editar-punto-entrega>
-        </ion-content>
-      </ng-template>
-    </ion-modal>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="menu-conten" size="3">
+        <h3>Logistica</h3>
+        <h1>NOMBRE DEL PERFIL</h1>
+        <div class="botones-menu">
+          <ion-button class="button-style" fill="clear" [routerLink]="['/viaje']">VIAJES</ion-button>
+          <ion-button class="button-style1"  [routerLink]="['/punto-entrega']">PUNTOS DE ENTREGA</ion-button>
+          <ion-button class="button-style" fill="clear" [routerLink]="['/ver-historial']">HISTORIAL DE VIAJE</ion-button>
+        </div>
+      </ion-col>
+      <ion-col class="col-right" size="9">
+        <div class="row-content">
+          <ion-row class="main">
 
-    <ion-row class="main">
-      <ion-col size="1">ID</ion-col>
-      <ion-col>DIRECCION</ion-col>
-      <ion-col size="1">VIAJE</ion-col>
-      <ion-col size="2">ACCIONES</ion-col>
-    </ion-row>
-    <ion-row *ngFor="let dataItem of puntoEntregaList">
-      <ion-col  size="1">{{ dataItem.id }}</ion-col>
-      <ion-col>{{ dataItem.direccion }}</ion-col>
-      <ion-col size="1">{{ dataItem.viaje }}</ion-col>
-      <ion-col size="2">
-        <ion-icon
-          name="create"
-          id="open-modal"
-          (click)="edit(dataItem)"
-        ></ion-icon>
-        <ion-icon name="trash" (click)="delete(dataItem)"></ion-icon>
+            <ion-col size="1">ID</ion-col>
+            <ion-col>DIRECCION</ion-col>
+            <ion-col size="1">VIAJE</ion-col>
+            <ion-col size="2">ACCIONES</ion-col>
+          </ion-row>
+
+          <ion-row *ngFor="let dataItem of puntoEntregaList" class="content-travel">
+            <ion-col  size="1">{{ dataItem.id }}</ion-col>
+            <ion-col>{{ dataItem.direccion }}</ion-col>
+            <ion-col size="1">{{ dataItem.viaje }}</ion-col>
+            <ion-col size="2" class="icons-button">
+              <ion-icon
+                name="pencil-sharp"
+                id="open-modal"
+                (click)="edit(dataItem)"
+              ></ion-icon>
+              <ion-icon name="trash" (click)="delete(dataItem)"></ion-icon>
+            </ion-col>
+          </ion-row>
+
+          <ion-button class="button-add" id="open-modal" (click)="add()"><ion-icon name="add-outline"></ion-icon></ion-button>
+
+          <ion-modal [isOpen]="isModalOpen">
+            <ng-template>
+              <ion-header>
+                <ion-toolbar>
+                  <ion-title>{{ modalTitle }}</ion-title>
+                  <ion-buttons slot="end">
+                    <ion-button class="close-button" (click)="cancel()"><ion-icon name="close-outline"></ion-icon></ion-button>
+                  </ion-buttons>
+                </ion-toolbar>
+              </ion-header>
+              <ion-content class="ion-padding">
+                <app-crear-editar-punto-entrega
+                  [puntoEntrega]="puntoEntrega"
+                  *ngIf="Activate_CrearEditar_PuntoEntregaComp"
+                ></app-crear-editar-punto-entrega>
+              </ion-content>
+            </ng-template>
+          </ion-modal>
+
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>

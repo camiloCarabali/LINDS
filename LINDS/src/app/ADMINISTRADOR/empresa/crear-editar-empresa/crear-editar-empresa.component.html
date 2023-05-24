@@ -1,11 +1,11 @@
-<ion-item>
+<ion-item class="style-btn">
   <ion-label position="floating">NIT</ion-label>
-  <ion-input placeholder="Escriba el NIT" type="number" [disabled]="empresa.id !== 0" [(ngModel)]="NIT"></ion-input>
+  <ion-input placeholder="Número NIT de la empresa" type="number" [disabled]="empresa.id !== 0" [(ngModel)]="NIT"></ion-input>
 </ion-item>
 
-<ion-item>
+<ion-item class="style-btn">
   <ion-label position="floating">Nombre</ion-label>
-  <ion-input placeholder="Escriba el nombre" [(ngModel)]="nombre"></ion-input>
+  <ion-input placeholder="Nombre de la empresa" [(ngModel)]="nombre"></ion-input>
 </ion-item>
 
 <ion-list>
@@ -20,5 +20,5 @@
   </ion-item>
 </ion-list>
 
-<ion-button (click)="add()" *ngIf="empresa.id === 0">Añadir</ion-button>
-<ion-button (click)="edit()" *ngIf="empresa.id !== 0">Editar</ion-button>
+<ion-button color="boton2" (click)="add()" *ngIf="empresa.id === 0">CREAR</ion-button>
+<ion-button color="boton2" (click)="edit()" *ngIf="empresa.id !== 0">ACTUALIZAR</ion-button>

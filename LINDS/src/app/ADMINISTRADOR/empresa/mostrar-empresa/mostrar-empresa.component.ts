@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SharedService } from 'src/services/shared.service';
 import { IonModal } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mostrar-empresa',
@@ -17,7 +18,7 @@ export class MostrarEmpresaComponent  implements OnInit {
     this.isModalOpen = isOpen
   }
 
-  constructor(private service: SharedService) { }
+  constructor(private service: SharedService, private router: Router) { }
 
   empresaList: any = [];
 
@@ -39,14 +40,14 @@ export class MostrarEmpresaComponent  implements OnInit {
       NIT: '',
       pais: '',
     };
-    this.modalTitle = 'Añadir Empresa';
+    this.modalTitle = 'Registrar Empresa';
     this.Activate_CrearEditar_EmpresaComp = true;
     this.setOpen(true);
   }
 
   edit(item: any){
     this.empresa = item;
-    this.modalTitle = 'Editar Empresa';
+    this.modalTitle = 'Actualizar Empresa';
     this.Activate_CrearEditar_EmpresaComp = true;
     this.setOpen(true);
     this.refreshEmpresaList();

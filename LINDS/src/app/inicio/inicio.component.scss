@@ -1,53 +1,86 @@
-@import url("https://fonts.googleapis.com/css2?family=Dangrek&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Dangrek&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@500&display=swap');
 
-.new-background-color {
-  --background: #85c1ec;
-  font-family: "Dangrek", cursive;
+ion-toolbar{
   color: white;
 }
 
-ion-title {
-  font-size: 25px;
-  height: 75px;
+ion-navbar {
+  display: flex;
+  flex-flow: row;
 }
 
+.new-background-color{
+  --background: #85C1EC;
+  font-family: 'Dangrek', cursive;
+}
+
+ion-title {
+  font-size: 35px;
+  margin-left: 5%;
+}
+
+ /** ESTILO DE LAS COLUMNAS */
+
 ion-col {
-  border: solid 1px #fff;
   height: 100%;
   text-align: center;
 }
 
 .col-left {
-  height: 100vh;
+  height: auto;
   padding: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  background-color: white;
 }
 
 .col-right {
-  height: 100vh;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  background-color: #C9E3F7;
 }
 
-.container1 {
-  font-family: "Dangrek", cursive;
+ /** ESTILO DE TEXTOS, DE INPUTS, LOGO, BOTON*/
+h1 {
+  font-family: 'Dangrek', cursive;
+  color: #413E3E;
+  font-size: 36px;
+  margin-top: 10px;
 }
 
-.container2 {
-  font-family: "Josefin Sans", sans-serif;
+ion-input {
+  color: black;
+  font-size: 25px;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
-.container3 {
-  padding: 40px;
+.text-title {
+  font-family: 'Darker Grotesque', sans-serif;
+  color: #413E3E;
+  font-size: 48px;
+  margin-top: 0%;
 }
 
-#logo {
-  width: 300px;
+.text-conten{
+  font-family: 'Josefin Sans', sans-serif;
+  align-items: center;
+  color: #413E3E;
+  font-size: 20px;
+}
+
+#logo{
+  width: 71.2%;
+  margin-left: 10%;
+}
+
+.button-in{
+  size: 40px;
+  margin-top: 30px;
 }

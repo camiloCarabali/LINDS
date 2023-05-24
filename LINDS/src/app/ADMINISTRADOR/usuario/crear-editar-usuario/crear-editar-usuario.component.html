@@ -1,4 +1,4 @@
-<ion-item>
+<ion-item class="style-btn">
   <ion-label position="floating">Cedula</ion-label>
   <ion-input
     placeholder="Escriba la cedula"
@@ -7,12 +7,12 @@
   ></ion-input>
 </ion-item>
 
-<ion-item>
+<ion-item class="style-btn">
   <ion-label position="floating">Nombres</ion-label>
   <ion-input placeholder="Escriba el nombre" [(ngModel)]="nombre"></ion-input>
 </ion-item>
 
-<ion-item>
+<ion-item class="style-btn">
   <ion-label position="floating">Apellidos</ion-label>
   <ion-input
     placeholder="Escriba el apellido"
@@ -20,7 +20,7 @@
   ></ion-input>
 </ion-item>
 
-<ion-item>
+<ion-item class="style-btn">
   <ion-label position="floating">Correo</ion-label>
   <ion-input
     placeholder="Escriba el correo electronico"
@@ -29,7 +29,7 @@
   ></ion-input>
 </ion-item>
 
-<ion-item *ngIf="usuario.id == 0">
+<ion-item *ngIf="usuario.id == 0" class="style-btn">
   <ion-label position="floating">Contraseña</ion-label>
   <ion-input
     placeholder="Escriba la contraseña"
@@ -76,5 +76,5 @@
   </ion-item>
 </ion-list>
 
-<ion-button (click)="add()" *ngIf="usuario.id == 0">Añadir</ion-button>
-<ion-button (click)="editar()" *ngIf="usuario.id != 0">Editar</ion-button>
+<ion-button color="boton2" (click)="add()" *ngIf="usuario.id == 0">CREAR</ion-button>
+<ion-button color="boton2" (click)="editar()" *ngIf="usuario.id != 0">ACTUALIZAR</ion-button>

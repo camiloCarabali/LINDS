@@ -42,6 +42,11 @@ import { MapaViajeComponent } from './LOGISTICO/viaje/mapa-viaje/mapa-viaje.comp
 import { MercanciaComponent } from './LOGISTICO/mercancia/mercancia.component';
 import { MostrarMercanciaComponent } from './LOGISTICO/mercancia/mostrar-mercancia/mostrar-mercancia.component';
 import { CrearEditarMercanciaComponent } from './LOGISTICO/mercancia/crear-editar-mercancia/crear-editar-mercancia.component';
+import { MostrarHistorialComponent } from './LOGISTICO/historial-viaje/mostrar-historial/mostrar-historial.component';
+
+import { PiefooterComponent } from './estiloHF/piefooter/piefooter.component';
+import { HeaderNormalComponent } from './estiloHF/header-normal/header-normal.component';
+import { CabezaheaderComponent } from './estiloHF/cabezaheader/cabezaheader.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +74,10 @@ import { CrearEditarMercanciaComponent } from './LOGISTICO/mercancia/crear-edita
     MercanciaComponent,
     MostrarMercanciaComponent,
     CrearEditarMercanciaComponent,
+    HeaderNormalComponent,
+    CabezaheaderComponent,
+    PiefooterComponent,
+    MostrarHistorialComponent,
   ],
   imports: [
     BrowserModule,

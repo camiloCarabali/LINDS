@@ -1,4 +1,4 @@
-<ion-item>
+<ion-item class="style-btn">
   <ion-label position="floating">Matricula</ion-label>
   <ion-input
     placeholder="Escriba la matricula"
@@ -6,22 +6,22 @@
   ></ion-input>
 </ion-item>
 
-<ion-item>
+<ion-item class="style-btn">
   <ion-label position="floating">Modelo</ion-label>
   <ion-input placeholder="Escriba el modelo" [(ngModel)]="modelo"></ion-input>
 </ion-item>
 
-<ion-item>
+<ion-item class="style-btn">
   <ion-label position="floating">Tipo</ion-label>
   <ion-input placeholder="Escriba el tipo" [(ngModel)]="tipo"></ion-input>
 </ion-item>
 
-<ion-item>
+<ion-item class="style-btn">
   <ion-label position="floating">Color</ion-label>
   <ion-input placeholder="Escriba el color" [(ngModel)]="color"></ion-input>
 </ion-item>
 
-<ion-item>
+<ion-item class="style-btn">
   <ion-label position="floating">Capacidad</ion-label>
   <ion-input
     placeholder="Escriba la capacidad en Kg"
@@ -58,5 +58,5 @@
   </ion-item>
 </ion-list>
 
-<ion-button (click)="add()" *ngIf="camion.id == 0">Añadir</ion-button>
-<ion-button (click)="edit()" *ngIf="camion.id != 0">Editar</ion-button>
+<ion-button (click)="add()" *ngIf="camion.id == 0">AGREGAR</ion-button>
+<ion-button (click)="edit()" *ngIf="camion.id != 0">ACTUALIZAR</ion-button>

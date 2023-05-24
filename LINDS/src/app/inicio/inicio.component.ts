@@ -1,17 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/services/shared.service';
 import { CookieService } from 'ngx-cookie-service';
+import { RouterModule, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.scss'],
 })
+
 export class InicioComponent implements OnInit {
   constructor(
     private service: SharedService,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private router: Router
   ) {}
+
+
+
 
   credenciales: any;
   correo: string = '';
@@ -20,7 +27,10 @@ export class InicioComponent implements OnInit {
   ngOnInit() {}
 
   login() {
-    const credenciales = {
+
+    //this.router.navigate(['/empresa']);
+    this.router.navigate(['/viaje']);
+    /**const credenciales = {
       correo: this.correo,
       password: this.password,
     };
@@ -42,6 +52,6 @@ export class InicioComponent implements OnInit {
       (error) => {
         console.error('Error en el inicio de sesión:', error);
       }
-    );
+    );*/
   }
 }

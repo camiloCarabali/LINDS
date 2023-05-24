@@ -1,4 +1,4 @@
-<ion-item>
+<ion-item class="style-btn">
   <ion-label position="floating">Direccion o lugar de entrega</ion-label>
   <ion-input
     placeholder="Escriba la direccion del punto de entrega"
@@ -18,5 +18,5 @@
   </ion-item>
 </ion-list>
 
-<ion-button (click)="add()" *ngIf="puntoEntrega.id == 0">Añadir</ion-button>
-<ion-button (click)="edit()" *ngIf="puntoEntrega.id != 0">Editar</ion-button>
+<ion-button (click)="add()" *ngIf="puntoEntrega.id == 0">CREAR</ion-button>
+<ion-button (click)="edit()" *ngIf="puntoEntrega.id != 0">ACTUALIZAR</ion-button>

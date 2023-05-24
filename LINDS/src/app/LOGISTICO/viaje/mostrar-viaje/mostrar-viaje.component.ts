@@ -48,7 +48,7 @@ export class MostrarViajeComponent implements OnInit {
       usuario: '',
       estado: '',
     };
-    this.modalTitle = 'Crear Viaje';
+    this.modalTitle = 'Agregar Viaje';
     this.Activate_CrearEditar_ViajeComp = true;
     this.setOpen(true);
   }
@@ -61,14 +61,14 @@ export class MostrarViajeComponent implements OnInit {
 
   edit(item: any) {
     this.viaje = item;
-    this.modalTitle = 'Editar Viaje';
+    this.modalTitle = 'Actualizar Viaje';
     this.Activate_CrearEditar_ViajeComp = true;
     this.setOpen(true);
     this.refreshViajeList();
   }
 
   delete(item: any) {
-    if (confirm('Desea inactivar este viaje?')) {
+    if (confirm('¿Desea inactivar este viaje?')) {
       this.service.inactivarViaje(item.id).subscribe((data) => {
         alert(data.toString());
         this.refreshViajeList();

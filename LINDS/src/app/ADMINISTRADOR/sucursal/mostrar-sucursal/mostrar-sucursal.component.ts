@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SharedService } from 'src/services/shared.service';
 import { IonModal } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mostrar-sucursal',
@@ -17,7 +18,7 @@ export class MostrarSucursalComponent implements OnInit {
     this.isModalOpen = isOpen;
   }
 
-  constructor(private service: SharedService) {}
+  constructor(private service: SharedService, private router: Router) {}
 
   sucursalList: any = [];
 
@@ -74,6 +75,7 @@ export class MostrarSucursalComponent implements OnInit {
     this.service.getSucursalList().subscribe((data) => {
       this.sucursalList = data;
       this.listWithoutFilter = data;
+      console.log("SUCURSALES:", this.sucursalList)
     });
   }
 

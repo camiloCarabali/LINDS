@@ -6,12 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class SharedService {
-  readonly APIURL = 'http://127.0.0.1:8000/';
+  readonly APIURL = 'http://localhost:8000/';
 
   constructor(private http: HttpClient) {}
 
   getRolList(): Observable<any[]> {
-    return this.http.get<any[]>(this.APIURL + '/rol/');
+    return this.http.get<any[]>(this.APIURL + 'rol/');
   }
 
   getEmpresaList(): Observable<any[]> {
@@ -27,7 +27,7 @@ export class SharedService {
   }
 
   addEmpresa(val: any) {
-    return this.http.post<any[]>(this.APIURL + '/crearEmpresa/', val);
+    return this.http.post<any[]>(this.APIURL + 'crearEmpresa/', val);
   }
 
   updateEmpresa(val: any) {
@@ -47,7 +47,7 @@ export class SharedService {
   }
 
   getMunicipioList(): Observable<any[]> {
-    return this.http.get<any[]>(this.APIURL + '/municipio/');
+    return this.http.get<any[]>(this.APIURL + 'municipio/');
   }
 
   getDepartamentoList(): Observable<any[]> {
@@ -59,15 +59,15 @@ export class SharedService {
   }
 
   getSucursalList(): Observable<any[]> {
-    return this.http.get<any[]>(this.APIURL + '/sucursal/');
+    return this.http.get<any[]>(this.APIURL + 'sucursal');
   }
 
   addSucursal(val: any) {
-    return this.http.post<any[]>(this.APIURL + '/crearSucursal/', val);
+    return this.http.post<any[]>(this.APIURL + 'crearSucursal/', val);
   }
 
   updateSucursal(val: any) {
-    return this.http.put<any[]>(this.APIURL + '/modificarSucursal/', val);
+    return this.http.put<any[]>(this.APIURL + 'modificarSucursal/', val);
   }
 
   inactivarSucursal(val: string) {
@@ -75,7 +75,7 @@ export class SharedService {
   }
 
   getUsuarioList(): Observable<any[]> {
-    return this.http.get<any[]>(this.APIURL + '/usuario/');
+    return this.http.get<any[]>(this.APIURL + 'usuario/');
   }
 
   addUsuario(val: any) {
@@ -85,7 +85,7 @@ export class SharedService {
   }
 
   updateUsuario(val: any) {
-    return this.http.put<any[]>(this.APIURL + '/modificarUsuario/', val);
+    return this.http.put<any[]>(this.APIURL + 'modificarUsuario/', val);
   }
 
   inactivarUsuario(val: any) {

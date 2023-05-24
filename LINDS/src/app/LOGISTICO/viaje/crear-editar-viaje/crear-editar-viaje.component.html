@@ -1,7 +1,7 @@
-<ion-item>
-  <ion-label position="floating">Inicio</ion-label>
+<ion-item class="style-btn">
+  <ion-label position="floating">DIRECCIÓN DE INICIO:</ion-label>
   <ion-input
-    placeholder="Escriba el lugar de inicio"
+    placeholder="Escriba la dirección de inicio"
     [(ngModel)]="inicio"
   ></ion-input>
 </ion-item>
@@ -30,5 +30,5 @@
   </ion-item>
 </ion-list>
 
-<ion-button (click)="add()" *ngIf="viaje.id == 0">Añadir</ion-button>
-<ion-button (click)="edit()" *ngIf="viaje.id != 0">Editar</ion-button>
+<ion-button (click)="add()" *ngIf="viaje.id == 0">CREAR</ion-button>
+<ion-button (click)="edit()" *ngIf="viaje.id != 0">ACTUALIZAR</ion-button>

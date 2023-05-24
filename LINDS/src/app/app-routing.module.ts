@@ -9,6 +9,8 @@ import { CamionComponent } from './LOGISTICO/camion/camion.component';
 import { PuntoEntregaComponent } from './LOGISTICO/punto-entrega/punto-entrega.component';
 import { ViajeComponent } from './LOGISTICO/viaje/viaje.component';
 import { MercanciaComponent } from './LOGISTICO/mercancia/mercancia.component';
+import { CrearEditarViajeComponent } from './LOGISTICO/viaje/crear-editar-viaje/crear-editar-viaje.component';
+import { MostrarHistorialComponent } from './LOGISTICO/historial-viaje/mostrar-historial/mostrar-historial.component';
 
 const routes: Routes = [
   {
@@ -44,6 +46,10 @@ const routes: Routes = [
   {
     path: 'viaje',
     component: ViajeComponent
+  },
+  {
+    path: 'ver-historial',
+    component: MostrarHistorialComponent
   },
   {
     path: 'mercancia',
