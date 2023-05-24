@@ -23,6 +23,10 @@ export class SharedService {
     return this.http.post<any>(this.APIURL + 'login', val);
   }
 
+  logout(): Observable<any[]> {
+    return this.http.post<any[]>(this.APIURL + 'mercancia/', '');
+  }
+
   user(val: String) {
     return this.http.get<any[]>(this.APIURL + 'user/' + val);
   }
@@ -53,6 +57,12 @@ export class SharedService {
 
   descargaMercancia(val: any) {
     return this.http.put<any[]>(this.APIURL + 'descargaMercancia/' + val, val, {
+      observe: 'response'
+    });
+  }
+
+  confirmarViaje(val: any) {
+    return this.http.put<any[]>(this.APIURL + 'confirmarViaje/' + val, val, {
       observe: 'response'
     });
   }

@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { IndicacionesComponent } from './indicaciones/indicaciones.component';
 import { EntregasComponent } from './entregas/entregas.component';
 import { MercanciaComponent } from './mercancia/mercancia.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'mercancia',
     component: MercanciaComponent,
+  },
+  {
+    path: 'perfil',
+    component: PerfilComponent,
   },
 ];
 

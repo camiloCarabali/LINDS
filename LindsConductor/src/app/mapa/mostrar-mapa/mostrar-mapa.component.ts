@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UiService } from 'src/services/ui.service';
 
 declare var google: any;
 let marker: any;
@@ -13,6 +14,9 @@ let map: any;
 })
 export class MostrarMapaComponent implements OnInit {
   isModalOpen = false;
+
+  class_inicio = '';
+  class_fin = 'ion-hide';
 
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
@@ -35,18 +39,14 @@ export class MostrarMapaComponent implements OnInit {
   directionsService = new google.maps.DirectionsService();
   directionsDisplay = new google.maps.DirectionsRenderer();
 
-  constructor() {
-
-  }
+  constructor(private interaction: UiService) {}
 
   ngOnInit() {
-    //this.reload();
     this.sourceLocation = localStorage.getItem('rutaInicio');
     this.destinationLocation = localStorage.getItem('rutaLlegada');
   }
 
   reload(){
-    location.reload();
   }
   
   loadMap() {
@@ -75,7 +75,7 @@ export class MostrarMapaComponent implements OnInit {
 
   getPosition() {
     if (navigator.geolocation) {
-      var options = { timeout: 10000 };
+      var options = { enableHighAccuracy : true, timeout: 10000 };
       geoLoc = navigator.geolocation;
       watchID = geoLoc.watchPosition(
         this.showLocationOnMap,
@@ -123,9 +123,15 @@ export class MostrarMapaComponent implements OnInit {
   }
 
   iniciarViaje() {
+    this.class_inicio = 'ion-hide'
+    this.class_fin = ''
     this.sourceLocation = localStorage.getItem('rutaInicio');
     this.destinationLocation = localStorage.getItem('rutaLlegada');
     this.loadMap();
+  }
+
+  finalizarViaje() {
+    this.interaction.presentDecisionAlert("Estas seguro que quieres finalizar el viaje?")
   }
 
   indicaciones() {

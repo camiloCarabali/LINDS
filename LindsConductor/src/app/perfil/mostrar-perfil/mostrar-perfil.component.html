@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-title> Perfil </ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-card *ngFor="let item of perfilList">
+    <ion-card-header>
+      <ion-card-title>{{item.nombre}}</ion-card-title>
+      <ion-card-subtitle>{{item.rol}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-col>Cedula: {{item.cedula}}</ion-col><br>
+      <ion-col>Correo: {{item.correo}}</ion-col><br>
+      <ion-col>Empresa: {{item.empresa}}</ion-col><br>
+      <ion-col>Sucursal: {{item.sucursal}}</ion-col><br>
+      <ion-col>
+        <ion-button color="danger" (click)="logout()">Cerrar Sesion</ion-button>
+      </ion-col>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

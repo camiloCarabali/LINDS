@@ -5,6 +5,7 @@ import {
   ToastController,
 } from '@ionic/angular';
 import { SharedService } from './shared.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +18,7 @@ export class UiService {
     private alertController: AlertController,
     private toastController: ToastController,
     private loadingCtrl: LoadingController,
+    private router: Router,
     private service: SharedService
   ) {}
 
@@ -45,7 +47,10 @@ export class UiService {
       text: 'OK',
       role: 'confirm',
       handler: () => {
-        this.handlerMessage = 'OK';
+        this.service
+          .confirmarViaje(localStorage.getItem('id'))
+          .subscribe((data) => {});
+        this.router.navigate(['/historial']);
       },
     },
     {

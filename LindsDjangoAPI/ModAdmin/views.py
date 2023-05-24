@@ -481,6 +481,30 @@ def inactivarViaje(request, id):
         return JsonResponse("Viaje Inactivado", safe=False)
 
 
+@csrf_exempt
+def historialViaje(request, usuario):
+    if request.method == 'GET':
+        viajes = Viaje.objects.filter(usuario=usuario)
+        viajes_serializers = ViajeSerializer(viajes, many=True)
+        return JsonResponse(viajes_serializers.data, safe=False)
+
+
+def asignacionViaje(request, usuario):
+    if request.method == 'GET':
+        viajes = Viaje.objects.filter(usuario=usuario, estado=False)
+        viajes_serializers = ViajeSerializer(viajes, many=True)
+        return JsonResponse(viajes_serializers.data, safe=False)
+
+
+@csrf_exempt
+def confirmarViaje(request, id):
+    if request.method == 'PUT':
+        viaje = Viaje.objects.get(id=id)
+        viaje.estado = True
+        viaje.save()
+        return JsonResponse("Viaje Finalizado", safe=False, status=status.HTTP_200_OK)
+
+
 """
 /---------------------------------------------------------------/
 """
@@ -532,19 +556,7 @@ def buscarPeso(request, matricula):
 """
 
 
-@csrf_exempt
-def historialViaje(request, usuario):
-    if request.method == 'GET':
-        viajes = Viaje.objects.filter(usuario=usuario)
-        viajes_serializers = ViajeSerializer(viajes, many=True)
-        return JsonResponse(viajes_serializers.data, safe=False)
 
-
-def asignacionViaje(request, usuario):
-    if request.method == 'GET':
-        viajes = Viaje.objects.filter(usuario=usuario, estado=False)
-        viajes_serializers = ViajeSerializer(viajes, many=True)
-        return JsonResponse(viajes_serializers.data, safe=False)
 
 
 @csrf_exempt

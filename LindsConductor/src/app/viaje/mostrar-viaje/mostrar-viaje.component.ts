@@ -52,6 +52,7 @@ export class MostrarViajeComponent implements OnInit {
             }
             this.llegada = request[request.length - 1];
             waypoints.pop();
+            localStorage.setItem('id', this.id);
             localStorage.setItem('rutaInicio', this.inicio);
             localStorage.setItem('rutaLlegada', this.llegada);
             localStorage.setItem('waypoints', JSON.stringify(waypoints));

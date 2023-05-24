@@ -39,12 +39,9 @@ export class MostrarMercanciaComponent implements OnInit {
           'top',
           'La carga ha sido descargada correctamente.'
         );
-      }else if(data.status === 404){
+      } else if (data.status === 404) {
         this.interaction.closeLoading();
-        this.interaction.presentToast(
-          'top',
-          'Error en la solicitud'
-        );
+        this.interaction.presentToast('top', 'Error en la solicitud');
       }
     });
   }
