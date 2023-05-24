@@ -40,6 +40,7 @@ export class MostrarPerfilComponent implements OnInit {
 
   logout() {
     this.ionViewDidEnter()
+    localStorage.clear();
     this.cookieService.delete('jwt');
     this.service.logout().subscribe((data) => {});
     this.router.navigate(['/login']);
