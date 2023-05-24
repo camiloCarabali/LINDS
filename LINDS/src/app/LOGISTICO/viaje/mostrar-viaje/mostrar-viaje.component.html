@@ -1,0 +1,75 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Viaje </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid [fixed]="true">
+    <ion-button id="open-modal" (click)="add()">Crear</ion-button>
+    <ion-modal [isOpen]="isModalOpen">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>{{ modalTitle }}</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="cancel()">Close</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          <app-crear-editar-viaje
+            [viaje]="viaje"
+            *ngIf="Activate_CrearEditar_ViajeComp"
+          ></app-crear-editar-viaje>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+
+    <ion-modal [isOpen]="isModalOpen1">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Ruta</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="setOpen1(false)">Close</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          <app-mapa-viaje [viaje]="viaje" *ngIf="Activate_Mapa_ViajeComp">
+          </app-mapa-viaje>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+
+    <ion-row class="main">
+      <ion-col size="1">ID</ion-col>
+      <ion-col>INICIO</ion-col>
+      <ion-col>FECHA</ion-col>
+      <ion-col>CAMION</ion-col>
+      <ion-col>CAPACIDAD</ion-col>
+      <ion-col>CONDUCTOR</ion-col>
+      <ion-col>ACCIONES</ion-col>
+    </ion-row>
+    <ng-container *ngFor="let dataItem of viajeList">
+      <ion-row *ngFor="let data of capacidad">
+        <ion-col size="1">{{ dataItem.id }}</ion-col>
+        <ion-col>{{ dataItem.inicio }}</ion-col>
+        <ion-col>{{ dataItem.fecha }}</ion-col>
+        <ion-col>{{ dataItem.camion }}</ion-col>
+        <ion-col>{{ data.capacidad }}</ion-col>
+        <ion-col>{{ dataItem.usuario }}</ion-col>
+        <ion-col>
+          <ion-icon name="map-outline" (click)="map(dataItem)"></ion-icon>
+          <ion-icon
+            name="create"
+            id="open-modal"
+            (click)="edit(dataItem)"
+          ></ion-icon>
+          <ion-icon name="trash" (click)="delete(dataItem)"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+  </ion-grid>
+</ion-content>

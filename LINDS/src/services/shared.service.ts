@@ -50,6 +50,10 @@ export class SharedService {
     return this.http.get<any[]>(this.APIURL + '/municipio/');
   }
 
+  getDepartamentoList(): Observable<any[]> {
+    return this.http.get<any[]>(this.APIURL + 'departamento/');
+  }
+
   getBuscarMunicipio(val: String) {
     return this.http.get<any[]>(this.APIURL + 'buscarMunicipio/' + val);
   }
@@ -75,7 +79,9 @@ export class SharedService {
   }
 
   addUsuario(val: any) {
-    return this.http.post<any[]>(this.APIURL + 'registro', val, { observe: 'response' });
+    return this.http.post<any[]>(this.APIURL + 'registro', val, {
+      observe: 'response',
+    });
   }
 
   updateUsuario(val: any) {
@@ -83,10 +89,103 @@ export class SharedService {
   }
 
   inactivarUsuario(val: any) {
-    return this.http.put<any[]>(this.APIURL + 'inactivarUsuario/'+ val, val);
+    return this.http.put<any[]>(this.APIURL + 'inactivarUsuario/' + val, val);
   }
 
   correo(val: any) {
     return this.http.post<any[]>(this.APIURL + 'correo/', val);
   }
+
+  login(val: any): Observable<any> {
+    return this.http.post<any>(this.APIURL + 'login', val);
+  }
+
+  user(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'user/' + val);
+  }
+
+  getCamionList(): Observable<any[]> {
+    return this.http.get<any[]>(this.APIURL + 'camion/');
+  }
+
+  addCamion(val: any) {
+    return this.http.post<any[]>(this.APIURL + 'crearCamion/', val);
+  }
+
+  updateCamion(val: any) {
+    return this.http.put<any[]>(this.APIURL + 'modificarCamion/', val);
+  }
+
+  eliminarCamion(val: string) {
+    return this.http.delete<any[]>(this.APIURL + 'eliminarCamion/' + val);
+  }
+
+  getBuscarCamion(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'buscarCamion/' + val);
+  }
+
+  getViajeList(): Observable<any[]> {
+    return this.http.get<any[]>(this.APIURL + 'viaje/');
+  }
+
+  addViaje(val: any) {
+    return this.http.post<any[]>(this.APIURL + 'crearViaje/', val);
+  }
+
+  updateViaje(val: any) {
+    return this.http.put<any[]>(this.APIURL + 'modificarViaje/', val);
+  }
+
+  inactivarViaje(val: string) {
+    return this.http.delete<any[]>(this.APIURL + 'inactivarViaje/' + val);
+  }
+
+  getBuscarConductor(): Observable<any[]> {
+    return this.http.get<any[]>(this.APIURL + 'buscarConductor/');
+  }
+
+  getPuntoEntregaList(): Observable<any[]> {
+    return this.http.get<any[]>(this.APIURL + 'puntoEntrega/');
+  }
+
+  addPuntoEntrega(val: any) {
+    return this.http.post<any[]>(this.APIURL + 'crearPuntoEntrega/', val);
+  }
+
+  updatePuntoEntrega(val: any) {
+    return this.http.put<any[]>(this.APIURL + 'modificarPuntoEntrega/', val);
+  }
+
+  eliminarPuntoEntrega(val: string) {
+    return this.http.delete<any[]>(this.APIURL + 'eliminarPuntoEntrega/' + val);
+  }
+
+  activarPuntoEntrega(val: string) {
+    return this.http.put<any[]>(this.APIURL + 'activarPuntoEntrega/' + val, val);
+  }
+
+  waypoints(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'waypoints/' + val);
+  }
+
+  getBuscarPeso(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'buscarPeso/' + val);
+  }
+
+  getMercanciaList(): Observable<any[]> {
+    return this.http.get<any[]>(this.APIURL + 'mercancia/');
+  }
+
+  addMercancia(val: any) {
+    return this.http.post<any[]>(this.APIURL + 'crearMercancia/', val);
+  }
+
+  updateMercancia(val: any) {
+    return this.http.put<any[]>(this.APIURL + 'modificarMercancia/', val);
+  }
+
+  eliminarMercancia(val: string) {
+    return this.http.delete<any[]>(this.APIURL + 'eliminarMercancia/' + val);
+  }
+
 }

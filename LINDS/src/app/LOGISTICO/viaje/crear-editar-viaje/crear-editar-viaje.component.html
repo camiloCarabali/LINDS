@@ -1,0 +1,34 @@
+<ion-item>
+  <ion-label position="floating">Inicio</ion-label>
+  <ion-input
+    placeholder="Escriba el lugar de inicio"
+    [(ngModel)]="inicio"
+  ></ion-input>
+</ion-item>
+
+<ion-list>
+  <ion-item>
+    <ion-select placeholder="Seleccione el camion" [(ngModel)]="camion">
+      <ion-select-option
+        value="{{ camion.matricula }}"
+        *ngFor="let camion of camionList"
+        >{{ camion.matricula }}</ion-select-option
+      >
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-select placeholder="Seleccione el conductor" [(ngModel)]="usuario">
+      <ion-select-option
+        value="{{ user.cedula }}"
+        *ngFor="let user of conductorList"
+        >{{ user.nombre }}</ion-select-option
+      >
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+<ion-button (click)="add()" *ngIf="viaje.id == 0">Añadir</ion-button>
+<ion-button (click)="edit()" *ngIf="viaje.id != 0">Editar</ion-button>

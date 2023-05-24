@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from ModAdmin.models import Pais, Departamento, Municipio, Empresa, Viaje, DetalleViaje, Usuario, Rol, Sucursal, \
-    PuntoEntrega, Camion
+    PuntoEntrega, Camion, Mercancia
 
 
 class PaisSerializer(serializers.ModelSerializer):
@@ -60,13 +60,19 @@ class UsuarioSerializer(serializers.ModelSerializer):
 class ViajeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Viaje
-        fields = ('id', 'estado', 'inicio', 'llegada', 'fecha', 'camion', 'usuario')
+        fields = ('id', 'estado', 'inicio', 'fecha', 'camion', 'usuario')
 
 
 class PuntoEntregaSerializer(serializers.ModelSerializer):
     class Meta:
         model = PuntoEntrega
-        fields = ('id', 'direccion', 'nombre', 'numero_lote_entrega', 'estado', 'viaje')
+        fields = ('id', 'direccion', 'estado', 'viaje')
+
+
+class MercanciaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Mercancia
+        fields = ('id', 'nombre', 'peso', 'estado', 'carga', 'descarga', 'puntoEntrega')
 
 
 class DetalleViajeSerializer(serializers.ModelSerializer):
@@ -78,4 +84,4 @@ class DetalleViajeSerializer(serializers.ModelSerializer):
 class CamionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Camion
-        fields = ('matricula', 'modelo', 'tipo', 'color', 'almacenamiento')
+        fields = ('matricula', 'modelo', 'tipo', 'color', 'capacidad', 'empresa', 'sucursal')

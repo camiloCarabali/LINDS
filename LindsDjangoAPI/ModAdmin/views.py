@@ -2,9 +2,11 @@ from django.core.mail import send_mail
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
-from ModAdmin.models import Empresa, Sucursal, Usuario, Pais, Departamento, Municipio, Rol
+from ModAdmin.models import Empresa, Sucursal, Usuario, Pais, Departamento, Municipio, Rol, Camion, PuntoEntrega, Viaje, \
+    Mercancia
 from ModAdmin.serializers import EmpresaSerializer, SucursalSerializer, UsuarioSerializer, PaisSerializer, \
-    DepartamentoSerializer, MunicipioSerializer, RolSerializer
+    DepartamentoSerializer, MunicipioSerializer, RolSerializer, CamionSerializer, PuntoEntregaSerializer, \
+    ViajeSerializer, MercanciaSerializer
 from django.http.response import JsonResponse
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer
@@ -13,7 +15,6 @@ from rest_framework import status
 from rest_framework.exceptions import AuthenticationFailed
 import jwt, datetime
 from LindsDjangoAPI import settings
-
 
 
 # Create your views here.
@@ -328,6 +329,187 @@ def inactivarUsuario(request, cedula):
 /---------------------------------------------------------------/
 """
 
+
+@csrf_exempt
+def mostrarCamion(request):
+    if request.method == 'GET':
+        camiones = Camion.objects.all()
+        camiones_serializers = CamionSerializer(camiones, many=True)
+        return JsonResponse(camiones_serializers.data, safe=False)
+
+
+def buscarCamion(request, sucursal):
+    if request.method == 'GET':
+        camiones = Camion.objects.filter(sucursal=sucursal)
+        camiones_serializers = CamionSerializer(camiones, many=True)
+        return JsonResponse(camiones_serializers.data, safe=False)
+
+
+@csrf_exempt
+def crearCamion(request):
+    if request.method == 'POST':
+        camion_data = JSONParser().parse(request)
+        camion_serializers = CamionSerializer(data=camion_data)
+        if camion_serializers.is_valid():
+            camion_serializers.save()
+            return JsonResponse("Camion añadido", safe=False)
+        return JsonResponse("Fallo al añadir camion", safe=False)
+
+
+@csrf_exempt
+def modificarCamion(request):
+    if request.method == 'PUT':
+        camion_data = JSONParser().parse(request)
+        camion = Camion.objects.get(matricula=camion_data['matricula'])
+        camion_serializers = CamionSerializer(camion, data=camion_data)
+        if camion_serializers.is_valid():
+            camion_serializers.save()
+            return JsonResponse("Camion Modificado", safe=False)
+        return JsonResponse("Fallo al modificar camion", safe=False)
+
+
+@csrf_exempt
+def eliminarCamion(request, matricula):
+    if request.method == 'DELETE':
+        camion = Camion.objects.get(matricula=matricula)
+        camion.delete()
+        return JsonResponse("Camion Eliminado", safe=False)
+
+
+"""
+/---------------------------------------------------------------/
+"""
+
+
+@csrf_exempt
+def mostrarPuntoEntrega(request):
+    if request.method == 'GET':
+        puntos_entregas = PuntoEntrega.objects.all()
+        puntos_entregas_serializers = PuntoEntregaSerializer(puntos_entregas, many=True)
+        return JsonResponse(puntos_entregas_serializers.data, safe=False)
+
+
+def buscarPuntoEntrega(request, viaje):
+    if request.method == 'GET':
+        entregas = PuntoEntrega.objects.filter(viaje=viaje)
+        entregas_serializers = PuntoEntregaSerializer(entregas, many=True)
+        return JsonResponse(entregas_serializers.data, safe=False)
+
+
+@csrf_exempt
+def crearPuntoEntrega(request):
+    if request.method == 'POST':
+        punto_entrega_data = JSONParser().parse(request)
+        punto_entrega_serializers = PuntoEntregaSerializer(data=punto_entrega_data)
+        if punto_entrega_serializers.is_valid():
+            punto_entrega_serializers.save()
+            return JsonResponse("Punto de entrega añadido", safe=False)
+        return JsonResponse("Fallo al añadir punto de entrega", safe=False)
+
+
+@csrf_exempt
+def modificarPuntoEntrega(request):
+    if request.method == 'PUT':
+        punto_entrega_data = JSONParser().parse(request)
+        punto_entrega = PuntoEntrega.objects.get(id=punto_entrega_data['id'])
+        punto_entrega_serializers = PuntoEntregaSerializer(punto_entrega, data=punto_entrega_data)
+        if punto_entrega_serializers.is_valid():
+            punto_entrega_serializers.save()
+            return JsonResponse("Punto de entrega modificado", safe=False)
+        return JsonResponse("Fallo al modificar punto de entrega", safe=False)
+
+
+@csrf_exempt
+def eliminarPuntoEntrega(request, id):
+    if request.method == 'DELETE':
+        punto_entrega = PuntoEntrega.objects.get(id=id)
+        punto_entrega.delete()
+        return JsonResponse("Punto de entrega eliminado", safe=False)
+
+
+def waypoints(request, viaje):
+    if request.method == 'GET':
+        waypoints = []
+        entregas = PuntoEntrega.objects.filter(viaje=viaje)
+        for n in range(len(entregas)):
+            waypoints.append(entregas[n].direccion)
+        return JsonResponse(waypoints, safe=False)
+
+
+"""
+/---------------------------------------------------------------/
+"""
+
+
+@csrf_exempt
+def mostrarViaje(request):
+    if request.method == 'GET':
+        viajes = Viaje.objects.all()
+        viajes_serializers = ViajeSerializer(viajes, many=True)
+        return JsonResponse(viajes_serializers.data, safe=False)
+
+
+@csrf_exempt
+def crearViaje(request):
+    if request.method == 'POST':
+        viaje_data = JSONParser().parse(request)
+        viaje_serializers = ViajeSerializer(data=viaje_data)
+        if viaje_serializers.is_valid():
+            viaje_serializers.save()
+            return JsonResponse("Viaje asignado", safe=False)
+        return JsonResponse("Fallo al asignar un viaje", safe=False)
+
+
+@csrf_exempt
+def modificarViaje(request):
+    if request.method == 'PUT':
+        viaje_data = JSONParser().parse(request)
+        viaje = Viaje.objects.get(id=viaje_data['id'])
+        viaje_serializers = ViajeSerializer(viaje, data=viaje_data)
+        if viaje_serializers.is_valid():
+            viaje_serializers.save()
+            return JsonResponse("Viaje modificado", safe=False)
+        return JsonResponse("Fallo al modificar viaje", safe=False)
+
+
+@csrf_exempt
+def inactivarViaje(request, id):
+    if request.method == 'PUT':
+        viaje = Viaje.objects.get(id=id)
+        viaje.estado = False
+        viaje.save()
+        return JsonResponse("Viaje Inactivado", safe=False)
+
+
+@csrf_exempt
+def historialViaje(request, usuario):
+    if request.method == 'GET':
+        viajes = Viaje.objects.filter(usuario=usuario)
+        viajes_serializers = ViajeSerializer(viajes, many=True)
+        return JsonResponse(viajes_serializers.data, safe=False)
+
+
+def asignacionViaje(request, usuario):
+    if request.method == 'GET':
+        viajes = Viaje.objects.filter(usuario=usuario, estado=False)
+        viajes_serializers = ViajeSerializer(viajes, many=True)
+        return JsonResponse(viajes_serializers.data, safe=False)
+
+
+@csrf_exempt
+def confirmarViaje(request, id):
+    if request.method == 'PUT':
+        viaje = Viaje.objects.get(id=id)
+        viaje.estado = True
+        viaje.save()
+        return JsonResponse("Viaje Finalizado", safe=False, status=status.HTTP_200_OK)
+
+
+"""
+/---------------------------------------------------------------/
+"""
+
+
 @csrf_exempt
 def buscarEmpresa(request, NIT):
     empresa = Empresa.objects.get(NIT=NIT)
@@ -336,21 +518,118 @@ def buscarEmpresa(request, NIT):
     return JsonResponse(response_data)
 
 
+@csrf_exempt
 def buscarMunicipio(request, departamento):
     if request.method == 'GET':
         municipios = Municipio.objects.filter(departamento=departamento)
         municipios_serializers = MunicipioSerializer(municipios, many=True)
         return JsonResponse(municipios_serializers.data, safe=False)
 
+
+@csrf_exempt
 def buscarSucursal(request, empresa):
     if request.method == 'GET':
         sucursales = Sucursal.objects.filter(empresa=empresa)
         sucursales_serializers = SucursalSerializer(sucursales, many=True)
         return JsonResponse(sucursales_serializers.data, safe=False)
 
+
+@csrf_exempt
+def buscarConductor(request):
+    if request.method == 'GET':
+        conductores = Usuario.objects.filter(rol="Conductor")
+        conductores_serializers = UsuarioSerializer(conductores, many=True)
+        return JsonResponse(conductores_serializers.data, safe=False)
+
+
+@csrf_exempt
+def buscarPeso(request, matricula):
+    if request.method == 'GET':
+        camion = Camion.objects.get(matricula=matricula)
+        capacidad = camion.capacidad
+        response_data = {'capacidad': capacidad}
+        return JsonResponse(response_data)
+
+
 """
 /---------------------------------------------------------------/
 """
+
+
+
+
+
+@csrf_exempt
+def buscarMercancia(request, puntoEntrega):
+    valor = puntoEntrega.replace("_", " ")
+    direccion = valor.replace("AA", "#")
+    if request.method == 'GET':
+        mercancia = Mercancia.objects.filter(puntoEntrega=direccion)
+        mercancia_serializers = MercanciaSerializer(mercancia, many=True)
+        return JsonResponse(mercancia_serializers.data, safe=False)
+
+
+@csrf_exempt
+def mostrarMercancia(request):
+    if request.method == 'GET':
+        mercancias = Mercancia.objects.all()
+        mercancias_serializers = MercanciaSerializer(mercancias, many=True)
+        return JsonResponse(mercancias_serializers.data, safe=False)
+
+
+@csrf_exempt
+def crearMercancia(request):
+    if request.method == 'POST':
+        mercancia_data = JSONParser().parse(request)
+        mercancia_serializers = MercanciaSerializer(data=mercancia_data)
+        if mercancia_serializers.is_valid():
+            mercancia_serializers.save()
+            return JsonResponse("Mercancia asignada", safe=False)
+        return JsonResponse("Fallo al asignar una mercancia", safe=False)
+
+
+@csrf_exempt
+def modificarMercancia(request):
+    if request.method == 'PUT':
+        mercancia_data = JSONParser().parse(request)
+        mercancia = Mercancia.objects.get(id=mercancia_data['id'])
+        mercancia_serializers = MercanciaSerializer(mercancia, data=mercancia_data)
+        if mercancia_serializers.is_valid():
+            mercancia_serializers.save()
+            return JsonResponse("Mercancia modificada", safe=False)
+        return JsonResponse("Fallo al modificar Mercancia", safe=False)
+
+
+@csrf_exempt
+def eliminarMercancia(request, id):
+    if request.method == 'DELETE':
+        mercancia = Mercancia.objects.get(id=id)
+        mercancia.delete()
+        return JsonResponse("Mercancia Eliminada", safe=False)
+
+
+@csrf_exempt
+def cargaMercancia(request, id):
+    if request.method == 'PUT':
+        mercancia = Mercancia.objects.get(id=id)
+        mercancia.carga = True
+        mercancia.save()
+        return JsonResponse("Mercancia cargada", safe=False, status=status.HTTP_200_OK)
+
+@csrf_exempt
+def descargaMercancia(request, id):
+    if request.method == 'PUT':
+        mercancia = Mercancia.objects.get(id=id)
+        mercancia.descarga = True
+        mercancia.save()
+        return JsonResponse("Mercancia descargada", safe=False, status=status.HTTP_200_OK)
+
+
+"""
+/---------------------------------------------------------------/
+"""
+
+
 @csrf_exempt
 def correo(request):
     if request.method == 'POST':
@@ -375,7 +654,6 @@ class registro(APIView):
         registro_serializers.is_valid(raise_exception=True)
         registro_serializers.save()
         return Response(registro_serializers.data, status=status.HTTP_200_OK)
-
 
 
 class login(APIView):
@@ -408,8 +686,8 @@ class login(APIView):
 
 
 class usuario(APIView):
-    def get(self, request):
-        token = request.COOKIES.get('jwt')
+    def get(self, request, token):
+        # token = request.COOKIES.get('jwt')
 
         if not token:
             raise AuthenticationFailed('Unauthenticated!')

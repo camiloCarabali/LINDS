@@ -1,0 +1,26 @@
+<ion-content class="ion-padding">
+  <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>{{ modalTitle }}</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpen(false)">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <app-mostrar-mercancia [mercancia]="mercancia" *ngIf="Activate_Entregas_Comp">
+        </app-mostrar-mercancia>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+  <ng-container *ngFor="let item of entregas; let i= index">
+    <ion-card class="ion-margin" (click)="getPunto(item)">
+      <ion-card-header>
+        <ion-card-title>{{item.direccion}}</ion-card-title>
+        <ion-card-subtitle>Punto de Entrega {{i+1}}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+  </ng-container>
+</ion-content>

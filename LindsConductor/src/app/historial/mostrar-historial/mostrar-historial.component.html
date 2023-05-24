@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="onClick()">
+        <ion-icon name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title> Historial </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <app-viaje></app-viaje>
+  <ng-container *ngFor="let item of historial">
+    <ion-card class="ion-margin" *ngIf="item.estado">
+      <ion-card-header>
+        <ion-card-subtitle> {{ item.fecha | date:'fullDate' }} </ion-card-subtitle>
+        <ion-item id="info">
+          <ion-icon name="home"></ion-icon>
+          <ion-col>{{item.inicio}}</ion-col>
+        </ion-item>
+        <ion-item id="info">
+          <ion-icon name="bus"></ion-icon>
+          <ion-col>{{item.camion}}</ion-col>
+        </ion-item>
+      </ion-card-header>
+    </ion-card>
+  </ng-container>
+</ion-content>  

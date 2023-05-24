@@ -1,0 +1,35 @@
+<ion-content [fullscreen]="true">
+  <div class="contenedor">
+    <ion-card id="card">
+      <ion-card-header>
+        <ion-img src="../../../assets/logistica.png" id="logo"></ion-img>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input
+            type="email"
+            placeholder="Digite su Email"
+            [(ngModel)]="correo"
+            required
+          >
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input
+            type="password"
+            placeholder="Digite su Contraseña"
+            [(ngModel)]="password"
+            required
+          >
+          </ion-input>
+        </ion-item>
+        <div class="contenedor-botones">
+          <ion-button color="success" (click)="login()">Entrar</ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
