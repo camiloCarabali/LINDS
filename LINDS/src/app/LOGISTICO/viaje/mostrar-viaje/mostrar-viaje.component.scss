@@ -12,9 +12,13 @@
   height: 100vh;
 }
 
-.col-right{
+.col-right {
   background-color: white;
   color: black;
+}
+
+.list-botones{
+  background-color: #C9E3F7;
 }
 
 .button-style1 {
@@ -37,11 +41,11 @@
 
 .botones-menu {
   margin-top: 15%;
- }
+}
 
- h3 {
-   margin-top: 5%;
- }
+h3 {
+  margin-top: 5%;
+}
 
 /** ROW STYLE*/
 
@@ -84,6 +88,14 @@
   font-size: 20px;
   display: flex;
   justify-content: space-around;
+}
+
+ion-icon {
+  cursor: pointer;
+}
+
+ion-input{
+  margin-bottom: 10px;
 }
 
 /** MODAL STYLE **/

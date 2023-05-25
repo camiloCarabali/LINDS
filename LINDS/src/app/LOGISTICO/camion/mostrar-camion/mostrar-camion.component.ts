@@ -21,10 +21,15 @@ export class MostrarCamionComponent implements OnInit {
   Activate_CrearEditar_CamionComp: boolean = false;
   camion: any;
 
-  nombreFilter: string = '';
+  modeloFilter: string = '';
   listWithoutFilter: any = [];
 
+  nombre: string = '';
+  sucursal: string = '';
+
   ngOnInit() {
+    this.nombre = localStorage.getItem('nombre')!.toUpperCase();
+    this.sucursal = localStorage.getItem('sucursal')!;
     this.refreshCamionList();
   }
 
@@ -74,12 +79,12 @@ export class MostrarCamionComponent implements OnInit {
   }
 
   FilterFn() {
-    var nombreFilter = this.nombreFilter;
+    var modeloFilter = this.modeloFilter;
     this.camionList = this.listWithoutFilter.filter(function (el: any) {
-      return el.nombre
+      return el.modelo
         .toString()
         .toLowerCase()
-        .includes(nombreFilter.toString().trim().toLowerCase());
+        .includes(modeloFilter.toString().trim().toLowerCase());
     });
   }
 }

@@ -5,7 +5,7 @@
     <ion-row>
       <ion-col class="menu-conten" size="3">
         <h3 >Administrador</h3>
-        <h1>NOMBRE DEL PERFIL</h1>
+        <h1>{{nombre}}</h1>
         <div class="botones-menu">
           <ion-button  class="button-style"  fill="clear" [routerLink]="['/empresa']">Empresas</ion-button>
           <ion-button class="button-style1" [routerLink]="['/sucursal']">Sucursales</ion-button>
@@ -13,11 +13,8 @@
         </div>
       </ion-col>
       <ion-col class="col-right" size="9">
-
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
-          <ion-button class="btn btn-outline-light" [disabled]="true" fill="clear" type="submit" [(ngModel)]="nombreFilter" (keyup)="FilterFn()"><ion-icon name="search"></ion-icon></ion-button>
-        </form>
+        <ion-input class="ion-text-start" fill="outline" placeholder="Buscar..." [(ngModel)]="nombreFilter"
+        (keyup)="FilterFn()"></ion-input>
         <ion-row class="main">
           <ng-container *ngFor="let dataItem of sucursalList">
             <ion-card class="card-style" *ngIf="dataItem.estado">

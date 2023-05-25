@@ -5,14 +5,16 @@
     <ion-row>
       <ion-col class="menu-conten" size="3">
         <h3>Logistica</h3>
-        <h1>NOMBRE DEL PERFIL</h1>
+        <h1>{{nombre}}</h1>
+        <h2>{{sucursal}}</h2>
         <div class="botones-menu">
           <ion-button class="button-style1" [routerLink]="['/camion']">Vehículos</ion-button>
         </div>
       </ion-col>
       <ion-col class="col-right" size="9">
         <div class="row-content">
-
+          <ion-input class="ion-text-start" fill="outline" placeholder="Buscar..." [(ngModel)]="modeloFilter"
+          (keyup)="FilterFn()"></ion-input>
           <ion-row class="main">
             <ion-col>MATRICULA</ion-col>
             <ion-col>MODELO</ion-col>

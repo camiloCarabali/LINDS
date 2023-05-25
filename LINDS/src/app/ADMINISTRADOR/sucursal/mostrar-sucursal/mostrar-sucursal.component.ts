@@ -29,7 +29,10 @@ export class MostrarSucursalComponent implements OnInit {
   nombreFilter: string = '';
   listWithoutFilter: any = [];
 
+  nombre: string = '';
+
   ngOnInit() {
+    this.nombre = localStorage.getItem('nombre')!.toUpperCase();
     this.refreshSucursalList();
   }
 
@@ -62,7 +65,6 @@ export class MostrarSucursalComponent implements OnInit {
   }
 
   delete(item: any) {
-    console.log(item.id);
     if (confirm('Desea inactivar esta sucursal?')) {
       this.service.inactivarSucursal(item.id).subscribe((data) => {
         alert(data.toString());
@@ -75,7 +77,6 @@ export class MostrarSucursalComponent implements OnInit {
     this.service.getSucursalList().subscribe((data) => {
       this.sucursalList = data;
       this.listWithoutFilter = data;
-      console.log("SUCURSALES:", this.sucursalList)
     });
   }
 

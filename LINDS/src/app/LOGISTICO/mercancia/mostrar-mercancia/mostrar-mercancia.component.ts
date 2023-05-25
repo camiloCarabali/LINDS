@@ -24,7 +24,12 @@ export class MostrarMercanciaComponent implements OnInit {
   nombreFilter: string = '';
   listWithoutFilter: any = [];
 
+  nombre: string = '';
+  sucursal: string = '';
+
   ngOnInit() {
+    this.nombre = localStorage.getItem('nombre')!.toUpperCase();
+    this.sucursal = localStorage.getItem('sucursal')!;
     this.refreshMercanciaList();
   }
 

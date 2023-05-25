@@ -100,6 +100,10 @@ export class SharedService {
     return this.http.post<any>(this.APIURL + 'login', val);
   }
 
+  logout(): Observable<any[]> {
+    return this.http.post<any[]>(this.APIURL + 'logout/', '');
+  }
+
   user(val: String) {
     return this.http.get<any[]>(this.APIURL + 'user/' + val);
   }

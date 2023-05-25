@@ -5,9 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ccee2ac3-87c6-40b6-acf3-9423e1e1dc58" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../LindsConductor/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../LindsConductor/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/ADMINISTRADOR/empresa/mostrar-empresa/mostrar-empresa.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/ADMINISTRADOR/empresa/mostrar-empresa/mostrar-empresa.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/ADMINISTRADOR/empresa/mostrar-empresa/mostrar-empresa.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/ADMINISTRADOR/empresa/mostrar-empresa/mostrar-empresa.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/ADMINISTRADOR/empresa/mostrar-empresa/mostrar-empresa.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/ADMINISTRADOR/empresa/mostrar-empresa/mostrar-empresa.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/camion/mostrar-camion/mostrar-camion.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/camion/mostrar-camion/mostrar-camion.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/camion/mostrar-camion/mostrar-camion.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/camion/mostrar-camion/mostrar-camion.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/camion/mostrar-camion/mostrar-camion.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/camion/mostrar-camion/mostrar-camion.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/mercancia/mostrar-mercancia/mostrar-mercancia.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/mercancia/mostrar-mercancia/mostrar-mercancia.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/mercancia/mostrar-mercancia/mostrar-mercancia.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/mercancia/mostrar-mercancia/mostrar-mercancia.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/mercancia/mostrar-mercancia/mostrar-mercancia.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/mercancia/mostrar-mercancia/mostrar-mercancia.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/punto-entrega/mostrar-punto-entrega/mostrar-punto-entrega.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/punto-entrega/mostrar-punto-entrega/mostrar-punto-entrega.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/punto-entrega/mostrar-punto-entrega/mostrar-punto-entrega.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/punto-entrega/mostrar-punto-entrega/mostrar-punto-entrega.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/punto-entrega/mostrar-punto-entrega/mostrar-punto-entrega.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/punto-entrega/mostrar-punto-entrega/mostrar-punto-entrega.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/viaje/mostrar-viaje/mostrar-viaje.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/viaje/mostrar-viaje/mostrar-viaje.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/viaje/mostrar-viaje/mostrar-viaje.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/viaje/mostrar-viaje/mostrar-viaje.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/viaje/mostrar-viaje/mostrar-viaje.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/viaje/mostrar-viaje/mostrar-viaje.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/estiloHF/cabezaheader/cabezaheader.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/estiloHF/cabezaheader/cabezaheader.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/estiloHF/header-normal/header-normal.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/estiloHF/header-normal/header-normal.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/inicio/inicio.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/inicio/inicio.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/inicio/inicio.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/inicio/inicio.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/services/shared.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/services/shared.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/services/ui-service.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/services/ui-service.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LindsConductor/src/services/shared.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../LindsConductor/src/services/shared.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/LindsDjangoAPI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LindsDjangoAPI.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ModAdmin/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +52,9 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/CamiloCarabali/Documents/GitHub/LINDS/LindsDjangoAPI/manage.py"
+    "git-widget-placeholder": "camilo",
+    "last_opened_file_path": "C:/Users/CamiloCarabali/Documents/GitHub/LINDS/LindsDjangoAPI/manage.py",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PythonContentEntriesConfigurable"
   }
 }]]></component>
   <component name="RunManager">
@@ -37,8 +65,8 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\CamiloCarabali\Documents\GitHub\LINDS\venv\Scripts\python.exe" />
-      <option name="SDK_NAME" value="Python 3.11 (LINDS)" />
+      <option name="SDK_HOME" value="C:\Users\camil\OneDrive\Documentos\GitHub\LINDS\LindsDjangoAPI\venv\Scripts\python.exe" />
+      <option name="SDK_NAME" value="Python 3.11 (LindsDjangoAPI)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -63,5 +91,8 @@
       <updated>1684941741402</updated>
     </task>
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="requirements.txt" />
   </component>
 </project>

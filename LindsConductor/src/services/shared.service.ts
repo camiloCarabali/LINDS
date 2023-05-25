@@ -24,7 +24,7 @@ export class SharedService {
   }
 
   logout(): Observable<any[]> {
-    return this.http.post<any[]>(this.APIURL + 'mercancia/', '');
+    return this.http.post<any[]>(this.APIURL + 'logout/', '');
   }
 
   user(val: String) {

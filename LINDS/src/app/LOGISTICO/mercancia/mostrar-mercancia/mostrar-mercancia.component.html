@@ -5,19 +5,22 @@
     <ion-row>
       <ion-col class="menu-conten" size="3">
         <h3>Logistica</h3>
-        <h1>NOMBRE DEL PERFIL</h1>
+        <h1>{{nombre}}</h1>
+        <h2>{{sucursal}}</h2>
         <div class="botones-menu">
-          <ion-button class="button-style1" [routerLink]="['/merccancia']">RECEPCIÓN MERCANCIA</ion-button>
+          <ion-button class="button-style1" [routerLink]="['/mercancia']">RECEPCIÓN MERCANCIA</ion-button>
         </div>
       </ion-col>
       <ion-col class="col-right" size="9">
         <div class="row-content">
-
+          <ion-input class="ion-text-start" fill="outline" placeholder="Buscar..." [(ngModel)]="nombreFilter"
+            (keyup)="FilterFn()"></ion-input>
           <ion-row class="main">
             <ion-col>ID</ion-col>
             <ion-col>NOMBRE</ion-col>
             <ion-col>PESO</ion-col>
             <ion-col>PUNTO DE ENTREGA</ion-col>
+            <ion-col>ESTADO</ion-col>
             <ion-col>ACCIONES</ion-col>
           </ion-row>
 
@@ -26,17 +29,17 @@
             <ion-col>{{ dataItem.nombre }}</ion-col>
             <ion-col>{{ dataItem.peso }}</ion-col>
             <ion-col>{{ dataItem.puntoEntrega }}</ion-col>
+            <ion-col *ngIf="dataItem.carga==false">En Almacen</ion-col>
+            <ion-col *ngIf="dataItem.carga==true && dataItem.descarga==false">En Viaje</ion-col>
+            <ion-col *ngIf="dataItem.carga==true && dataItem.descarga==true">Entregada</ion-col>
             <ion-col class="icons-button">
-              <ion-icon
-                name="create"
-                id="open-modal"
-                (click)="edit(dataItem)"
-              ></ion-icon>
-              <ion-icon name="trash" (click)="delete(dataItem)"></ion-icon>
+              <ion-icon name="create" id="open-modal" (click)="edit(dataItem)" *ngIf="dataItem.carga==false"></ion-icon>
+              <ion-icon name="trash" (click)="delete(dataItem)" *ngIf="dataItem.carga==false"></ion-icon>
             </ion-col>
           </ion-row>
 
-          <ion-button class="button-add" id="open-modal" (click)="add()"><ion-icon name="add-outline"></ion-icon></ion-button>
+          <ion-button class="button-add" id="open-modal" (click)="add()"><ion-icon
+              name="add-outline"></ion-icon></ion-button>
           <ion-modal [isOpen]="isModalOpen">
             <ng-template>
               <ion-header>
@@ -48,10 +51,8 @@
                 </ion-toolbar>
               </ion-header>
               <ion-content class="ion-padding">
-                <app-crear-editar-mercancia
-                  [mercancia]="mercancia"
-                  *ngIf="Activate_CrearEditar_MercanciaComp"
-                ></app-crear-editar-mercancia>
+                <app-crear-editar-mercancia [mercancia]="mercancia"
+                  *ngIf="Activate_CrearEditar_MercanciaComp"></app-crear-editar-mercancia>
               </ion-content>
             </ng-template>
           </ion-modal>

@@ -9,58 +9,51 @@ import { CamionComponent } from './LOGISTICO/camion/camion.component';
 import { PuntoEntregaComponent } from './LOGISTICO/punto-entrega/punto-entrega.component';
 import { ViajeComponent } from './LOGISTICO/viaje/viaje.component';
 import { MercanciaComponent } from './LOGISTICO/mercancia/mercancia.component';
-import { CrearEditarViajeComponent } from './LOGISTICO/viaje/crear-editar-viaje/crear-editar-viaje.component';
-import { MostrarHistorialComponent } from './LOGISTICO/historial-viaje/mostrar-historial/mostrar-historial.component';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'inicio',
-    pathMatch: 'full'
-
+    pathMatch: 'full',
   },
   {
     path: 'inicio',
-    component: InicioComponent
+    component: InicioComponent,
   },
   {
     path: 'empresa',
-    component: EmpresaComponent
+    component: EmpresaComponent,
   },
   {
     path: 'sucursal',
-    component: SucursalComponent
+    component: SucursalComponent,
   },
   {
     path: 'usuario',
-    component: UsuarioComponent
+    component: UsuarioComponent,
   },
   {
     path: 'camion',
-    component: CamionComponent
+    component: CamionComponent,
   },
   {
     path: 'punto-entrega',
-    component: PuntoEntregaComponent
+    component: PuntoEntregaComponent,
   },
   {
     path: 'viaje',
-    component: ViajeComponent
-  },
-  {
-    path: 'ver-historial',
-    component: MostrarHistorialComponent
+    component: ViajeComponent,
   },
   {
     path: 'mercancia',
-    component: MercanciaComponent
+    component: MercanciaComponent,
   },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot  (routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

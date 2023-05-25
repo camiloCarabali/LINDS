@@ -21,10 +21,15 @@ export class MostrarPuntoEntregaComponent implements OnInit {
   Activate_CrearEditar_PuntoEntregaComp: boolean = false;
   puntoEntrega: any;
 
-  nombreFilter: string = '';
+  direccionFilter: string = '';
   listWithoutFilter: any = [];
 
+  nombre: string = '';
+  sucursal: string = '';
+
   ngOnInit() {
+    this.nombre = localStorage.getItem('nombre')!.toUpperCase();
+    this.sucursal = localStorage.getItem('sucursal')!;
     this.refreshPuntoEntregaList();
   }
 
@@ -80,12 +85,12 @@ export class MostrarPuntoEntregaComponent implements OnInit {
   }
 
   FilterFn() {
-    var nombreFilter = this.nombreFilter;
+    var direccionFilter = this.direccionFilter;
     this.puntoEntregaList = this.listWithoutFilter.filter(function (el: any) {
-      return el.nombre
+      return el.direccion
         .toString()
         .toLowerCase()
-        .includes(nombreFilter.toString().trim().toLowerCase());
+        .includes(direccionFilter.toString().trim().toLowerCase());
     });
   }
 }

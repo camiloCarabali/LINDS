@@ -4,15 +4,21 @@
     <ion-row>
       <ion-col class="menu-conten" size="3">
         <h3>Logistica</h3>
-        <h1>NOMBRE DEL PERFIL</h1>
+        <h1>{{nombre}}</h1>
+        <h2>{{sucursal}}</h2>
         <div class="botones-menu">
-          <ion-button class="button-style1" [routerLink]="['/viaje']">VIAJES</ion-button>
-          <ion-button class="button-style" fill="clear" [routerLink]="['/punto-entrega']">PUNTOS DE ENTREGA</ion-button>
-          <ion-button class="button-style" fill="clear" [routerLink]="['/ver-historial']">HISTORIAL DE VIAJE</ion-button>
+          <ion-list lines="none" class="list-botones">
+            <ion-button class="button-style1" [routerLink]="['/viaje']">HISTORIAL DE VIAJES</ion-button>
+            <ion-button class="button-style" fill="clear" [routerLink]="['/punto-entrega']">PUNTOS DE
+              ENTREGA</ion-button>
+            <ion-button class="button-style" fill="clear" [routerLink]="['/ver-historial']">LISTA DE CONDUCTORES</ion-button>
+          </ion-list>
         </div>
       </ion-col>
       <ion-col class="col-right" size="9">
         <div class="row-content">
+          <ion-input class="ion-text-start" fill="outline" placeholder="Buscar..." [(ngModel)]="inicioFilter"
+            (keyup)="FilterFn()"></ion-input>
           <ion-row class="main">
             <ion-col size="1">ID</ion-col>
             <ion-col>INICIO</ion-col>
@@ -27,38 +33,34 @@
             <ion-row *ngFor="let data of capacidad" class="content-travel">
               <ion-col size="1">{{ dataItem.id }}</ion-col>
               <ion-col>{{ dataItem.inicio }}</ion-col>
-              <ion-col>{{ dataItem.fecha }}</ion-col>
+              <ion-col>{{ dataItem.fecha | date: 'fullDate' }}</ion-col>
               <ion-col>{{ dataItem.camion }}</ion-col>
-              <ion-col>{{ data.capacidad }}</ion-col>
+              <ion-col>{{ data.capacidad }} kg</ion-col>
               <ion-col>{{ dataItem.usuario }}</ion-col>
               <ion-col class="icons-button">
                 <ion-icon name="map-outline" (click)="map(dataItem)"></ion-icon>
-                <ion-icon
-                  name="pencil-sharp"
-                  id="open-modal"
-                  (click)="edit(dataItem)"
-                ></ion-icon>
-                <ion-icon name="trash" (click)="delete(dataItem)"></ion-icon>
+                <ion-icon name="pencil-sharp" id="open-modal" (click)="edit(dataItem)"
+                  *ngIf="dataItem.estado==false"></ion-icon>
+                <ion-icon name="trash" (click)="delete(dataItem)" *ngIf="dataItem.estado==false"></ion-icon>
               </ion-col>
             </ion-row>
           </ng-container>
 
-          <ion-button class="button-add" id="open-modal" (click)="add()"><ion-icon name="add-outline"></ion-icon></ion-button>
+          <ion-button class="button-add" id="open-modal" (click)="add()"><ion-icon
+              name="add-outline"></ion-icon></ion-button>
           <ion-modal [isOpen]="isModalOpen">
             <ng-template>
               <ion-header>
                 <ion-toolbar>
                   <ion-title>{{ modalTitle }}</ion-title>
                   <ion-buttons slot="end">
-                    <ion-button class="close-button" (click)="cancel()"><ion-icon name="close-outline"></ion-icon></ion-button>
+                    <ion-button class="close-button" (click)="cancel()"><ion-icon
+                        name="close-outline"></ion-icon></ion-button>
                   </ion-buttons>
                 </ion-toolbar>
               </ion-header>
               <ion-content class="ion-padding">
-                <app-crear-editar-viaje
-                  [viaje]="viaje"
-                  *ngIf="Activate_CrearEditar_ViajeComp"
-                ></app-crear-editar-viaje>
+                <app-crear-editar-viaje [viaje]="viaje" *ngIf="Activate_CrearEditar_ViajeComp"></app-crear-editar-viaje>
               </ion-content>
             </ng-template>
           </ion-modal>

@@ -556,9 +556,6 @@ def buscarPeso(request, matricula):
 """
 
 
-
-
-
 @csrf_exempt
 def buscarMercancia(request, puntoEntrega):
     valor = puntoEntrega.replace("_", " ")
@@ -615,6 +612,7 @@ def cargaMercancia(request, id):
         mercancia.carga = True
         mercancia.save()
         return JsonResponse("Mercancia cargada", safe=False, status=status.HTTP_200_OK)
+
 
 @csrf_exempt
 def descargaMercancia(request, id):

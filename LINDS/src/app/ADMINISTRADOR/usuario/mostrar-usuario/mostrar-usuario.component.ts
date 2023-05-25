@@ -28,7 +28,10 @@ export class MostrarUsuarioComponent implements OnInit {
   nombreFilter: string = '';
   listWithoutFilter: any = [];
 
+  nombre: string = '';
+
   ngOnInit() {
+    this.nombre = localStorage.getItem('nombre')!.toUpperCase();
     this.refreshUsuarioList();
   }
 

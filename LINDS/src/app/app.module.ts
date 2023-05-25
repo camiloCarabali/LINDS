@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -42,11 +42,14 @@ import { MapaViajeComponent } from './LOGISTICO/viaje/mapa-viaje/mapa-viaje.comp
 import { MercanciaComponent } from './LOGISTICO/mercancia/mercancia.component';
 import { MostrarMercanciaComponent } from './LOGISTICO/mercancia/mostrar-mercancia/mostrar-mercancia.component';
 import { CrearEditarMercanciaComponent } from './LOGISTICO/mercancia/crear-editar-mercancia/crear-editar-mercancia.component';
-import { MostrarHistorialComponent } from './LOGISTICO/historial-viaje/mostrar-historial/mostrar-historial.component';
 
 import { PiefooterComponent } from './estiloHF/piefooter/piefooter.component';
 import { HeaderNormalComponent } from './estiloHF/header-normal/header-normal.component';
 import { CabezaheaderComponent } from './estiloHF/cabezaheader/cabezaheader.component';
+
+import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeEs);
 
 @NgModule({
   declarations: [
@@ -77,7 +80,6 @@ import { CabezaheaderComponent } from './estiloHF/cabezaheader/cabezaheader.comp
     HeaderNormalComponent,
     CabezaheaderComponent,
     PiefooterComponent,
-    MostrarHistorialComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,6 +91,7 @@ import { CabezaheaderComponent } from './estiloHF/cabezaheader/cabezaheader.comp
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: LOCALE_ID, useValue: 'es' },
     SharedService,
   ],
   bootstrap: [AppComponent],
