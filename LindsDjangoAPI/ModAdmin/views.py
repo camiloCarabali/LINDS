@@ -535,9 +535,10 @@ def buscarSucursal(request, empresa):
 
 
 @csrf_exempt
-def buscarConductor(request):
+def buscarConductor(request, sucursal):
     if request.method == 'GET':
-        conductores = Usuario.objects.filter(rol="Conductor")
+        valor = sucursal.replace("_", " ")
+        conductores = Usuario.objects.filter(rol="Conductor", sucursal=valor)
         conductores_serializers = UsuarioSerializer(conductores, many=True)
         return JsonResponse(conductores_serializers.data, safe=False)
 

@@ -33,7 +33,8 @@
             <ion-col *ngIf="dataItem.carga==true && dataItem.descarga==false">En Viaje</ion-col>
             <ion-col *ngIf="dataItem.carga==true && dataItem.descarga==true">Entregada</ion-col>
             <ion-col class="icons-button">
-              <ion-icon name="create" id="open-modal" (click)="edit(dataItem)" *ngIf="dataItem.carga==false"></ion-icon>
+              <ion-icon name="arrow-up" (click)="carga(dataItem)" *ngIf="dataItem.carga==false"></ion-icon>
+              <ion-icon name="pencil" id="open-modal" (click)="edit(dataItem)" *ngIf="dataItem.carga==false"></ion-icon>
               <ion-icon name="trash" (click)="delete(dataItem)" *ngIf="dataItem.carga==false"></ion-icon>
             </ion-col>
           </ion-row>

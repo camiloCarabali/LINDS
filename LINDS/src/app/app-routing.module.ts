@@ -9,6 +9,7 @@ import { CamionComponent } from './LOGISTICO/camion/camion.component';
 import { PuntoEntregaComponent } from './LOGISTICO/punto-entrega/punto-entrega.component';
 import { ViajeComponent } from './LOGISTICO/viaje/viaje.component';
 import { MercanciaComponent } from './LOGISTICO/mercancia/mercancia.component';
+import { ListaConductoresComponent } from './lista-conductores/lista-conductores.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,10 @@ const routes: Routes = [
   {
     path: 'mercancia',
     component: MercanciaComponent,
+  },
+  {
+    path: 'conductores',
+    component: ListaConductoresComponent,
   },
 ];
 

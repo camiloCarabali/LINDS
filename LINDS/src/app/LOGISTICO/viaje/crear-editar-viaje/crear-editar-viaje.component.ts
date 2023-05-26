@@ -6,9 +6,8 @@ import { SharedService } from 'src/services/shared.service';
   templateUrl: './crear-editar-viaje.component.html',
   styleUrls: ['./crear-editar-viaje.component.scss'],
 })
-export class CrearEditarViajeComponent  implements OnInit {
-
-  constructor(private service: SharedService) { }
+export class CrearEditarViajeComponent implements OnInit {
+  constructor(private service: SharedService) {}
 
   camionList: any = [];
   conductorList: any = [];
@@ -23,11 +22,11 @@ export class CrearEditarViajeComponent  implements OnInit {
   today: any = new Date().toISOString();
 
   ngOnInit() {
-    this.id = this.viaje.id
-    this.inicio = this.viaje.inicio
-    this.fecha = this.viaje.fecha
-    this.camion = this.viaje.camion
-    this.usuario = this.viaje.usuario
+    this.id = this.viaje.id;
+    this.inicio = this.viaje.inicio;
+    this.fecha = this.viaje.fecha;
+    this.camion = this.viaje.camion;
+    this.usuario = this.viaje.usuario;
     this.cargarCamion();
     this.cargarConductor();
   }
@@ -37,12 +36,11 @@ export class CrearEditarViajeComponent  implements OnInit {
       inicio: this.inicio,
       fecha: this.today,
       camion: this.camion,
-      usuario: this.usuario
+      usuario: this.usuario,
     };
     this.service.addViaje(val).subscribe((res: any) => {
       alert(res.toString());
     });
-    
   }
 
   edit() {
@@ -51,7 +49,7 @@ export class CrearEditarViajeComponent  implements OnInit {
       inicio: this.inicio,
       fecha: this.fecha,
       camion: this.camion,
-      usuario: this.usuario
+      usuario: this.usuario,
     };
     this.service.updateViaje(val).subscribe((res) => {
       alert(res.toString());
@@ -65,9 +63,11 @@ export class CrearEditarViajeComponent  implements OnInit {
   }
 
   cargarConductor() {
-    this.service.getBuscarConductor().subscribe((data) => {
-      this.conductorList = data;
-    });
+    let sucursal = localStorage.getItem('sucursal') as string;
+    this.service
+      .getBuscarConductor(sucursal.replace(/ /g, '_'))
+      .subscribe((data) => {
+        this.conductorList = data;  
+      });
   }
-
 }

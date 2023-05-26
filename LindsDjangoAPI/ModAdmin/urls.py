@@ -33,7 +33,7 @@ urlpatterns = [
     path('buscarEmpresa/<NIT>', views.buscarEmpresa),
     path('buscarMunicipio/<departamento>', views.buscarMunicipio),
     path('buscarSucursal/<empresa>', views.buscarSucursal),
-    path('buscarConductor/', views.buscarConductor),
+    path('buscarConductor/<sucursal>', views.buscarConductor),
     path('buscarPeso/<matricula>', views.buscarPeso),
     path('camion/', views.mostrarCamion),
     path('buscarCamion/<sucursal>', views.buscarCamion),

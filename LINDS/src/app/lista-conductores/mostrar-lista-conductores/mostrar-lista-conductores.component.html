@@ -1,0 +1,41 @@
+<app-cabezaheader></app-cabezaheader>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col class="menu-conten" size="3">
+        <h3>Logistica</h3>
+        <h1>{{nombre}}</h1>
+        <h2>{{sucursal}}</h2>
+        <div class="botones-menu">
+          <ion-list lines="none" class="list-botones">
+            <ion-button class="button-style" fill="clear" [routerLink]="['/viaje']">HISTORIAL DE VIAJES</ion-button>
+            <ion-button class="button-style" fill="clear" [routerLink]="['/punto-entrega']">PUNTOS DE
+              ENTREGA</ion-button>
+            <ion-button class="button-style1" [routerLink]="['/conductores']">LISTA DE CONDUCTORES</ion-button>
+          </ion-list>
+        </div>
+      </ion-col>
+      <ion-col class="col-right" size="9">
+        <div class="row-content">
+          <ion-input class="ion-text-start" fill="outline" placeholder="Buscar..." [(ngModel)]="nombreFilter"
+            (keyup)="FilterFn()"></ion-input>
+          <ion-row class="main">
+            <ion-col>CEDULA</ion-col>
+            <ion-col>NOMBRE</ion-col>
+            <ion-col>APELLIDO</ion-col>
+            <ion-col>CORREO</ion-col>
+          </ion-row>
+
+          <ion-row *ngFor="let dataItem of conductorList" class="content-vehicle">
+            <ion-col>{{ dataItem.cedula }}</ion-col>
+            <ion-col>{{ dataItem.nombre }}</ion-col>
+            <ion-col>{{ dataItem.apellido }}</ion-col>
+            <ion-col>{{ dataItem.correo }}</ion-col>
+          </ion-row>
+
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -144,8 +144,8 @@ export class SharedService {
     return this.http.delete<any[]>(this.APIURL + 'inactivarViaje/' + val);
   }
 
-  getBuscarConductor(): Observable<any[]> {
-    return this.http.get<any[]>(this.APIURL + 'buscarConductor/');
+  getBuscarConductor(val: string) {
+    return this.http.get<any[]>(this.APIURL + 'buscarConductor/' + val);
   }
 
   getPuntoEntregaList(): Observable<any[]> {
@@ -165,7 +165,10 @@ export class SharedService {
   }
 
   activarPuntoEntrega(val: string) {
-    return this.http.put<any[]>(this.APIURL + 'activarPuntoEntrega/' + val, val);
+    return this.http.put<any[]>(
+      this.APIURL + 'activarPuntoEntrega/' + val,
+      val
+    );
   }
 
   waypoints(val: String) {
@@ -192,4 +195,9 @@ export class SharedService {
     return this.http.delete<any[]>(this.APIURL + 'eliminarMercancia/' + val);
   }
 
+  cargaMercancia(val: any) {
+    return this.http.put<any[]>(this.APIURL + 'cargaMercancia/' + val, val, {
+      observe: 'response'
+    });
+  }
 }

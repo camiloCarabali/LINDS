@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/services/shared.service';
+import { UiServiceService } from 'src/services/ui-service.service';
 
 @Component({
   selector: 'app-mostrar-mercancia',
@@ -13,7 +14,10 @@ export class MostrarMercanciaComponent implements OnInit {
     this.isModalOpen = isOpen;
   }
 
-  constructor(private service: SharedService) {}
+  constructor(
+    private service: SharedService,
+    private interaction: UiServiceService
+  ) {}
 
   mercanciaList: any = [];
 
@@ -60,6 +64,21 @@ export class MostrarMercanciaComponent implements OnInit {
     this.Activate_CrearEditar_MercanciaComp = true;
     this.setOpen(true);
     this.refreshMercanciaList();
+  }
+
+  carga(item: any) {
+    this.service.cargaMercancia(item.id).subscribe((data) => {
+      if (data.status === 200) {
+        this.interaction.presentToast(
+          'top',
+          'La carga ha sido descargada correctamente.'
+        );
+      } else if (data.status === 404) {
+        this.interaction.closeLoading();
+        this.interaction.presentToast('top', 'Error en la solicitud');
+      }
+    });
+    location.reload()
   }
 
   delete(item: any) {
