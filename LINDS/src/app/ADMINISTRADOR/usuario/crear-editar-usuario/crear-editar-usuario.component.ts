@@ -1,14 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SharedService } from 'src/services/shared.service';
+import { UiServiceService } from 'src/services/ui-service.service';
 
 @Component({
   selector: 'app-crear-editar-usuario',
   templateUrl: './crear-editar-usuario.component.html',
   styleUrls: ['./crear-editar-usuario.component.scss'],
 })
-export class CrearEditarUsuarioComponent  implements OnInit {
-
-  constructor(private service: SharedService) { }
+export class CrearEditarUsuarioComponent implements OnInit {
+  constructor(private service: SharedService, private interaction: UiServiceService) {}
 
   rolList: any = [];
   sucursalList: any = [];
@@ -41,24 +41,39 @@ export class CrearEditarUsuarioComponent  implements OnInit {
   }
 
   add() {
-    var val = {
-      cedula: this.cedula,
-      nombre: this.nombre,
-      apellido: this.apellido,
-      correo: this.correo,
-      password: this.password,
-      rol: this.rol,
-      empresa: this.empresa,
-      sucursal: this.sucursal,
-    };
+    var val: any;
+    if (this.rol == 'Administrador') {
+      val = {
+        cedula: this.cedula,
+        nombre: this.nombre,
+        apellido: this.apellido,
+        correo: this.correo,
+        password: this.password,
+        rol: this.rol,
+        empresa: null,
+        sucursal: null,
+      };
+    } else {
+      val = {
+        cedula: this.cedula,
+        nombre: this.nombre,
+        apellido: this.apellido,
+        correo: this.correo,
+        password: this.password,
+        rol: this.rol,
+        empresa: this.empresa,
+        sucursal: this.sucursal,
+      };
+    }
+
     var correo = {
       correo: this.correo,
-      password: this.password
-    }
+      password: this.password,
+    };
     this.service.addUsuario(val).subscribe((res: any) => {
       if (res.status === 200) {
         this.service.correo(correo).subscribe((res: any) => {});
-        alert('El usuario se ha agregado exitosamente.');
+        this.interaction.presentToast('top', 'El usuario ha sido creado exitosamente');
       }
     });
   }
@@ -75,7 +90,7 @@ export class CrearEditarUsuarioComponent  implements OnInit {
       sucursal: this.sucursal,
     };
     this.service.updateUsuario(val).subscribe((res) => {
-      alert(res.toString());
+      this.interaction.presentToast('top', res.toString());
     });
   }
 

@@ -166,7 +166,7 @@ def crearRol(request):
         rol_serializers = RolSerializer(data=rol_data)
         if rol_serializers.is_valid():
             rol_serializers.save()
-            return JsonResponse("rol añadido", safe=False)
+            return JsonResponse("Rol añadido", safe=False)
         return JsonResponse("Fallo al añadir rol", safe=False)
 
 
@@ -337,6 +337,13 @@ def mostrarCamion(request):
         camiones_serializers = CamionSerializer(camiones, many=True)
         return JsonResponse(camiones_serializers.data, safe=False)
 
+@csrf_exempt
+def mostrarCamionDisponible(request):
+    if request.method == 'GET':
+        camiones = Camion.objects.filter(estado=True)
+        camiones_serializers = CamionSerializer(camiones, many=True)
+        return JsonResponse(camiones_serializers.data, safe=False)
+
 
 def buscarCamion(request, sucursal):
     if request.method == 'GET':
@@ -374,6 +381,24 @@ def eliminarCamion(request, matricula):
         camion = Camion.objects.get(matricula=matricula)
         camion.delete()
         return JsonResponse("Camion Eliminado", safe=False)
+
+
+@csrf_exempt
+def disponibleCamion(request, matricula):
+    if request.method == 'PUT':
+        camion = Camion.objects.get(matricula=matricula)
+        camion.estado = True
+        camion.save()
+        return JsonResponse("Camion Disponible", safe=False)
+
+
+@csrf_exempt
+def ocupadoCamion(request, matricula):
+    if request.method == 'PUT':
+        camion = Camion.objects.get(matricula=matricula)
+        camion.estado = False
+        camion.save()
+        return JsonResponse("Camion Ocupado", safe=False)
 
 
 """

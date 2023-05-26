@@ -1,14 +1,17 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SharedService } from 'src/services/shared.service';
+import { UiServiceService } from 'src/services/ui-service.service';
 
 @Component({
   selector: 'app-crear-editar-camion',
   templateUrl: './crear-editar-camion.component.html',
   styleUrls: ['./crear-editar-camion.component.scss'],
 })
-export class CrearEditarCamionComponent  implements OnInit {
-
-  constructor(private service: SharedService) { }
+export class CrearEditarCamionComponent implements OnInit {
+  constructor(
+    private service: SharedService,
+    private interaction: UiServiceService
+  ) {}
 
   empresaList: any = [];
   sucursalList: any = [];
@@ -22,18 +25,18 @@ export class CrearEditarCamionComponent  implements OnInit {
   capacidad: number = 0;
   empresa: any;
   sucursal: any;
+  estado: boolean = true;
 
   ngOnInit() {
     this.id = this.camion.id;
-    this.matricula = this.camion.matricula
-    this.modelo = this.camion.modelo
-    this.tipo = this.camion.tipo
-    this.color = this.camion.color
-    this.capacidad = this.camion.capacidad
-    this.empresa = this.camion.empresa
-    this.sucursal = this.camion.sucursal
-    this.cargarEmpresa();
-    this.cargarSucursal();
+    this.matricula = this.camion.matricula;
+    this.modelo = this.camion.modelo;
+    this.tipo = this.camion.tipo;
+    this.color = this.camion.color;
+    this.capacidad = this.camion.capacidad;
+    this.empresa = this.camion.empresa;
+    this.sucursal = this.camion.sucursal;
+    this.estado = this.camion.estado;
   }
 
   add() {
@@ -43,11 +46,13 @@ export class CrearEditarCamionComponent  implements OnInit {
       tipo: this.tipo,
       color: this.color,
       capacidad: this.capacidad,
-      empresa: this.empresa,
-      sucursal: this.sucursal
+      empresa: localStorage.getItem('empresa'),
+      sucursal: localStorage.getItem('sucursal'),
+      estado: this.estado,
     };
+    console.log(val);
     this.service.addCamion(val).subscribe((res: any) => {
-      alert(res.toString());
+      this.interaction.presentToast('top', res.toString());
     });
   }
 
@@ -59,23 +64,11 @@ export class CrearEditarCamionComponent  implements OnInit {
       color: this.color,
       capacidad: this.capacidad,
       empresa: this.empresa,
-      sucursal: this.sucursal
+      sucursal: this.sucursal,
+      estado: this.estado,
     };
     this.service.updateCamion(val).subscribe((res) => {
       alert(res.toString());
     });
   }
-
-  cargarEmpresa() {
-    this.service.getEmpresaList().subscribe((data) => {
-      this.empresaList = data;
-    });
-  }
-
-  cargarSucursal() {
-    this.service.getBuscarSucursal(this.empresa).subscribe((data) => {
-      this.sucursalList = data;
-    });
-  }
-
 }

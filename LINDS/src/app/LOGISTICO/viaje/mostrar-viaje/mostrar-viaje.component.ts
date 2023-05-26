@@ -73,6 +73,8 @@ export class MostrarViajeComponent implements OnInit {
   }
 
   delete(item: any) {
+    this.service.disponibleCamion(item.camion).subscribe(() => {});
+    
     if (confirm('¿Desea inactivar este viaje?')) {
       this.service.inactivarViaje(item.id).subscribe((data) => {
         alert(data.toString());

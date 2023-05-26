@@ -112,6 +112,10 @@ export class SharedService {
     return this.http.get<any[]>(this.APIURL + 'camion/');
   }
 
+  getCamionDisponibleList(): Observable<any[]> {
+    return this.http.get<any[]>(this.APIURL + 'camionDisponible/');
+  }
+
   addCamion(val: any) {
     return this.http.post<any[]>(this.APIURL + 'crearCamion/', val);
   }
@@ -197,7 +201,15 @@ export class SharedService {
 
   cargaMercancia(val: any) {
     return this.http.put<any[]>(this.APIURL + 'cargaMercancia/' + val, val, {
-      observe: 'response'
+      observe: 'response',
     });
+  }
+
+  disponibleCamion(val: any) {
+    return this.http.put<any[]>(this.APIURL + 'disponibleCamion/', val);
+  }
+
+  ocupadoCamion(val: any) {
+    return this.http.put<any[]>(this.APIURL + 'ocupadoCamion/' + val, val);
   }
 }

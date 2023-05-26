@@ -18,8 +18,7 @@ export class UiService {
     private alertController: AlertController,
     private toastController: ToastController,
     private loadingCtrl: LoadingController,
-    private router: Router,
-    private service: SharedService
+    private router: Router
   ) {}
 
   async presentAlert(message: string) {
@@ -47,11 +46,8 @@ export class UiService {
       text: 'OK',
       role: 'confirm',
       handler: () => {
-        this.service
-          .confirmarViaje(localStorage.getItem('id'))
-          .subscribe((data) => {});
         this.router.navigate(['/historial']);
-      },
+      }, 
     },
     {
       text: 'Cancel',

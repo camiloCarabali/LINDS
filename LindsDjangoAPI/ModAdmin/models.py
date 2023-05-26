@@ -67,8 +67,8 @@ class Usuario(AbstractUser):
     correo = models.CharField(max_length=100, null=False, unique=True)
     password = models.CharField(max_length=100, null=False)
     estado = models.BooleanField(default=True, null=False)
-    empresa = models.CharField(max_length=100, null=False)
-    sucursal = models.CharField(max_length=100, null=False)
+    empresa = models.CharField(max_length=100, null=True)
+    sucursal = models.CharField(max_length=100, null=True)
     rol = models.CharField(max_length=100, null=False)
     username = None
 
@@ -87,6 +87,7 @@ class Camion(models.Model):
     capacidad = models.IntegerField(null=False)
     empresa = models.CharField(max_length=100, null=False)
     sucursal = models.CharField(max_length=100, null=False)
+    estado = models.BooleanField(default=True, null=False)
 
     class Meta:
         db_table = 'camion'

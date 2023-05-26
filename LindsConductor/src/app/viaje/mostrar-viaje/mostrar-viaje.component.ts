@@ -60,6 +60,9 @@ export class MostrarViajeComponent implements OnInit {
         }
       });
     });
+    this.service
+      .confirmarViaje(localStorage.getItem('id'))
+      .subscribe((data) => {});
     this.router.navigate(['/mapa']);
   }
 }

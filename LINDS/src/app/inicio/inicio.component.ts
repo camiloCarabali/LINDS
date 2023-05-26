@@ -45,7 +45,9 @@ export class InicioComponent implements OnInit {
           }
 
           localStorage.setItem('nombre', res.nombre);
+          localStorage.setItem('empresa', res.empresa);
           localStorage.setItem('sucursal', res.sucursal);
+          localStorage.setItem('rol', res.rol);
         });
       },
       () => {

@@ -54,6 +54,7 @@ export class MostrarUsuarioComponent implements OnInit {
     this.modalTitle = 'Añadir Usuario';
     this.ActivateCrearEditarUsuarioComp = true;
     this.setOpen(true);
+    this.refreshUsuarioList();
   }
 
   edit(item: any) {

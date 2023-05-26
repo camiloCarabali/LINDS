@@ -46,3 +46,4 @@ export class MostrarPerfilComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 }
+  

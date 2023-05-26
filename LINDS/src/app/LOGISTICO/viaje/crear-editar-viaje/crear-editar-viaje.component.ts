@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SharedService } from 'src/services/shared.service';
+import { UiServiceService } from 'src/services/ui-service.service';
 
 @Component({
   selector: 'app-crear-editar-viaje',
@@ -7,7 +8,10 @@ import { SharedService } from 'src/services/shared.service';
   styleUrls: ['./crear-editar-viaje.component.scss'],
 })
 export class CrearEditarViajeComponent implements OnInit {
-  constructor(private service: SharedService) {}
+  constructor(
+    private service: SharedService,
+    private interaction: UiServiceService
+  ) {}
 
   camionList: any = [];
   conductorList: any = [];
@@ -38,8 +42,9 @@ export class CrearEditarViajeComponent implements OnInit {
       camion: this.camion,
       usuario: this.usuario,
     };
+    this.service.ocupadoCamion(val.camion).subscribe((res: any) => {});
     this.service.addViaje(val).subscribe((res: any) => {
-      alert(res.toString());
+      this.interaction.presentToast('top', res.toString());
     });
   }
 
@@ -51,13 +56,14 @@ export class CrearEditarViajeComponent implements OnInit {
       camion: this.camion,
       usuario: this.usuario,
     };
+    this.service.ocupadoCamion(val.camion).subscribe((res: any) => {});
     this.service.updateViaje(val).subscribe((res) => {
-      alert(res.toString());
+      this.interaction.presentToast('top', res.toString());
     });
   }
 
   cargarCamion() {
-    this.service.getCamionList().subscribe((data) => {
+    this.service.getCamionDisponibleList().subscribe((data) => {
       this.camionList = data;
     });
   }
@@ -67,7 +73,7 @@ export class CrearEditarViajeComponent implements OnInit {
     this.service
       .getBuscarConductor(sucursal.replace(/ /g, '_'))
       .subscribe((data) => {
-        this.conductorList = data;  
+        this.conductorList = data;
       });
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import { SharedService } from 'src/services/shared.service';
 import { UiService } from 'src/services/ui.service';
 
 declare var google: any;
@@ -42,7 +43,8 @@ export class MostrarMapaComponent implements OnInit {
 
   constructor(
     private interaction: UiService,
-    public menuCtrl: MenuController
+    public menuCtrl: MenuController,
+    private service: SharedService
   ) {}
 
   ngOnInit() {
@@ -133,6 +135,10 @@ export class MostrarMapaComponent implements OnInit {
   }
 
   iniciarViaje() {
+    this.service
+      .confirmarViaje(localStorage.getItem('id'))
+      .subscribe((data) => {});
+
     this.class_inicio = 'ion-hide';
     this.class_fin = '';
     this.sourceLocation = localStorage.getItem('rutaInicio');

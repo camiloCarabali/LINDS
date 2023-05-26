@@ -11,6 +11,10 @@ import { ViajeComponent } from './LOGISTICO/viaje/viaje.component';
 import { MercanciaComponent } from './LOGISTICO/mercancia/mercancia.component';
 import { ListaConductoresComponent } from './lista-conductores/lista-conductores.component';
 
+import { IngresadoLogisticaGuard } from '../guards/ingresado-logistica.guard';
+import { IngresadoAdministradorGuard } from '../guards/ingresado-administrador.guard';
+import { NoIngresadoLogisticaGuard } from '../guards/no-ingresado-logistica.guard';
+
 const routes: Routes = [
   {
     path: '',
@@ -20,38 +24,47 @@ const routes: Routes = [
   {
     path: 'inicio',
     component: InicioComponent,
+    canActivate: [NoIngresadoLogisticaGuard]
   },
   {
     path: 'empresa',
     component: EmpresaComponent,
+    canActivate: [IngresadoAdministradorGuard]
   },
   {
     path: 'sucursal',
     component: SucursalComponent,
+    canActivate: [IngresadoAdministradorGuard]
   },
   {
     path: 'usuario',
     component: UsuarioComponent,
+    canActivate: [IngresadoAdministradorGuard]
   },
   {
     path: 'camion',
     component: CamionComponent,
+    canActivate: [IngresadoLogisticaGuard]
   },
   {
     path: 'punto-entrega',
     component: PuntoEntregaComponent,
+    canActivate: [IngresadoLogisticaGuard]
   },
   {
     path: 'viaje',
     component: ViajeComponent,
+    canActivate: [IngresadoLogisticaGuard]
   },
   {
     path: 'mercancia',
     component: MercanciaComponent,
+    canActivate: [IngresadoLogisticaGuard]
   },
   {
     path: 'conductores',
     component: ListaConductoresComponent,
+    canActivate: [IngresadoLogisticaGuard]
   },
 ];
 

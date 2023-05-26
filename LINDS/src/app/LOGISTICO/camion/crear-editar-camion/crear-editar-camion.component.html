@@ -32,28 +32,9 @@
 
 <ion-list>
   <ion-item>
-    <ion-select
-      placeholder="Seleccione la empresa"
-      [(ngModel)]="empresa"
-      (ionChange)="cargarSucursal()"
-    >
-      <ion-select-option
-        value="{{ empresa.nombre }}"
-        *ngFor="let empresa of empresaList"
-        >{{ empresa.nombre }}</ion-select-option
-      >
-    </ion-select>
-  </ion-item>
-</ion-list>
-
-<ion-list>
-  <ion-item>
-    <ion-select placeholder="Seleccione la sucursal" [(ngModel)]="sucursal">
-      <ion-select-option
-        value="{{ sucursal.nombre }}"
-        *ngFor="let sucursal of sucursalList"
-        >{{ sucursal.nombre }}</ion-select-option
-      >
+    <ion-select placeholder="Seleccione el estado" [(ngModel)]="estado">
+      <ion-select-option value=true>Disponible</ion-select-option>
+      <ion-select-option value=false>Ocupado</ion-select-option>
     </ion-select>
   </ion-item>
 </ion-list>

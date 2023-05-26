@@ -21,7 +21,7 @@
             <ion-col>TIPO</ion-col>
             <ion-col>COLOR</ion-col>
             <ion-col>CAPACIDAD</ion-col>
-            <ion-col>SUCURSAL</ion-col>
+            <ion-col>ESTADO</ion-col>
             <ion-col>ACCIONES</ion-col>
           </ion-row>
 
@@ -31,7 +31,8 @@
             <ion-col>{{ dataItem.tipo }}</ion-col>
             <ion-col>{{ dataItem.color }}</ion-col>
             <ion-col>{{ dataItem.capacidad }} kg</ion-col>
-            <ion-col>{{ dataItem.sucursal }}</ion-col>
+            <ion-col *ngIf="dataItem.estado == true">Disponible</ion-col>
+            <ion-col *ngIf="dataItem.estado == false">Ocupado</ion-col>
             <ion-col class="icons-button">
               <ion-icon name="pencil-sharp" id="open-modal" (click)="edit(dataItem)"></ion-icon>
               <ion-icon name="trash" (click)="delete(dataItem)"></ion-icon>

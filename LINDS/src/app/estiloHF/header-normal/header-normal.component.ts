@@ -17,7 +17,7 @@ export class HeaderNormalComponent implements OnInit {
 
   ngOnInit() {}
 
-  outlogin() {
+  logout() {
     localStorage.clear();
     this.cookieService.delete('jwt');
     this.service.logout().subscribe((data) => {});

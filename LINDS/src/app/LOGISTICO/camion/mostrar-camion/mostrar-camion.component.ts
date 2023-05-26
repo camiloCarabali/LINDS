@@ -42,6 +42,7 @@ export class MostrarCamionComponent implements OnInit {
       capacidad: '',
       empresa: '',
       sucursal: '',
+      estado: ''
     };
     this.modalTitle = 'Agregar Vehículo';
     this.Activate_CrearEditar_CamionComp = true;
