@@ -39,6 +39,8 @@ export class MostrarPuntoEntregaComponent implements OnInit {
       direccion: '',
       viaje: '',
       estado: '',
+      empresa: '',
+      sucursal: '',
     };
     this.modalTitle = 'Crear Punto de Entrega';
     this.Activate_CrearEditar_PuntoEntregaComp = true;
@@ -78,10 +80,13 @@ export class MostrarPuntoEntregaComponent implements OnInit {
   }
 
   refreshPuntoEntregaList() {
-    this.service.getPuntoEntregaList().subscribe((data) => {
-      this.puntoEntregaList = data;
-      this.listWithoutFilter = data;
-    });
+    let valor = (this.sucursal = localStorage.getItem('sucursal')!);
+    this.service
+      .buscarPuntoEntregaSucursal(valor.replace(/ /g, '_'))
+      .subscribe((data) => {
+        this.puntoEntregaList = data;
+        this.listWithoutFilter = data;
+      });
   }
 
   FilterFn() {

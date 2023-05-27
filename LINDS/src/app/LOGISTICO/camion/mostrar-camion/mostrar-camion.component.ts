@@ -42,7 +42,7 @@ export class MostrarCamionComponent implements OnInit {
       capacidad: '',
       empresa: '',
       sucursal: '',
-      estado: ''
+      estado: '',
     };
     this.modalTitle = 'Agregar Vehículo';
     this.Activate_CrearEditar_CamionComp = true;
@@ -51,7 +51,7 @@ export class MostrarCamionComponent implements OnInit {
 
   cancel() {
     this.Activate_CrearEditar_CamionComp = false;
-    this.setOpen(false)
+    this.setOpen(false);
     this.refreshCamionList();
   }
 
@@ -73,7 +73,9 @@ export class MostrarCamionComponent implements OnInit {
   }
 
   refreshCamionList() {
-    this.service.getCamionList().subscribe((data) => {
+    let valor = (this.sucursal = localStorage.getItem('sucursal')!);
+
+    this.service.getBuscarCamion(valor.replace(/ /g, '_')).subscribe((data) => {
       this.camionList = data;
       this.listWithoutFilter = data;
     });

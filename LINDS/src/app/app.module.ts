@@ -47,8 +47,8 @@ import { PiefooterComponent } from './estiloHF/piefooter/piefooter.component';
 import { HeaderNormalComponent } from './estiloHF/header-normal/header-normal.component';
 import { CabezaheaderComponent } from './estiloHF/cabezaheader/cabezaheader.component';
 
-import { ListaConductoresComponent } from './lista-conductores/lista-conductores.component';
-import { MostrarListaConductoresComponent } from './lista-conductores/mostrar-lista-conductores/mostrar-lista-conductores.component';
+import { ListaConductoresComponent } from './LOGISTICO/lista-conductores/lista-conductores.component';
+import { MostrarListaConductoresComponent } from './LOGISTICO/lista-conductores/mostrar-lista-conductores/mostrar-lista-conductores.component';
 
 import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';

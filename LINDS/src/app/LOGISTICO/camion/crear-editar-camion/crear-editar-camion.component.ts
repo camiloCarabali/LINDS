@@ -50,7 +50,6 @@ export class CrearEditarCamionComponent implements OnInit {
       sucursal: localStorage.getItem('sucursal'),
       estado: this.estado,
     };
-    console.log(val);
     this.service.addCamion(val).subscribe((res: any) => {
       this.interaction.presentToast('top', res.toString());
     });

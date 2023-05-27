@@ -337,17 +337,20 @@ def mostrarCamion(request):
         camiones_serializers = CamionSerializer(camiones, many=True)
         return JsonResponse(camiones_serializers.data, safe=False)
 
+
 @csrf_exempt
-def mostrarCamionDisponible(request):
+def mostrarCamionDisponible(request, sucursal):
     if request.method == 'GET':
-        camiones = Camion.objects.filter(estado=True)
+        valor = sucursal.replace("_", " ")
+        camiones = Camion.objects.filter(estado=True, sucursal=valor)
         camiones_serializers = CamionSerializer(camiones, many=True)
         return JsonResponse(camiones_serializers.data, safe=False)
 
 
 def buscarCamion(request, sucursal):
     if request.method == 'GET':
-        camiones = Camion.objects.filter(sucursal=sucursal)
+        valor = sucursal.replace("_", " ")
+        camiones = Camion.objects.filter(sucursal=valor)
         camiones_serializers = CamionSerializer(camiones, many=True)
         return JsonResponse(camiones_serializers.data, safe=False)
 
@@ -421,6 +424,14 @@ def buscarPuntoEntrega(request, viaje):
         return JsonResponse(entregas_serializers.data, safe=False)
 
 
+def buscarPuntoEntregaSucursal(request, sucursal):
+    if request.method == 'GET':
+        valor = sucursal.replace("_", " ")
+        entregas = PuntoEntrega.objects.filter(sucursal=valor)
+        entregas_serializers = PuntoEntregaSerializer(entregas, many=True)
+        return JsonResponse(entregas_serializers.data, safe=False)
+
+
 @csrf_exempt
 def crearPuntoEntrega(request):
     if request.method == 'POST':
@@ -470,6 +481,15 @@ def waypoints(request, viaje):
 def mostrarViaje(request):
     if request.method == 'GET':
         viajes = Viaje.objects.all()
+        viajes_serializers = ViajeSerializer(viajes, many=True)
+        return JsonResponse(viajes_serializers.data, safe=False)
+
+
+@csrf_exempt
+def buscarViaje(request, sucursal):
+    if request.method == 'GET':
+        valor = sucursal.replace("_", " ")
+        viajes = Viaje.objects.filter(sucursal=valor)
         viajes_serializers = ViajeSerializer(viajes, many=True)
         return JsonResponse(viajes_serializers.data, safe=False)
 
@@ -596,6 +616,15 @@ def buscarMercancia(request, puntoEntrega):
 def mostrarMercancia(request):
     if request.method == 'GET':
         mercancias = Mercancia.objects.all()
+        mercancias_serializers = MercanciaSerializer(mercancias, many=True)
+        return JsonResponse(mercancias_serializers.data, safe=False)
+
+
+@csrf_exempt
+def mostrarMercanciaSucursal(request, sucursal):
+    if request.method == 'GET':
+        valor = sucursal.replace("_", " ")
+        mercancias = Mercancia.objects.filter(sucursal=valor)
         mercancias_serializers = MercanciaSerializer(mercancias, many=True)
         return JsonResponse(mercancias_serializers.data, safe=False)
 

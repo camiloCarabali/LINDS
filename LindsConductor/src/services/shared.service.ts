@@ -47,14 +47,6 @@ export class SharedService {
     return this.http.get<any[]>(this.APIURL + 'buscarMercancia/' + val);
   }
 
-/*
-  cargaMercancia(val: any) {
-    return this.http.put<any[]>(this.APIURL + 'cargaMercancia/', val, {
-      observe: 'response'
-    });
-  }
-*/
-
   descargaMercancia(val: any) {
     return this.http.put<any[]>(this.APIURL + 'descargaMercancia/' + val, val, {
       observe: 'response'

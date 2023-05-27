@@ -46,6 +46,8 @@ export class MostrarMercanciaComponent implements OnInit {
       carga: '',
       descarga: '',
       puntoEntrega: '',
+      empresa: '',
+      sucursal: '',
     };
     this.modalTitle = 'Agregar Mercancia';
     this.Activate_CrearEditar_MercanciaComp = true;
@@ -78,7 +80,7 @@ export class MostrarMercanciaComponent implements OnInit {
         this.interaction.presentToast('top', 'Error en la solicitud');
       }
     });
-    location.reload()
+    location.reload();
   }
 
   delete(item: any) {
@@ -91,10 +93,13 @@ export class MostrarMercanciaComponent implements OnInit {
   }
 
   refreshMercanciaList() {
-    this.service.getMercanciaList().subscribe((data) => {
-      this.mercanciaList = data;
-      this.listWithoutFilter = data;
-    });
+    let valor = (this.sucursal = localStorage.getItem('sucursal')!);
+    this.service
+      .mostrarMercanciaSucursal(valor.replace(/ /g, '_'))
+      .subscribe((data) => {
+        this.mercanciaList = data;
+        this.listWithoutFilter = data;
+      });
   }
 
   FilterFn() {

@@ -112,8 +112,8 @@ export class SharedService {
     return this.http.get<any[]>(this.APIURL + 'camion/');
   }
 
-  getCamionDisponibleList(): Observable<any[]> {
-    return this.http.get<any[]>(this.APIURL + 'camionDisponible/');
+  getCamionDisponibleList(val: string): Observable<any[]> {
+    return this.http.get<any[]>(this.APIURL + 'camionDisponible/' + val);
   }
 
   addCamion(val: any) {
@@ -211,5 +211,21 @@ export class SharedService {
 
   ocupadoCamion(val: any) {
     return this.http.put<any[]>(this.APIURL + 'ocupadoCamion/' + val, val);
+  }
+
+  buscarPuntoEntregaSucursal(val: String) {
+    return this.http.get<any[]>(
+      this.APIURL + 'buscarPuntoEntregaSucursal/' + val
+    );
+  }
+
+  mostrarMercanciaSucursal(val: String) {
+    return this.http.get<any[]>(
+      this.APIURL + 'mostrarMercanciaSucursal/' + val
+    );
+  }
+
+  buscarViaje(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'buscarViaje/' + val);
   }
 }

@@ -22,6 +22,8 @@ export class CrearEditarViajeComponent implements OnInit {
   fecha: string = '';
   camion: any;
   usuario: any;
+  empresa: any;
+  sucursal: any;
 
   today: any = new Date().toISOString();
 
@@ -31,6 +33,8 @@ export class CrearEditarViajeComponent implements OnInit {
     this.fecha = this.viaje.fecha;
     this.camion = this.viaje.camion;
     this.usuario = this.viaje.usuario;
+    this.empresa = this.viaje.empresa;
+    this.sucursal = this.viaje.sucursal;
     this.cargarCamion();
     this.cargarConductor();
   }
@@ -41,6 +45,8 @@ export class CrearEditarViajeComponent implements OnInit {
       fecha: this.today,
       camion: this.camion,
       usuario: this.usuario,
+      empresa: localStorage.getItem('empresa'),
+      sucursal: localStorage.getItem('sucursal'),
     };
     this.service.ocupadoCamion(val.camion).subscribe((res: any) => {});
     this.service.addViaje(val).subscribe((res: any) => {
@@ -55,6 +61,8 @@ export class CrearEditarViajeComponent implements OnInit {
       fecha: this.fecha,
       camion: this.camion,
       usuario: this.usuario,
+      empresa: this.empresa,
+      sucursal: this.sucursal,
     };
     this.service.ocupadoCamion(val.camion).subscribe((res: any) => {});
     this.service.updateViaje(val).subscribe((res) => {
@@ -63,9 +71,12 @@ export class CrearEditarViajeComponent implements OnInit {
   }
 
   cargarCamion() {
-    this.service.getCamionDisponibleList().subscribe((data) => {
-      this.camionList = data;
-    });
+    let sucursal = localStorage.getItem('sucursal') as string;
+    this.service
+      .getCamionDisponibleList(sucursal.replace(/ /g, '_'))
+      .subscribe((data) => {
+        this.camionList = data;
+      });
   }
 
   cargarConductor() {
