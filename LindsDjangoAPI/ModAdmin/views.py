@@ -495,6 +495,14 @@ def buscarViaje(request, sucursal):
 
 
 @csrf_exempt
+def infoViaje(request, id):
+    if request.method == 'GET':
+        viaje = Viaje.objects.get(id=id)
+        viaje_serializers = ViajeSerializer(viaje, many=True)
+        return JsonResponse(viaje_serializers.data, safe=False)
+
+
+@csrf_exempt
 def crearViaje(request):
     if request.method == 'POST':
         viaje_data = JSONParser().parse(request)

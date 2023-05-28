@@ -8,8 +8,6 @@ import { IndicacionesComponent } from './indicaciones/indicaciones.component';
 import { EntregasComponent } from './entregas/entregas.component';
 import { MercanciaComponent } from './mercancia/mercancia.component';
 import { PerfilComponent } from './perfil/perfil.component';
-import { IngresadoGuard } from '../guards/ingresado.guard';
-import { NoIngresadoGuard } from '../guards/no-ingresado.guard';
 
 const routes: Routes = [
   {
@@ -20,42 +18,34 @@ const routes: Routes = [
   {
     path: 'mapa',
     component: MapaComponent,
-    canActivate: [IngresadoGuard]
   },
   {
     path: 'historial',
     component: HistorialComponent,
-    canActivate: [IngresadoGuard]
   },
   {
     path: 'viaje',
     component: ViajeComponent,
-    canActivate: [IngresadoGuard]
   },
   {
     path: 'login',
     component: LoginComponent,
-    canActivate: [NoIngresadoGuard]
   },
   {
     path: 'indicaciones',
     component: IndicacionesComponent,
-    canActivate: [IngresadoGuard]
   },
   {
     path: 'entregas',
     component: EntregasComponent,
-    canActivate: [IngresadoGuard]
   },
   {
     path: 'mercancia',
     component: MercanciaComponent,
-    canActivate: [IngresadoGuard]
   },
   {
     path: 'perfil',
-    component: PerfilComponent, 
-    canActivate: [IngresadoGuard]
+    component: PerfilComponent,
   },
 ];
 

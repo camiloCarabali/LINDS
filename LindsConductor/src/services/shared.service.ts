@@ -47,6 +47,10 @@ export class SharedService {
     return this.http.get<any[]>(this.APIURL + 'buscarMercancia/' + val);
   }
 
+  infoViaje(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'infoViaje/' + val);
+  }
+
   descargaMercancia(val: any) {
     return this.http.put<any[]>(this.APIURL + 'descargaMercancia/' + val, val, {
       observe: 'response'

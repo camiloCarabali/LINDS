@@ -33,36 +33,25 @@ export class MostrarViajeComponent implements OnInit {
     });
   }
 
-  generateTrip() {
+  generateTrip(item: any) {
     localStorage.clear();
+    localStorage.setItem('id', item.id);
+    localStorage.setItem('rutaInicio', item.inicio);
     const waypoints: any = [];
-    const jwt = this.cookieService.get('jwt');
-    this.service.user(jwt).subscribe((res: any) => {
-      this.service.getAsignacion(res.cedula).subscribe((data: any) => {
-        this.viaje = data;
-        for (let i of this.viaje) {
-          this.inicio = i.inicio;
-          this.id = i.id;
-          this.service.waypoints(this.id).subscribe((request) => {
-            for (let j = 0; j < request.length; j++) {
-              waypoints.push({
-                location: request[j],
-                stopover: true,
-              });
-            }
-            this.llegada = request[request.length - 1];
-            waypoints.pop();
-            localStorage.setItem('id', this.id);
-            localStorage.setItem('rutaInicio', this.inicio);
-            localStorage.setItem('rutaLlegada', this.llegada);
-            localStorage.setItem('waypoints', JSON.stringify(waypoints));
+    this.service
+      .waypoints(localStorage.getItem('id') as string)
+      .subscribe((data: any) => {
+        for (let i = 0; i < data.length; i++) {
+          waypoints.push({
+            location: data[i],
+            stopover: true,
           });
         }
+        this.llegada = data[data.length - 1];
+        waypoints.pop();
+        localStorage.setItem('rutaLlegada', this.llegada);
+        localStorage.setItem('waypoints', JSON.stringify(waypoints));
       });
-    });
-    this.service
-      .confirmarViaje(localStorage.getItem('id'))
-      .subscribe((data) => {});
     this.router.navigate(['/mapa']);
   }
 }

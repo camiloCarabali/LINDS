@@ -46,7 +46,7 @@ export class UiService {
       text: 'OK',
       role: 'confirm',
       handler: () => {
-        this.router.navigate(['/historial']);
+        this.router.navigate(['/perfil']);
       }, 
     },
     {
