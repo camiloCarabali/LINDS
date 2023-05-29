@@ -21,10 +21,15 @@ export class MostrarCamionComponent implements OnInit {
   Activate_CrearEditar_CamionComp: boolean = false;
   camion: any;
 
-  nombreFilter: string = '';
+  modeloFilter: string = '';
   listWithoutFilter: any = [];
 
+  nombre: string = '';
+  sucursal: string = '';
+
   ngOnInit() {
+    this.nombre = localStorage.getItem('nombre')!.toUpperCase();
+    this.sucursal = localStorage.getItem('sucursal')!;
     this.refreshCamionList();
   }
 
@@ -37,28 +42,29 @@ export class MostrarCamionComponent implements OnInit {
       capacidad: '',
       empresa: '',
       sucursal: '',
+      estado: '',
     };
-    this.modalTitle = 'Añadir Camion';
+    this.modalTitle = 'Agregar Vehículo';
     this.Activate_CrearEditar_CamionComp = true;
     this.setOpen(true);
   }
 
   cancel() {
     this.Activate_CrearEditar_CamionComp = false;
-    this.setOpen(false)
+    this.setOpen(false);
     this.refreshCamionList();
   }
 
   edit(item: any) {
     this.camion = item;
-    this.modalTitle = 'Editar Camion';
+    this.modalTitle = 'Actualizar Vehículo';
     this.Activate_CrearEditar_CamionComp = true;
     this.setOpen(true);
     this.refreshCamionList();
   }
 
   delete(item: any) {
-    if (confirm('Desea eliminar este camion?')) {
+    if (confirm('¿Desea eliminar este Vehículo?')) {
       this.service.eliminarCamion(item.matricula).subscribe((data) => {
         alert(data.toString());
         this.refreshCamionList();
@@ -67,19 +73,21 @@ export class MostrarCamionComponent implements OnInit {
   }
 
   refreshCamionList() {
-    this.service.getCamionList().subscribe((data) => {
+    let valor = (this.sucursal = localStorage.getItem('sucursal')!);
+
+    this.service.getBuscarCamion(valor.replace(/ /g, '_')).subscribe((data) => {
       this.camionList = data;
       this.listWithoutFilter = data;
     });
   }
 
   FilterFn() {
-    var nombreFilter = this.nombreFilter;
+    var modeloFilter = this.modeloFilter;
     this.camionList = this.listWithoutFilter.filter(function (el: any) {
-      return el.nombre
+      return el.modelo
         .toString()
         .toLowerCase()
-        .includes(nombreFilter.toString().trim().toLowerCase());
+        .includes(modeloFilter.toString().trim().toLowerCase());
     });
   }
 }

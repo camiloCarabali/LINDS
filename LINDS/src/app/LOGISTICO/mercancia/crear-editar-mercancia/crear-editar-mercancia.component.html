@@ -1,4 +1,4 @@
-<ion-item>
+<ion-item class="style-btn">
   <ion-label position="floating">Nombre</ion-label>
   <ion-input
     placeholder="Escriba el nombre"
@@ -6,7 +6,7 @@
   ></ion-input>
 </ion-item>
 
-<ion-item>
+<ion-item class="style-btn">
   <ion-label position="floating">Peso</ion-label>
   <ion-input
     placeholder="Escriba el peso en Kg"
@@ -31,5 +31,5 @@
   </ion-item>
 </ion-list>
 
-<ion-button (click)="add()" *ngIf="mercancia.id == 0">Añadir</ion-button>
-<ion-button (click)="edit()" *ngIf="mercancia.id != 0">Editar</ion-button>
+<ion-button (click)="add()" *ngIf="mercancia.id == 0">AGREGAR</ion-button>
+<ion-button (click)="edit()" *ngIf="mercancia.id != 0">ACTUALIZAR</ion-button>

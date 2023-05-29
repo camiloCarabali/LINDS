@@ -21,10 +21,15 @@ export class MostrarPuntoEntregaComponent implements OnInit {
   Activate_CrearEditar_PuntoEntregaComp: boolean = false;
   puntoEntrega: any;
 
-  nombreFilter: string = '';
+  direccionFilter: string = '';
   listWithoutFilter: any = [];
 
+  nombre: string = '';
+  sucursal: string = '';
+
   ngOnInit() {
+    this.nombre = localStorage.getItem('nombre')!.toUpperCase();
+    this.sucursal = localStorage.getItem('sucursal')!;
     this.refreshPuntoEntregaList();
   }
 
@@ -34,6 +39,8 @@ export class MostrarPuntoEntregaComponent implements OnInit {
       direccion: '',
       viaje: '',
       estado: '',
+      empresa: '',
+      sucursal: '',
     };
     this.modalTitle = 'Crear Punto de Entrega';
     this.Activate_CrearEditar_PuntoEntregaComp = true;
@@ -73,19 +80,22 @@ export class MostrarPuntoEntregaComponent implements OnInit {
   }
 
   refreshPuntoEntregaList() {
-    this.service.getPuntoEntregaList().subscribe((data) => {
-      this.puntoEntregaList = data;
-      this.listWithoutFilter = data;
-    });
+    let valor = (this.sucursal = localStorage.getItem('sucursal')!);
+    this.service
+      .buscarPuntoEntregaSucursal(valor.replace(/ /g, '_'))
+      .subscribe((data) => {
+        this.puntoEntregaList = data;
+        this.listWithoutFilter = data;
+      });
   }
 
   FilterFn() {
-    var nombreFilter = this.nombreFilter;
+    var direccionFilter = this.direccionFilter;
     this.puntoEntregaList = this.listWithoutFilter.filter(function (el: any) {
-      return el.nombre
+      return el.direccion
         .toString()
         .toLowerCase()
-        .includes(nombreFilter.toString().trim().toLowerCase());
+        .includes(direccionFilter.toString().trim().toLowerCase());
     });
   }
 }

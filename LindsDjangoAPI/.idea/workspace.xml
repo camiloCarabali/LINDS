@@ -4,55 +4,45 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0cec2a83-20d1-47e2-b041-20ecb4bc8243" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../LindsConductor/src/app/historial/historial.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../LindsConductor/src/app/historial/historial.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LindsConductor/src/app/historial/historial.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../LindsConductor/src/app/historial/historial.component.scss" afterDir="false" />
+    <list default="true" id="ccee2ac3-87c6-40b6-acf3-9423e1e1dc58" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ModAdmin/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ModAdmin/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Python Script" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProjectId" id="2OXQTCOfVqDHgt9QXy4mhR7g16X" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="2QFG6aFC4rKm7AG9r0NitCf5HCu" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;camilo&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/camil/OneDrive/Documentos/GitHub/LINDS/LindsDjangoAPI&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/camil/OneDrive/Documentos/GitHub/mapa2/Django--GoogleMapsApi-main&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PythonContentEntriesConfigurable&quot;
   }
 }</component>
   <component name="RunManager" selected="Python.runserver">
-    <configuration name="makemigrations ModAdmin" type="PythonConfigurationType" factoryName="Python">
+    <configuration name="makemigrations" type="PythonConfigurationType" factoryName="Python">
       <module name="LindsDjangoAPI" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="C:\Users\camil\OneDrive\Documentos\GitHub\LINDS\LindsDjangoAPI\venv\Scripts\python.exe" />
+      <option name="SDK_NAME" value="Python 3.11 (LindsDjangoAPI)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
@@ -64,16 +54,17 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="migrate ModAdmin" type="PythonConfigurationType" factoryName="Python">
+    <configuration name="migrate" type="PythonConfigurationType" factoryName="Python">
       <module name="LindsDjangoAPI" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="C:\Users\camil\OneDrive\Documentos\GitHub\LINDS\LindsDjangoAPI\venv\Scripts\python.exe" />
+      <option name="SDK_NAME" value="Python 3.11 (LindsDjangoAPI)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
@@ -107,37 +98,23 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.makemigrations ModAdmin" />
-      <item itemvalue="Python.migrate ModAdmin" />
       <item itemvalue="Python.runserver" />
+      <item itemvalue="Python.makemigrations" />
+      <item itemvalue="Python.migrate" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0cec2a83-20d1-47e2-b041-20ecb4bc8243" name="Changes" comment="" />
-      <created>1681704451914</created>
+      <changelist id="ccee2ac3-87c6-40b6-acf3-9423e1e1dc58" name="Changes" comment="" />
+      <created>1684941741402</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1681704451914</updated>
+      <updated>1684941741402</updated>
     </task>
     <servers />
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="requirements.txt" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

@@ -15,7 +15,7 @@
     <ion-input [(ngModel)]="destinationLocation" [disabled]="true"></ion-input>
   </ion-item>
 
-  <ion-button expand="full" (click)="iniciarViaje()" [class]="class_inicio">Iniciar Viaje</ion-button>
+  <ion-button expand="full" color="success" (click)="iniciarViaje()" [class]="class_inicio">Iniciar Viaje</ion-button>
 
   <ion-button expand="full" color="danger" (click)="finalizarViaje()" [class]="class_fin">Finalizar Viaje</ion-button>
 
@@ -36,7 +36,7 @@
       </ion-content>
     </ng-template>
   </ion-modal>
-  
+
   <ion-modal [isOpen]="isModalOpen1">
     <ng-template>
       <ion-header>

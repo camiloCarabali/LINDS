@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/services/shared.service';
+import { UiServiceService } from 'src/services/ui-service.service';
 
 @Component({
   selector: 'app-mostrar-mercancia',
@@ -13,7 +14,10 @@ export class MostrarMercanciaComponent implements OnInit {
     this.isModalOpen = isOpen;
   }
 
-  constructor(private service: SharedService) {}
+  constructor(
+    private service: SharedService,
+    private interaction: UiServiceService
+  ) {}
 
   mercanciaList: any = [];
 
@@ -24,7 +28,12 @@ export class MostrarMercanciaComponent implements OnInit {
   nombreFilter: string = '';
   listWithoutFilter: any = [];
 
+  nombre: string = '';
+  sucursal: string = '';
+
   ngOnInit() {
+    this.nombre = localStorage.getItem('nombre')!.toUpperCase();
+    this.sucursal = localStorage.getItem('sucursal')!;
     this.refreshMercanciaList();
   }
 
@@ -37,8 +46,10 @@ export class MostrarMercanciaComponent implements OnInit {
       carga: '',
       descarga: '',
       puntoEntrega: '',
+      empresa: '',
+      sucursal: '',
     };
-    this.modalTitle = 'Añadir Mercancia';
+    this.modalTitle = 'Agregar Mercancia';
     this.Activate_CrearEditar_MercanciaComp = true;
     this.setOpen(true);
   }
@@ -51,14 +62,29 @@ export class MostrarMercanciaComponent implements OnInit {
 
   edit(item: any) {
     this.mercancia = item;
-    this.modalTitle = 'Editar Mercancia';
+    this.modalTitle = 'Actualizar Mercancia';
     this.Activate_CrearEditar_MercanciaComp = true;
     this.setOpen(true);
     this.refreshMercanciaList();
   }
 
+  carga(item: any) {
+    this.service.cargaMercancia(item.id).subscribe((data) => {
+      if (data.status === 200) {
+        this.interaction.presentToast(
+          'top',
+          'La carga ha sido descargada correctamente.'
+        );
+      } else if (data.status === 404) {
+        this.interaction.closeLoading();
+        this.interaction.presentToast('top', 'Error en la solicitud');
+      }
+    });
+    location.reload();
+  }
+
   delete(item: any) {
-    if (confirm('Desea eliminar esta mercancia?')) {
+    if (confirm('¿Desea eliminar esta mercancia?')) {
       this.service.eliminarMercancia(item.id).subscribe((data) => {
         alert(data.toString());
         this.refreshMercanciaList();
@@ -67,10 +93,13 @@ export class MostrarMercanciaComponent implements OnInit {
   }
 
   refreshMercanciaList() {
-    this.service.getMercanciaList().subscribe((data) => {
-      this.mercanciaList = data;
-      this.listWithoutFilter = data;
-    });
+    let valor = (this.sucursal = localStorage.getItem('sucursal')!);
+    this.service
+      .mostrarMercanciaSucursal(valor.replace(/ /g, '_'))
+      .subscribe((data) => {
+        this.mercanciaList = data;
+        this.listWithoutFilter = data;
+      });
   }
 
   FilterFn() {

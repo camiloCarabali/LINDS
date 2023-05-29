@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SharedService } from 'src/services/shared.service';
 import { IonModal } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mostrar-sucursal',
@@ -17,7 +18,7 @@ export class MostrarSucursalComponent implements OnInit {
     this.isModalOpen = isOpen;
   }
 
-  constructor(private service: SharedService) {}
+  constructor(private service: SharedService, private router: Router) {}
 
   sucursalList: any = [];
 
@@ -28,7 +29,10 @@ export class MostrarSucursalComponent implements OnInit {
   nombreFilter: string = '';
   listWithoutFilter: any = [];
 
+  nombre: string = '';
+
   ngOnInit() {
+    this.nombre = localStorage.getItem('nombre')!.toUpperCase();
     this.refreshSucursalList();
   }
 
@@ -61,7 +65,6 @@ export class MostrarSucursalComponent implements OnInit {
   }
 
   delete(item: any) {
-    console.log(item.id);
     if (confirm('Desea inactivar esta sucursal?')) {
       this.service.inactivarSucursal(item.id).subscribe((data) => {
         alert(data.toString());

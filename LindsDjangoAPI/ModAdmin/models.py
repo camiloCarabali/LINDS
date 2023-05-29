@@ -41,7 +41,7 @@ class Empresa(models.Model):
 
 class Sucursal(models.Model):
     id = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=100, null=False)
+    nombre = models.CharField(max_length=100, null=False, unique=True)
     direccion = models.CharField(max_length=100, null=False)
     estado = models.BooleanField(default=True, null=False)
     empresa = models.CharField(max_length=100, null=False)
@@ -67,8 +67,8 @@ class Usuario(AbstractUser):
     correo = models.CharField(max_length=100, null=False, unique=True)
     password = models.CharField(max_length=100, null=False)
     estado = models.BooleanField(default=True, null=False)
-    empresa = models.CharField(max_length=100, null=False)
-    sucursal = models.CharField(max_length=100, null=False)
+    empresa = models.CharField(max_length=100, null=True)
+    sucursal = models.CharField(max_length=100, null=True)
     rol = models.CharField(max_length=100, null=False)
     username = None
 
@@ -87,6 +87,7 @@ class Camion(models.Model):
     capacidad = models.IntegerField(null=False)
     empresa = models.CharField(max_length=100, null=False)
     sucursal = models.CharField(max_length=100, null=False)
+    estado = models.BooleanField(default=True, null=False)
 
     class Meta:
         db_table = 'camion'
@@ -99,6 +100,8 @@ class Viaje(models.Model):
     fecha = models.DateTimeField()
     camion = models.CharField(max_length=100, null=False)
     usuario = models.CharField(max_length=100, null=False)
+    empresa = models.CharField(max_length=100, null=False)
+    sucursal = models.CharField(max_length=100, null=False)
 
     class Meta:
         db_table = 'viaje'
@@ -107,6 +110,8 @@ class Viaje(models.Model):
 class PuntoEntrega(models.Model):
     id = models.AutoField(primary_key=True)
     direccion = models.CharField(max_length=100, null=False)
+    empresa = models.CharField(max_length=100, null=False)
+    sucursal = models.CharField(max_length=100, null=False)
     estado = models.BooleanField(default=True, null=False)
     viaje = models.CharField(max_length=100, null=True)
 
@@ -121,6 +126,8 @@ class Mercancia(models.Model):
     estado = models.BooleanField(default=True, null=False)
     carga = models.BooleanField(default=False, null=False)
     descarga = models.BooleanField(default=False, null=False)
+    empresa = models.CharField(max_length=100, null=False)
+    sucursal = models.CharField(max_length=100, null=False)
     puntoEntrega = models.CharField(max_length=100, null=False)
 
     class Meta:

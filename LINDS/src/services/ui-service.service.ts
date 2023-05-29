@@ -1,59 +1,58 @@
 import { Injectable } from '@angular/core';
-import { AlertController, LoadingController, ToastController } from '@ionic/angular';
+import {
+  AlertController,
+  LoadingController,
+  ToastController,
+} from '@ionic/angular';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UiServiceService {
-
   loading = false;
 
-  constructor(private alertController: AlertController,
-    private toastController: ToastController, private loadingCtrl: LoadingController) { }
+  constructor(
+    private alertController: AlertController,
+    private toastController: ToastController,
+    private loadingCtrl: LoadingController
+  ) {}
 
-    async alertaInformativa(message: string) {
-      const alert = await this.alertController.create({
-        message, buttons:['Ok']
-      })
-    }
+  async presentAlert(message: string) {
+    const alert = await this.alertController.create({
+      header: 'Alerta',
+      subHeader: 'Mensaje Importante',
+      message: message,
+      buttons: ['OK'],
+    });
+    await alert.present();
+  }
 
-    async presentToast( message: string){
-      this.loading = true;
-      return await this.loadingCtrl.create({
+  async presentToast(position: 'top' | 'middle' | 'bottom', message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2500,
+      position: position,
+    });
+
+    await toast.present();
+  }
+
+  async showLoading(message: string) {
+    this.loading = true;
+    return await this.loadingCtrl
+      .create({
         message: message,
-      }).then(a => {
-        a.present().then(() => {
-          if (!this.loading){
-            a.dismiss();
-          }
-        })
       })
-    }
-
-    async showLoading(message: string) {
-      this.loading = true;
-      return await this.loadingCtrl.create({
-        message: message,
-      }).then(a => {
+      .then((a) => {
         a.present().then(() => {
           if (!this.loading) {
             a.dismiss();
           }
         });
       });
-    }
+  }
 
-    async closeLoading() {
-      this.loading = false;
-      return await this.loadingCtrl.dismiss();
-    }
-
-    async closeToast() {
-      this.loading = false;
-      return await this.toastController.dismiss();
-    }
-
-
-
-
+  async closeLoading() {
+    return await this.loadingCtrl.dismiss();
+  }
 }

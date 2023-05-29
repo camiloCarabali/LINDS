@@ -82,12 +82,17 @@
 
 
 $colors: (
-  primary:    #488aff,
+  primary:    #85C1EC,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222,
-  my-color:   #85C1EC,
+  mycolor:   #85C1EC,
+  labelcolor: #C3E0F6,
+  boton1: #8DC5EE,
+  boton2: #FDFDFD,
+  colormodal: #AAC1D0,
+  label1: #717B82,
 );
 
 @media (prefers-color-scheme: dark) {

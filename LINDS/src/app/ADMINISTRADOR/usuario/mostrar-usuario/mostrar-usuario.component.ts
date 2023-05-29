@@ -28,7 +28,10 @@ export class MostrarUsuarioComponent implements OnInit {
   nombreFilter: string = '';
   listWithoutFilter: any = [];
 
+  nombre: string = '';
+
   ngOnInit() {
+    this.nombre = localStorage.getItem('nombre')!.toUpperCase();
     this.refreshUsuarioList();
   }
 
@@ -51,6 +54,7 @@ export class MostrarUsuarioComponent implements OnInit {
     this.modalTitle = 'Añadir Usuario';
     this.ActivateCrearEditarUsuarioComp = true;
     this.setOpen(true);
+    this.refreshUsuarioList();
   }
 
   edit(item: any) {

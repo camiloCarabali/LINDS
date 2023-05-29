@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Dangrek&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@500&display=swap');
+
+
+/** MENU STYLE **/
+.menu-conten {
+    background-color: #C9E3F7;
+    color: #4B5399;
+    font-family: 'Dangrek', cursive;
+    text-align: center;
+    height: 100vh;
+}
+
+.col-right {
+    background-color: white;
+    color: black;
+}
+
+.list-botones{
+    background-color: #C9E3F7;
+  }
+
+.button-style1 {
+    width: 100%;
+    height: 66px;
+    color: white;
+    font-size: 18px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+}
+
+.button-style {
+    width: 100%;
+    height: 66px;
+    color: #4B5399;
+    font-size: 18px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+}
+
+.botones-menu {
+    margin-top: 15%;
+}
+
+h3 {
+    margin-top: 5%;
+}
+
+/** ROW STYLE*/
+
+.btn {
+    color: black;
+}
+
+.row-content {
+    margin: 15px;
+    text-align: center;
+}
+
+.main {
+    color: #4B5399;
+    font-size: 20px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+}
+
+.content-vehicle {
+    background-color: #BEDEF1;
+    color: #224C72;
+    font-size: 16px;
+    border-radius: 15px;
+    width: 100%;
+    height: 73px;
+    padding-top: 16px;
+    text-align: center;
+    margin-top: 13px;
+}
+
+.button-add {
+    margin-left: 90%;
+    margin-top: 15px;
+
+}
+
+.icons-button {
+    margin-top: 10px;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+/** MODAL STYLE **/
+ion-toolbar {
+    --background: #AAC1D0;
+    font-family: 'Dangrek', cursive;
+    color: white;
+}
+
+ion-title {
+    margin-left: 20px;
+    font-size: 32px;
+}
+
+ion-content {
+    background-color: white;
+}
+
+ion-input {
+    margin-bottom: 10px;
+}
+
+.ion-padding {
+    --background: #AAC1D0;
+}
+
+.close-button {
+    font-size: 20px;
+    font-weight: bold;
+}

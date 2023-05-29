@@ -24,7 +24,7 @@ export class SharedService {
   }
 
   logout(): Observable<any[]> {
-    return this.http.post<any[]>(this.APIURL + 'mercancia/', '');
+    return this.http.post<any[]>(this.APIURL + 'logout/', '');
   }
 
   user(val: String) {
@@ -47,13 +47,9 @@ export class SharedService {
     return this.http.get<any[]>(this.APIURL + 'buscarMercancia/' + val);
   }
 
-/*
-  cargaMercancia(val: any) {
-    return this.http.put<any[]>(this.APIURL + 'cargaMercancia/', val, {
-      observe: 'response'
-    });
+  infoViaje(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'infoViaje/' + val);
   }
-*/
 
   descargaMercancia(val: any) {
     return this.http.put<any[]>(this.APIURL + 'descargaMercancia/' + val, val, {

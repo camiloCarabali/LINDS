@@ -30,12 +30,17 @@ export class MostrarViajeComponent implements OnInit {
   Activate_Mapa_ViajeComp: boolean = false;
   viaje: any;
 
-  nombreFilter: string = '';
+  inicioFilter: string = '';
   listWithoutFilter: any = [];
   almacenamiento: any = [];
   capacidad: any = [];
 
+  nombre: string = '';
+  sucursal: string = '';
+
   ngOnInit() {
+    this.nombre = localStorage.getItem('nombre')!.toUpperCase();
+    this.sucursal = localStorage.getItem('sucursal')!;
     this.refreshViajeList();
   }
 
@@ -47,8 +52,10 @@ export class MostrarViajeComponent implements OnInit {
       camion: '',
       usuario: '',
       estado: '',
+      nombre: '',
+      sucursal: ''
     };
-    this.modalTitle = 'Crear Viaje';
+    this.modalTitle = 'Agregar Viaje';
     this.Activate_CrearEditar_ViajeComp = true;
     this.setOpen(true);
   }
@@ -61,14 +68,16 @@ export class MostrarViajeComponent implements OnInit {
 
   edit(item: any) {
     this.viaje = item;
-    this.modalTitle = 'Editar Viaje';
+    this.modalTitle = 'Actualizar Viaje';
     this.Activate_CrearEditar_ViajeComp = true;
     this.setOpen(true);
     this.refreshViajeList();
   }
 
   delete(item: any) {
-    if (confirm('Desea inactivar este viaje?')) {
+    this.service.disponibleCamion(item.camion).subscribe(() => {});
+
+    if (confirm('¿Desea inactivar este viaje?')) {
       this.service.inactivarViaje(item.id).subscribe((data) => {
         alert(data.toString());
         this.refreshViajeList();
@@ -77,7 +86,8 @@ export class MostrarViajeComponent implements OnInit {
   }
 
   refreshViajeList() {
-    this.service.getViajeList().subscribe((data: any) => {
+    let valor = localStorage.getItem('sucursal')!;
+    this.service.buscarViaje(valor.replace('_', ' ')).subscribe((data: any) => {
       this.viajeList = data;
       this.listWithoutFilter = data;
       for (let peso of this.viajeList) {
@@ -101,12 +111,13 @@ export class MostrarViajeComponent implements OnInit {
   }
 
   FilterFn() {
-    var nombreFilter = this.nombreFilter;
+    var inicioFilter = this.inicioFilter;
+
     this.viajeList = this.listWithoutFilter.filter(function (el: any) {
-      return el.nombre
+      return el.inicio
         .toString()
         .toLowerCase()
-        .includes(nombreFilter.toString().trim().toLowerCase());
+        .includes(inicioFilter.toString().trim().toLowerCase());
     });
   }
 

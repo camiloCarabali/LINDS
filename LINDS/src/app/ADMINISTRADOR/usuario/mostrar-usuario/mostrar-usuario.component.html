@@ -1,62 +1,71 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title> Usuario </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header-normal></app-header-normal>
 
 <ion-content [fullscreen]="true">
-  <ion-grid [fixed]="true">
-    <ion-button id="open-modal" (click)="add()">Crear</ion-button>
-    <ion-modal [isOpen]="isModalOpen">
-      <ng-template>
-        <ion-header>
-          <ion-toolbar>
-            <ion-title>{{ modalTitle }}</ion-title>
-            <ion-buttons slot="end">
-              <ion-button (click)="setOpen(false)">Cerrar</ion-button>
-            </ion-buttons>
-          </ion-toolbar>
-        </ion-header>
-        <ion-content class="ion-padding">
-          <app-crear-editar-usuario
-            [usuario]="usuario"
-            *ngIf="ActivateCrearEditarUsuarioComp"
-          ></app-crear-editar-usuario>
-        </ion-content>
-      </ng-template>
-    </ion-modal>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="menu-conten" size="3">
+        <h3 >Administrador</h3>
+        <h1>{{nombre}}</h1>
+        <div class="botones-menu">
+          <ion-button  class="button-style"  fill="clear" [routerLink]="['/empresa']">Empresas</ion-button>
+          <ion-button class="button-style" fill="clear" [routerLink]="['/sucursal']">Sucursales</ion-button>
+          <ion-button class="button-style1" [routerLink]="['/usuario']">Usuarios</ion-button>
+        </div>
+      </ion-col>
+      <ion-col class="col-right" size="9">
+        <ion-input class="ion-text-start" fill="outline" placeholder="Buscar..." [(ngModel)]="nombreFilter"
+        (keyup)="FilterFn()"></ion-input>
+        <div class="row-content">
+          <ion-row class="main">
+            <ion-col size="2">Nombre completo</ion-col>
+            <ion-col size="3">Correo</ion-col>
+            <ion-col size="2">Rol</ion-col>
+            <ion-col size="2">Sucursal</ion-col>
+            <ion-col size="2">Empresa</ion-col>
+            <ion-col size="1">Acciones</ion-col>
+          </ion-row>
 
-    <ion-item>
-      <ion-input
-        placeholder="Buscar"
-        [(ngModel)]="nombreFilter"
-        (keyup)="FilterFn()"
-      ></ion-input>
-    </ion-item>
-    <ion-row class="main">
-      <ion-col size="1">NOMBRE</ion-col>
-      <ion-col size="2">APELLIDO</ion-col>
-      <ion-col size="3">CORREO</ion-col>
-      <ion-col size="2">ROL</ion-col>
-      <ion-col size="2">SUCURSAL</ion-col>
-      <ion-col size="2">ACCIONES</ion-col>
+          <ng-container *ngFor="let dataItem of usuarioList">
+            <ion-row *ngIf="dataItem.estado" class="content-user">
+              <ion-col size="2">{{ dataItem.nombre }} {{ dataItem.apellido }}</ion-col>
+              <ion-col size="3">{{ dataItem.correo }}</ion-col>
+              <ion-col size="2">{{ dataItem.rol }}</ion-col>
+              <ion-col size="2">{{ dataItem.sucursal }}</ion-col>
+              <ion-col size="2">{{ dataItem.empresa }}</ion-col>
+              <ion-col size="1" class="icons-button">
+                <ion-icon
+                  name="pencil-sharp"
+                  id="open-modal"
+                  (click)="edit(dataItem)"
+                ></ion-icon>
+                <ion-icon name="trash" (click)="delete(dataItem)"></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ng-container>
+        </div>
+
+        <ion-button class="button-add" id="open-modal" (click)="add()" shape="round"><ion-icon name="add"></ion-icon></ion-button>
+
+        <ion-modal [isOpen]="isModalOpen">
+          <ng-template>
+            <ion-header>
+              <ion-toolbar>
+                <ion-title>{{ modalTitle }}</ion-title>
+                <ion-buttons slot="end">
+                  <ion-button (click)="setOpen(false)"><ion-icon name="close-sharp"></ion-icon></ion-button>
+                </ion-buttons>
+              </ion-toolbar>
+            </ion-header>
+            <ion-content class="ion-padding">
+              <app-crear-editar-usuario
+                [usuario]="usuario"
+                *ngIf="ActivateCrearEditarUsuarioComp"
+              ></app-crear-editar-usuario>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
+
+      </ion-col>
     </ion-row>
-    <ng-container *ngFor="let dataItem of usuarioList">
-      <ion-row *ngIf="dataItem.estado">
-        <ion-col size="1">{{ dataItem.nombre }}</ion-col>
-        <ion-col size="2">{{ dataItem.apellido }}</ion-col>
-        <ion-col size="3">{{ dataItem.correo }}</ion-col>
-        <ion-col size="2">{{ dataItem.rol }}</ion-col>
-        <ion-col size="2">{{ dataItem.sucursal }}</ion-col>
-        <ion-col size="2">
-          <ion-icon
-            name="create"
-            id="open-modal"
-            (click)="edit(dataItem)"
-          ></ion-icon>
-          <ion-icon name="trash" (click)="delete(dataItem)"></ion-icon>
-        </ion-col>
-      </ion-row>
-    </ng-container>
   </ion-grid>
 </ion-content>
