@@ -36,12 +36,16 @@ export class InicioComponent implements OnInit {
         this.service.user(jwt).subscribe((res: any) => {
           if (res.rol == 'Administrador') {
             this.router.navigate(['/empresa']);
+            this.correo = ''
+            this.password = ''
           } else if (res.rol == 'Conductor') {
             this.interaction.presentAlert(
               'Para poder usar las funciones de condcutor debes ingresar con nuestra aplicación movil.'
             );
           } else if (res.rol == 'Logistico') {
             this.router.navigate(['/viaje']);
+            this.correo = ''
+            this.password = ''
           }
 
           localStorage.setItem('nombre', res.nombre);
