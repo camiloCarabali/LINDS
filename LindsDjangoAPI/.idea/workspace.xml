@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ccee2ac3-87c6-40b6-acf3-9423e1e1dc58" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ModAdmin/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ModAdmin/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="ccee2ac3-87c6-40b6-acf3-9423e1e1dc58" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,15 +18,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;camilo&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/camil/OneDrive/Documentos/GitHub/mapa2/Django--GoogleMapsApi-main&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PythonContentEntriesConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "camilo",
+    "last_opened_file_path": "C:/Users/CamiloCarabali/Documents/GitHub/mapa2/Django--GoogleMapsApi-main",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PythonContentEntriesConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Python.runserver">
     <configuration name="makemigrations" type="PythonConfigurationType" factoryName="Python">
       <module name="LindsDjangoAPI" />
@@ -40,7 +36,6 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Users\camil\OneDrive\Documentos\GitHub\LINDS\LindsDjangoAPI\venv\Scripts\python.exe" />
-      <option name="SDK_NAME" value="Python 3.11 (LindsDjangoAPI)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -62,7 +57,6 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Users\camil\OneDrive\Documentos\GitHub\LINDS\LindsDjangoAPI\venv\Scripts\python.exe" />
-      <option name="SDK_NAME" value="Python 3.11 (LindsDjangoAPI)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -98,9 +92,9 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.runserver" />
       <item itemvalue="Python.makemigrations" />
       <item itemvalue="Python.migrate" />
+      <item itemvalue="Python.runserver" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
