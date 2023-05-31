@@ -43,7 +43,7 @@ export class InicioComponent implements OnInit {
               'Para poder usar las funciones de condcutor debes ingresar con nuestra aplicación movil.'
             );
           } else if (res.rol == 'Logistico') {
-            this.router.navigate(['/viaje']);
+            this.router.navigate(['/mercancia']);
             this.correo = ''
             this.password = ''
           }

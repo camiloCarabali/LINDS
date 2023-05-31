@@ -232,4 +232,8 @@ export class SharedService {
   infoViaje(val: String) {
     return this.http.get<any[]>(this.APIURL + 'infoViaje/' + val);
   }
+
+  direccionSucursal(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'direccionSucursal/' + val);
+  }
 }

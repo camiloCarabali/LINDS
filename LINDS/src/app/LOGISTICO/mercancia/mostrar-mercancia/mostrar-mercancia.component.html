@@ -15,7 +15,46 @@
         <div class="row-content">
           <ion-input class="ion-text-start" fill="outline" placeholder="Buscar..." [(ngModel)]="nombreFilter"
             (keyup)="FilterFn()"></ion-input>
+
           <ion-row class="main">
+            <ng-container *ngFor="let dataItem of mercanciaList">
+              <ion-card class="card-style">
+                <ion-card-header>
+                  <ion-card-subtitle>#{{dataItem.id}}</ion-card-subtitle>
+                  <ion-card-title>{{dataItem.nombre}}</ion-card-title>
+                  <ion-card-subtitle>{{dataItem.usuario}}</ion-card-subtitle>
+                  <ion-card-subtitle>{{dataItem.camion}}</ion-card-subtitle>
+                  <ion-card-subtitle *ngIf="dataItem.carga==false">En Almacen</ion-card-subtitle>
+                  <ion-card-subtitle *ngIf="dataItem.carga==true && dataItem.descarga==false">En
+                    Viaje</ion-card-subtitle>
+                  <ion-card-subtitle
+                    *ngIf="dataItem.carga==true && dataItem.descarga==true">Entregada</ion-card-subtitle>
+
+                </ion-card-header>
+                <ion-card-content>
+                  <ion-item lines="none">
+                    <ion-label>Entrega: {{dataItem.puntoEntrega}}</ion-label>
+                  </ion-item>
+                  <ion-item lines="none">
+                    <ion-label>Destinatario: {{dataItem.destinatario}}</ion-label>
+                  </ion-item>
+                  <ion-item lines="none">
+                    <ion-label>Email: {{dataItem.correoDestinatario}}</ion-label>
+                  </ion-item>
+                </ion-card-content>
+                <ion-col class="icons-button">
+                  <ion-icon name="arrow-up" (click)="carga(dataItem)" *ngIf="dataItem.carga==false"></ion-icon>
+                  <ion-icon name="pencil" id="open-modal" (click)="edit(dataItem)"
+                    *ngIf="dataItem.carga==false"></ion-icon>
+                  <ion-icon name="trash" (click)="delete(dataItem)" *ngIf="dataItem.carga==false"></ion-icon>
+                </ion-col>
+              </ion-card>
+            </ng-container>
+          </ion-row>
+
+
+          <!--
+            <ion-row class="main">
             <ion-col>ID</ion-col>
             <ion-col>NOMBRE</ion-col>
             <ion-col>PESO</ion-col>
@@ -24,7 +63,8 @@
             <ion-col>ACCIONES</ion-col>
           </ion-row>
 
-          <ion-row *ngFor="let dataItem of mercanciaList" class="content-commodity">
+
+             <ion-row *ngFor="let dataItem of mercanciaList" class="content-commodity">
             <ion-col>{{ dataItem.id }}</ion-col>
             <ion-col>{{ dataItem.nombre }}</ion-col>
             <ion-col>{{ dataItem.peso }}</ion-col>
@@ -37,7 +77,12 @@
               <ion-icon name="pencil" id="open-modal" (click)="edit(dataItem)" *ngIf="dataItem.carga==false"></ion-icon>
               <ion-icon name="trash" (click)="delete(dataItem)" *ngIf="dataItem.carga==false"></ion-icon>
             </ion-col>
+
           </ion-row>
+
+          -->
+
+
 
           <ion-button class="button-add" id="open-modal" (click)="add()"><ion-icon
               name="add-outline"></ion-icon></ion-button>

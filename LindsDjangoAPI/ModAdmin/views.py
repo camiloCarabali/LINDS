@@ -249,6 +249,14 @@ def mostrarSucursal(request):
 
 
 @csrf_exempt
+def direccionSucursal(request, nombre):
+    if request.method == 'GET':
+        valor = nombre.replace("_", " ")
+        sucursal = Sucursal.objects.get(nombre=valor)
+        return JsonResponse(sucursal.direccion, safe=False)
+
+
+@csrf_exempt
 def crearSucursal(request):
     if request.method == 'POST':
         sucursal_data = JSONParser().parse(request)
@@ -644,7 +652,7 @@ def crearMercancia(request):
         mercancia_serializers = MercanciaSerializer(data=mercancia_data)
         if mercancia_serializers.is_valid():
             mercancia_serializers.save()
-            return JsonResponse("Mercancia asignada", safe=False)
+            return JsonResponse("Recepción de Mercancia Completada", safe=False)
         return JsonResponse("Fallo al asignar una mercancia", safe=False)
 
 

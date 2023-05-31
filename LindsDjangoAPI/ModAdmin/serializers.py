@@ -72,7 +72,9 @@ class PuntoEntregaSerializer(serializers.ModelSerializer):
 class MercanciaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mercancia
-        fields = ('id', 'nombre', 'peso', 'estado', 'carga', 'descarga', 'puntoEntrega', 'empresa', 'sucursal')
+        fields = (
+        'id', 'puntoInicio', 'nombre', 'usuario', 'camion', 'peso', 'puntoEntrega', 'destinatario', 'correoDestinatario', 'estado',
+        'carga', 'descarga', 'empresa', 'sucursal')
 
 
 class DetalleViajeSerializer(serializers.ModelSerializer):

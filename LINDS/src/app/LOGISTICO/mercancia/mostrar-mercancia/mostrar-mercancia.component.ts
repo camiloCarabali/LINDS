@@ -40,16 +40,22 @@ export class MostrarMercanciaComponent implements OnInit {
   add() {
     this.mercancia = {
       id: 0,
+      puntoInicio: '',
       nombre: '',
+      usuario: '',
+      camion: '',
       peso: '',
+      puntoEntrega: '',
+      destinatario: '',
+      correoDestinatario: '',
       estado: '',
       carga: '',
       descarga: '',
-      puntoEntrega: '',
       empresa: '',
       sucursal: '',
+      viaje: '',
     };
-    this.modalTitle = 'Agregar Mercancia';
+    this.modalTitle = 'Recepción de mercancia';
     this.Activate_CrearEditar_MercanciaComp = true;
     this.setOpen(true);
   }
@@ -62,7 +68,7 @@ export class MostrarMercanciaComponent implements OnInit {
 
   edit(item: any) {
     this.mercancia = item;
-    this.modalTitle = 'Actualizar Mercancia';
+    this.modalTitle = 'Actualizar información';
     this.Activate_CrearEditar_MercanciaComp = true;
     this.setOpen(true);
     this.refreshMercanciaList();

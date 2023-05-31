@@ -24,6 +24,7 @@ urlpatterns = [
     path('inactivarEmpresa/<NIT>', views.inactivarEmpresa),
     path('sucursal/', views.mostrarSucursal),
     path('crearSucursal/', views.crearSucursal),
+    path('direccionSucursal/<nombre>', views.direccionSucursal),
     path('modificarSucursal/', views.modificarSucursal),
     path('inactivarSucursal/<id>', views.inactivarSucursal),
     path('usuario/', views.mostrarUsuario),

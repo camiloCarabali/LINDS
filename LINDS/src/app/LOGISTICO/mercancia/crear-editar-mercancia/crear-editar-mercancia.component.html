@@ -6,6 +6,30 @@
   ></ion-input>
 </ion-item>
 
+<ion-list>
+  <ion-item class="style-btn">
+    <ion-select placeholder="Seleccione el conductor" [(ngModel)]="usuario">
+      <ion-select-option
+        value="{{ user.cedula }}"
+        *ngFor="let user of conductorList"
+        >{{ user.nombre }}</ion-select-option
+      >
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-select placeholder="Seleccione el camion" [(ngModel)]="camion">
+      <ion-select-option
+        value="{{ camion.matricula }}"
+        *ngFor="let camion of camionList"
+        >{{ camion.matricula }}</ion-select-option
+      >
+    </ion-select>
+  </ion-item>
+</ion-list>
+
 <ion-item class="style-btn">
   <ion-label position="floating">Peso</ion-label>
   <ion-input
@@ -15,21 +39,43 @@
   ></ion-input>
 </ion-item>
 
+<ion-item class="style-btn">
+  <ion-label position="floating">Punto de entrega</ion-label>
+  <ion-input
+    placeholder="Escriba el punto de entrega"
+    [(ngModel)]="puntoEntrega"
+  ></ion-input>
+</ion-item>
+
+<ion-item class="style-btn">
+  <ion-label position="floating">Destinatario</ion-label>
+  <ion-input
+    placeholder="Escriba el nombre del destinatario"
+    [(ngModel)]="destinatario"
+  ></ion-input>
+</ion-item>
+
+<ion-item class="style-btn">
+  <ion-label position="floating">Correo Destinatario</ion-label>
+  <ion-input
+    placeholder="Escriba el correo del destinatario"
+    [(ngModel)]="correoDestinatario"
+    type="email"
+  ></ion-input>
+</ion-item>
+
 <ion-list>
   <ion-item>
-    <ion-select
-      placeholder="Seleccione el punto de entrega"
-      [(ngModel)]="puntoEntrega"
-      (ionChange)="cargarPuntoEntrega()"
-    >
+    <ion-select placeholder="Seleccione el viaje" [(ngModel)]="viaje">
       <ion-select-option
-        value="{{ punto.direccion }}"
-        *ngFor="let punto of puntoEntregaList"
-        >{{punto.viaje}} - {{ punto.direccion }}</ion-select-option
+        value="{{ viaje.id }}"
+        *ngFor="let viaje of viajeList"
+        >{{ viaje.id }} - {{viaje.inicio}}</ion-select-option
       >
     </ion-select>
   </ion-item>
 </ion-list>
+
 
 <ion-button (click)="add()" *ngIf="mercancia.id == 0">AGREGAR</ion-button>
 <ion-button (click)="edit()" *ngIf="mercancia.id != 0">ACTUALIZAR</ion-button>

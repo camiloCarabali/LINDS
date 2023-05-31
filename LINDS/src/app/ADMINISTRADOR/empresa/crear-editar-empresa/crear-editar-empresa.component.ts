@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SharedService } from 'src/services/shared.service';
+import { UiServiceService } from 'src/services/ui-service.service';
 
 @Component({
   selector: 'app-crear-editar-empresa',
@@ -9,7 +10,7 @@ import { SharedService } from 'src/services/shared.service';
 
 export class CrearEditarEmpresaComponent  implements OnInit {
 
-  constructor(private service: SharedService) { }
+  constructor(private service: SharedService, private interaction: UiServiceService) { }
 
   paisList: any = []
 
@@ -35,7 +36,7 @@ export class CrearEditarEmpresaComponent  implements OnInit {
       pais: this.pais,
     };
     this.service.addEmpresa(val).subscribe((res) => {
-      alert(res.toString());
+      this.interaction.presentToast('top', res.toString());
     });
   }
 
@@ -46,7 +47,7 @@ export class CrearEditarEmpresaComponent  implements OnInit {
       pais: this.pais,
     };
     this.service.updateEmpresa(val).subscribe((res) => {
-      alert(res.toString());
+      this.interaction.presentToast('top', res.toString());
     });
   }
 
