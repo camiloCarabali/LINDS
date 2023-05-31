@@ -67,7 +67,7 @@ export class CrearEditarCamionComponent implements OnInit {
       estado: this.estado,
     };
     this.service.updateCamion(val).subscribe((res) => {
-      alert(res.toString());
+      this.interaction.presentToast('top', res.toString());
     });
   }
 }

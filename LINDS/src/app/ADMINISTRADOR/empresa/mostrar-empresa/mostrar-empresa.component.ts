@@ -64,6 +64,12 @@ export class MostrarEmpresaComponent  implements OnInit {
     }
   }
 
+  cancel() {
+    this.Activate_CrearEditar_EmpresaComp = false;
+    this.setOpen(false);
+    this.refreshEmpresaList();
+  }
+
   refreshEmpresaList(){
     this.service.getEmpresaList().subscribe((data) => {
       this.empresaList = data;

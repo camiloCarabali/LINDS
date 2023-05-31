@@ -73,7 +73,7 @@ export class MostrarMercanciaComponent implements OnInit {
       if (data.status === 200) {
         this.interaction.presentToast(
           'top',
-          'La carga ha sido descargada correctamente.'
+          'La carga ha sido cargada correctamente.'
         );
       } else if (data.status === 404) {
         this.interaction.closeLoading();

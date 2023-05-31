@@ -121,7 +121,9 @@ class PuntoEntrega(models.Model):
 
 class Mercancia(models.Model):
     id = models.AutoField(primary_key=True)
+    puntoInicio = models.CharField(max_length=100, null=False)
     nombre = models.CharField(max_length=100, null=False)
+
     peso = models.IntegerField(null=False)
     estado = models.BooleanField(default=True, null=False)
     carga = models.BooleanField(default=False, null=False)
