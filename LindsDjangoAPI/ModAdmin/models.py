@@ -123,14 +123,16 @@ class Mercancia(models.Model):
     id = models.AutoField(primary_key=True)
     puntoInicio = models.CharField(max_length=100, null=False)
     nombre = models.CharField(max_length=100, null=False)
-
+    usuario = models.CharField(max_length=100, null=False)
     peso = models.IntegerField(null=False)
+    puntoEntrega = models.CharField(max_length=100, null=False)
+    remitente = models.CharField(max_length=100, null=False)
+    correoRemitente = models.CharField(max_length=100, null=False)
     estado = models.BooleanField(default=True, null=False)
     carga = models.BooleanField(default=False, null=False)
     descarga = models.BooleanField(default=False, null=False)
     empresa = models.CharField(max_length=100, null=False)
     sucursal = models.CharField(max_length=100, null=False)
-    puntoEntrega = models.CharField(max_length=100, null=False)
 
     class Meta:
         db_table = 'mercancia'
