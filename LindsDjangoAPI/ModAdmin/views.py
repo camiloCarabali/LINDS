@@ -636,6 +636,14 @@ def mostrarMercancia(request):
 
 
 @csrf_exempt
+def mostrarMercanciaViaje(request, viaje):
+    if request.method == 'GET':
+        mercancias = Mercancia.objects.filter(viaje=viaje)
+        mercancias_serializers = MercanciaSerializer(mercancias, many=True)
+        return JsonResponse(mercancias_serializers.data, safe=False)
+
+
+@csrf_exempt
 def mostrarMercanciaSucursal(request, sucursal):
     if request.method == 'GET':
         valor = sucursal.replace("_", " ")

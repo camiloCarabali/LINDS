@@ -43,6 +43,10 @@ export class SharedService {
     return this.http.get<any[]>(this.APIURL + 'mercancia/');
   }
 
+  getMercanciaViajeList(val:string ) {
+    return this.http.get<any[]>(this.APIURL + 'mostrarMercanciaViaje/' + val);
+  }
+
   buscarMercancia(val: String) {
     return this.http.get<any[]>(this.APIURL + 'buscarMercancia/' + val);
   }

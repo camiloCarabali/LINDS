@@ -52,12 +52,16 @@ export class MostrarLoginComponent implements OnInit {
             this.interaction.closeLoading();
             this.interaction.presentToast('top', 'Ingresado con Exito');
             this.router.navigate(['/historial']);
+            this.correo = ''
+            this.password = ''
           } else if (res.rol == 'Logistico') {
             this.interaction.closeLoading();
             this.interaction.presentAlert(
               'Para poder usar las funciones de logistica debes ingresar con nuestra aplicación web.'
             );
           }
+
+          localStorage.setItem('puntoInicio', res.sucursal);
         });
       },
       () => {

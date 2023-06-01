@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { SharedService } from 'src/services/shared.service';
+import { UiService } from 'src/services/ui.service';
 
 @Component({
   selector: 'app-mostrar-entregas',
@@ -22,7 +23,8 @@ export class MostrarEntregasComponent implements OnInit {
 
   constructor(
     private service: SharedService,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private interaction: UiService
   ) {}
 
   ngOnInit() {
@@ -30,16 +32,11 @@ export class MostrarEntregasComponent implements OnInit {
   }
 
   async refreshEntregas() {
-    const jwt = this.cookieService.get('jwt');
-    this.service.user(jwt).subscribe((res: any) => {
-      this.service.getAsignacion(res.cedula).subscribe((data: any) => {
-        for (let i of data) {
-          this.service.getEntregas(i.id).subscribe((request: any) => {
-            this.entregas = request;
-          });
-        }
-      });
-    });
+    let valor = localStorage.getItem('id')!
+
+    this.service.getMercanciaViajeList(valor).subscribe((data) => {
+      this.entregas = data
+    })
   }
 
   getPunto(item: any) {
@@ -47,5 +44,22 @@ export class MostrarEntregasComponent implements OnInit {
     this.setOpen(true);
     this.modalTitle = 'Mercancia';
     this.Activate_Entregas_Comp = true;
+  }
+
+  async descarga(id: string) {
+    await this.interaction.showLoading('Validando...');
+    this.service.descargaMercancia(id).subscribe((data) => {
+      if (data.status === 200) {
+        this.interaction.closeLoading();
+        this.interaction.presentToast(
+          'top',
+          'La carga ha sido descargada correctamente.'
+        );
+        this.refreshEntregas();
+      } else if (data.status === 404) {
+        this.interaction.closeLoading();
+        this.interaction.presentToast('top', 'Error en la solicitud');
+      }
+    });
   }
 }
