@@ -474,9 +474,9 @@ def eliminarPuntoEntrega(request, id):
 def waypoints(request, viaje):
     if request.method == 'GET':
         waypoints = []
-        entregas = PuntoEntrega.objects.filter(viaje=viaje)
+        entregas = Mercancia.objects.filter(viaje=viaje)
         for n in range(len(entregas)):
-            waypoints.append(entregas[n].direccion)
+            waypoints.append(entregas[n].puntoEntrega)
         return JsonResponse(waypoints, safe=False)
 
 
@@ -534,12 +534,11 @@ def modificarViaje(request):
 
 
 @csrf_exempt
-def inactivarViaje(request, id):
-    if request.method == 'PUT':
+def eliminarViaje(request, id):
+    if request.method == 'DELETE':
         viaje = Viaje.objects.get(id=id)
-        viaje.estado = False
-        viaje.save()
-        return JsonResponse("Viaje Inactivado", safe=False)
+        viaje.delete()
+        return JsonResponse("Viaje Eliminado", safe=False)
 
 
 @csrf_exempt
@@ -710,6 +709,21 @@ def correo(request):
                   "Correo: " + correo + "\n" \
                                         "Contraseña: " + password + "\n" \
                                                                     "Cualquier inconveniente con la herramienta por favor comunicarse al correo " + settings.EMAIL_HOST_USER
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [correo]
+        send_mail(subject, message, email_from, recipient_list)
+        return JsonResponse("Correo enviado", safe=False)
+
+@csrf_exempt
+def correoMercancia(request):
+    if request.method == 'POST':
+        data = JSONParser().parse(request)
+        correo = data['correo']
+        destinatario = data['destinatario']
+        sucursal = data['sucursal']
+        subject = "¡Tu paquete ha llegado a nuestra sucursal!"
+        message = "Señor(a), " + destinatario + " su paquete ha llegado a nuestra sucursal " + sucursal + ".\n \n" \
+                                                                                                          "Cualquier inconveniente por favor comunicarse al correo " + settings.EMAIL_HOST_USER
         email_from = settings.EMAIL_HOST_USER
         recipient_list = [correo]
         send_mail(subject, message, email_from, recipient_list)

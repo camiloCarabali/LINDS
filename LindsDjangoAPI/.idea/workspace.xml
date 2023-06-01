@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ccee2ac3-87c6-40b6-acf3-9423e1e1dc58" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/LindsDjangoAPI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LindsDjangoAPI.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ModAdmin/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ModAdmin/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/serializers.py" afterDir="false" />
@@ -35,7 +33,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.migrate">
+  <component name="RunManager" selected="Python.runserver">
     <configuration name="makemigrations" type="PythonConfigurationType" factoryName="Python">
       <module name="LindsDjangoAPI" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -118,16 +116,5 @@
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="requirements.txt" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/ModAdmin/views.py</url>
-          <line>251</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

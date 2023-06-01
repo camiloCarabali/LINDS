@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SharedService } from 'src/services/shared.service';
+import { UiServiceService } from 'src/services/ui-service.service';
 
 @Component({
   selector: 'app-crear-editar-sucursal',
@@ -7,7 +8,7 @@ import { SharedService } from 'src/services/shared.service';
   styleUrls: ['./crear-editar-sucursal.component.scss'],
 })
 export class CrearEditarSucursalComponent implements OnInit {
-  constructor(private service: SharedService) {}
+  constructor(private service: SharedService, private interaction: UiServiceService) {}
 
   empresaList: any = [];
   departamentoList: any = [];
@@ -43,7 +44,7 @@ export class CrearEditarSucursalComponent implements OnInit {
       municipio: this.municipio,
     };
     this.service.addSucursal(val).subscribe((res) => {
-      alert(res.toString());
+      this.interaction.presentToast('top', res.toString());
     });
   }
 
@@ -57,7 +58,7 @@ export class CrearEditarSucursalComponent implements OnInit {
       municipio: this.municipio,
     };
     this.service.updateSucursal(val).subscribe((res) => {
-      alert(res.toString());
+      this.interaction.presentToast('top', res.toString());
     });
   }
 

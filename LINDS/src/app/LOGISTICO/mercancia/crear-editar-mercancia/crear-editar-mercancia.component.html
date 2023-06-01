@@ -3,32 +3,9 @@
   <ion-input
     placeholder="Escriba el nombre"
     [(ngModel)]="nombre"
+    required="true"
   ></ion-input>
 </ion-item>
-
-<ion-list>
-  <ion-item class="style-btn">
-    <ion-select placeholder="Seleccione el conductor" [(ngModel)]="usuario">
-      <ion-select-option
-        value="{{ user.cedula }}"
-        *ngFor="let user of conductorList"
-        >{{ user.nombre }}</ion-select-option
-      >
-    </ion-select>
-  </ion-item>
-</ion-list>
-
-<ion-list>
-  <ion-item>
-    <ion-select placeholder="Seleccione el camion" [(ngModel)]="camion">
-      <ion-select-option
-        value="{{ camion.matricula }}"
-        *ngFor="let camion of camionList"
-        >{{ camion.matricula }}</ion-select-option
-      >
-    </ion-select>
-  </ion-item>
-</ion-list>
 
 <ion-item class="style-btn">
   <ion-label position="floating">Peso</ion-label>
@@ -36,6 +13,7 @@
     placeholder="Escriba el peso en Kg"
     [(ngModel)]="peso"
     type="number"
+    required="true"
   ></ion-input>
 </ion-item>
 
@@ -44,6 +22,7 @@
   <ion-input
     placeholder="Escriba el punto de entrega"
     [(ngModel)]="puntoEntrega"
+    required="true"
   ></ion-input>
 </ion-item>
 
@@ -52,6 +31,7 @@
   <ion-input
     placeholder="Escriba el nombre del destinatario"
     [(ngModel)]="destinatario"
+    required="true"
   ></ion-input>
 </ion-item>
 
@@ -61,6 +41,7 @@
     placeholder="Escriba el correo del destinatario"
     [(ngModel)]="correoDestinatario"
     type="email"
+    required="true"
   ></ion-input>
 </ion-item>
 
@@ -70,7 +51,7 @@
       <ion-select-option
         value="{{ viaje.id }}"
         *ngFor="let viaje of viajeList"
-        >{{ viaje.id }} - {{viaje.inicio}}</ion-select-option
+        >{{ viaje.id }}</ion-select-option
       >
     </ion-select>
   </ion-item>

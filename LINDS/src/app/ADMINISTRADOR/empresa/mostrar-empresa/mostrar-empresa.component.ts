@@ -2,23 +2,28 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { SharedService } from 'src/services/shared.service';
 import { IonModal } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { UiServiceService } from 'src/services/ui-service.service';
 
 @Component({
   selector: 'app-mostrar-empresa',
   templateUrl: './mostrar-empresa.component.html',
   styleUrls: ['./mostrar-empresa.component.scss'],
 })
-export class MostrarEmpresaComponent  implements OnInit {
+export class MostrarEmpresaComponent implements OnInit {
   @ViewChild(IonModal)
   modal!: IonModal;
 
   isModalOpen = false;
 
-  setOpen(isOpen: boolean){
-    this.isModalOpen = isOpen
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
   }
 
-  constructor(private service: SharedService, private router: Router) { }
+  constructor(
+    private service: SharedService,
+    private router: Router,
+    private interaction: UiServiceService
+  ) {}
 
   empresaList: any = [];
 
@@ -27,7 +32,7 @@ export class MostrarEmpresaComponent  implements OnInit {
   empresa: any;
 
   nombreFilter: string = '';
-  listWithoutFilter: any =[];
+  listWithoutFilter: any = [];
 
   nombre: string = '';
 
@@ -36,8 +41,8 @@ export class MostrarEmpresaComponent  implements OnInit {
     this.refreshEmpresaList();
   }
 
-  add(){
-    this.empresa ={
+  add() {
+    this.empresa = {
       id: 0,
       nombre: '',
       NIT: '',
@@ -48,7 +53,7 @@ export class MostrarEmpresaComponent  implements OnInit {
     this.setOpen(true);
   }
 
-  edit(item: any){
+  edit(item: any) {
     this.empresa = item;
     this.modalTitle = 'Actualizar Empresa';
     this.Activate_CrearEditar_EmpresaComp = true;
@@ -56,10 +61,10 @@ export class MostrarEmpresaComponent  implements OnInit {
     this.refreshEmpresaList();
   }
 
-  inactive(item: any){
-    if(confirm('¿Desea inactivar esta empresa?')){
+  inactive(item: any) {
+    if (confirm('¿Desea inactivar esta empresa?')) {
       this.service.inactivarEmpresa(item.NIT).subscribe((data) => {
-        alert(data.toString());
+        this.interaction.presentToast('top', data.toString());
       });
     }
   }
@@ -70,21 +75,20 @@ export class MostrarEmpresaComponent  implements OnInit {
     this.refreshEmpresaList();
   }
 
-  refreshEmpresaList(){
+  refreshEmpresaList() {
     this.service.getEmpresaList().subscribe((data) => {
       this.empresaList = data;
       this.listWithoutFilter = data;
     });
   }
 
-  FilterFn(){
+  FilterFn() {
     var nameFilter = this.nombreFilter;
-    this.empresaList = this.listWithoutFilter.filter(function (el:any){
+    this.empresaList = this.listWithoutFilter.filter(function (el: any) {
       return el.nombre
-      .toString()
-      .toLowerCase()
-      .includes(nameFilter.toString().trim().toLowerCase());
+        .toString()
+        .toLowerCase()
+        .includes(nameFilter.toString().trim().toLowerCase());
     });
   }
-
 }

@@ -42,8 +42,6 @@ export class MostrarMercanciaComponent implements OnInit {
       id: 0,
       puntoInicio: '',
       nombre: '',
-      usuario: '',
-      camion: '',
       peso: '',
       puntoEntrega: '',
       destinatario: '',
@@ -75,24 +73,26 @@ export class MostrarMercanciaComponent implements OnInit {
   }
 
   carga(item: any) {
-    this.service.cargaMercancia(item.id).subscribe((data) => {
-      if (data.status === 200) {
-        this.interaction.presentToast(
-          'top',
-          'La carga ha sido cargada correctamente.'
-        );
-      } else if (data.status === 404) {
-        this.interaction.closeLoading();
-        this.interaction.presentToast('top', 'Error en la solicitud');
-      }
-    });
-    location.reload();
+    if (confirm('¿Desea confirmar la carga de la mercancia?')) {
+      this.service.cargaMercancia(item.id).subscribe((data) => {
+        if (data.status === 200) {
+          this.interaction.presentToast(
+            'top',
+            'La carga ha sido cargada correctamente.'
+          );
+          this.refreshMercanciaList();
+        } else if (data.status === 404) {
+          this.interaction.closeLoading();
+          this.interaction.presentToast('top', 'Error en la solicitud');
+        }
+      });
+    }
   }
 
   delete(item: any) {
     if (confirm('¿Desea eliminar esta mercancia?')) {
       this.service.eliminarMercancia(item.id).subscribe((data) => {
-        alert(data.toString());
+        this.interaction.presentToast('top', data.toString());
         this.refreshMercanciaList();
       });
     }

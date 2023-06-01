@@ -22,8 +22,6 @@ export class CrearEditarMercanciaComponent implements OnInit {
   id: string = '';
   puntoInicio: string = '';
   nombre: string = '';
-  usuario: any;
-  camion: any;
   peso: number = 0;
   puntoEntrega: string = '';
   destinatario: string = '';
@@ -33,14 +31,12 @@ export class CrearEditarMercanciaComponent implements OnInit {
   descarga: boolean = false;
   empresa: any;
   sucursal: any;
-  viaje: any = null;
+  viaje: any;
 
   ngOnInit() {
     this.id = this.mercancia.id;
     this.puntoInicio = this.mercancia.puntoInicio;
     this.nombre = this.mercancia.nombre;
-    this.usuario = this.mercancia.usuario;
-    this.camion = this.mercancia.camion;
     this.peso = this.mercancia.peso;
     this.puntoEntrega = this.mercancia.puntoEntrega;
     this.destinatario = this.mercancia.destinatario;
@@ -59,20 +55,32 @@ export class CrearEditarMercanciaComponent implements OnInit {
   }
 
   add() {
+    if (this.viaje == '') {
+      this.viaje = null;
+    }
     var val = {
       puntoInicio: localStorage.getItem('puntoInicio'),
       nombre: this.nombre,
-      usuario: this.usuario,
-      camion: this.camion,
       peso: this.peso,
       puntoEntrega: this.puntoEntrega,
       destinatario: this.destinatario,
       correoDestinatario: this.correoDestinatario,
+      viaje: this.viaje,
       empresa: localStorage.getItem('empresa'),
       sucursal: localStorage.getItem('sucursal'),
     };
+
+    var correo = {
+      sucursal: localStorage.getItem('sucursal'),
+      correo: this.correoDestinatario,
+      destinatario: this.destinatario,
+    };
+
     this.service.addMercancia(val).subscribe((res: any) => {
-      this.interaction.presentToast('top', res.toString());
+      if (res.status === 200) {
+        this.service.correoMercancia(correo).subscribe((data: any) => {});
+        this.interaction.presentToast('top', 'Recepción de Mercancia Completada');
+      }
     });
   }
 
@@ -81,8 +89,6 @@ export class CrearEditarMercanciaComponent implements OnInit {
       id: this.id,
       puntoInicio: this.puntoInicio,
       nombre: this.nombre,
-      usuario: this.usuario,
-      camion: this.camion,
       peso: this.peso,
       puntoEntrega: this.puntoEntrega,
       destinatario: this.destinatario,
@@ -95,7 +101,7 @@ export class CrearEditarMercanciaComponent implements OnInit {
       viaje: this.viaje,
     };
     this.service.updateMercancia(val).subscribe((res) => {
-      alert(res.toString());
+      this.interaction.presentToast('top', res.toString());
     });
   }
 

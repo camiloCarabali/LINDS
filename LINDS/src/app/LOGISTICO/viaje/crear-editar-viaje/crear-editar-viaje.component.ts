@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DatetimeCustomEvent } from '@ionic/angular';
 import { SharedService } from 'src/services/shared.service';
 import { UiServiceService } from 'src/services/ui-service.service';
 
@@ -18,7 +19,6 @@ export class CrearEditarViajeComponent implements OnInit {
 
   @Input() viaje: any;
   id: string = '';
-  inicio: string = '';
   fecha: string = '';
   camion: any;
   usuario: any;
@@ -29,7 +29,6 @@ export class CrearEditarViajeComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.viaje.id;
-    this.inicio = this.viaje.inicio;
     this.fecha = this.viaje.fecha;
     this.camion = this.viaje.camion;
     this.usuario = this.viaje.usuario;
@@ -41,23 +40,23 @@ export class CrearEditarViajeComponent implements OnInit {
 
   add() {
     var val = {
-      inicio: this.inicio,
       fecha: this.today,
       camion: this.camion,
       usuario: this.usuario,
       empresa: localStorage.getItem('empresa'),
       sucursal: localStorage.getItem('sucursal'),
     };
+    
     this.service.ocupadoCamion(val.camion).subscribe((res: any) => {});
     this.service.addViaje(val).subscribe((res: any) => {
       this.interaction.presentToast('top', res.toString());
     });
+    
   }
 
   edit() {
     var val = {
       id: this.id,
-      inicio: this.inicio,
       fecha: this.fecha,
       camion: this.camion,
       usuario: this.usuario,

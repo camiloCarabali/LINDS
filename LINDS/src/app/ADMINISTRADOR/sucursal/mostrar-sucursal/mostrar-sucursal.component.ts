@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { SharedService } from 'src/services/shared.service';
 import { IonModal } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { UiServiceService } from 'src/services/ui-service.service';
 
 @Component({
   selector: 'app-mostrar-sucursal',
@@ -18,7 +19,11 @@ export class MostrarSucursalComponent implements OnInit {
     this.isModalOpen = isOpen;
   }
 
-  constructor(private service: SharedService, private router: Router) {}
+  constructor(
+    private service: SharedService,
+    private router: Router,
+    private interaction: UiServiceService
+  ) {}
 
   sucursalList: any = [];
 
@@ -38,7 +43,7 @@ export class MostrarSucursalComponent implements OnInit {
 
   cancel() {
     this.ActivateCrearEditarSucursalComp = false;
-    this.setOpen(false)
+    this.setOpen(false);
     this.refreshSucursalList();
   }
 
@@ -67,7 +72,7 @@ export class MostrarSucursalComponent implements OnInit {
   delete(item: any) {
     if (confirm('Desea inactivar esta sucursal?')) {
       this.service.inactivarSucursal(item.id).subscribe((data) => {
-        alert(data.toString());
+        this.interaction.presentToast('top', data.toString());
         this.refreshSucursalList();
       });
     }

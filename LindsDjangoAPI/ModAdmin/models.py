@@ -96,7 +96,6 @@ class Camion(models.Model):
 class Viaje(models.Model):
     id = models.AutoField(primary_key=True)
     estado = models.BooleanField(default=False, null=False)
-    inicio = models.CharField(max_length=100, null=False)
     fecha = models.DateTimeField()
     camion = models.CharField(max_length=100, null=False)
     usuario = models.CharField(max_length=100, null=False)
@@ -123,8 +122,6 @@ class Mercancia(models.Model):
     id = models.AutoField(primary_key=True)
     puntoInicio = models.CharField(max_length=100, null=False)
     nombre = models.CharField(max_length=100, null=False)
-    usuario = models.CharField(max_length=100, null=False)
-    camion = models.CharField(max_length=100, null=False)
     peso = models.IntegerField(null=False)
     puntoEntrega = models.CharField(max_length=100, null=False)
     destinatario = models.CharField(max_length=100, null=False)

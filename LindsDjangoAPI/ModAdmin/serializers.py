@@ -60,7 +60,7 @@ class UsuarioSerializer(serializers.ModelSerializer):
 class ViajeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Viaje
-        fields = ('id', 'estado', 'inicio', 'fecha', 'camion', 'usuario', 'empresa', 'sucursal')
+        fields = ('id', 'estado', 'fecha', 'camion', 'usuario', 'empresa', 'sucursal')
 
 
 class PuntoEntregaSerializer(serializers.ModelSerializer):
@@ -73,8 +73,8 @@ class MercanciaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mercancia
         fields = (
-        'id', 'puntoInicio', 'nombre', 'usuario', 'camion', 'peso', 'puntoEntrega', 'destinatario', 'correoDestinatario', 'estado',
-        'carga', 'descarga', 'empresa', 'sucursal')
+        'id', 'puntoInicio', 'nombre', 'peso', 'puntoEntrega', 'destinatario', 'correoDestinatario', 'estado',
+        'carga', 'descarga', 'empresa', 'sucursal', 'viaje')
 
 
 class DetalleViajeSerializer(serializers.ModelSerializer):

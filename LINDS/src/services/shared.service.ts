@@ -96,6 +96,10 @@ export class SharedService {
     return this.http.post<any[]>(this.APIURL + 'correo/', val);
   }
 
+  correoMercancia(val: any) {
+    return this.http.post<any[]>(this.APIURL + 'correoMercancia/', val);
+  }
+
   login(val: any): Observable<any> {
     return this.http.post<any>(this.APIURL + 'login', val);
   }
@@ -144,8 +148,8 @@ export class SharedService {
     return this.http.put<any[]>(this.APIURL + 'modificarViaje/', val);
   }
 
-  inactivarViaje(val: string) {
-    return this.http.delete<any[]>(this.APIURL + 'inactivarViaje/' + val);
+  eliminarViaje(val: string) {
+    return this.http.delete<any[]>(this.APIURL + 'eliminarViaje/' + val);
   }
 
   getBuscarConductor(val: string) {
@@ -188,7 +192,9 @@ export class SharedService {
   }
 
   addMercancia(val: any) {
-    return this.http.post<any[]>(this.APIURL + 'crearMercancia/', val);
+    return this.http.post<any[]>(this.APIURL + 'crearMercancia/', val, {
+      observe: 'response',
+    });
   }
 
   updateMercancia(val: any) {

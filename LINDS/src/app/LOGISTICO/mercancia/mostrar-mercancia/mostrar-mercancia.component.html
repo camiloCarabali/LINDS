@@ -22,8 +22,6 @@
                 <ion-card-header>
                   <ion-card-subtitle>#{{dataItem.id}}</ion-card-subtitle>
                   <ion-card-title>{{dataItem.nombre}}</ion-card-title>
-                  <ion-card-subtitle>{{dataItem.usuario}}</ion-card-subtitle>
-                  <ion-card-subtitle>{{dataItem.camion}}</ion-card-subtitle>
                   <ion-card-subtitle *ngIf="dataItem.carga==false">En Almacen</ion-card-subtitle>
                   <ion-card-subtitle *ngIf="dataItem.carga==true && dataItem.descarga==false">En
                     Viaje</ion-card-subtitle>
