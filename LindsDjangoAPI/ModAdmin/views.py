@@ -3,10 +3,10 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from ModAdmin.models import Empresa, Sucursal, Usuario, Pais, Departamento, Municipio, Rol, Camion, PuntoEntrega, Viaje, \
-    Mercancia
+    Mercancia, Estado
 from ModAdmin.serializers import EmpresaSerializer, SucursalSerializer, UsuarioSerializer, PaisSerializer, \
     DepartamentoSerializer, MunicipioSerializer, RolSerializer, CamionSerializer, PuntoEntregaSerializer, \
-    ViajeSerializer, MercanciaSerializer
+    ViajeSerializer, MercanciaSerializer, EstadoSerializer
 from django.http.response import JsonResponse
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer
@@ -188,6 +188,50 @@ def eliminarRol(request, id=0):
         rol = Rol.objects.get(id=id)
         rol.delete()
         return JsonResponse("Rol Eliminado", safe=False)
+
+
+"""
+/---------------------------------------------------------------/
+"""
+
+
+@csrf_exempt
+def mostrarEstado(request):
+    if request.method == 'GET':
+        estados = Estado.objects.all()
+        estados_serializers = EstadoSerializer(estados, many=True)
+        return JsonResponse(estados_serializers.data, safe=False)
+
+
+@csrf_exempt
+def crearEstado(request):
+    if request.method == 'POST':
+        estado_data = JSONParser().parse(request)
+        estado_serializers = EstadoSerializer(data=estado_data)
+        if estado_serializers.is_valid():
+            estado_serializers.save()
+            return JsonResponse("Estado añadido", safe=False)
+        return JsonResponse("Fallo al añadir estado", safe=False)
+
+
+@csrf_exempt
+def modificarEstado(request):
+    if request.method == 'PUT':
+        estado_data = JSONParser().parse(request)
+        estado = Estado.objects.get(id=estado_data['id'])
+        estado_serializers = EstadoSerializer(estado, data=estado_data)
+        if estado_serializers.is_valid():
+            estado_serializers.save()
+            return JsonResponse("Estado Modificado", safe=False)
+        return JsonResponse("Fallo al modificar estado", safe=False)
+
+
+@csrf_exempt
+def eliminarEstado(request, id=0):
+    if request.method == 'DELETE':
+        estado = Estado.objects.get(id=id)
+        estado.delete()
+        return JsonResponse("Estado Eliminado", safe=False)
 
 
 """
@@ -722,16 +766,33 @@ def correo(request):
         send_mail(subject, message, email_from, recipient_list)
         return JsonResponse("Correo enviado", safe=False)
 
+
 @csrf_exempt
-def correoMercancia(request):
+def correoDestinatario(request):
     if request.method == 'POST':
         data = JSONParser().parse(request)
-        correo = data['correo']
+        correo = data['correoDestinatario']
         destinatario = data['destinatario']
         sucursal = data['sucursal']
         subject = "¡Tu paquete ha llegado a nuestra sucursal!"
         message = "Señor(a), " + destinatario + " su paquete ha llegado a nuestra sucursal " + sucursal + ".\n \n" \
                                                                                                           "Cualquier inconveniente por favor comunicarse al correo " + settings.EMAIL_HOST_USER
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [correo]
+        send_mail(subject, message, email_from, recipient_list)
+        return JsonResponse("Correo enviado", safe=False)
+
+
+@csrf_exempt
+def correoRemitente(request):
+    if request.method == 'POST':
+        data = JSONParser().parse(request)
+        correo = data['correoRemitente']
+        remitente = data['remitente']
+        sucursal = data['sucursal']
+        subject = "¡El paquete que enviaste ha llegado a nuestra sucursal!"
+        message = "Señor(a), " + remitente + " su paquete ha llegado a nuestra sucursal " + sucursal + ".\n \n" \
+                                                                                                       "Cualquier inconveniente por favor comunicarse al correo " + settings.EMAIL_HOST_USER
         email_from = settings.EMAIL_HOST_USER
         recipient_list = [correo]
         send_mail(subject, message, email_from, recipient_list)

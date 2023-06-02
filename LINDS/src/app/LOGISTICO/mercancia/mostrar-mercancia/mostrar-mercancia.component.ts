@@ -14,6 +14,12 @@ export class MostrarMercanciaComponent implements OnInit {
     this.isModalOpen = isOpen;
   }
 
+  isModalOpen1 = false;
+
+  setOpen1(isOpen: boolean) {
+    this.isModalOpen1 = isOpen;
+  }
+
   constructor(
     private service: SharedService,
     private interaction: UiServiceService
@@ -23,10 +29,12 @@ export class MostrarMercanciaComponent implements OnInit {
 
   modalTitle: string = '';
   Activate_CrearEditar_MercanciaComp: boolean = false;
+  Activate_Mapa_MercanciaComp: boolean = false;
   mercancia: any;
 
   nombreFilter: string = '';
   listWithoutFilter: any = [];
+  punto: any;
 
   nombre: string = '';
   sucursal: string = '';
@@ -43,9 +51,15 @@ export class MostrarMercanciaComponent implements OnInit {
       puntoInicio: '',
       nombre: '',
       peso: '',
+      altura: '',
+      ancho: '',
+      largo: '',
+      volumen: '',
       puntoEntrega: '',
       destinatario: '',
       correoDestinatario: '',
+      remitente: '',
+      correoRemitente: '',
       estado: '',
       carga: '',
       descarga: '',
@@ -61,6 +75,12 @@ export class MostrarMercanciaComponent implements OnInit {
   cancel() {
     this.Activate_CrearEditar_MercanciaComp = false;
     this.setOpen(false);
+    this.refreshMercanciaList();
+  }
+
+  cancelMapa() {
+    this.Activate_Mapa_MercanciaComp = false;
+    this.setOpen1(false);
     this.refreshMercanciaList();
   }
 
@@ -116,5 +136,12 @@ export class MostrarMercanciaComponent implements OnInit {
         .toLowerCase()
         .includes(nombreFilter.toString().trim().toLowerCase());
     });
+  }
+
+  map(item: any) {
+    localStorage.setItem('mercancia', item.puntoEntrega)
+    this.setOpen1(true);
+    this.Activate_Mapa_MercanciaComp = true;
+    this.punto = item;
   }
 }

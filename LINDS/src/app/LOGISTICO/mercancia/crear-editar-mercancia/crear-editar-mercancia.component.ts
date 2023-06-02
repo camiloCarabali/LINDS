@@ -23,10 +23,16 @@ export class CrearEditarMercanciaComponent implements OnInit {
   puntoInicio: string = '';
   nombre: string = '';
   peso: number = 0;
+  altura: number = 0;
+  ancho: number = 0;
+  largo: number = 0;
+  volumen: number = 0;
   puntoEntrega: string = '';
   destinatario: string = '';
   correoDestinatario: string = '';
-  estado: boolean = true;
+  remitente: string = '';
+  correoRemitente: string = '';
+  estado: string = '';
   carga: boolean = false;
   descarga: boolean = false;
   empresa: any;
@@ -38,9 +44,15 @@ export class CrearEditarMercanciaComponent implements OnInit {
     this.puntoInicio = this.mercancia.puntoInicio;
     this.nombre = this.mercancia.nombre;
     this.peso = this.mercancia.peso;
+    this.altura = this.mercancia.altura;
+    this.ancho = this.mercancia.ancho;
+    this.largo = this.mercancia.largo;
+    this.volumen = this.mercancia.volumen;
     this.puntoEntrega = this.mercancia.puntoEntrega;
     this.destinatario = this.mercancia.destinatario;
     this.correoDestinatario = this.mercancia.correoDestinatario;
+    this.remitente = this.mercancia.remitente;
+    this.correoRemitente = this.mercancia.correoRemitente;
     this.estado = this.mercancia.estado;
     this.carga = this.mercancia.carga;
     this.descarga = this.mercancia.descarga;
@@ -58,38 +70,62 @@ export class CrearEditarMercanciaComponent implements OnInit {
     if (this.viaje == '') {
       this.viaje = null;
     }
+    this.volumen = this.altura * this.ancho * this.largo;
     var val = {
       puntoInicio: localStorage.getItem('puntoInicio'),
       nombre: this.nombre,
       peso: this.peso,
+      altura: this.altura,
+      ancho: this.ancho,
+      largo: this.largo,
+      volumen: this.volumen,
       puntoEntrega: this.puntoEntrega,
       destinatario: this.destinatario,
       correoDestinatario: this.correoDestinatario,
+      remitente: this.remitente,
+      correoRemitente: this.correoRemitente,
       viaje: this.viaje,
       empresa: localStorage.getItem('empresa'),
       sucursal: localStorage.getItem('sucursal'),
+      estado: 'Sin Asignar',
     };
 
     var correo = {
       sucursal: localStorage.getItem('sucursal'),
-      correo: this.correoDestinatario,
+      correoDestinatario: this.correoDestinatario,
       destinatario: this.destinatario,
+      correoRemitente: this.correoRemitente,
+      remitente: this.remitente,
     };
 
-    this.service.addMercancia(val).subscribe((res: any) => {
-      if (res.status === 200) {
-        this.service.correoMercancia(correo).subscribe((data: any) => {});
-        this.interaction.presentToast('top', 'Recepción de Mercancia Completada');
-      }
-    });
+    if (confirm('¿Desea registrar una nueva mercancia?')) {
+      this.service.addMercancia(val).subscribe((res: any) => {
+        if (res.status === 200) {
+          this.service.correoDestinatario(correo).subscribe((data: any) => {});
+          this.service.correoRemitente(correo).subscribe((data: any) => {});
+          this.interaction.presentToast(
+            'top',
+            'Recepción de Mercancia Completada'
+          );
+          setTimeout(function () {
+            location.reload();
+          }, 2000);
+        }
+      });
+    }
   }
 
   edit() {
+    this.volumen = this.altura * this.ancho * this.largo;
     var val = {
       id: this.id,
       puntoInicio: this.puntoInicio,
       nombre: this.nombre,
       peso: this.peso,
+      altura: this.altura,
+      ancho: this.ancho,
+      largo: this.largo,
+      volumen: this.volumen,
       puntoEntrega: this.puntoEntrega,
       destinatario: this.destinatario,
       correoDestinatario: this.correoDestinatario,
@@ -100,9 +136,15 @@ export class CrearEditarMercanciaComponent implements OnInit {
       sucursal: this.sucursal,
       viaje: this.viaje,
     };
-    this.service.updateMercancia(val).subscribe((res) => {
-      this.interaction.presentToast('top', res.toString());
-    });
+
+    if (confirm('¿Desea actualizar la informacion de la mercancia?')) {
+      this.service.updateMercancia(val).subscribe((res) => {
+        this.interaction.presentToast('top', res.toString());
+      });
+      setTimeout(function () {
+        location.reload();
+      }, 2000);
+    }
   }
 
   direccion() {

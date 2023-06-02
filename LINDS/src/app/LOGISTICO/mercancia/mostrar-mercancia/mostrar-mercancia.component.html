@@ -22,16 +22,18 @@
                 <ion-card-header>
                   <ion-card-subtitle>#{{dataItem.id}}</ion-card-subtitle>
                   <ion-card-title>{{dataItem.nombre}}</ion-card-title>
-                  <ion-card-subtitle *ngIf="dataItem.carga==false">En Almacen</ion-card-subtitle>
-                  <ion-card-subtitle *ngIf="dataItem.carga==true && dataItem.descarga==false">En
-                    Viaje</ion-card-subtitle>
-                  <ion-card-subtitle
-                    *ngIf="dataItem.carga==true && dataItem.descarga==true">Entregada</ion-card-subtitle>
+                  <ion-card-subtitle>{{dataItem.estado}}</ion-card-subtitle>
 
                 </ion-card-header>
                 <ion-card-content>
                   <ion-item lines="none">
                     <ion-label>Entrega: {{dataItem.puntoEntrega}}</ion-label>
+                  </ion-item>
+                  <ion-item lines="none">
+                    <ion-label>Remitente: {{dataItem.remitente}}</ion-label>
+                  </ion-item>
+                  <ion-item lines="none">
+                    <ion-label>Email: {{dataItem.correoRemitente}}</ion-label>
                   </ion-item>
                   <ion-item lines="none">
                     <ion-label>Destinatario: {{dataItem.destinatario}}</ion-label>
@@ -41,7 +43,7 @@
                   </ion-item>
                 </ion-card-content>
                 <ion-col class="icons-button">
-                  <ion-icon name="arrow-up" (click)="carga(dataItem)" *ngIf="dataItem.carga==false"></ion-icon>
+                  <ion-icon name="map" (click)="map(dataItem)" *ngIf="dataItem.estado=='Sin Asignar'"></ion-icon>
                   <ion-icon name="pencil" id="open-modal" (click)="edit(dataItem)"
                     *ngIf="dataItem.carga==false"></ion-icon>
                   <ion-icon name="trash" (click)="delete(dataItem)" *ngIf="dataItem.carga==false"></ion-icon>
@@ -49,38 +51,6 @@
               </ion-card>
             </ng-container>
           </ion-row>
-
-
-          <!--
-            <ion-row class="main">
-            <ion-col>ID</ion-col>
-            <ion-col>NOMBRE</ion-col>
-            <ion-col>PESO</ion-col>
-            <ion-col>PUNTO DE ENTREGA</ion-col>
-            <ion-col>ESTADO</ion-col>
-            <ion-col>ACCIONES</ion-col>
-          </ion-row>
-
-
-             <ion-row *ngFor="let dataItem of mercanciaList" class="content-commodity">
-            <ion-col>{{ dataItem.id }}</ion-col>
-            <ion-col>{{ dataItem.nombre }}</ion-col>
-            <ion-col>{{ dataItem.peso }}</ion-col>
-            <ion-col>{{ dataItem.puntoEntrega }}</ion-col>
-            <ion-col *ngIf="dataItem.carga==false">En Almacen</ion-col>
-            <ion-col *ngIf="dataItem.carga==true && dataItem.descarga==false">En Viaje</ion-col>
-            <ion-col *ngIf="dataItem.carga==true && dataItem.descarga==true">Entregada</ion-col>
-            <ion-col class="icons-button">
-              <ion-icon name="arrow-up" (click)="carga(dataItem)" *ngIf="dataItem.carga==false"></ion-icon>
-              <ion-icon name="pencil" id="open-modal" (click)="edit(dataItem)" *ngIf="dataItem.carga==false"></ion-icon>
-              <ion-icon name="trash" (click)="delete(dataItem)" *ngIf="dataItem.carga==false"></ion-icon>
-            </ion-col>
-
-          </ion-row>
-
-          -->
-
-
 
           <ion-button class="button-add" id="open-modal" (click)="add()"><ion-icon
               name="add-outline"></ion-icon></ion-button>
@@ -100,6 +70,24 @@
               </ion-content>
             </ng-template>
           </ion-modal>
+
+          <ion-modal [isOpen]="isModalOpen1">
+            <ng-template>
+              <ion-header>
+                <ion-toolbar>
+                  <ion-title>Punto de Entrega</ion-title>
+                  <ion-buttons slot="end">
+                    <ion-button (click)="cancelMapa()"><ion-icon name="close-sharp"></ion-icon></ion-button>
+                  </ion-buttons>
+                </ion-toolbar>
+              </ion-header>
+              <ion-content class="ion-padding">
+                <app-mapa-mercancia [punto]="punto" *ngIf="Activate_Mapa_MercanciaComp">
+                </app-mapa-mercancia>
+              </ion-content>
+            </ng-template>
+          </ion-modal>
+
         </div>
       </ion-col>
     </ion-row>

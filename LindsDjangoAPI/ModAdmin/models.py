@@ -60,6 +60,14 @@ class Rol(models.Model):
         db_table = 'rol'
 
 
+class Estado(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=100, null=False)
+
+    class Meta:
+        db_table = 'estado'
+
+
 class Usuario(AbstractUser):
     cedula = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=100, null=False)
@@ -87,7 +95,7 @@ class Camion(models.Model):
     capacidad = models.IntegerField(null=False)
     empresa = models.CharField(max_length=100, null=False)
     sucursal = models.CharField(max_length=100, null=False)
-    estado = models.BooleanField(default=True, null=False)
+    estado = models.CharField(max_length=100, null=False)
 
     class Meta:
         db_table = 'camion'
@@ -95,7 +103,7 @@ class Camion(models.Model):
 
 class Viaje(models.Model):
     id = models.AutoField(primary_key=True)
-    estado = models.BooleanField(default=False, null=False)
+    estado = models.CharField(max_length=100, null=False)
     fecha = models.DateTimeField()
     camion = models.CharField(max_length=100, null=False)
     usuario = models.CharField(max_length=100, null=False)
@@ -123,10 +131,16 @@ class Mercancia(models.Model):
     puntoInicio = models.CharField(max_length=100, null=False)
     nombre = models.CharField(max_length=100, null=False)
     peso = models.IntegerField(null=False)
+    altura = models.FloatField(null=False)
+    ancho = models.FloatField(null=False)
+    largo = models.FloatField(null=False)
+    volumen = models.FloatField(null=False)
     puntoEntrega = models.CharField(max_length=100, null=False)
+    remitente = models.CharField(max_length=100, null=False)
+    correoRemitente = models.CharField(max_length=100, null=False)
     destinatario = models.CharField(max_length=100, null=False)
     correoDestinatario = models.CharField(max_length=100, null=False)
-    estado = models.BooleanField(default=True, null=False)
+    estado = models.CharField(max_length=100, null=False)
     carga = models.BooleanField(default=False, null=False)
     descarga = models.BooleanField(default=False, null=False)
     empresa = models.CharField(max_length=100, null=False)

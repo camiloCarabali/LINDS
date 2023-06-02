@@ -8,6 +8,12 @@ import { UiServiceService } from 'src/services/ui-service.service';
   styleUrls: ['./crear-editar-camion.component.scss'],
 })
 export class CrearEditarCamionComponent implements OnInit {
+  isModalOpen = false;
+
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
+
   constructor(
     private service: SharedService,
     private interaction: UiServiceService
@@ -50,9 +56,13 @@ export class CrearEditarCamionComponent implements OnInit {
       sucursal: localStorage.getItem('sucursal'),
       estado: this.estado,
     };
-    this.service.addCamion(val).subscribe((res: any) => {
-      this.interaction.presentToast('top', res.toString());
-    });
+    if (confirm('¿Desea agregar un nuevo vehiculo?'))
+      this.service.addCamion(val).subscribe((res: any) => {
+        this.interaction.presentToast('top', res.toString());
+        setTimeout(function () {
+          location.reload();
+        }, 2000);
+      });
   }
 
   edit() {
@@ -66,8 +76,13 @@ export class CrearEditarCamionComponent implements OnInit {
       sucursal: this.sucursal,
       estado: this.estado,
     };
-    this.service.updateCamion(val).subscribe((res) => {
-      this.interaction.presentToast('top', res.toString());
-    });
+    if (confirm('¿Desea actualizar la información del vehiculo?')) {
+      this.service.updateCamion(val).subscribe((res) => {
+        this.interaction.presentToast('top', res.toString());
+        setTimeout(function () {
+          location.reload();
+        }, 2000);
+      });
+    }
   }
 }

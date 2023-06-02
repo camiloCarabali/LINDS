@@ -96,8 +96,12 @@ export class SharedService {
     return this.http.post<any[]>(this.APIURL + 'correo/', val);
   }
 
-  correoMercancia(val: any) {
-    return this.http.post<any[]>(this.APIURL + 'correoMercancia/', val);
+  correoDestinatario(val: any) {
+    return this.http.post<any[]>(this.APIURL + 'correoDestinatario/', val);
+  }
+
+  correoRemitente(val: any) {
+    return this.http.post<any[]>(this.APIURL + 'correoRemitente/', val);
   }
 
   login(val: any): Observable<any> {

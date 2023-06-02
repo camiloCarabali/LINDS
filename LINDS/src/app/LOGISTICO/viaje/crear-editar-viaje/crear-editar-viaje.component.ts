@@ -46,12 +46,15 @@ export class CrearEditarViajeComponent implements OnInit {
       empresa: localStorage.getItem('empresa'),
       sucursal: localStorage.getItem('sucursal'),
     };
-    
-    this.service.ocupadoCamion(val.camion).subscribe((res: any) => {});
-    this.service.addViaje(val).subscribe((res: any) => {
-      this.interaction.presentToast('top', res.toString());
-    });
-    
+    if (confirm('¿Desea crear este viaje?')) {
+      this.service.ocupadoCamion(val.camion).subscribe((res: any) => {});
+      this.service.addViaje(val).subscribe((res: any) => {
+        this.interaction.presentToast('top', res.toString());
+      });
+      setTimeout(function () {
+        location.reload();
+      }, 2000);
+    }
   }
 
   edit() {
@@ -63,10 +66,15 @@ export class CrearEditarViajeComponent implements OnInit {
       empresa: this.empresa,
       sucursal: this.sucursal,
     };
-    this.service.ocupadoCamion(val.camion).subscribe((res: any) => {});
-    this.service.updateViaje(val).subscribe((res) => {
-      this.interaction.presentToast('top', res.toString());
-    });
+    if (confirm('¿Desea actualizar la información del viaje?')) {
+      this.service.ocupadoCamion(val.camion).subscribe((res: any) => {});
+      this.service.updateViaje(val).subscribe((res) => {
+        this.interaction.presentToast('top', res.toString());
+      });
+      setTimeout(function () {
+        location.reload();
+      }, 2000);
+    }
   }
 
   cargarCamion() {

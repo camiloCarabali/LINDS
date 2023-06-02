@@ -45,7 +45,6 @@ export class MapaViajeComponent implements OnInit {
 
   private calculateRoute() {
     const waypoints: any = [];
-    console.log(this.inicio)
     this.service.waypoints(this.id).subscribe((data) => {
       for (let i = 0; i < data.length; i++) {
         waypoints.push({
@@ -55,7 +54,6 @@ export class MapaViajeComponent implements OnInit {
       }
       this.llegada = data[data.length - 1];
       waypoints.pop()
-      console.log(this.llegada)
       this.directionsService
         .route({
           origin: {

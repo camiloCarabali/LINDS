@@ -42,6 +42,7 @@ import { MapaViajeComponent } from './LOGISTICO/viaje/mapa-viaje/mapa-viaje.comp
 import { MercanciaComponent } from './LOGISTICO/mercancia/mercancia.component';
 import { MostrarMercanciaComponent } from './LOGISTICO/mercancia/mostrar-mercancia/mostrar-mercancia.component';
 import { CrearEditarMercanciaComponent } from './LOGISTICO/mercancia/crear-editar-mercancia/crear-editar-mercancia.component';
+import { MapaMercanciaComponent } from './LOGISTICO/mercancia/mapa-mercancia/mapa-mercancia.component';
 
 import { PiefooterComponent } from './estiloHF/piefooter/piefooter.component';
 import { HeaderNormalComponent } from './estiloHF/header-normal/header-normal.component';
@@ -80,6 +81,7 @@ registerLocaleData(localeEs);
     MercanciaComponent,
     MostrarMercanciaComponent,
     CrearEditarMercanciaComponent,
+    MapaMercanciaComponent,
     HeaderNormalComponent,
     CabezaheaderComponent,
     PiefooterComponent,
