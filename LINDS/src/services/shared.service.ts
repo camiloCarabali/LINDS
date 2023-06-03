@@ -96,6 +96,14 @@ export class SharedService {
     return this.http.post<any[]>(this.APIURL + 'correo/', val);
   }
 
+  correoDestinatario(val: any) {
+    return this.http.post<any[]>(this.APIURL + 'correoDestinatario/', val);
+  }
+
+  correoRemitente(val: any) {
+    return this.http.post<any[]>(this.APIURL + 'correoRemitente/', val);
+  }
+
   login(val: any): Observable<any> {
     return this.http.post<any>(this.APIURL + 'login', val);
   }
@@ -144,12 +152,18 @@ export class SharedService {
     return this.http.put<any[]>(this.APIURL + 'modificarViaje/', val);
   }
 
-  inactivarViaje(val: string) {
-    return this.http.delete<any[]>(this.APIURL + 'inactivarViaje/' + val);
+  eliminarViaje(val: string) {
+    return this.http.delete<any[]>(this.APIURL + 'eliminarViaje/' + val);
   }
 
   getBuscarConductor(val: string) {
     return this.http.get<any[]>(this.APIURL + 'buscarConductor/' + val);
+  }
+
+  getBuscarConductorDisponible(val: string) {
+    return this.http.get<any[]>(
+      this.APIURL + 'buscarConductorDisponible/' + val
+    );
   }
 
   getPuntoEntregaList(): Observable<any[]> {
@@ -188,7 +202,9 @@ export class SharedService {
   }
 
   addMercancia(val: any) {
-    return this.http.post<any[]>(this.APIURL + 'crearMercancia/', val);
+    return this.http.post<any[]>(this.APIURL + 'crearMercancia/', val, {
+      observe: 'response',
+    });
   }
 
   updateMercancia(val: any) {
@@ -206,7 +222,18 @@ export class SharedService {
   }
 
   disponibleCamion(val: any) {
-    return this.http.put<any[]>(this.APIURL + 'disponibleCamion/', val);
+    return this.http.put<any[]>(this.APIURL + 'disponibleCamion/' + val, val);
+  }
+
+  disponibleUsuario(val: any) {
+    return this.http.put<any[]>(this.APIURL + 'disponibleUsuario/' + val, val);
+  }
+
+  noDisponibleUsuario(val: any) {
+    return this.http.put<any[]>(
+      this.APIURL + 'noDisponibleUsuario/' + val,
+      val
+    );
   }
 
   ocupadoCamion(val: any) {
@@ -225,7 +252,36 @@ export class SharedService {
     );
   }
 
+  mostrarMercanciaSinAsignarSucursal(val: String) {
+    return this.http.get<any[]>(
+      this.APIURL + 'mostrarMercanciaSinAsignarSucursal/' + val
+    );
+  }
+
   buscarViaje(val: String) {
     return this.http.get<any[]>(this.APIURL + 'buscarViaje/' + val);
+  }
+
+  buscarUltimoViaje(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'buscarUltimoViaje/' + val);
+  }
+
+  infoViaje(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'infoViaje/' + val);
+  }
+
+  direccionSucursal(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'direccionSucursal/' + val);
+  }
+
+  asignarMercancia(val: any, val2: any) {
+    return this.http.put<any[]>(
+      this.APIURL + 'asignarMercancia/' + val + '/' + val2,
+      ''
+    );
+  }
+
+  noAsignarMercancia(val: any) {
+    return this.http.put<any[]>(this.APIURL + 'noAsignarMercancia/' + val, val);
   }
 }

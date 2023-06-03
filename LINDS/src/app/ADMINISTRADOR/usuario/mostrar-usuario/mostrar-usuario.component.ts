@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonModal } from '@ionic/angular';
 import { SharedService } from 'src/services/shared.service';
+import { UiServiceService } from 'src/services/ui-service.service';
 
 @Component({
   selector: 'app-mostrar-usuario',
@@ -17,7 +18,7 @@ export class MostrarUsuarioComponent implements OnInit {
     this.isModalOpen = isOpen;
   }
 
-  constructor(private service: SharedService) {}
+  constructor(private service: SharedService, private interaction: UiServiceService) {}
 
   usuarioList: any = [];
 
@@ -50,6 +51,7 @@ export class MostrarUsuarioComponent implements OnInit {
       correo: '',
       rol: '',
       sucursal: '',
+      disponiblidad: ''
     };
     this.modalTitle = 'Añadir Usuario';
     this.ActivateCrearEditarUsuarioComp = true;
@@ -68,7 +70,7 @@ export class MostrarUsuarioComponent implements OnInit {
   delete(item: any) {
     if (confirm('Desea inactivar este usuario?')) {
       this.service.inactivarUsuario(item.cedula).subscribe((data) => {
-        alert(data.toString());
+        this.interaction.presentToast('top', data.toString());
         this.refreshUsuarioList();
       });
     }

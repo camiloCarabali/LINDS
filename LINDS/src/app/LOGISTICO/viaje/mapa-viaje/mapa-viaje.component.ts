@@ -22,7 +22,7 @@ export class MapaViajeComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.viaje.id;
-    this.inicio = this.viaje.inicio;
+    this.inicio = localStorage.getItem('puntoInicio')!;
     this.loadMap();
   }
 
@@ -45,7 +45,6 @@ export class MapaViajeComponent implements OnInit {
 
   private calculateRoute() {
     const waypoints: any = [];
-
     this.service.waypoints(this.id).subscribe((data) => {
       for (let i = 0; i < data.length; i++) {
         waypoints.push({
@@ -55,7 +54,6 @@ export class MapaViajeComponent implements OnInit {
       }
       this.llegada = data[data.length - 1];
       waypoints.pop()
-
       this.directionsService
         .route({
           origin: {

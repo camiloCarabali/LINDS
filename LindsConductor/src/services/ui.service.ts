@@ -18,7 +18,8 @@ export class UiService {
     private alertController: AlertController,
     private toastController: ToastController,
     private loadingCtrl: LoadingController,
-    private router: Router
+    private router: Router,
+    private service: SharedService
   ) {}
 
   async presentAlert(message: string) {
@@ -46,6 +47,9 @@ export class UiService {
       text: 'OK',
       role: 'confirm',
       handler: () => {
+        this.service.finalViaje(localStorage.getItem('id')).subscribe((data) => {});
+        this.service.disponibleCamion(localStorage.getItem('camion')).subscribe(() => {});
+        this.service.disponibleUsuario(localStorage.getItem('usuario')).subscribe(() => {});
         this.router.navigate(['/perfil']);
       }, 
     },

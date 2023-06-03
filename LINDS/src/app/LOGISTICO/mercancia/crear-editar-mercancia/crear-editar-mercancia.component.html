@@ -1,35 +1,131 @@
 <ion-item class="style-btn">
   <ion-label position="floating">Nombre</ion-label>
   <ion-input
-    placeholder="Escriba el nombre"
+    placeholder="Escriba la descripcion de la mercancia"
     [(ngModel)]="nombre"
+    required="true"
   ></ion-input>
 </ion-item>
 
 <ion-item class="style-btn">
   <ion-label position="floating">Peso</ion-label>
   <ion-input
-    placeholder="Escriba el peso en Kg"
+    placeholder="Escriba el peso en KG"
     [(ngModel)]="peso"
     type="number"
+    required="true"
   ></ion-input>
 </ion-item>
 
-<ion-list>
+<ion-item class="style-btn">
+  <ion-label position="floating">Altura</ion-label>
+  <ion-input
+    placeholder="Escriba la altura del paquete en CM"
+    [(ngModel)]="altura"
+    type="number"
+    required="true"
+  ></ion-input>
+</ion-item>
+
+<ion-item class="style-btn">
+  <ion-label position="floating">Ancho</ion-label>
+  <ion-input
+    placeholder="Escriba el ancho del paquete en CM"
+    [(ngModel)]="ancho"
+    type="number"
+    required="true"
+  ></ion-input>
+</ion-item>
+
+<ion-item class="style-btn">
+  <ion-label position="floating">Largo</ion-label>
+  <ion-input
+    placeholder="Escriba el largo del paquete en CM"
+    [(ngModel)]="largo"
+    type="number"
+    required="true"
+  ></ion-input>
+</ion-item>
+
+<ion-item class="style-btn">
+  <ion-label position="floating">Punto de entrega</ion-label>
+  <ion-input
+    placeholder="Escriba el punto de entrega"
+    [(ngModel)]="puntoEntrega"
+    required="true"
+  ></ion-input>
+</ion-item>
+
+<ion-item class="style-btn">
+  <ion-label position="floating">Remitente</ion-label>
+  <ion-input
+    placeholder="Escriba el nombre del remitente"
+    [(ngModel)]="remitente"
+    required="true"
+  ></ion-input>
+</ion-item>
+
+<ion-item class="style-btn">
+  <ion-label position="floating">Correo Remitente</ion-label>
+  <ion-input
+    placeholder="Escriba el correo del remitente"
+    [(ngModel)]="correoRemitente"
+    type="email"
+    required="true"
+  ></ion-input>
+</ion-item>
+
+<ion-item class="style-btn">
+  <ion-label position="floating">Telefono Remitente</ion-label>
+  <ion-input
+    placeholder="Escriba el telefono del remitente"
+    [(ngModel)]="telefonoRemitente"
+    type="number"
+    required="true"
+  ></ion-input>
+</ion-item>
+
+<ion-item class="style-btn">
+  <ion-label position="floating">Destinatario</ion-label>
+  <ion-input
+    placeholder="Escriba el nombre del destinatario"
+    [(ngModel)]="destinatario"
+    required="true"
+  ></ion-input>
+</ion-item>
+
+<ion-item class="style-btn">
+  <ion-label position="floating">Correo Destinatario</ion-label>
+  <ion-input
+    placeholder="Escriba el correo del destinatario"
+    [(ngModel)]="correoDestinatario"
+    type="email"
+    required="true"
+  ></ion-input>
+</ion-item>
+
+<ion-item class="style-btn">
+  <ion-label position="floating">Telefono Destinatario</ion-label>
+  <ion-input
+    placeholder="Escriba el telefono del Destinatario"
+    [(ngModel)]="telefonoDestinatario"
+    type="number"
+    required="true"
+  ></ion-input>
+</ion-item>
+
+<ion-list *ngIf="mercancia.id != 0">
   <ion-item>
-    <ion-select
-      placeholder="Seleccione el punto de entrega"
-      [(ngModel)]="puntoEntrega"
-      (ionChange)="cargarPuntoEntrega()"
-    >
+    <ion-select placeholder="Seleccione el viaje" [(ngModel)]="viaje">
       <ion-select-option
-        value="{{ punto.direccion }}"
-        *ngFor="let punto of puntoEntregaList"
-        >{{punto.viaje}} - {{ punto.direccion }}</ion-select-option
+        value="{{ viaje.id }}"
+        *ngFor="let viaje of viajeList"
+        >{{ viaje.id }}</ion-select-option
       >
     </ion-select>
   </ion-item>
 </ion-list>
+
 
 <ion-button (click)="add()" *ngIf="mercancia.id == 0">AGREGAR</ion-button>
 <ion-button (click)="edit()" *ngIf="mercancia.id != 0">ACTUALIZAR</ion-button>

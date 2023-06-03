@@ -136,7 +136,10 @@ export class MostrarMapaComponent implements OnInit {
 
   iniciarViaje() {
     this.service
-      .confirmarViaje(localStorage.getItem('id'))
+      .enviadoMercancia(localStorage.getItem('id'))
+      .subscribe((data) => {});
+    this.service
+      .inicioViaje(localStorage.getItem('id'))
       .subscribe((data) => {});
 
     this.class_inicio = 'ion-hide';

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from ModAdmin.models import Pais, Departamento, Municipio, Empresa, Viaje, DetalleViaje, Usuario, Rol, Sucursal, \
-    PuntoEntrega, Camion, Mercancia
+    PuntoEntrega, Camion, Mercancia, Estado
 
 
 class PaisSerializer(serializers.ModelSerializer):
@@ -39,10 +39,16 @@ class RolSerializer(serializers.ModelSerializer):
         fields = ('id', 'nombre')
 
 
+class EstadoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Estado
+        fields = ('id', 'nombre')
+
+
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
-        fields = ('cedula', 'nombre', 'apellido', 'correo', 'password', 'estado', 'empresa', 'sucursal', 'rol')
+        fields = ('cedula', 'nombre', 'apellido', 'correo', 'password', 'estado', 'disponibilidad', 'empresa', 'sucursal', 'rol')
 
         # extra_kwargs = {
         #     'password': {'write_only': True}
@@ -60,7 +66,7 @@ class UsuarioSerializer(serializers.ModelSerializer):
 class ViajeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Viaje
-        fields = ('id', 'estado', 'inicio', 'fecha', 'camion', 'usuario', 'empresa', 'sucursal')
+        fields = ('id', 'estado', 'fecha', 'camion', 'usuario', 'empresa', 'sucursal')
 
 
 class PuntoEntregaSerializer(serializers.ModelSerializer):
@@ -72,7 +78,10 @@ class PuntoEntregaSerializer(serializers.ModelSerializer):
 class MercanciaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mercancia
-        fields = ('id', 'nombre', 'peso', 'estado', 'carga', 'descarga', 'puntoEntrega', 'empresa', 'sucursal')
+        fields = (
+            'id', 'puntoInicio', 'nombre', 'peso', 'puntoEntrega', 'destinatario', 'correoDestinatario',
+            'telefonoDestinatario', 'estado', 'carga', 'fechaCarga', 'descarga', 'fechaDescarga', 'empresa', 'sucursal', 'viaje', 'altura', 'ancho',
+            'largo', 'volumen', 'remitente', 'correoRemitente', 'telefonoRemitente')
 
 
 class DetalleViajeSerializer(serializers.ModelSerializer):

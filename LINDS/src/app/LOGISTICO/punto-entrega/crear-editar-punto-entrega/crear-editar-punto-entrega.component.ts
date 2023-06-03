@@ -52,7 +52,7 @@ export class CrearEditarPuntoEntregaComponent implements OnInit {
       sucursal: this.sucursal,
     };
     this.service.updatePuntoEntrega(val).subscribe((res) => {
-      alert(res.toString());
+      this.interaction.presentToast('top', res.toString());
     });
   }
 

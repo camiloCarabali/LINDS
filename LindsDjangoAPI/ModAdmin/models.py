@@ -60,6 +60,14 @@ class Rol(models.Model):
         db_table = 'rol'
 
 
+class Estado(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=100, null=False)
+
+    class Meta:
+        db_table = 'estado'
+
+
 class Usuario(AbstractUser):
     cedula = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=100, null=False)
@@ -67,6 +75,7 @@ class Usuario(AbstractUser):
     correo = models.CharField(max_length=100, null=False, unique=True)
     password = models.CharField(max_length=100, null=False)
     estado = models.BooleanField(default=True, null=False)
+    disponibilidad = models.CharField(max_length=100, null=True)
     empresa = models.CharField(max_length=100, null=True)
     sucursal = models.CharField(max_length=100, null=True)
     rol = models.CharField(max_length=100, null=False)
@@ -95,8 +104,7 @@ class Camion(models.Model):
 
 class Viaje(models.Model):
     id = models.AutoField(primary_key=True)
-    estado = models.BooleanField(default=False, null=False)
-    inicio = models.CharField(max_length=100, null=False)
+    estado = models.CharField(max_length=100, null=False)
     fecha = models.DateTimeField()
     camion = models.CharField(max_length=100, null=False)
     usuario = models.CharField(max_length=100, null=False)
@@ -121,14 +129,28 @@ class PuntoEntrega(models.Model):
 
 class Mercancia(models.Model):
     id = models.AutoField(primary_key=True)
+    puntoInicio = models.CharField(max_length=100, null=False)
     nombre = models.CharField(max_length=100, null=False)
     peso = models.IntegerField(null=False)
-    estado = models.BooleanField(default=True, null=False)
+    altura = models.FloatField(null=False)
+    ancho = models.FloatField(null=False)
+    largo = models.FloatField(null=False)
+    volumen = models.FloatField(null=False)
+    puntoEntrega = models.CharField(max_length=100, null=False)
+    remitente = models.CharField(max_length=100, null=False)
+    correoRemitente = models.CharField(max_length=100, null=False)
+    telefonoRemitente = models.CharField(max_length=100, null=False)
+    destinatario = models.CharField(max_length=100, null=False)
+    correoDestinatario = models.CharField(max_length=100, null=False)
+    telefonoDestinatario = models.CharField(max_length=100, null=False)
+    estado = models.CharField(max_length=100, null=False)
     carga = models.BooleanField(default=False, null=False)
+    fechaCarga = models.DateTimeField(null=True)
     descarga = models.BooleanField(default=False, null=False)
+    fechaDescarga = models.DateTimeField(null=True)
     empresa = models.CharField(max_length=100, null=False)
     sucursal = models.CharField(max_length=100, null=False)
-    puntoEntrega = models.CharField(max_length=100, null=False)
+    viaje = models.CharField(max_length=100, null=True)
 
     class Meta:
         db_table = 'mercancia'

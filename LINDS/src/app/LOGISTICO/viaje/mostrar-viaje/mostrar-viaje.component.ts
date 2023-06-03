@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/services/shared.service';
+import { UiServiceService } from 'src/services/ui-service.service';
 
 @Component({
   selector: 'app-mostrar-viaje',
@@ -19,7 +20,10 @@ export class MostrarViajeComponent implements OnInit {
     this.isModalOpen1 = isOpen1;
   }
 
-  constructor(private service: SharedService) {}
+  constructor(
+    private service: SharedService,
+    private interaction: UiServiceService
+  ) {}
 
   viajeList: any = [];
 
@@ -53,7 +57,7 @@ export class MostrarViajeComponent implements OnInit {
       usuario: '',
       estado: '',
       nombre: '',
-      sucursal: ''
+      sucursal: '',
     };
     this.modalTitle = 'Agregar Viaje';
     this.Activate_CrearEditar_ViajeComp = true;
@@ -75,11 +79,12 @@ export class MostrarViajeComponent implements OnInit {
   }
 
   delete(item: any) {
-    this.service.disponibleCamion(item.camion).subscribe(() => {});
-
-    if (confirm('¿Desea inactivar este viaje?')) {
-      this.service.inactivarViaje(item.id).subscribe((data) => {
-        alert(data.toString());
+    if (confirm('¿Desea eliminar este viaje?')) {
+      this.service.disponibleCamion(item.camion).subscribe(() => {});
+      this.service.disponibleUsuario(item.usuario).subscribe(() => {});
+      this.service.noAsignarMercancia(item.id).subscribe(()=>{})
+      this.service.eliminarViaje(item.id).subscribe((data) => {
+        this.interaction.presentToast('top', data.toString());
         this.refreshViajeList();
       });
     }

@@ -9,8 +9,10 @@
         <div class="botones-menu">
           <ion-list lines="none" class="list-botones">
             <ion-button class="button-style1" [routerLink]="['/viaje']">HISTORIAL DE VIAJES</ion-button>
-            <ion-button class="button-style" fill="clear" [routerLink]="['/punto-entrega']">PUNTOS DE
+            <!--
+              <ion-button class="button-style" fill="clear" [routerLink]="['/punto-entrega']">PUNTOS DE
               ENTREGA</ion-button>
+            -->
             <ion-button class="button-style" fill="clear" [routerLink]="['/conductores']">LISTA DE CONDUCTORES</ion-button>
           </ion-list>
         </div>
@@ -21,27 +23,25 @@
             (keyup)="FilterFn()"></ion-input>
           <ion-row class="main">
             <ion-col size="1">ID</ion-col>
-            <ion-col>INICIO</ion-col>
             <ion-col>FECHA</ion-col>
             <ion-col>CAMION</ion-col>
-            <ion-col>CAPACIDAD</ion-col>
             <ion-col>CONDUCTOR</ion-col>
+            <ion-col>ESTADO</ion-col>
             <ion-col>ACCIONES</ion-col>
           </ion-row>
 
           <ng-container *ngFor="let dataItem of viajeList">
             <ion-row *ngFor="let data of capacidad" class="content-travel">
               <ion-col size="1">{{ dataItem.id }}</ion-col>
-              <ion-col>{{ dataItem.inicio }}</ion-col>
               <ion-col>{{ dataItem.fecha | date: 'fullDate' }}</ion-col>
               <ion-col>{{ dataItem.camion }}</ion-col>
-              <ion-col>{{ data.capacidad }} kg</ion-col>
               <ion-col>{{ dataItem.usuario }}</ion-col>
+              <ion-col>{{ dataItem.estado }}</ion-col>
               <ion-col class="icons-button">
                 <ion-icon name="map-outline" (click)="map(dataItem)"></ion-icon>
                 <ion-icon name="pencil-sharp" id="open-modal" (click)="edit(dataItem)"
-                  *ngIf="dataItem.estado==false"></ion-icon>
-                <ion-icon name="trash" (click)="delete(dataItem)" *ngIf="dataItem.estado==false"></ion-icon>
+                  *ngIf="dataItem.estado=='Asignado'"></ion-icon>
+                <ion-icon name="trash" (click)="delete(dataItem)" *ngIf="dataItem.estado=='Cargado'"></ion-icon>
               </ion-col>
             </ion-row>
           </ng-container>

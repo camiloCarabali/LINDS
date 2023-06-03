@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/services/shared.service';
+import { UiServiceService } from 'src/services/ui-service.service';
 
 @Component({
   selector: 'app-mostrar-punto-entrega',
@@ -13,9 +14,15 @@ export class MostrarPuntoEntregaComponent implements OnInit {
     this.isModalOpen = isOpen;
   }
 
-  constructor(private service: SharedService) {}
+  constructor(
+    private service: SharedService,
+    private interaction: UiServiceService
+  ) {}
 
   puntoEntregaList: any = [];
+
+  estadoViajes: any = [];
+  estadoViajes1: any = [];
 
   modalTitle: string = '';
   Activate_CrearEditar_PuntoEntregaComp: boolean = false;
@@ -64,7 +71,7 @@ export class MostrarPuntoEntregaComponent implements OnInit {
   delete(item: any) {
     if (confirm('Desea eliminar este punto de entrega?')) {
       this.service.eliminarPuntoEntrega(item.id).subscribe((data) => {
-        alert(data.toString());
+        this.interaction.presentToast('top', data.toString());
         this.refreshPuntoEntregaList();
       });
     }
@@ -73,7 +80,7 @@ export class MostrarPuntoEntregaComponent implements OnInit {
   activate(item: any) {
     if (confirm('Desea activar este punto de entrega?')) {
       this.service.activarPuntoEntrega(item.id).subscribe((data) => {
-        alert(data.toString());
+        this.interaction.presentToast('top', data.toString());
         this.refreshPuntoEntregaList();
       });
     }
@@ -86,6 +93,14 @@ export class MostrarPuntoEntregaComponent implements OnInit {
       .subscribe((data) => {
         this.puntoEntregaList = data;
         this.listWithoutFilter = data;
+        /*
+        for (let i of this.puntoEntregaList) {
+          this.service.infoViaje(i.viaje).subscribe((res) => {
+            this.estadoViajes.push(res[0]);
+          });
+        }
+        console.log(this.estadoViajes);
+        */
       });
   }
 

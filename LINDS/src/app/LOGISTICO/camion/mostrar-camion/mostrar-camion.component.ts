@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/services/shared.service';
+import { UiServiceService } from 'src/services/ui-service.service';
 
 @Component({
   selector: 'app-mostrar-camion',
@@ -13,7 +14,7 @@ export class MostrarCamionComponent implements OnInit {
     this.isModalOpen = isOpen;
   }
 
-  constructor(private service: SharedService) {}
+  constructor(private service: SharedService, private interaction: UiServiceService) {}
 
   camionList: any = [];
 
@@ -66,7 +67,7 @@ export class MostrarCamionComponent implements OnInit {
   delete(item: any) {
     if (confirm('¿Desea eliminar este Vehículo?')) {
       this.service.eliminarCamion(item.matricula).subscribe((data) => {
-        alert(data.toString());
+        this.interaction.presentToast('top', data.toString());
         this.refreshCamionList();
       });
     }
@@ -74,7 +75,6 @@ export class MostrarCamionComponent implements OnInit {
 
   refreshCamionList() {
     let valor = (this.sucursal = localStorage.getItem('sucursal')!);
-
     this.service.getBuscarCamion(valor.replace(/ /g, '_')).subscribe((data) => {
       this.camionList = data;
       this.listWithoutFilter = data;

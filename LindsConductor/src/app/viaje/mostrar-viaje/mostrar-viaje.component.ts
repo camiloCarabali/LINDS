@@ -21,6 +21,7 @@ export class MostrarViajeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.inicio = localStorage.getItem('rutaInicio')!;
     this.refreshViaje();
   }
 
@@ -35,8 +36,10 @@ export class MostrarViajeComponent implements OnInit {
 
   generateTrip(item: any) {
     localStorage.clear();
+    localStorage.setItem('camion', item.camion)
+    localStorage.setItem('usuario', item.usuario)
     localStorage.setItem('id', item.id);
-    localStorage.setItem('rutaInicio', item.inicio);
+    item.inicio = localStorage.getItem('rutaInicio')!;
     const waypoints: any = [];
     this.service
       .waypoints(localStorage.getItem('id') as string)
@@ -49,6 +52,7 @@ export class MostrarViajeComponent implements OnInit {
         }
         this.llegada = data[data.length - 1];
         waypoints.pop();
+        localStorage.setItem('rutaInicio', this.inicio);
         localStorage.setItem('rutaLlegada', this.llegada);
         localStorage.setItem('waypoints', JSON.stringify(waypoints));
       });

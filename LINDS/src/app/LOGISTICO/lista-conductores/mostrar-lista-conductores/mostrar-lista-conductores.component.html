@@ -10,8 +10,10 @@
         <div class="botones-menu">
           <ion-list lines="none" class="list-botones">
             <ion-button class="button-style" fill="clear" [routerLink]="['/viaje']">HISTORIAL DE VIAJES</ion-button>
-            <ion-button class="button-style" fill="clear" [routerLink]="['/punto-entrega']">PUNTOS DE
+            <!--
+              <ion-button class="button-style" fill="clear" [routerLink]="['/punto-entrega']">PUNTOS DE
               ENTREGA</ion-button>
+            -->
             <ion-button class="button-style1" [routerLink]="['/conductores']">LISTA DE CONDUCTORES</ion-button>
           </ion-list>
         </div>
@@ -25,6 +27,7 @@
             <ion-col>NOMBRE</ion-col>
             <ion-col>APELLIDO</ion-col>
             <ion-col>CORREO</ion-col>
+            <ion-col>DISPONIBILIDAD</ion-col>
           </ion-row>
 
           <ion-row *ngFor="let dataItem of conductorList" class="content-vehicle">
@@ -32,6 +35,7 @@
             <ion-col>{{ dataItem.nombre }}</ion-col>
             <ion-col>{{ dataItem.apellido }}</ion-col>
             <ion-col>{{ dataItem.correo }}</ion-col>
+            <ion-col>{{ dataItem.disponibilidad }}</ion-col>
           </ion-row>
 
         </div>
