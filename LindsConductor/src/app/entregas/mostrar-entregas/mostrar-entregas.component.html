@@ -19,10 +19,11 @@
     <ion-card class="ion-margin" *ngIf="item.descarga==false">
       <ion-card-header>
         <ion-card-title>{{item.puntoEntrega}}</ion-card-title>
-        <ion-card-subtitle>{{item.nombre}}</ion-card-subtitle>
-        <ion-card-subtitle>{{item.destinatario}}</ion-card-subtitle>
+        <ion-card-subtitle><ion-icon name="cube"></ion-icon>{{item.nombre}}</ion-card-subtitle>
+        <ion-card-subtitle><ion-icon name="person"></ion-icon>{{item.destinatario}}</ion-card-subtitle>
+        <ion-card-subtitle><ion-icon name="call"></ion-icon>{{item.telefonoDestinatario}}</ion-card-subtitle>
       </ion-card-header>
-      <ion-button (click)="descarga(item.id)">Desembarcar</ion-button>
+      <ion-button (click)="descarga(item)">Desembarcar</ion-button>
     </ion-card>
   </ng-container>
 </ion-content>

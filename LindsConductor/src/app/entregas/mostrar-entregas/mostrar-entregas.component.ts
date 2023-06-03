@@ -46,15 +46,17 @@ export class MostrarEntregasComponent implements OnInit {
     this.Activate_Entregas_Comp = true;
   }
 
-  async descarga(id: string) {
+  async descarga(item: any) {
     await this.interaction.showLoading('Validando...');
-    this.service.descargaMercancia(id).subscribe((data) => {
+    this.service.descargaMercancia(item.id).subscribe((data) => {
       if (data.status === 200) {
         this.interaction.closeLoading();
         this.interaction.presentToast(
           'top',
           'La carga ha sido descargada correctamente.'
         );
+        let valor: string = item.nombre
+        this.service.entregadoMercancia(valor.replace(/ /g, '_')).subscribe((data) =>{})
         this.refreshEntregas();
       } else if (data.status === 404) {
         this.interaction.closeLoading();

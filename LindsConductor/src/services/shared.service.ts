@@ -61,10 +61,32 @@ export class SharedService {
     });
   }
 
-  confirmarViaje(val: any) {
-    return this.http.put<any[]>(this.APIURL + 'confirmarViaje/' + val, val, {
+  inicioViaje(val: any) {
+    return this.http.put<any[]>(this.APIURL + 'confirmarInicioViaje/' + val, val, {
       observe: 'response'
     });
+  }
+
+  finalViaje(val: any) {
+    return this.http.put<any[]>(this.APIURL + 'confirmarFinalViaje/' + val, val, {
+      observe: 'response'
+    });
+  }
+
+  enviadoMercancia(val: any) {
+    return this.http.put<any[]>(this.APIURL + 'enviadoMercancia/' + val, val);
+  }
+
+  entregadoMercancia(val: any) {
+    return this.http.put<any[]>(this.APIURL + 'entregadoMercancia/' + val, val);
+  }
+
+  disponibleCamion(val: any) {
+    return this.http.put<any[]>(this.APIURL + 'disponibleCamion/' + val, val);
+  }
+
+  disponibleUsuario(val: any) {
+    return this.http.put<any[]>(this.APIURL + 'disponibleUsuario/' + val, val);
   }
 
 }

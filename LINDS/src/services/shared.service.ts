@@ -280,4 +280,8 @@ export class SharedService {
       ''
     );
   }
+
+  noAsignarMercancia(val: any) {
+    return this.http.put<any[]>(this.APIURL + 'noAsignarMercancia/' + val, val);
+  }
 }

@@ -43,10 +43,10 @@
                   </ion-item>
                 </ion-card-content>
                 <ion-col class="icons-button">
-                  <ion-icon name="map" (click)="map(dataItem)" *ngIf="dataItem.estado=='Sin Asignar'"></ion-icon>
+                  <ion-icon name="map" (click)="map(dataItem)"></ion-icon>
                   <ion-icon name="pencil" id="open-modal" (click)="edit(dataItem)"
-                    *ngIf="dataItem.carga==false"></ion-icon>
-                  <ion-icon name="trash" (click)="delete(dataItem)" *ngIf="dataItem.carga==false"></ion-icon>
+                  *ngIf="dataItem.estado=='Sin Asignar'"></ion-icon>
+                  <ion-icon name="trash" (click)="delete(dataItem)" *ngIf="dataItem.estado=='Sin Asignar'"></ion-icon>
                 </ion-col>
               </ion-card>
             </ng-container>

@@ -376,6 +376,7 @@ def inactivarUsuario(request, cedula):
         usuario.save()
         return JsonResponse("Usuario Inactivado", safe=False)
 
+
 @csrf_exempt
 def disponibleUsuario(request, cedula):
     if request.method == 'PUT':
@@ -383,6 +384,7 @@ def disponibleUsuario(request, cedula):
         usuario.disponibilidad = "Disponible"
         usuario.save()
         return JsonResponse("Usuario Disponible", safe=False)
+
 
 @csrf_exempt
 def noDisponibleUsuario(request, cedula):
@@ -613,25 +615,42 @@ def eliminarViaje(request, id):
 @csrf_exempt
 def historialViaje(request, usuario):
     if request.method == 'GET':
-        viajes = Viaje.objects.filter(usuario=usuario)
+        viajes = Viaje.objects.filter(usuario=usuario, estado="Finalizado")
         viajes_serializers = ViajeSerializer(viajes, many=True)
         return JsonResponse(viajes_serializers.data, safe=False)
 
 
 def asignacionViaje(request, usuario):
     if request.method == 'GET':
-        viajes = Viaje.objects.filter(usuario=usuario, estado=False)
+        viajes = Viaje.objects.filter(usuario=usuario, estado="Cargado")
         viajes_serializers = ViajeSerializer(viajes, many=True)
         return JsonResponse(viajes_serializers.data, safe=False)
 
 
 @csrf_exempt
+def confirmarInicioViaje(request, id):
+    if request.method == 'PUT':
+        viaje = Viaje.objects.get(id=id)
+        viaje.estado = "En Curso"
+        viaje.save()
+        return JsonResponse("Viaje iniciado", safe=False, status=status.HTTP_200_OK)
+
+
+@csrf_exempt
+def confirmarFinalViaje(request, id):
+    if request.method == 'PUT':
+        viaje = Viaje.objects.get(id=id)
+        viaje.estado = "Finalizado"
+        viaje.save()
+        return JsonResponse("Viaje finalizado", safe=False, status=status.HTTP_200_OK)
+
+@csrf_exempt
 def confirmarViaje(request, id):
     if request.method == 'PUT':
         viaje = Viaje.objects.get(id=id)
-        viaje.estado = True
+        viaje.estado = "En Curso"
         viaje.save()
-        return JsonResponse("Viaje Finalizado", safe=False, status=status.HTTP_200_OK)
+        return JsonResponse("Viaje iniciado", safe=False, status=status.HTTP_200_OK)
 
 
 """
@@ -765,11 +784,43 @@ def modificarMercancia(request):
 @csrf_exempt
 def asignarMercancia(request, nombre, id):
     if request.method == 'PUT':
-        mercancia = Mercancia.objects.get(nombre=nombre)
+        valor = nombre.replace("_", " ")
+        mercancia = Mercancia.objects.get(nombre=valor)
         mercancia.viaje = id
+        mercancia.carga = True
         mercancia.estado = 'Cargado'
         mercancia.save()
         return JsonResponse("Mercancia cargada", safe=False)
+
+
+@csrf_exempt
+def noAsignarMercancia(request, viaje):
+    if request.method == 'PUT':
+        mercancias = Mercancia.objects.filter(viaje=viaje)
+        for mercancia in mercancias:
+            mercancia.estado = 'Sin Asignar'
+            mercancia.viaje = None
+            mercancia.save()
+        return JsonResponse("Mercancia Sin asignar", safe=False)
+
+@csrf_exempt
+def enviadoMercancia(request, viaje):
+    if request.method == 'PUT':
+        mercancias = Mercancia.objects.filter(viaje=viaje)
+        for mercancia in mercancias:
+            mercancia.estado = 'Enviado'
+            mercancia.save()
+        return JsonResponse("Mercancia enviada", safe=False)
+
+
+@csrf_exempt
+def entregadoMercancia(request, nombre):
+    if request.method == 'PUT':
+        valor = nombre.replace("_", " ")
+        mercancia = Mercancia.objects.get(nombre=valor)
+        mercancia.estado = 'Entregado'
+        mercancia.save()
+        return JsonResponse("Mercancia entregada", safe=False)
 
 
 @csrf_exempt

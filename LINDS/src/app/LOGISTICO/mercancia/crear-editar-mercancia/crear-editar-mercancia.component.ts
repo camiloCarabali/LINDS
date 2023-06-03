@@ -128,6 +128,9 @@ export class CrearEditarMercanciaComponent implements OnInit {
   }
 
   edit() {
+    if(this.viaje!=null){
+      this.estado = "Cargado"
+    }
     this.volumen = this.altura * this.ancho * this.largo;
     var val = {
       id: this.id,

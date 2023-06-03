@@ -60,7 +60,7 @@ export class CrearEditarViajeComponent implements OnInit {
       this.service.noDisponibleUsuario(val.usuario).subscribe((res: any) => {});
       this.service.addViaje(val).subscribe((res: any) => {
         for (let i of this.mercancia) {
-          this.service.asignarMercancia(i, res.id).subscribe((data) => {});
+          this.service.asignarMercancia(i.replace(/ /g, '_'), res.id).subscribe((data) => {});
         }
         this.interaction.presentToast('top', 'Viaje Asignado y Cargado');
       });

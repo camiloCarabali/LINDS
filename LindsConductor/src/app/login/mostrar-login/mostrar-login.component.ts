@@ -51,7 +51,7 @@ export class MostrarLoginComponent implements OnInit {
           } else if (res.rol == 'Conductor') {
             this.interaction.closeLoading();
             this.interaction.presentToast('top', 'Ingresado con Exito');
-            this.router.navigate(['/historial']);
+            this.router.navigate(['/perfil']);
             this.correo = ''
             this.password = ''
           } else if (res.rol == 'Logistico') {
@@ -61,7 +61,7 @@ export class MostrarLoginComponent implements OnInit {
             );
           }
 
-          localStorage.setItem('puntoInicio', res.sucursal);
+          localStorage.setItem('rutaInicio', res.sucursal);
         });
       },
       () => {
