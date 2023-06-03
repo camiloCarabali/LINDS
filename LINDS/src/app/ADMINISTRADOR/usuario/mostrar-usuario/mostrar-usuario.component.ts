@@ -51,6 +51,7 @@ export class MostrarUsuarioComponent implements OnInit {
       correo: '',
       rol: '',
       sucursal: '',
+      disponiblidad: ''
     };
     this.modalTitle = 'Añadir Usuario';
     this.ActivateCrearEditarUsuarioComp = true;

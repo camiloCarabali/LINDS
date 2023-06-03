@@ -27,6 +27,7 @@
             <ion-col>NOMBRE</ion-col>
             <ion-col>APELLIDO</ion-col>
             <ion-col>CORREO</ion-col>
+            <ion-col>DISPONIBILIDAD</ion-col>
           </ion-row>
 
           <ion-row *ngFor="let dataItem of conductorList" class="content-vehicle">
@@ -34,6 +35,7 @@
             <ion-col>{{ dataItem.nombre }}</ion-col>
             <ion-col>{{ dataItem.apellido }}</ion-col>
             <ion-col>{{ dataItem.correo }}</ion-col>
+            <ion-col>{{ dataItem.disponibilidad }}</ion-col>
           </ion-row>
 
         </div>

@@ -80,7 +80,7 @@ export class MostrarViajeComponent implements OnInit {
 
   delete(item: any) {
     this.service.disponibleCamion(item.camion).subscribe(() => {});
-
+    this.service.disponibleUsuario(item.usuario).subscribe(() => {});
     if (confirm('¿Desea eliminar este viaje?')) {
       this.service.eliminarViaje(item.id).subscribe((data) => {
         this.interaction.presentToast('top', data.toString());

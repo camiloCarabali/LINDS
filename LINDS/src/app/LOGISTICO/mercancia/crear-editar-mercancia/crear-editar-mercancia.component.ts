@@ -30,11 +30,15 @@ export class CrearEditarMercanciaComponent implements OnInit {
   puntoEntrega: string = '';
   destinatario: string = '';
   correoDestinatario: string = '';
+  telefonoDestinatario: string = '';
   remitente: string = '';
   correoRemitente: string = '';
+  telefonoRemitente: string = '';
   estado: string = '';
   carga: boolean = false;
+  fechaCarga: string = '';
   descarga: boolean = false;
+  fechaDescarga: string = '';
   empresa: any;
   sucursal: any;
   viaje: any;
@@ -51,11 +55,15 @@ export class CrearEditarMercanciaComponent implements OnInit {
     this.puntoEntrega = this.mercancia.puntoEntrega;
     this.destinatario = this.mercancia.destinatario;
     this.correoDestinatario = this.mercancia.correoDestinatario;
+    this.telefonoDestinatario = this.mercancia.telefonoDestinatario;
     this.remitente = this.mercancia.remitente;
     this.correoRemitente = this.mercancia.correoRemitente;
+    this.telefonoRemitente = this.mercancia.telefonoRemitente;
     this.estado = this.mercancia.estado;
     this.carga = this.mercancia.carga;
+    this.fechaCarga = this.mercancia.fechaCarga;
     this.descarga = this.mercancia.descarga;
+    this.fechaDescarga = this.mercancia.fechaDescarga;
     this.empresa = this.mercancia.empresa;
     this.sucursal = this.mercancia.sucursal;
     this.viaje = this.mercancia.viaje;
@@ -69,6 +77,8 @@ export class CrearEditarMercanciaComponent implements OnInit {
   add() {
     if (this.viaje == '') {
       this.viaje = null;
+      this.fechaCarga = null!;
+      this.fechaDescarga = null!;
     }
     this.volumen = this.altura * this.ancho * this.largo;
     var val = {
@@ -82,8 +92,10 @@ export class CrearEditarMercanciaComponent implements OnInit {
       puntoEntrega: this.puntoEntrega,
       destinatario: this.destinatario,
       correoDestinatario: this.correoDestinatario,
+      telefonoDestinatario: this.telefonoDestinatario,
       remitente: this.remitente,
       correoRemitente: this.correoRemitente,
+      telefonoRemitente: this.telefonoRemitente,
       viaje: this.viaje,
       empresa: localStorage.getItem('empresa'),
       sucursal: localStorage.getItem('sucursal'),
@@ -109,7 +121,7 @@ export class CrearEditarMercanciaComponent implements OnInit {
           );
           setTimeout(function () {
             location.reload();
-          }, 2000);
+          }, 1000);
         }
       });
     }
@@ -129,9 +141,15 @@ export class CrearEditarMercanciaComponent implements OnInit {
       puntoEntrega: this.puntoEntrega,
       destinatario: this.destinatario,
       correoDestinatario: this.correoDestinatario,
+      telefonoDestinatario: this.telefonoDestinatario,
+      remitente: this.remitente,
+      correoRemitente: this.correoRemitente,
+      telefonoRemitente: this.telefonoRemitente,
       estado: this.estado,
       carga: this.carga,
+      fechaCarga: this.fechaCarga,
       descarga: this.descarga,
+      fechaDescarga: this.fechaDescarga,
       empresa: this.empresa,
       sucursal: this.sucursal,
       viaje: this.viaje,
@@ -143,7 +161,7 @@ export class CrearEditarMercanciaComponent implements OnInit {
       });
       setTimeout(function () {
         location.reload();
-      }, 2000);
+      }, 1000);
     }
   }
 

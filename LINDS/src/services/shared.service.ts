@@ -160,6 +160,12 @@ export class SharedService {
     return this.http.get<any[]>(this.APIURL + 'buscarConductor/' + val);
   }
 
+  getBuscarConductorDisponible(val: string) {
+    return this.http.get<any[]>(
+      this.APIURL + 'buscarConductorDisponible/' + val
+    );
+  }
+
   getPuntoEntregaList(): Observable<any[]> {
     return this.http.get<any[]>(this.APIURL + 'puntoEntrega/');
   }
@@ -216,7 +222,18 @@ export class SharedService {
   }
 
   disponibleCamion(val: any) {
-    return this.http.put<any[]>(this.APIURL + 'disponibleCamion/', val);
+    return this.http.put<any[]>(this.APIURL + 'disponibleCamion/' + val, val);
+  }
+
+  disponibleUsuario(val: any) {
+    return this.http.put<any[]>(this.APIURL + 'disponibleUsuario/' + val, val);
+  }
+
+  noDisponibleUsuario(val: any) {
+    return this.http.put<any[]>(
+      this.APIURL + 'noDisponibleUsuario/' + val,
+      val
+    );
   }
 
   ocupadoCamion(val: any) {
@@ -235,8 +252,18 @@ export class SharedService {
     );
   }
 
+  mostrarMercanciaSinAsignarSucursal(val: String) {
+    return this.http.get<any[]>(
+      this.APIURL + 'mostrarMercanciaSinAsignarSucursal/' + val
+    );
+  }
+
   buscarViaje(val: String) {
     return this.http.get<any[]>(this.APIURL + 'buscarViaje/' + val);
+  }
+
+  buscarUltimoViaje(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'buscarUltimoViaje/' + val);
   }
 
   infoViaje(val: String) {
@@ -245,5 +272,12 @@ export class SharedService {
 
   direccionSucursal(val: String) {
     return this.http.get<any[]>(this.APIURL + 'direccionSucursal/' + val);
+  }
+
+  asignarMercancia(val: any, val2: any) {
+    return this.http.put<any[]>(
+      this.APIURL + 'asignarMercancia/' + val + '/' + val2,
+      ''
+    );
   }
 }

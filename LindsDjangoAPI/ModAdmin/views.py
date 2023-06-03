@@ -376,6 +376,22 @@ def inactivarUsuario(request, cedula):
         usuario.save()
         return JsonResponse("Usuario Inactivado", safe=False)
 
+@csrf_exempt
+def disponibleUsuario(request, cedula):
+    if request.method == 'PUT':
+        usuario = Usuario.objects.get(cedula=cedula)
+        usuario.disponibilidad = "Disponible"
+        usuario.save()
+        return JsonResponse("Usuario Disponible", safe=False)
+
+@csrf_exempt
+def noDisponibleUsuario(request, cedula):
+    if request.method == 'PUT':
+        usuario = Usuario.objects.get(cedula=cedula)
+        usuario.disponibilidad = "No Disponible"
+        usuario.save()
+        return JsonResponse("Usuario Disponible", safe=False)
+
 
 """
 /---------------------------------------------------------------/
@@ -547,6 +563,15 @@ def buscarViaje(request, sucursal):
 
 
 @csrf_exempt
+def buscarUltimoViaje(request, sucursal):
+    if request.method == 'GET':
+        valor = sucursal.replace("_", " ")
+        viajes = Viaje.objects.filter(sucursal=valor).order_by('-id')[:1]
+        viajes_serializers = ViajeSerializer(viajes, many=True)
+        return JsonResponse(viajes_serializers.data, safe=False)
+
+
+@csrf_exempt
 def infoViaje(request, id):
     if request.method == 'GET':
         viaje = Viaje.objects.filter(id=id)
@@ -561,7 +586,7 @@ def crearViaje(request):
         viaje_serializers = ViajeSerializer(data=viaje_data)
         if viaje_serializers.is_valid():
             viaje_serializers.save()
-            return JsonResponse("Viaje asignado", safe=False)
+            return JsonResponse(viaje_serializers.data, safe=False)
         return JsonResponse("Fallo al asignar un viaje", safe=False)
 
 
@@ -648,6 +673,15 @@ def buscarConductor(request, sucursal):
 
 
 @csrf_exempt
+def buscarConductorDisponible(request, sucursal):
+    if request.method == 'GET':
+        valor = sucursal.replace("_", " ")
+        conductores = Usuario.objects.filter(rol="Conductor", sucursal=valor, disponibilidad="Disponible")
+        conductores_serializers = UsuarioSerializer(conductores, many=True)
+        return JsonResponse(conductores_serializers.data, safe=False)
+
+
+@csrf_exempt
 def buscarPeso(request, matricula):
     if request.method == 'GET':
         camion = Camion.objects.get(matricula=matricula)
@@ -697,6 +731,15 @@ def mostrarMercanciaSucursal(request, sucursal):
 
 
 @csrf_exempt
+def mostrarMercanciaSinAsignarSucursal(request, sucursal):
+    if request.method == 'GET':
+        valor = sucursal.replace("_", " ")
+        mercancias = Mercancia.objects.filter(sucursal=valor, estado="Sin Asignar")
+        mercancias_serializers = MercanciaSerializer(mercancias, many=True)
+        return JsonResponse(mercancias_serializers.data, safe=False)
+
+
+@csrf_exempt
 def crearMercancia(request):
     if request.method == 'POST':
         mercancia_data = JSONParser().parse(request)
@@ -717,6 +760,16 @@ def modificarMercancia(request):
             mercancia_serializers.save()
             return JsonResponse("Mercancia modificada", safe=False)
         return JsonResponse("Fallo al modificar Mercancia", safe=False)
+
+
+@csrf_exempt
+def asignarMercancia(request, nombre, id):
+    if request.method == 'PUT':
+        mercancia = Mercancia.objects.get(nombre=nombre)
+        mercancia.viaje = id
+        mercancia.estado = 'Cargado'
+        mercancia.save()
+        return JsonResponse("Mercancia cargada", safe=False)
 
 
 @csrf_exempt

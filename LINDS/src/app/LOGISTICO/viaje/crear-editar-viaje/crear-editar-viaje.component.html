@@ -16,5 +16,15 @@
   </ion-item>
 </ion-list>
 
+
+<ion-list>
+  <ion-item>
+    <ion-select placeholder="Seleccione la mercancia" [multiple]="true" [(ngModel)]="mercancia">
+        <ion-select-option value="{{ item.nombre }}" *ngFor="let item of mercanciaList">{{ item.nombre
+        }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+</ion-list>
+
 <ion-button (click)="add()" *ngIf="viaje.id == 0">CREAR</ion-button>
 <ion-button (click)="edit()" *ngIf="viaje.id != 0">ACTUALIZAR</ion-button>

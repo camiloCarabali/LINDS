@@ -8,7 +8,10 @@ import { UiServiceService } from 'src/services/ui-service.service';
   styleUrls: ['./crear-editar-usuario.component.scss'],
 })
 export class CrearEditarUsuarioComponent implements OnInit {
-  constructor(private service: SharedService, private interaction: UiServiceService) {}
+  constructor(
+    private service: SharedService,
+    private interaction: UiServiceService
+  ) {}
 
   rolList: any = [];
   sucursalList: any = [];
@@ -24,6 +27,7 @@ export class CrearEditarUsuarioComponent implements OnInit {
   rol: any;
   empresa: any;
   sucursal: any;
+  disponibilidad: string = '';
 
   ngOnInit() {
     this.id = this.usuario.id;
@@ -35,6 +39,7 @@ export class CrearEditarUsuarioComponent implements OnInit {
     this.rol = this.usuario.rol;
     this.sucursal = this.usuario.sucursal;
     this.empresa = this.usuario.empresa;
+    this.disponibilidad = this.usuario.disponibilidad;
     this.cargarRol();
     this.cargarEmpresa();
     this.cargarSucursal();
@@ -52,6 +57,19 @@ export class CrearEditarUsuarioComponent implements OnInit {
         rol: this.rol,
         empresa: null,
         sucursal: null,
+        disponibilidad: null,
+      };
+    } else if (this.rol == 'Conductor') {
+      val = {
+        cedula: this.cedula,
+        nombre: this.nombre,
+        apellido: this.apellido,
+        correo: this.correo,
+        password: this.password,
+        rol: this.rol,
+        empresa: this.empresa,
+        sucursal: this.sucursal,
+        disponibilidad: 'Disponible',
       };
     } else {
       val = {
@@ -63,6 +81,7 @@ export class CrearEditarUsuarioComponent implements OnInit {
         rol: this.rol,
         empresa: this.empresa,
         sucursal: this.sucursal,
+        disponibilidad: null,
       };
     }
 
@@ -73,7 +92,10 @@ export class CrearEditarUsuarioComponent implements OnInit {
     this.service.addUsuario(val).subscribe((res: any) => {
       if (res.status === 200) {
         this.service.correo(correo).subscribe((res: any) => {});
-        this.interaction.presentToast('top', 'El usuario ha sido creado exitosamente');
+        this.interaction.presentToast(
+          'top',
+          'El usuario ha sido creado exitosamente'
+        );
       }
     });
   }

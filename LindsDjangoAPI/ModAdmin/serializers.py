@@ -48,7 +48,7 @@ class EstadoSerializer(serializers.ModelSerializer):
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
-        fields = ('cedula', 'nombre', 'apellido', 'correo', 'password', 'estado', 'empresa', 'sucursal', 'rol')
+        fields = ('cedula', 'nombre', 'apellido', 'correo', 'password', 'estado', 'disponibilidad', 'empresa', 'sucursal', 'rol')
 
         # extra_kwargs = {
         #     'password': {'write_only': True}
@@ -79,9 +79,9 @@ class MercanciaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mercancia
         fields = (
-            'id', 'puntoInicio', 'nombre', 'peso', 'puntoEntrega', 'destinatario', 'correoDestinatario', 'estado',
-            'carga', 'descarga', 'empresa', 'sucursal', 'viaje', 'altura', 'ancho', 'largo', 'volumen', 'remitente',
-            'correoRemitente')
+            'id', 'puntoInicio', 'nombre', 'peso', 'puntoEntrega', 'destinatario', 'correoDestinatario',
+            'telefonoDestinatario', 'estado', 'carga', 'fechaCarga', 'descarga', 'fechaDescarga', 'empresa', 'sucursal', 'viaje', 'altura', 'ancho',
+            'largo', 'volumen', 'remitente', 'correoRemitente', 'telefonoRemitente')
 
 
 class DetalleViajeSerializer(serializers.ModelSerializer):

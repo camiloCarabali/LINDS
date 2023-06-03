@@ -76,6 +76,16 @@
 </ion-item>
 
 <ion-item class="style-btn">
+  <ion-label position="floating">Telefono Remitente</ion-label>
+  <ion-input
+    placeholder="Escriba el telefono del remitente"
+    [(ngModel)]="telefonoRemitente"
+    type="number"
+    required="true"
+  ></ion-input>
+</ion-item>
+
+<ion-item class="style-btn">
   <ion-label position="floating">Destinatario</ion-label>
   <ion-input
     placeholder="Escriba el nombre del destinatario"
@@ -90,6 +100,16 @@
     placeholder="Escriba el correo del destinatario"
     [(ngModel)]="correoDestinatario"
     type="email"
+    required="true"
+  ></ion-input>
+</ion-item>
+
+<ion-item class="style-btn">
+  <ion-label position="floating">Telefono Destinatario</ion-label>
+  <ion-input
+    placeholder="Escriba el telefono del Destinatario"
+    [(ngModel)]="telefonoDestinatario "
+    type="number"
     required="true"
   ></ion-input>
 </ion-item>
