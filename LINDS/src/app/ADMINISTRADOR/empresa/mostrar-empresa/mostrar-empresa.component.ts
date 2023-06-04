@@ -66,6 +66,7 @@ export class MostrarEmpresaComponent implements OnInit {
       this.service.inactivarEmpresa(item.NIT).subscribe((data) => {
         this.interaction.presentToast('top', data.toString());
       });
+      this.refreshEmpresaList();
     }
   }
 
