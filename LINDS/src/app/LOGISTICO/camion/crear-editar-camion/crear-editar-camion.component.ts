@@ -54,15 +54,17 @@ export class CrearEditarCamionComponent implements OnInit {
       capacidad: this.capacidad,
       empresa: localStorage.getItem('empresa'),
       sucursal: localStorage.getItem('sucursal'),
-      estado: this.estado,
+      estado: true,
     };
+    
     if (confirm('¿Desea agregar un nuevo vehiculo?'))
       this.service.addCamion(val).subscribe((res: any) => {
         this.interaction.presentToast('top', res.toString());
         setTimeout(function () {
           location.reload();
-        }, 2000);
+        }, 1000);
       });
+      
   }
 
   edit() {
@@ -81,7 +83,7 @@ export class CrearEditarCamionComponent implements OnInit {
         this.interaction.presentToast('top', res.toString());
         setTimeout(function () {
           location.reload();
-        }, 2000);
+        }, 1000);
       });
     }
   }

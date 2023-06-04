@@ -38,7 +38,7 @@ export class MostrarUsuarioComponent implements OnInit {
 
   cancel() {
     this.ActivateCrearEditarUsuarioComp = false;
-    this.modal.dismiss(null, 'cancel');
+    this.setOpen(false);
     this.refreshUsuarioList();
   }
 

@@ -30,7 +30,7 @@
   ></ion-input>
 </ion-item>
 
-<ion-list>
+<ion-list *ngIf="camion.id != 0">
   <ion-item>
     <ion-select placeholder="Seleccione el estado" [(ngModel)]="estado">
       <ion-select-option value=true>Disponible</ion-select-option>

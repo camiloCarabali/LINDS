@@ -26,9 +26,9 @@
               </ion-card-header>
 
               <ion-card-content>
-                <ion-icon name="pencil-sharp">
+                <ion-icon name="pencil-sharp" (click)="edit(dataItem)">
                 </ion-icon>
-                <ion-icon name="trash">
+                <ion-icon name="trash" (click)="inactive(dataItem)">
                 </ion-icon>
               </ion-card-content>
             </ion-card>
