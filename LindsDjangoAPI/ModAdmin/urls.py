@@ -61,6 +61,7 @@ urlpatterns = [
     path('viaje/', views.mostrarViaje),
     path('infoViaje/<id>', views.infoViaje),
     path('buscarViaje/<sucursal>', views.buscarViaje),
+    path('buscarViajeCargados/<sucursal>', views.buscarViajeCargados),
     path('buscarUltimoViaje/<sucursal>', views.buscarUltimoViaje),
     path('crearViaje/', views.crearViaje),
     path('modificarViaje/', views.modificarViaje),

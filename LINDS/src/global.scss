@@ -25,14 +25,33 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-*{
+* {
   padding: 0%;
   margin: 0%;
 }
 
-body{
+body {
   width: 100vw;
   height: 100vh;
   background-color: darkred;
   z-index: 1000;
+}
+
+/* <ion-select multiple="true" ... */
+.alert-checkbox-label.sc-ion-alert-md,
+.alert-checkbox-label.sc-ion-alert-ios {
+  width: 520px !important;
+  white-space: normal !important;
+}
+
+.alert-wrapper.sc-ion-alert-md{
+  min-width: 430px !important;
+}
+
+
+/* <ion-select multiple="false" ... */
+.alert-radio-label.sc-ion-alert-md,
+.alert-radio-label.sc-ion-alert-ios {
+  width: 520px !important;
+  white-space: normal !important;
 }

@@ -1,5 +1,5 @@
 <ion-item class="style-btn">
-  <ion-label position="floating">Nombre</ion-label>
+  <ion-label position="floating">Descripción</ion-label>
   <ion-input
     placeholder="Escriba la descripcion de la mercancia"
     [(ngModel)]="nombre"
@@ -43,15 +43,6 @@
     placeholder="Escriba el largo del paquete en CM"
     [(ngModel)]="largo"
     type="number"
-    required="true"
-  ></ion-input>
-</ion-item>
-
-<ion-item class="style-btn">
-  <ion-label position="floating">Punto de entrega</ion-label>
-  <ion-input
-    placeholder="Escriba el punto de entrega"
-    [(ngModel)]="puntoEntrega"
     required="true"
   ></ion-input>
 </ion-item>
@@ -110,6 +101,15 @@
     placeholder="Escriba el telefono del Destinatario"
     [(ngModel)]="telefonoDestinatario"
     type="number"
+    required="true"
+  ></ion-input>
+</ion-item>
+
+<ion-item class="style-btn">
+  <ion-label position="floating">Punto de entrega</ion-label>
+  <ion-input
+    placeholder="Escriba el punto de entrega"
+    [(ngModel)]="puntoEntrega"
     required="true"
   ></ion-input>
 </ion-item>

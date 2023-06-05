@@ -119,17 +119,17 @@ export class CrearEditarMercanciaComponent implements OnInit {
             'top',
             'Recepción de Mercancia Completada'
           );
-          setTimeout(function () {
-            location.reload();
-          }, 1000);
+          this.interaction.presentAlert1(
+            'Por favor valide el punto de entrega en el mapa.'
+          );
         }
       });
     }
   }
 
   edit() {
-    if(this.viaje!=null){
-      this.estado = "Cargado"
+    if (this.viaje != null) {
+      this.estado = 'Cargado';
     }
     this.volumen = this.altura * this.ancho * this.largo;
     var val = {
@@ -162,9 +162,9 @@ export class CrearEditarMercanciaComponent implements OnInit {
       this.service.updateMercancia(val).subscribe((res) => {
         this.interaction.presentToast('top', res.toString());
       });
-      setTimeout(function () {
-        location.reload();
-      }, 1000);
+      this.interaction.presentAlert1(
+        'Por favor valide el punto de entrega en el mapa.'
+      );
     }
   }
 
@@ -207,8 +207,10 @@ export class CrearEditarMercanciaComponent implements OnInit {
 
   cargarViaje() {
     let valor = (this.sucursal = localStorage.getItem('sucursal')!);
-    this.service.buscarViaje(valor.replace(/ /g, '_')).subscribe((data) => {
-      this.viajeList = data;
-    });
+    this.service
+      .buscarViajeCargados(valor.replace(/ /g, '_'))
+      .subscribe((data) => {
+        this.viajeList = data;
+      });
   }
 }

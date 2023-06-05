@@ -565,6 +565,15 @@ def buscarViaje(request, sucursal):
 
 
 @csrf_exempt
+def buscarViajeCargados(request, sucursal):
+    if request.method == 'GET':
+        valor = sucursal.replace("_", " ")
+        viajes = Viaje.objects.filter(sucursal=valor, estado="Cargado")
+        viajes_serializers = ViajeSerializer(viajes, many=True)
+        return JsonResponse(viajes_serializers.data, safe=False)
+
+
+@csrf_exempt
 def buscarUltimoViaje(request, sucursal):
     if request.method == 'GET':
         valor = sucursal.replace("_", " ")
