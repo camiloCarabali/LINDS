@@ -48,6 +48,9 @@ body {
   min-width: 430px !important;
 }
 
+ion-content::part(scroll) {
+  padding-bottom: 56px;
+}
 
 /* <ion-select multiple="false" ... */
 .alert-radio-label.sc-ion-alert-md,
