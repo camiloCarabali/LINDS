@@ -52,8 +52,8 @@ export class MostrarLoginComponent implements OnInit {
             this.interaction.closeLoading();
             this.interaction.presentToast('top', 'Ingresado con Exito');
             this.router.navigate(['/perfil']);
-            this.correo = ''
-            this.password = ''
+            this.correo = '';
+            this.password = '';
           } else if (res.rol == 'Logistico') {
             this.interaction.closeLoading();
             this.interaction.presentAlert(
@@ -61,7 +61,8 @@ export class MostrarLoginComponent implements OnInit {
             );
           }
 
-          localStorage.setItem('rutaInicio', res.sucursal);
+          localStorage.setItem('sucursal', res.sucursal);
+          this.direccion();
         });
       },
       () => {
@@ -69,5 +70,14 @@ export class MostrarLoginComponent implements OnInit {
         this.interaction.presentToast('top', 'Correo o Contraseña invalido');
       }
     );
+  }
+
+  direccion() {
+    let valor = localStorage.getItem('sucursal')!;
+    this.service
+      .direccionSucursal(valor.replace(/ /g, '_'))
+      .subscribe((data: any) => {
+        localStorage.setItem('rutaInicio', data);
+      });
   }
 }

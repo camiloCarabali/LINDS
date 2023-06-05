@@ -17,6 +17,10 @@
   color: black;
 }
 
+ion-content::part(scroll) {
+  padding-bottom: 56px;
+}
+
 ion-item {
   --background: #BEDEF1
 }
