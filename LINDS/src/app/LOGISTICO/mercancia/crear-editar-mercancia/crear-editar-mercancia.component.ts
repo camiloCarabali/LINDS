@@ -67,7 +67,7 @@ export class CrearEditarMercanciaComponent implements OnInit {
     this.empresa = this.mercancia.empresa;
     this.sucursal = this.mercancia.sucursal;
     this.viaje = this.mercancia.viaje;
-    this.cargarPuntoEntrega();
+    //this.cargarPuntoEntrega();
     this.direccion();
     this.cargarConductor();
     this.cargarCamion();
@@ -195,7 +195,7 @@ export class CrearEditarMercanciaComponent implements OnInit {
         this.camionList = data;
       });
   }
-
+/*
   cargarPuntoEntrega() {
     let valor = localStorage.getItem('sucursal')!;
     this.service
@@ -204,7 +204,7 @@ export class CrearEditarMercanciaComponent implements OnInit {
         this.puntoEntregaList = data;
       });
   }
-
+*/
   cargarViaje() {
     let valor = (this.sucursal = localStorage.getItem('sucursal')!);
     this.service

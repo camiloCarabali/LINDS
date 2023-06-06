@@ -80,11 +80,11 @@ WSGI_APPLICATION = 'LindsDjangoAPI.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': 'localhost',
+        'HOST': 'especie-arborea.c3ls3aruuscr.us-east-1.rds.amazonaws.com',
         'PORT': '3306',
-        'USER': 'root',
-        'PASSWORD': '',
-        'NAME': 'linds',
+        'USER': 'admin',
+        'PASSWORD': 'vhqv7A0js+',
+        'NAME': 'lidis',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
         }

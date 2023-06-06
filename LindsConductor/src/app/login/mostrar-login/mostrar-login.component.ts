@@ -65,7 +65,7 @@ export class MostrarLoginComponent implements OnInit {
           this.direccion();
         });
       },
-      () => {
+      () => { 
         this.interaction.closeLoading();
         this.interaction.presentToast('top', 'Correo o Contraseña invalido');
       }
