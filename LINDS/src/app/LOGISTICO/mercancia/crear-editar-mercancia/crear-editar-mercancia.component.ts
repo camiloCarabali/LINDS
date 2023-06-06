@@ -67,7 +67,7 @@ export class CrearEditarMercanciaComponent implements OnInit {
     this.empresa = this.mercancia.empresa;
     this.sucursal = this.mercancia.sucursal;
     this.viaje = this.mercancia.viaje;
-    this.cargarPuntoEntrega();
+    //this.cargarPuntoEntrega();
     this.direccion();
     this.cargarConductor();
     this.cargarCamion();
@@ -119,17 +119,17 @@ export class CrearEditarMercanciaComponent implements OnInit {
             'top',
             'Recepción de Mercancia Completada'
           );
-          setTimeout(function () {
-            location.reload();
-          }, 1000);
+          this.interaction.presentAlert1(
+            'Por favor valide el punto de entrega en el mapa.'
+          );
         }
       });
     }
   }
 
   edit() {
-    if(this.viaje!=null){
-      this.estado = "Cargado"
+    if (this.viaje != null) {
+      this.estado = 'Cargado';
     }
     this.volumen = this.altura * this.ancho * this.largo;
     var val = {
@@ -162,9 +162,9 @@ export class CrearEditarMercanciaComponent implements OnInit {
       this.service.updateMercancia(val).subscribe((res) => {
         this.interaction.presentToast('top', res.toString());
       });
-      setTimeout(function () {
-        location.reload();
-      }, 1000);
+      this.interaction.presentAlert1(
+        'Por favor valide el punto de entrega en el mapa.'
+      );
     }
   }
 
@@ -195,7 +195,7 @@ export class CrearEditarMercanciaComponent implements OnInit {
         this.camionList = data;
       });
   }
-
+/*
   cargarPuntoEntrega() {
     let valor = localStorage.getItem('sucursal')!;
     this.service
@@ -204,11 +204,13 @@ export class CrearEditarMercanciaComponent implements OnInit {
         this.puntoEntregaList = data;
       });
   }
-
+*/
   cargarViaje() {
     let valor = (this.sucursal = localStorage.getItem('sucursal')!);
-    this.service.buscarViaje(valor.replace(/ /g, '_')).subscribe((data) => {
-      this.viajeList = data;
-    });
+    this.service
+      .buscarViajeCargados(valor.replace(/ /g, '_'))
+      .subscribe((data) => {
+        this.viajeList = data;
+      });
   }
 }

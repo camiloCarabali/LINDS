@@ -54,6 +54,8 @@ export class MapaViajeComponent implements OnInit {
       }
       this.llegada = data[data.length - 1];
       waypoints.pop()
+      console.log(this.llegada)
+      console.log(waypoints)
       this.directionsService
         .route({
           origin: {

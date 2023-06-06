@@ -56,7 +56,7 @@ export class CrearEditarCamionComponent implements OnInit {
       sucursal: localStorage.getItem('sucursal'),
       estado: true,
     };
-    
+
     if (confirm('¿Desea agregar un nuevo vehiculo?'))
       this.service.addCamion(val).subscribe((res: any) => {
         this.interaction.presentToast('top', res.toString());
@@ -64,7 +64,6 @@ export class CrearEditarCamionComponent implements OnInit {
           location.reload();
         }, 1000);
       });
-      
   }
 
   edit() {

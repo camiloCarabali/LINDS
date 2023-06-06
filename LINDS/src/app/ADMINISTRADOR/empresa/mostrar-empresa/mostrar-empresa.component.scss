@@ -15,6 +15,10 @@
   color: black;
 }
 
+ion-content::part(scroll) {
+  padding-bottom: 56px;
+}
+
 .list-botones{
   background-color: #C9E3F7;
 }

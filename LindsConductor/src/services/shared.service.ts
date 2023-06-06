@@ -89,4 +89,8 @@ export class SharedService {
     return this.http.put<any[]>(this.APIURL + 'disponibleUsuario/' + val, val);
   }
 
+  direccionSucursal(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'direccionSucursal/' + val);
+  }
+
 }

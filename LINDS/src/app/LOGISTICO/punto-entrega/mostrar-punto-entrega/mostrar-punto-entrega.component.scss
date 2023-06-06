@@ -17,6 +17,10 @@
   color: black;
 }
 
+ion-content::part(scroll) {
+  padding-bottom: 56px;
+}
+
 ion-icon {
   cursor: pointer;
 }
@@ -120,4 +124,14 @@ ion-content {
 .close-button {
   font-size: 20px;
   font-weight: bold;
+}
+
+.principal{
+  border: solid 1px #000000;
+}
+
+.principal2{
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border: solid 1px #000000;
 }

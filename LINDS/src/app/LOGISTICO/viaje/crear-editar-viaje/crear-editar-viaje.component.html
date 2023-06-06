@@ -7,7 +7,7 @@
   </ion-item>
 </ion-list>
 
-<ion-list>
+<ion-list *ngIf="viaje.id == 0">
   <ion-item>
     <ion-select placeholder="Seleccione el conductor" [(ngModel)]="usuario">
       <ion-select-option value="{{ user.cedula }}" *ngFor="let user of conductorList">{{ user.nombre
@@ -20,8 +20,7 @@
 <ion-list>
   <ion-item>
     <ion-select placeholder="Seleccione la mercancia" [multiple]="true" [(ngModel)]="mercancia">
-        <ion-select-option value="{{ item.nombre }}" *ngFor="let item of mercanciaList">{{ item.nombre
-        }}</ion-select-option>
+        <ion-select-option value="{{ item.nombre }}" *ngFor="let item of mercanciaList">{{item.puntoEntrega}} - {{item.nombre}}</ion-select-option>
     </ion-select>
   </ion-item>
 </ion-list>

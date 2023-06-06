@@ -262,6 +262,10 @@ export class SharedService {
     return this.http.get<any[]>(this.APIURL + 'buscarViaje/' + val);
   }
 
+  buscarViajeCargados(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'buscarViajeCargados/' + val);
+  }
+
   buscarUltimoViaje(val: String) {
     return this.http.get<any[]>(this.APIURL + 'buscarUltimoViaje/' + val);
   }
