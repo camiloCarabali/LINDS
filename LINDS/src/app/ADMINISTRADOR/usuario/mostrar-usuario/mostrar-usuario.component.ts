@@ -9,6 +9,8 @@ import { UiServiceService } from 'src/services/ui-service.service';
   styleUrls: ['./mostrar-usuario.component.scss'],
 })
 export class MostrarUsuarioComponent implements OnInit {
+  p: number = 1;
+
   @ViewChild(IonModal)
   modal!: IonModal;
 

@@ -18,7 +18,7 @@
         <ion-input class="ion-text-start" fill="outline" placeholder="Buscar..." [(ngModel)]="nombreFilter"
         (keyup)="FilterFn()"></ion-input>
         <ion-row class="main">
-          <ng-container *ngFor="let dataItem of empresaList">
+          <ng-container *ngFor="let dataItem of empresaList | paginate: { itemsPerPage: 7, currentPage: p }">
             <ion-card class="card-style" *ngIf="dataItem.estado">
               <ion-card-header>
                 <ion-card-title>{{ dataItem.nombre }}</ion-card-title>

@@ -25,7 +25,7 @@
             <ion-col size="1">Acciones</ion-col>
           </ion-row>
 
-          <ng-container *ngFor="let dataItem of usuarioList">
+          <ng-container *ngFor="let dataItem of usuarioList | paginate: { itemsPerPage: 7, currentPage: p }">
             <ion-row class="content-user">
               <ion-col size="2">{{ dataItem.nombre }} {{ dataItem.apellido }}</ion-col>
               <ion-col size="3">{{ dataItem.correo }}</ion-col>
@@ -43,6 +43,7 @@
               </ion-col>
             </ion-row>
           </ng-container>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
 
         <ion-button class="button-add" id="open-modal" (click)="add()" shape="round"><ion-icon name="add"></ion-icon></ion-button>

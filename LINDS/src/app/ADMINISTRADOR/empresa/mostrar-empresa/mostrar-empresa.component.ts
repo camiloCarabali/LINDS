@@ -10,6 +10,8 @@ import { UiServiceService } from 'src/services/ui-service.service';
   styleUrls: ['./mostrar-empresa.component.scss'],
 })
 export class MostrarEmpresaComponent implements OnInit {
+  p: number = 1;
+  
   @ViewChild(IonModal)
   modal!: IonModal;
 
