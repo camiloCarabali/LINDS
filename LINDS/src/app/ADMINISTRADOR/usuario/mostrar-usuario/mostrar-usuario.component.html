@@ -21,17 +21,18 @@
             <ion-col size="3">Correo</ion-col>
             <ion-col size="2">Rol</ion-col>
             <ion-col size="2">Sucursal</ion-col>
-            <ion-col size="2">Empresa</ion-col>
+            <ion-col size="2">Estado</ion-col>
             <ion-col size="1">Acciones</ion-col>
           </ion-row>
 
           <ng-container *ngFor="let dataItem of usuarioList">
-            <ion-row *ngIf="dataItem.estado" class="content-user">
+            <ion-row class="content-user">
               <ion-col size="2">{{ dataItem.nombre }} {{ dataItem.apellido }}</ion-col>
               <ion-col size="3">{{ dataItem.correo }}</ion-col>
               <ion-col size="2">{{ dataItem.rol }}</ion-col>
               <ion-col size="2">{{ dataItem.sucursal }}</ion-col>
-              <ion-col size="2">{{ dataItem.empresa }}</ion-col>
+              <ion-col size="2" *ngIf="dataItem.estado == true">Activo</ion-col>
+              <ion-col size="2" *ngIf="dataItem.estado == false">Inactivo</ion-col>
               <ion-col size="1" class="icons-button">
                 <ion-icon
                   name="pencil-sharp"

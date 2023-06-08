@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ccee2ac3-87c6-40b6-acf3-9423e1e1dc58" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../LINDS/src/services/shared.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/services/shared.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/LindsDjangoAPI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LindsDjangoAPI.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LindsConductor/android/app/capacitor.build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../LindsConductor/android/app/capacitor.build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LindsConductor/android/capacitor.settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../LindsConductor/android/capacitor.settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LindsConductor/src/services/shared.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../LindsConductor/src/services/shared.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LindsDjangoAPI/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/LindsDjangoAPI/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ModAdmin/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ModAdmin/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,16 +29,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "camilo",
-    "last_opened_file_path": "C:/Users/CamiloCarabali/Documents/GitHub/LINDS/LindsDjangoAPI",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;camilo&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/CamiloCarabali/Documents/GitHub/LINDS/LindsDjangoAPI&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\camil\OneDrive\Documentos\GitHub\LINDS\LindsDjangoAPI" />

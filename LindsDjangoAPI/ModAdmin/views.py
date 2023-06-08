@@ -770,6 +770,14 @@ def mostrarMercanciaSucursal(request, sucursal):
 def mostrarMercanciaSinAsignarSucursal(request, sucursal):
     if request.method == 'GET':
         valor = sucursal.replace("_", " ")
+        mercancias = Mercancia.objects.filter(sucursal=valor, estado="Sin Asignar")
+        mercancias_serializers = MercanciaSerializer(mercancias, many=True)
+        return JsonResponse(mercancias_serializers.data, safe=False)
+
+@csrf_exempt
+def mostrarMercanciaSinAsignarYCargadoSucursal(request, sucursal):
+    if request.method == 'GET':
+        valor = sucursal.replace("_", " ")
         mercancias = Mercancia.objects.filter(sucursal=valor, estado__in=["Sin Asignar", "Cargado"])
         mercancias_serializers = MercanciaSerializer(mercancias, many=True)
         return JsonResponse(mercancias_serializers.data, safe=False)
@@ -941,6 +949,9 @@ class login(APIView):
 
         if not user.check_password(password):
             raise AuthenticationFailed('Incorrect password!')
+
+        if user.estado is False:
+            raise AuthenticationFailed('User not inactivate!')
 
         payload = {
             'cedula': user.cedula,

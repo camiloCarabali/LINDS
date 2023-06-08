@@ -76,5 +76,14 @@
   </ion-item>
 </ion-list>
 
+<ion-list *ngIf="usuario.id != 0">
+  <ion-item>
+    <ion-select placeholder="Seleccione el estado" [(ngModel)]=estado>
+      <ion-select-option value=true>Activo</ion-select-option>
+      <ion-select-option value=false>Inactivo</ion-select-option>
+    </ion-select>
+  </ion-item>
+</ion-list>
+
 <ion-button color="boton2" (click)="add()" *ngIf="usuario.id == 0">CREAR</ion-button>
 <ion-button color="boton2" (click)="editar()" *ngIf="usuario.id != 0">ACTUALIZAR</ion-button>
