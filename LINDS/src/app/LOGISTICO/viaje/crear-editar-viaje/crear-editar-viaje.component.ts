@@ -16,6 +16,7 @@ export class CrearEditarViajeComponent implements OnInit {
   camionList: any = [];
   conductorList: any = [];
   mercanciaList: any = [];
+  mercanciaList2: any = [];
 
   @Input() viaje: any;
   id: string = '';
@@ -43,6 +44,7 @@ export class CrearEditarViajeComponent implements OnInit {
     this.cargarCamion();
     this.cargarConductor();
     this.cargarMercancia();
+    this.cargarMercancia2()
   }
 
   add() {
@@ -125,6 +127,15 @@ export class CrearEditarViajeComponent implements OnInit {
       .mostrarMercanciaSinAsignarSucursal(valor.replace(/ /g, '_'))
       .subscribe((data) => {
         this.mercanciaList = data;
+      });
+  }
+
+  cargarMercancia2() {
+    let valor = (this.sucursal = localStorage.getItem('sucursal')!);
+    this.service
+      .mostrarMercanciaSinAsignarYCargadoSucursal(valor.replace(/ /g, '_'))
+      .subscribe((data) => {
+        this.mercanciaList2 = data;
       });
   }
 }

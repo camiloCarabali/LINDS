@@ -65,7 +65,7 @@ export class InicioComponent implements OnInit {
         });
       },
       () => {
-        this.interaction.presentToast('top', 'Correo o Contraseña invalido');
+        this.interaction.presentToast('top', 'Usuario o contraseña invalida');
       }
     );
   }

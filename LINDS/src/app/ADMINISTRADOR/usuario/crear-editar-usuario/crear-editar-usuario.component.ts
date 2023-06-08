@@ -27,6 +27,7 @@ export class CrearEditarUsuarioComponent implements OnInit {
   rol: any;
   empresa: any;
   sucursal: any;
+  estado: any;
   disponibilidad: string = '';
 
   ngOnInit() {
@@ -40,6 +41,8 @@ export class CrearEditarUsuarioComponent implements OnInit {
     this.sucursal = this.usuario.sucursal;
     this.empresa = this.usuario.empresa;
     this.disponibilidad = this.usuario.disponibilidad;
+    this.estado = this.usuario.estado;
+    console.log(this.estado)
     this.cargarRol();
     this.cargarEmpresa();
     this.cargarSucursal();
@@ -91,7 +94,7 @@ export class CrearEditarUsuarioComponent implements OnInit {
     };
     this.service.addUsuario(val).subscribe((res: any) => {
       if (res.status === 200) {
-        this.service.correo(correo).subscribe((res: any) => {});
+        this.service.correo(correo).subscribe((data: any) => {});
         this.interaction.presentToast(
           'top',
           'El usuario ha sido creado exitosamente'
@@ -110,6 +113,7 @@ export class CrearEditarUsuarioComponent implements OnInit {
       rol: this.rol,
       empresa: this.empresa,
       sucursal: this.sucursal,
+      estado: this.estado
     };
     this.service.updateUsuario(val).subscribe((res) => {
       this.interaction.presentToast('top', res.toString());

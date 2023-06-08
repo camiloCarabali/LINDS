@@ -9,6 +9,8 @@ import { UiServiceService } from 'src/services/ui-service.service';
   styleUrls: ['./mostrar-usuario.component.scss'],
 })
 export class MostrarUsuarioComponent implements OnInit {
+  p: number = 1;
+
   @ViewChild(IonModal)
   modal!: IonModal;
 
@@ -61,6 +63,7 @@ export class MostrarUsuarioComponent implements OnInit {
 
   edit(item: any) {
     this.usuario = item;
+    console.log(this.usuario)
     this.modalTitle = 'Editar Usuario';
     this.ActivateCrearEditarUsuarioComp = true;
     this.setOpen(true);
