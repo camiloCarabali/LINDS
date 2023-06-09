@@ -44,7 +44,7 @@ export class CrearEditarViajeComponent implements OnInit {
     this.cargarCamion();
     this.cargarConductor();
     this.cargarMercancia();
-    this.cargarMercancia2()
+    this.cargarMercancia2();
   }
 
   add() {

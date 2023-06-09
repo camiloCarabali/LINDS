@@ -28,7 +28,7 @@ export class CrearEditarCamionComponent implements OnInit {
   modelo: string = '';
   tipo: string = '';
   color: string = '';
-  capacidad: number = 0;
+  capacidad: string = '';
   empresa: any;
   sucursal: any;
   estado: boolean = true;
@@ -57,13 +57,22 @@ export class CrearEditarCamionComponent implements OnInit {
       estado: true,
     };
 
-    if (confirm('¿Desea agregar un nuevo vehiculo?'))
-      this.service.addCamion(val).subscribe((res: any) => {
-        this.interaction.presentToast('top', res.toString());
-        setTimeout(function () {
-          location.reload();
-        }, 1000);
-      });
+    if (
+      ![val.matricula, val.modelo, val.tipo, val.color, val.capacidad].every(
+        Boolean
+      )
+    ) {
+      this.interaction.presentToast('top', 'Por favor llenar todos los campos');
+    } else {
+      if (confirm('¿Desea agregar un nuevo vehiculo?')) {
+        this.service.addCamion(val).subscribe((res: any) => {
+          this.interaction.presentToast('top', res.toString());
+          setTimeout(function () {
+            location.reload();
+          }, 1000);
+        });
+      }
+    }
   }
 
   edit() {
@@ -78,7 +87,7 @@ export class CrearEditarCamionComponent implements OnInit {
       estado: this.estado,
     };
     if (confirm('¿Desea actualizar la información del vehiculo?')) {
-      this.service.updateCamion(val).subscribe((res) => {
+      this.service.updateCamion(val).subscribe((res: any) => {
         this.interaction.presentToast('top', res.toString());
         setTimeout(function () {
           location.reload();
