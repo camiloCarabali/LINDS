@@ -17,7 +17,7 @@
             (keyup)="FilterFn()"></ion-input>
 
           <ion-row class="main">
-            <ng-container *ngFor="let dataItem of mercanciaList">
+            <ng-container *ngFor="let dataItem of mercanciaList | paginate: { itemsPerPage: 7, currentPage: p }">
               <ion-card class="card-style">
                 <ion-card-header>
                   <ion-card-subtitle>#{{dataItem.id}}</ion-card-subtitle>

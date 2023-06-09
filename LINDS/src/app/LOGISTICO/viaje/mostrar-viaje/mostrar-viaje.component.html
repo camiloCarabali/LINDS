@@ -30,7 +30,7 @@
             <ion-col>ACCIONES</ion-col>
           </ion-row>
 
-          <ng-container *ngFor="let dataItem of viajeList">
+          <ng-container *ngFor="let dataItem of viajeList | paginate: { itemsPerPage: 7, currentPage: p }">
             <ion-row *ngFor="let data of capacidad" class="content-travel">
               <ion-col size="1">{{ dataItem.id }}</ion-col>
               <ion-col>{{ dataItem.fecha | date: 'fullDate' }}</ion-col>

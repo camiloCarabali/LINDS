@@ -25,7 +25,7 @@
             <ion-col>ACCIONES</ion-col>
           </ion-row>
 
-          <ion-row *ngFor="let dataItem of camionList" class="content-vehicle">
+          <ion-row *ngFor="let dataItem of camionList | paginate: { itemsPerPage: 7, currentPage: p }" class="content-vehicle">
             <ion-col>{{ dataItem.matricula }}</ion-col>
             <ion-col>{{ dataItem.modelo }}</ion-col>
             <ion-col>{{ dataItem.tipo }}</ion-col>
