@@ -80,7 +80,7 @@ urlpatterns = [
     path('cargaMercancia/<id>', views.cargaMercancia),
     path('mostrarMercanciaSucursal/<sucursal>', views.mostrarMercanciaSucursal),
     path('mostrarMercanciaSinAsignarSucursal/<sucursal>', views.mostrarMercanciaSinAsignarSucursal),
-    path('mostrarMercanciaSinAsignarYCargadoSucursal/<sucursal>', views.mostrarMercanciaSinAsignarYCargadoSucursal),
+    path('mostrarMercanciaSinAsignarYCargadoSucursal/<sucursal>/<viaje>', views.mostrarMercanciaSinAsignarYCargadoSucursal),
     path('descargaMercancia/<id>', views.descargaMercancia),
     path('eliminarMercancia/<id>', views.eliminarMercancia),
     path('historialViaje/<usuario>', views.historialViaje),
