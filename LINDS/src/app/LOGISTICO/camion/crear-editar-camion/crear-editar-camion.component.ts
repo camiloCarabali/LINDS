@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { IonModal } from '@ionic/angular';
 import { SharedService } from 'src/services/shared.service';
 import { UiServiceService } from 'src/services/ui-service.service';
 
@@ -8,11 +9,7 @@ import { UiServiceService } from 'src/services/ui-service.service';
   styleUrls: ['./crear-editar-camion.component.scss'],
 })
 export class CrearEditarCamionComponent implements OnInit {
-  isModalOpen = false;
-
-  setOpen(isOpen: boolean) {
-    this.isModalOpen = isOpen;
-  }
+  @ViewChild(IonModal) modal: IonModal;
 
   constructor(
     private service: SharedService,
@@ -21,6 +18,7 @@ export class CrearEditarCamionComponent implements OnInit {
 
   empresaList: any = [];
   sucursalList: any = [];
+  camionList: any = [];
 
   @Input() camion: any;
   id: string = '';
@@ -46,6 +44,8 @@ export class CrearEditarCamionComponent implements OnInit {
   }
 
   add() {
+    var regex = new RegExp('([A-Z]){3}[0-9]{3}');
+
     var val = {
       matricula: this.matricula,
       modelo: this.modelo,
@@ -57,21 +57,28 @@ export class CrearEditarCamionComponent implements OnInit {
       estado: true,
     };
 
-    if (
-      ![val.matricula, val.modelo, val.tipo, val.color, val.capacidad].every(
-        Boolean
-      )
-    ) {
-      this.interaction.presentToast('top', 'Por favor llenar todos los campos');
-    } else {
-      if (confirm('¿Desea agregar un nuevo vehiculo?')) {
-        this.service.addCamion(val).subscribe((res: any) => {
-          this.interaction.presentToast('top', res.toString());
-          setTimeout(function () {
-            location.reload();
-          }, 1000);
-        });
+    if (regex.test(val.matricula)) {
+      if (
+        ![val.matricula, val.modelo, val.tipo, val.color, val.capacidad].every(
+          Boolean
+        )
+      ) {
+        this.interaction.presentToast(
+          'top',
+          'Por favor llenar todos los campos'
+        );
+      } else {
+        if (confirm('¿Desea agregar un nuevo vehiculo?')) {
+          this.service.addCamion(val).subscribe((res: any) => {
+            this.interaction.presentToast('top', res.toString());
+          });
+        }
       }
+    } else {
+      this.interaction.presentToast(
+        'top',
+        'La matricula tiene que estar en este formato "AAA000"'
+      );
     }
   }
 
@@ -94,5 +101,12 @@ export class CrearEditarCamionComponent implements OnInit {
         }, 1000);
       });
     }
+  }
+
+  refreshCamionList() {
+    let valor = (this.sucursal = localStorage.getItem('sucursal')!);
+    this.service.getBuscarCamion(valor.replace(/ /g, '_')).subscribe((data) => {
+      this.camionList = data;
+    });
   }
 }
