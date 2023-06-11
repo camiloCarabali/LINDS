@@ -131,10 +131,9 @@ export class CrearEditarViajeComponent implements OnInit {
   }
 
   cargarMercancia2() {
-    console.log(this.id)
     let valor = (this.sucursal = localStorage.getItem('sucursal')!);
     this.service
-      .mostrarMercanciaSinAsignarYCargadoSucursal(valor.replace(/ /g, '_'), this.id)
+      .mostrarMercanciaSinAsignarYCargadoSucursal(valor.replace(/ /g, '_'))
       .subscribe((data) => {
         this.mercanciaList2 = data;
       });

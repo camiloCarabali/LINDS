@@ -14,7 +14,7 @@
       <ion-col class="col-right" size="9">
         <div class="row-content">
           <ion-input class="ion-text-start" fill="outline" placeholder="Buscar..." [(ngModel)]="modeloFilter"
-            (keyup)="FilterFn()"></ion-input>
+          (keyup)="FilterFn()"></ion-input>
           <ion-row class="main">
             <ion-col>MATRICULA</ion-col>
             <ion-col>MODELO</ion-col>
@@ -25,8 +25,7 @@
             <ion-col>ACCIONES</ion-col>
           </ion-row>
 
-          <ion-row *ngFor="let dataItem of camionList | paginate: { itemsPerPage: 7, currentPage: p }"
-            class="content-vehicle">
+          <ion-row *ngFor="let dataItem of camionList | paginate: { itemsPerPage: 7, currentPage: p }" class="content-vehicle">
             <ion-col>{{ dataItem.matricula }}</ion-col>
             <ion-col>{{ dataItem.modelo }}</ion-col>
             <ion-col>{{ dataItem.tipo }}</ion-col>
@@ -40,10 +39,9 @@
             </ion-col>
           </ion-row>
 
-          <ion-button class="button-add" id="open-modal" (click)="add()"><ion-icon
-              name="add-outline"></ion-icon></ion-button>
+          <ion-button class="button-add" id="open-modal" (click)="add()"><ion-icon name="add-outline"></ion-icon></ion-button>
 
-          <ion-modal trigger="open-modal">
+          <ion-modal [isOpen]="isModalOpen">
             <ng-template>
               <ion-header>
                 <ion-toolbar>

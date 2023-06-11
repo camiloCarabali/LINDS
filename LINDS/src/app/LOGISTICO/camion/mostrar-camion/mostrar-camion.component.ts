@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonModal } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/services/shared.service';
 import { UiServiceService } from 'src/services/ui-service.service';
 
@@ -9,14 +8,15 @@ import { UiServiceService } from 'src/services/ui-service.service';
   styleUrls: ['./mostrar-camion.component.scss'],
 })
 export class MostrarCamionComponent implements OnInit {
-  @ViewChild(IonModal) modal: IonModal;
-
   p: number = 1;
+  
+  isModalOpen = false;
 
-  constructor(
-    private service: SharedService,
-    private interaction: UiServiceService
-  ) {}
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
+
+  constructor(private service: SharedService, private interaction: UiServiceService) {}
 
   camionList: any = [];
 
@@ -37,7 +37,6 @@ export class MostrarCamionComponent implements OnInit {
   }
 
   add() {
-    this.modal.present();
     this.camion = {
       id: 0,
       matricula: '',
@@ -50,19 +49,20 @@ export class MostrarCamionComponent implements OnInit {
     };
     this.modalTitle = 'Agregar Vehículo';
     this.Activate_CrearEditar_CamionComp = true;
+    this.setOpen(true);
   }
 
   cancel() {
     this.Activate_CrearEditar_CamionComp = false;
-    this.modal.dismiss(null);
+    this.setOpen(false);
     this.refreshCamionList();
   }
 
   edit(item: any) {
-    this.modal.present();
     this.camion = item;
     this.modalTitle = 'Actualizar Vehículo';
     this.Activate_CrearEditar_CamionComp = true;
+    this.setOpen(true);
     this.refreshCamionList();
   }
 

@@ -775,16 +775,10 @@ def mostrarMercanciaSinAsignarSucursal(request, sucursal):
         return JsonResponse(mercancias_serializers.data, safe=False)
 
 @csrf_exempt
-@csrf_exempt
-def mostrarMercanciaSinAsignarYCargadoSucursal(request, sucursal, viaje):
+def mostrarMercanciaSinAsignarYCargadoSucursal(request, sucursal):
     if request.method == 'GET':
         valor = sucursal.replace("_", " ")
-        mercancias = Mercancia.objects.filter(sucursal=valor, estado="Sin Asignar")
-
-        if viaje is not None:
-            mercancias_cargadas = Mercancia.objects.filter(sucursal=valor, estado="Cargado", viaje=viaje)
-            mercancias = mercancias | mercancias_cargadas
-
+        mercancias = Mercancia.objects.filter(sucursal=valor, estado__in=["Sin Asignar", "Cargado"])
         mercancias_serializers = MercanciaSerializer(mercancias, many=True)
         return JsonResponse(mercancias_serializers.data, safe=False)
 
