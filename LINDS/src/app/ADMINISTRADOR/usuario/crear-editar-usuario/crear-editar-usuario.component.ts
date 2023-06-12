@@ -42,7 +42,6 @@ export class CrearEditarUsuarioComponent implements OnInit {
     this.empresa = this.usuario.empresa;
     this.disponibilidad = this.usuario.disponibilidad;
     this.estado = this.usuario.estado;
-    console.log(this.estado)
     this.cargarRol();
     this.cargarEmpresa();
     this.cargarSucursal();

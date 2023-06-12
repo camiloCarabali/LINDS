@@ -21,7 +21,7 @@ import { InicioComponent } from './inicio/inicio.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { EmpresaComponent } from './ADMINISTRADOR/empresa/empresa.component';
@@ -87,7 +87,7 @@ registerLocaleData(localeEs);
     CabezaheaderComponent,
     PiefooterComponent,
     ListaConductoresComponent,
-    MostrarListaConductoresComponent
+    MostrarListaConductoresComponent,
   ],
   imports: [
     BrowserModule,

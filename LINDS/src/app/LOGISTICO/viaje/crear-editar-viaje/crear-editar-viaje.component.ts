@@ -44,7 +44,7 @@ export class CrearEditarViajeComponent implements OnInit {
     this.cargarCamion();
     this.cargarConductor();
     this.cargarMercancia();
-    this.cargarMercancia2()
+    this.cargarMercancia2();
   }
 
   add() {
@@ -69,9 +69,6 @@ export class CrearEditarViajeComponent implements OnInit {
         this.interaction.presentToast('top', res.mensaje);
       });
       this.service;
-      setTimeout(function () {
-        location.reload();
-      }, 2000);
     }
   }
 
@@ -97,9 +94,6 @@ export class CrearEditarViajeComponent implements OnInit {
         }
         this.interaction.presentToast('top', res.mensaje);
       });
-      setTimeout(function () {
-        location.reload();
-      }, 2000);
     }
   }
 
@@ -131,9 +125,10 @@ export class CrearEditarViajeComponent implements OnInit {
   }
 
   cargarMercancia2() {
+    console.log(this.id)
     let valor = (this.sucursal = localStorage.getItem('sucursal')!);
     this.service
-      .mostrarMercanciaSinAsignarYCargadoSucursal(valor.replace(/ /g, '_'))
+      .mostrarMercanciaSinAsignarYCargadoSucursal(valor.replace(/ /g, '_'), this.id)
       .subscribe((data) => {
         this.mercanciaList2 = data;
       });

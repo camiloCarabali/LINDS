@@ -3,22 +3,24 @@
   <ion-input
     placeholder="Escriba la matricula"
     [(ngModel)]="matricula"
+    pattern="([A-Z]){3}[0-9]{3}"
+    required
   ></ion-input>
 </ion-item>
 
 <ion-item class="style-btn">
   <ion-label position="floating">Modelo</ion-label>
-  <ion-input placeholder="Escriba el modelo" [(ngModel)]="modelo"></ion-input>
+  <ion-input placeholder="Escriba el modelo" [(ngModel)]="modelo" required></ion-input>
 </ion-item>
 
 <ion-item class="style-btn">
   <ion-label position="floating">Tipo</ion-label>
-  <ion-input placeholder="Escriba el tipo" [(ngModel)]="tipo"></ion-input>
+  <ion-input placeholder="Escriba el tipo" [(ngModel)]="tipo" required></ion-input>
 </ion-item>
 
 <ion-item class="style-btn">
   <ion-label position="floating">Color</ion-label>
-  <ion-input placeholder="Escriba el color" [(ngModel)]="color"></ion-input>
+  <ion-input placeholder="Escriba el color" [(ngModel)]="color" required></ion-input>
 </ion-item>
 
 <ion-item class="style-btn">
@@ -27,6 +29,7 @@
     placeholder="Escriba la capacidad en Kg"
     [(ngModel)]="capacidad"
     type="number"
+    required
   ></ion-input>
 </ion-item>
 

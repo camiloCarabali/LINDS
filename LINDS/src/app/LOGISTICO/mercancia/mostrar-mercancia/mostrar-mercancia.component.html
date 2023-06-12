@@ -17,7 +17,7 @@
             (keyup)="FilterFn()"></ion-input>
 
           <ion-row class="main">
-            <ng-container *ngFor="let dataItem of mercanciaList">
+            <ng-container *ngFor="let dataItem of mercanciaList | paginate: { itemsPerPage: 4, currentPage: p }">
               <ion-card class="card-style">
                 <ion-card-header>
                   <ion-card-subtitle>#{{dataItem.id}}</ion-card-subtitle>
@@ -41,26 +41,28 @@
                   <ion-item lines="none">
                     <ion-label>Email: {{dataItem.correoDestinatario}}</ion-label>
                   </ion-item>
+                  <ion-item lines="none">
+                    <ion-label>Viaje: {{dataItem.viaje}}</ion-label>
+                  </ion-item>
                 </ion-card-content>
                 <ion-col class="icons-button">
-                  <ion-icon name="map" (click)="map(dataItem)"></ion-icon>
-                  <ion-icon name="pencil" id="open-modal" (click)="edit(dataItem)"
+                  <ion-icon src="../../../../assets/map.svg" (click)="map(dataItem)"></ion-icon>
+                  <ion-icon src="../../../../assets/pencil-sharp.svg" id="open-modal" (click)="edit(dataItem)"
                   *ngIf="dataItem.estado=='Sin Asignar'"></ion-icon>
-                  <ion-icon name="trash" (click)="delete(dataItem)" *ngIf="dataItem.estado=='Sin Asignar'"></ion-icon>
+                  <ion-icon src="../../../../assets/trash.svg" (click)="delete(dataItem)" *ngIf="dataItem.estado=='Sin Asignar'"></ion-icon>
                 </ion-col>
               </ion-card>
             </ng-container>
           </ion-row>
 
-          <ion-button class="button-add" id="open-modal" (click)="add()"><ion-icon
-              name="add-outline"></ion-icon></ion-button>
+          <ion-button class="button-add" id="open-modal" (click)="add()"><ion-icon src="../../../../assets/add-outline.svg"></ion-icon></ion-button>
           <ion-modal [isOpen]="isModalOpen">
             <ng-template>
               <ion-header>
                 <ion-toolbar>
                   <ion-title>{{ modalTitle }}</ion-title>
                   <ion-buttons slot="end">
-                    <ion-button (click)="cancel()"><ion-icon name="close-sharp"></ion-icon></ion-button>
+                    <ion-button (click)="cancel()"><ion-icon src="../../../../assets/close-sharp.svg"></ion-icon></ion-button>
                   </ion-buttons>
                 </ion-toolbar>
               </ion-header>

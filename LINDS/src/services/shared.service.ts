@@ -258,9 +258,9 @@ export class SharedService {
     );
   }
 
-  mostrarMercanciaSinAsignarYCargadoSucursal(val: String) {
+  mostrarMercanciaSinAsignarYCargadoSucursal(val: String, val2: String) {
     return this.http.get<any[]>(
-      this.APIURL + 'mostrarMercanciaSinAsignarYCargadoSucursal/' + val
+      this.APIURL + 'mostrarMercanciaSinAsignarYCargadoSucursal/' + val + '/' + val2
     );
   }
 

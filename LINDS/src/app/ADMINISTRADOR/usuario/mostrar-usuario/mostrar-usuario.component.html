@@ -34,19 +34,18 @@
               <ion-col size="2" *ngIf="dataItem.estado == true">Activo</ion-col>
               <ion-col size="2" *ngIf="dataItem.estado == false">Inactivo</ion-col>
               <ion-col size="1" class="icons-button">
-                <ion-icon
-                  name="pencil-sharp"
+                <ion-icon src="../../../../assets/pencil-sharp.svg"
                   id="open-modal"
                   (click)="edit(dataItem)"
                 ></ion-icon>
-                <ion-icon name="trash" (click)="delete(dataItem)"></ion-icon>
+                <ion-icon src="../../../../assets/trash.svg" (click)="delete(dataItem)"></ion-icon>
               </ion-col>
             </ion-row>
           </ng-container>
           <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
 
-        <ion-button class="button-add" id="open-modal" (click)="add()" shape="round"><ion-icon name="add"></ion-icon></ion-button>
+        <ion-button class="button-add" id="open-modal" (click)="add()" shape="round"><ion-icon src="../../../../assets/add-outline.svg"></ion-icon></ion-button>
 
         <ion-modal [isOpen]="isModalOpen">
           <ng-template>
@@ -54,7 +53,7 @@
               <ion-toolbar>
                 <ion-title>{{ modalTitle }}</ion-title>
                 <ion-buttons slot="end">
-                  <ion-button (click)="cancel()"><ion-icon name="close-sharp"></ion-icon></ion-button>
+                  <ion-button (click)="cancel()"><ion-icon src="../../../../assets/close-sharp.svg"></ion-icon></ion-button>
                 </ion-buttons>
               </ion-toolbar>
             </ion-header>

@@ -7,6 +7,8 @@ import { SharedService } from 'src/services/shared.service';
   styleUrls: ['./mostrar-lista-conductores.component.scss'],
 })
 export class MostrarListaConductoresComponent implements OnInit {
+  p: number = 1;
+
   constructor(private service: SharedService) {}
 
   conductorList: any = [];

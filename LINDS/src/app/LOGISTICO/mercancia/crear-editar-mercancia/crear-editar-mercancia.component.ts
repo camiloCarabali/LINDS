@@ -109,20 +109,41 @@ export class CrearEditarMercanciaComponent implements OnInit {
       remitente: this.remitente,
     };
 
-    if (confirm('¿Desea registrar una nueva mercancia?')) {
-      this.service.addMercancia(val).subscribe((res: any) => {
-        if (res.status === 200) {
-          this.service.correoDestinatario(correo).subscribe((data: any) => {});
-          this.service.correoRemitente(correo).subscribe((data: any) => {});
-          this.interaction.presentToast(
-            'top',
-            'Recepción de Mercancia Completada'
-          );
-          this.interaction.presentAlert1(
-            'Por favor valide el punto de entrega en el mapa.'
-          );
-        }
-      });
+    if (
+      ![
+        val.nombre,
+        val.peso,
+        val.altura,
+        val.ancho,
+        val.largo,
+        val.puntoEntrega,
+        val.destinatario,
+        val.correoDestinatario,
+        val.telefonoDestinatario,
+        val.remitente,
+        val.correoRemitente,
+        val.telefonoRemitente,
+      ].every(Boolean)
+    ) {
+      this.interaction.presentToast('top', 'Por favor llenar todos los campos');
+    } else {
+      if (confirm('¿Desea registrar una nueva mercancia?')) {
+        this.service.addMercancia(val).subscribe((res: any) => {
+          if (res.status === 200) {
+            this.service
+              .correoDestinatario(correo)
+              .subscribe((data: any) => {});
+            this.service.correoRemitente(correo).subscribe((data: any) => {});
+            this.interaction.presentToast(
+              'top',
+              'Recepción de Mercancia Completada'
+            );
+            this.interaction.presentAlert1(
+              'Por favor valide el punto de entrega en el mapa.'
+            );
+          }
+        });
+      }
     }
   }
 
@@ -194,7 +215,7 @@ export class CrearEditarMercanciaComponent implements OnInit {
         this.camionList = data;
       });
   }
-  
+
   cargarViaje() {
     let valor = (this.sucursal = localStorage.getItem('sucursal')!);
     this.service

@@ -8,6 +8,8 @@ import { UiServiceService } from 'src/services/ui-service.service';
   styleUrls: ['./mostrar-viaje.component.scss'],
 })
 export class MostrarViajeComponent implements OnInit {
+  p: number = 1;
+  
   isModalOpen = false;
 
   setOpen(isOpen: boolean) {
