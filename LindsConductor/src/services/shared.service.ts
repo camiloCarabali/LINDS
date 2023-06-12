@@ -3,13 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SharedService {
-
   readonly APIURL = 'http://18.118.155.123:8000/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getHistorial(val: String) {
     return this.http.get<any[]>(this.APIURL + 'historialViaje/' + val);
@@ -43,7 +42,7 @@ export class SharedService {
     return this.http.get<any[]>(this.APIURL + 'mercancia/');
   }
 
-  getMercanciaViajeList(val:string ) {
+  getMercanciaViajeList(val: string) {
     return this.http.get<any[]>(this.APIURL + 'mostrarMercanciaViaje/' + val);
   }
 
@@ -57,20 +56,28 @@ export class SharedService {
 
   descargaMercancia(val: any) {
     return this.http.put<any[]>(this.APIURL + 'descargaMercancia/' + val, val, {
-      observe: 'response'
+      observe: 'response',
     });
   }
 
   inicioViaje(val: any) {
-    return this.http.put<any[]>(this.APIURL + 'confirmarInicioViaje/' + val, val, {
-      observe: 'response'
-    });
+    return this.http.put<any[]>(
+      this.APIURL + 'confirmarInicioViaje/' + val,
+      val,
+      {
+        observe: 'response',
+      }
+    );
   }
 
   finalViaje(val: any) {
-    return this.http.put<any[]>(this.APIURL + 'confirmarFinalViaje/' + val, val, {
-      observe: 'response'
-    });
+    return this.http.put<any[]>(
+      this.APIURL + 'confirmarFinalViaje/' + val,
+      val,
+      {
+        observe: 'response',
+      }
+    );
   }
 
   enviadoMercancia(val: any) {
@@ -92,5 +99,4 @@ export class SharedService {
   direccionSucursal(val: String) {
     return this.http.get<any[]>(this.APIURL + 'direccionSucursal/' + val);
   }
-
 }
