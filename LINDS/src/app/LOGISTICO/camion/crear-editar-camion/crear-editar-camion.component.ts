@@ -96,9 +96,6 @@ export class CrearEditarCamionComponent implements OnInit {
     if (confirm('¿Desea actualizar la información del vehiculo?')) {
       this.service.updateCamion(val).subscribe((res: any) => {
         this.interaction.presentToast('top', res.toString());
-        setTimeout(function () {
-          location.reload();
-        }, 1000);
       });
     }
   }

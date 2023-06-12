@@ -69,9 +69,6 @@ export class CrearEditarViajeComponent implements OnInit {
         this.interaction.presentToast('top', res.mensaje);
       });
       this.service;
-      setTimeout(function () {
-        location.reload();
-      }, 2000);
     }
   }
 
@@ -97,9 +94,6 @@ export class CrearEditarViajeComponent implements OnInit {
         }
         this.interaction.presentToast('top', res.mensaje);
       });
-      setTimeout(function () {
-        location.reload();
-      }, 2000);
     }
   }
 

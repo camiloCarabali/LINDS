@@ -42,9 +42,6 @@ export class UiServiceService {
       text: 'OK',
       role: 'confirm',
       handler: () => {
-        setTimeout(function () {
-          location.reload();
-        }, 1000);
       },
     },
   ];

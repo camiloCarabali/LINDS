@@ -4,33 +4,32 @@
   <ion-grid>
     <ion-row>
       <ion-col class="menu-conten" size="3">
-        <h3 >Administrador</h3>
+        <h3>Administrador</h3>
         <h1>{{nombre}}</h1>
         <div class="botones-menu">
-          <ion-button  class="button-style"  fill="clear" [routerLink]="['/empresa']">Empresas</ion-button>
+          <ion-button class="button-style" fill="clear" [routerLink]="['/empresa']">Empresas</ion-button>
           <ion-button class="button-style1" [routerLink]="['/sucursal']">Sucursales</ion-button>
-          <ion-button class="button-style" fill="clear"[routerLink]="['/usuario']">Usuarios</ion-button>
+          <ion-button class="button-style" fill="clear" [routerLink]="['/usuario']">Usuarios</ion-button>
         </div>
       </ion-col>
       <ion-col class="col-right" size="9">
         <ion-input class="ion-text-start" fill="outline" placeholder="Buscar..." [(ngModel)]="nombreFilter"
-        (keyup)="FilterFn()"></ion-input>
+          (keyup)="FilterFn()"></ion-input>
         <ion-row class="main">
-          <ng-container *ngFor="let dataItem of sucursalList | paginate: { itemsPerPage: 7, currentPage: p }" >
+          <ng-container *ngFor="let dataItem of sucursalList | paginate: { itemsPerPage: 7, currentPage: p }">
             <ion-card class="card-style" *ngIf="dataItem.estado">
               <ion-card-header>
                 <ion-card-title>{{ dataItem.nombre }}</ion-card-title>
-                  <ion-card-subtitle>EMPRESA: {{ dataItem.empresa }}</ion-card-subtitle>
-                  <ion-card-subtitle>DIRECCIÓN: {{ dataItem.direccion }}</ion-card-subtitle>
-                  <ion-card-subtitle>MUNICIPIO: {{ dataItem.municipio }}</ion-card-subtitle>
+                <ion-card-subtitle>EMPRESA: {{ dataItem.empresa }}</ion-card-subtitle>
+                <ion-card-subtitle>DIRECCIÓN: {{ dataItem.direccion }}</ion-card-subtitle>
+                <ion-card-subtitle>MUNICIPIO: {{ dataItem.municipio }}</ion-card-subtitle>
               </ion-card-header>
 
               <ion-card-content>
-                <ion-icon
-                name="pencil-sharp" (click)="edit(dataItem)">
-              </ion-icon>
-              <ion-icon name="trash" (click)="delete(dataItem)">
-            </ion-icon>
+                <ion-icon src="../../../../assets/pencil-sharp.svg" (click)="edit(dataItem)">
+                </ion-icon>
+                <ion-icon src="../../../../assets/trash.svg" (click)="delete(dataItem)">
+                </ion-icon>
               </ion-card-content>
             </ion-card>
           </ng-container>
@@ -39,26 +38,25 @@
           <ion-card class="card-style2">
             <ion-card-header>
               <ion-card-content>
-                <ion-button  fill="clear" class="add-style" id="open-modal" (click)="add()">
-                <ion-icon name="add-outline"></ion-icon>
-              </ion-button>
-            </ion-card-content>
+                <ion-button fill="clear" class="add-style" id="open-modal" (click)="add()">
+                  <ion-icon src="../../../../assets/add-outline.svg"></ion-icon>
+                </ion-button>
+              </ion-card-content>
               <ion-modal [isOpen]="isModalOpen">
-                  <ng-template>
-                    <ion-header>
-                      <ion-toolbar>
-                        <ion-title>{{ modalTitle }}</ion-title>
-                        <ion-buttons slot="end">
-                          <ion-button (click)="cancel()"><ion-icon name="close-sharp"></ion-icon></ion-button>
-                        </ion-buttons>
-                      </ion-toolbar>
-                    </ion-header>
-                    <ion-content class="ion-padding">
-                      <app-crear-editar-sucursal [sucursal]="sucursal"
-                      *ngIf="ActivateCrearEditarSucursalComp">
+                <ng-template>
+                  <ion-header>
+                    <ion-toolbar>
+                      <ion-title>{{ modalTitle }}</ion-title>
+                      <ion-buttons slot="end">
+                        <ion-button (click)="cancel()"><ion-icon src="../../../../assets/close-sharp.svg"></ion-icon></ion-button>
+                      </ion-buttons>
+                    </ion-toolbar>
+                  </ion-header>
+                  <ion-content class="ion-padding">
+                    <app-crear-editar-sucursal [sucursal]="sucursal" *ngIf="ActivateCrearEditarSucursalComp">
                     </app-crear-editar-sucursal>
-                    </ion-content>
-                  </ng-template>
+                  </ion-content>
+                </ng-template>
               </ion-modal>
 
             </ion-card-header>

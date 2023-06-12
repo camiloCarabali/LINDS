@@ -35,13 +35,13 @@
             <ion-col *ngIf="dataItem.estado == true">Disponible</ion-col>
             <ion-col *ngIf="dataItem.estado == false">Ocupado</ion-col>
             <ion-col class="icons-button">
-              <ion-icon name="pencil-sharp" id="open-modal" (click)="edit(dataItem)"></ion-icon>
-              <ion-icon name="trash" (click)="delete(dataItem)"></ion-icon>
+              <ion-icon src="../../../../assets/pencil-sharp.svg" id="open-modal" (click)="edit(dataItem)"></ion-icon>
+              <ion-icon src="../../../../assets/trash.svg" (click)="delete(dataItem)"></ion-icon>
             </ion-col>
           </ion-row>
 
           <ion-button class="button-add" id="open-modal" (click)="add()"><ion-icon
-              name="add-outline"></ion-icon></ion-button>
+              src="../../../../assets/add-outline.svg"></ion-icon></ion-button>
 
           <ion-modal trigger="open-modal">
             <ng-template>
@@ -49,7 +49,7 @@
                 <ion-toolbar>
                   <ion-title>{{ modalTitle }}</ion-title>
                   <ion-buttons slot="end">
-                    <ion-button (click)="cancel()"><ion-icon name="close-outline"></ion-icon></ion-button>
+                    <ion-button (click)="cancel()"><ion-icon src="../../../../assets/close-sharp.svg"></ion-icon></ion-button>
                   </ion-buttons>
                 </ion-toolbar>
               </ion-header>

@@ -37,7 +37,7 @@ export class MostrarPuntoEntregaComponent implements OnInit {
   ngOnInit() {
     this.nombre = localStorage.getItem('nombre')!.toUpperCase();
     this.sucursal = localStorage.getItem('sucursal')!;
-    this.refreshPuntoEntregaList();
+    //this.refreshPuntoEntregaList();
   }
 
   add() {

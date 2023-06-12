@@ -54,7 +54,7 @@ export class MostrarCamionComponent implements OnInit {
 
   cancel() {
     this.Activate_CrearEditar_CamionComp = false;
-    this.modal.dismiss(null);
+    this.modal.dismiss();
     this.refreshCamionList();
   }
 
