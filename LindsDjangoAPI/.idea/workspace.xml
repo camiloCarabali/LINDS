@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ccee2ac3-87c6-40b6-acf3-9423e1e1dc58" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ModAdmin/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ModAdmin/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ModAdmin/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/viaje/mostrar-viaje/mostrar-viaje.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../LINDS/src/app/LOGISTICO/viaje/mostrar-viaje/mostrar-viaje.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,19 +16,29 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="2QFG6aFC4rKm7AG9r0NitCf5HCu" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;camilo&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/CamiloCarabali/Documents/GitHub/LINDS/LindsDjangoAPI/manage.py&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/CamiloCarabali/Documents/GitHub/LINDS/LindsDjangoAPI&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\camil\OneDrive\Documentos\GitHub\LINDS\LindsDjangoAPI" />
+      <recent name="C:\Users\camil\OneDrive\Documentos\GitHub\LINDS\LindsDjangoAPI\ModAdmin" />
+    </key>
+  </component>
   <component name="RunManager" selected="Python.runserver">
     <configuration name="makemigrations" type="PythonConfigurationType" factoryName="Python">
       <module name="LindsDjangoAPI" />
@@ -114,5 +122,8 @@
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="requirements.txt" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

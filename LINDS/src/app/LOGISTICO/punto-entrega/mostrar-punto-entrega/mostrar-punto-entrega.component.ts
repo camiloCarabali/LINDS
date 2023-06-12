@@ -37,7 +37,7 @@ export class MostrarPuntoEntregaComponent implements OnInit {
   ngOnInit() {
     this.nombre = localStorage.getItem('nombre')!.toUpperCase();
     this.sucursal = localStorage.getItem('sucursal')!;
-    this.refreshPuntoEntregaList();
+    //this.refreshPuntoEntregaList();
   }
 
   add() {
@@ -93,14 +93,6 @@ export class MostrarPuntoEntregaComponent implements OnInit {
       .subscribe((data) => {
         this.puntoEntregaList = data;
         this.listWithoutFilter = data;
-        /*
-        for (let i of this.puntoEntregaList) {
-          this.service.infoViaje(i.viaje).subscribe((res) => {
-            this.estadoViajes.push(res[0]);
-          });
-        }
-        console.log(this.estadoViajes);
-        */
       });
   }
 

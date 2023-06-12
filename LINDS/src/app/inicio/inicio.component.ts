@@ -21,7 +21,17 @@ export class InicioComponent implements OnInit {
   correo: string = '';
   password: string = '';
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
+
+  direccion() {
+    let valor = localStorage.getItem('sucursal')!;
+    this.service
+      .direccionSucursal(valor.replace(/ /g, '_'))
+      .subscribe((data: any) => {
+        localStorage.setItem('puntoInicio', data);
+      });
+  }
 
   login() {
     const credenciales = {
@@ -36,26 +46,26 @@ export class InicioComponent implements OnInit {
         this.service.user(jwt).subscribe((res: any) => {
           if (res.rol == 'Administrador') {
             this.router.navigate(['/empresa']);
-            this.correo = ''
-            this.password = ''
+            this.correo = '';
+            this.password = '';
           } else if (res.rol == 'Conductor') {
             this.interaction.presentAlert(
               'Para poder usar las funciones de condcutor debes ingresar con nuestra aplicación movil.'
             );
           } else if (res.rol == 'Logistico') {
             this.router.navigate(['/mercancia']);
-            this.correo = ''
-            this.password = ''
+            this.correo = '';
+            this.password = '';
           }
-
           localStorage.setItem('nombre', res.nombre);
           localStorage.setItem('empresa', res.empresa);
           localStorage.setItem('sucursal', res.sucursal);
           localStorage.setItem('rol', res.rol);
+          this.direccion();
         });
       },
       () => {
-        this.interaction.presentToast('top', 'Correo o Contraseña invalido');
+        this.interaction.presentToast('top', 'Usuario o contraseña invalida');
       }
     );
   }

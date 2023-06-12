@@ -67,7 +67,6 @@ export class CrearEditarMercanciaComponent implements OnInit {
     this.empresa = this.mercancia.empresa;
     this.sucursal = this.mercancia.sucursal;
     this.viaje = this.mercancia.viaje;
-    this.cargarPuntoEntrega();
     this.direccion();
     this.cargarConductor();
     this.cargarCamion();
@@ -110,26 +109,47 @@ export class CrearEditarMercanciaComponent implements OnInit {
       remitente: this.remitente,
     };
 
-    if (confirm('¿Desea registrar una nueva mercancia?')) {
-      this.service.addMercancia(val).subscribe((res: any) => {
-        if (res.status === 200) {
-          this.service.correoDestinatario(correo).subscribe((data: any) => {});
-          this.service.correoRemitente(correo).subscribe((data: any) => {});
-          this.interaction.presentToast(
-            'top',
-            'Recepción de Mercancia Completada'
-          );
-          setTimeout(function () {
-            location.reload();
-          }, 1000);
-        }
-      });
+    if (
+      ![
+        val.nombre,
+        val.peso,
+        val.altura,
+        val.ancho,
+        val.largo,
+        val.puntoEntrega,
+        val.destinatario,
+        val.correoDestinatario,
+        val.telefonoDestinatario,
+        val.remitente,
+        val.correoRemitente,
+        val.telefonoRemitente,
+      ].every(Boolean)
+    ) {
+      this.interaction.presentToast('top', 'Por favor llenar todos los campos');
+    } else {
+      if (confirm('¿Desea registrar una nueva mercancia?')) {
+        this.service.addMercancia(val).subscribe((res: any) => {
+          if (res.status === 200) {
+            this.service
+              .correoDestinatario(correo)
+              .subscribe((data: any) => {});
+            this.service.correoRemitente(correo).subscribe((data: any) => {});
+            this.interaction.presentToast(
+              'top',
+              'Recepción de Mercancia Completada'
+            );
+            this.interaction.presentAlert1(
+              'Por favor valide el punto de entrega en el mapa.'
+            );
+          }
+        });
+      }
     }
   }
 
   edit() {
-    if(this.viaje!=null){
-      this.estado = "Cargado"
+    if (this.viaje != null) {
+      this.estado = 'Cargado';
     }
     this.volumen = this.altura * this.ancho * this.largo;
     var val = {
@@ -162,9 +182,9 @@ export class CrearEditarMercanciaComponent implements OnInit {
       this.service.updateMercancia(val).subscribe((res) => {
         this.interaction.presentToast('top', res.toString());
       });
-      setTimeout(function () {
-        location.reload();
-      }, 1000);
+      this.interaction.presentAlert1(
+        'Por favor valide el punto de entrega en el mapa.'
+      );
     }
   }
 
@@ -196,19 +216,12 @@ export class CrearEditarMercanciaComponent implements OnInit {
       });
   }
 
-  cargarPuntoEntrega() {
-    let valor = localStorage.getItem('sucursal')!;
-    this.service
-      .buscarPuntoEntregaSucursal(valor.replace(/ /g, '_'))
-      .subscribe((data) => {
-        this.puntoEntregaList = data;
-      });
-  }
-
   cargarViaje() {
     let valor = (this.sucursal = localStorage.getItem('sucursal')!);
-    this.service.buscarViaje(valor.replace(/ /g, '_')).subscribe((data) => {
-      this.viajeList = data;
-    });
+    this.service
+      .buscarViajeCargados(valor.replace(/ /g, '_'))
+      .subscribe((data) => {
+        this.viajeList = data;
+      });
   }
 }

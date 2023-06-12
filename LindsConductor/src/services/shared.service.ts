@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class SharedService {
 
-  readonly APIURL = 'http://127.0.0.1:8000/';
+  readonly APIURL = 'http://18.118.155.123:8000/';
 
   constructor(private http: HttpClient) { }
 
@@ -87,6 +87,10 @@ export class SharedService {
 
   disponibleUsuario(val: any) {
     return this.http.put<any[]>(this.APIURL + 'disponibleUsuario/' + val, val);
+  }
+
+  direccionSucursal(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'direccionSucursal/' + val);
   }
 
 }

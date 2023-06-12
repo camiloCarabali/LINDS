@@ -14,7 +14,7 @@
       <ion-col class="col-right" size="9">
         <div class="row-content">
           <ion-input class="ion-text-start" fill="outline" placeholder="Buscar..." [(ngModel)]="modeloFilter"
-          (keyup)="FilterFn()"></ion-input>
+            (keyup)="FilterFn()"></ion-input>
           <ion-row class="main">
             <ion-col>MATRICULA</ion-col>
             <ion-col>MODELO</ion-col>
@@ -25,7 +25,8 @@
             <ion-col>ACCIONES</ion-col>
           </ion-row>
 
-          <ion-row *ngFor="let dataItem of camionList" class="content-vehicle">
+          <ion-row *ngFor="let dataItem of camionList | paginate: { itemsPerPage: 7, currentPage: p }"
+            class="content-vehicle">
             <ion-col>{{ dataItem.matricula }}</ion-col>
             <ion-col>{{ dataItem.modelo }}</ion-col>
             <ion-col>{{ dataItem.tipo }}</ion-col>
@@ -34,20 +35,21 @@
             <ion-col *ngIf="dataItem.estado == true">Disponible</ion-col>
             <ion-col *ngIf="dataItem.estado == false">Ocupado</ion-col>
             <ion-col class="icons-button">
-              <ion-icon name="pencil-sharp" id="open-modal" (click)="edit(dataItem)"></ion-icon>
-              <ion-icon name="trash" (click)="delete(dataItem)"></ion-icon>
+              <ion-icon src="../../../../assets/pencil-sharp.svg" id="open-modal" (click)="edit(dataItem)"></ion-icon>
+              <ion-icon src="../../../../assets/trash.svg" (click)="delete(dataItem)"></ion-icon>
             </ion-col>
           </ion-row>
 
-          <ion-button class="button-add" id="open-modal" (click)="add()"><ion-icon name="add-outline"></ion-icon></ion-button>
+          <ion-button class="button-add" id="open-modal" (click)="add()"><ion-icon
+              src="../../../../assets/add-outline.svg"></ion-icon></ion-button>
 
-          <ion-modal [isOpen]="isModalOpen">
+          <ion-modal trigger="open-modal">
             <ng-template>
               <ion-header>
                 <ion-toolbar>
                   <ion-title>{{ modalTitle }}</ion-title>
                   <ion-buttons slot="end">
-                    <ion-button (click)="cancel()"><ion-icon name="close-outline"></ion-icon></ion-button>
+                    <ion-button (click)="cancel()"><ion-icon src="../../../../assets/close-sharp.svg"></ion-icon></ion-button>
                   </ion-buttons>
                 </ion-toolbar>
               </ion-header>

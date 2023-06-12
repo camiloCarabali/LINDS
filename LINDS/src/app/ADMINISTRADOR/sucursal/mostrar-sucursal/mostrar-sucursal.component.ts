@@ -10,6 +10,8 @@ import { UiServiceService } from 'src/services/ui-service.service';
   styleUrls: ['./mostrar-sucursal.component.scss'],
 })
 export class MostrarSucursalComponent implements OnInit {
+  p: number = 1;
+  
   @ViewChild(IonModal)
   modal!: IonModal;
 

@@ -565,6 +565,15 @@ def buscarViaje(request, sucursal):
 
 
 @csrf_exempt
+def buscarViajeCargados(request, sucursal):
+    if request.method == 'GET':
+        valor = sucursal.replace("_", " ")
+        viajes = Viaje.objects.filter(sucursal=valor, estado="Cargado")
+        viajes_serializers = ViajeSerializer(viajes, many=True)
+        return JsonResponse(viajes_serializers.data, safe=False)
+
+
+@csrf_exempt
 def buscarUltimoViaje(request, sucursal):
     if request.method == 'GET':
         valor = sucursal.replace("_", " ")
@@ -588,8 +597,12 @@ def crearViaje(request):
         viaje_serializers = ViajeSerializer(data=viaje_data)
         if viaje_serializers.is_valid():
             viaje_serializers.save()
-            return JsonResponse(viaje_serializers.data, safe=False)
-        return JsonResponse("Fallo al asignar un viaje", safe=False)
+            response_data = {
+                'viaje': viaje_serializers.data,
+                'mensaje': 'Viaje creado exitosamente.'
+            }
+            return JsonResponse(response_data, safe=False)
+        return JsonResponse("Fallo al modificar viaje", safe=False)
 
 
 @csrf_exempt
@@ -600,7 +613,11 @@ def modificarViaje(request):
         viaje_serializers = ViajeSerializer(viaje, data=viaje_data)
         if viaje_serializers.is_valid():
             viaje_serializers.save()
-            return JsonResponse("Viaje modificado", safe=False)
+            response_data = {
+                'viaje': viaje_serializers.data,
+                'mensaje': 'Viaje modificado exitosamente.'
+            }
+            return JsonResponse(response_data, safe=False)
         return JsonResponse("Fallo al modificar viaje", safe=False)
 
 
@@ -757,6 +774,20 @@ def mostrarMercanciaSinAsignarSucursal(request, sucursal):
         mercancias_serializers = MercanciaSerializer(mercancias, many=True)
         return JsonResponse(mercancias_serializers.data, safe=False)
 
+@csrf_exempt
+@csrf_exempt
+def mostrarMercanciaSinAsignarYCargadoSucursal(request, sucursal, viaje):
+    if request.method == 'GET':
+        valor = sucursal.replace("_", " ")
+        mercancias = Mercancia.objects.filter(sucursal=valor, estado="Sin Asignar")
+
+        if viaje is not None:
+            mercancias_cargadas = Mercancia.objects.filter(sucursal=valor, estado="Cargado", viaje=viaje)
+            mercancias = mercancias | mercancias_cargadas
+
+        mercancias_serializers = MercanciaSerializer(mercancias, many=True)
+        return JsonResponse(mercancias_serializers.data, safe=False)
+
 
 @csrf_exempt
 def crearMercancia(request):
@@ -799,6 +830,7 @@ def noAsignarMercancia(request, viaje):
         mercancias = Mercancia.objects.filter(viaje=viaje)
         for mercancia in mercancias:
             mercancia.estado = 'Sin Asignar'
+            mercancia.carga = False
             mercancia.viaje = None
             mercancia.save()
         return JsonResponse("Mercancia Sin asignar", safe=False)
@@ -923,6 +955,9 @@ class login(APIView):
 
         if not user.check_password(password):
             raise AuthenticationFailed('Incorrect password!')
+
+        if user.estado is False:
+            raise AuthenticationFailed('User not inactivate!')
 
         payload = {
             'cedula': user.cedula,

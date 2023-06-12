@@ -9,12 +9,16 @@
   color: #4B5399;
   font-family: 'Dangrek', cursive;
   text-align: center;
-  height: 100vh;
+
 }
 
 .col-right {
   background-color: white;
   color: black;
+}
+
+ion-content::part(scroll) {
+  padding-bottom: 56px;
 }
 
 ion-item {
@@ -47,48 +51,43 @@ h3 {
   margin-top: 5%;
 }
 
-/** ROW STYLE*/
-
-.btn {
-  color: black;
-}
-
-.row-content {
-  margin: 15px;
+/**ROW STYLE**/
+.card-style {
+  background-color: rgba(133, 193, 236, 0.54);
+  margin-top: 25px;
+  margin-right: 30px;
+  width: 29%;
+  margin: 20px;
   text-align: center;
+  color: white;
 }
 
-.main {
-  color: #4B5399;
-  font-size: 20px;
+ion-card-title {
+  color: #003B71;
+  font-size: 28px;
+  font-weight: bold;
+  font-family: 'Darker Grotesque', sans-serif;
+}
+
+ion-card-subtitle {
+  color: #224C72;
   font-family: 'Josefin Sans', sans-serif;
+  font-size: 16px;
   font-weight: bold;
 }
 
-.content-commodity {
-  background-color: #BEDEF1;
-  color: #224C72;
+ion-item {
+  color: #4B5399;
+  font-family: 'Josefin Sans', sans-serif;
   font-size: 16px;
-  border-radius: 15px;
-  width: 100%;
-  height: 73px;
-  padding-top: 16px;
-  text-align: center;
-  margin-top: 13px;
-}
-
-.button-add {
-  margin-left: 90%;
-  margin-top: 15px;
-
+  font-style: italic;
 }
 
 .icons-button {
   margin-top: 10px;
-  font-size: 20px;
+  font-size: 30px;
   display: flex;
   justify-content: space-around;
-  color: #224C72;
 }
 
 /** MODAL STYLE **/

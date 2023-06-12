@@ -8,6 +8,8 @@ import { UiServiceService } from 'src/services/ui-service.service';
   styleUrls: ['./mostrar-viaje.component.scss'],
 })
 export class MostrarViajeComponent implements OnInit {
+  p: number = 1;
+  
   isModalOpen = false;
 
   setOpen(isOpen: boolean) {
@@ -119,7 +121,7 @@ export class MostrarViajeComponent implements OnInit {
     var inicioFilter = this.inicioFilter;
 
     this.viajeList = this.listWithoutFilter.filter(function (el: any) {
-      return el.inicio
+      return el.usuario
         .toString()
         .toLowerCase()
         .includes(inicioFilter.toString().trim().toLowerCase());

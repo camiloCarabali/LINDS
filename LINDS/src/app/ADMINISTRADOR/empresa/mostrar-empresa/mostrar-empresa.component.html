@@ -16,9 +16,9 @@
       </ion-col>
       <ion-col class="col-right" size="9">
         <ion-input class="ion-text-start" fill="outline" placeholder="Buscar..." [(ngModel)]="nombreFilter"
-        (keyup)="FilterFn()"></ion-input>
+          (keyup)="FilterFn()"></ion-input>
         <ion-row class="main">
-          <ng-container *ngFor="let dataItem of empresaList">
+          <ng-container *ngFor="let dataItem of empresaList | paginate: { itemsPerPage: 7, currentPage: p }">
             <ion-card class="card-style" *ngIf="dataItem.estado">
               <ion-card-header>
                 <ion-card-title>{{ dataItem.nombre }}</ion-card-title>
@@ -26,9 +26,9 @@
               </ion-card-header>
 
               <ion-card-content>
-                <ion-icon name="pencil-sharp">
+                <ion-icon src="../../../../assets/pencil-sharp.svg" (click)="edit(dataItem)">
                 </ion-icon>
-                <ion-icon name="trash">
+                <ion-icon src="../../../../assets/trash.svg" (click)="inactive(dataItem)">
                 </ion-icon>
               </ion-card-content>
             </ion-card>
@@ -40,7 +40,7 @@
             <ion-card-header>
               <ion-card-content>
                 <ion-button fill="clear" class="add-style" id="open-modal" (click)="add()">
-                  <ion-icon name="add-outline"></ion-icon>
+                  <ion-icon src="../../../../assets/add-outline.svg"></ion-icon>
                 </ion-button>
               </ion-card-content>
               <ion-modal [isOpen]="isModalOpen">
@@ -49,7 +49,7 @@
                     <ion-toolbar>
                       <ion-title>{{ modalTitle }}</ion-title>
                       <ion-buttons slot="end">
-                        <ion-button (click)="cancel()"><ion-icon name="close-sharp"></ion-icon></ion-button>
+                        <ion-button (click)="cancel()"><ion-icon src="../../../../assets/close-sharp.svg"></ion-icon></ion-button>
                       </ion-buttons>
                     </ion-toolbar>
                   </ion-header>

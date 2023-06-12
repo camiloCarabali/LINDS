@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class SharedService {
-  readonly APIURL = 'http://localhost:8000/';
+  readonly APIURL = 'http://127.0.0.1:8000/';
 
   constructor(private http: HttpClient) {}
 
@@ -258,8 +258,18 @@ export class SharedService {
     );
   }
 
+  mostrarMercanciaSinAsignarYCargadoSucursal(val: String, val2: String) {
+    return this.http.get<any[]>(
+      this.APIURL + 'mostrarMercanciaSinAsignarYCargadoSucursal/' + val + '/' + val2
+    );
+  }
+
   buscarViaje(val: String) {
     return this.http.get<any[]>(this.APIURL + 'buscarViaje/' + val);
+  }
+
+  buscarViajeCargados(val: String) {
+    return this.http.get<any[]>(this.APIURL + 'buscarViajeCargados/' + val);
   }
 
   buscarUltimoViaje(val: String) {

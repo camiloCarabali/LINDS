@@ -47,7 +47,7 @@ const routes: Routes = [
     canActivate: [IngresadoLogisticaGuard]
   },
   {
-    path: 'punto-entrega',
+    path: 'estados',
     component: PuntoEntregaComponent,
     canActivate: [IngresadoLogisticaGuard]
   },

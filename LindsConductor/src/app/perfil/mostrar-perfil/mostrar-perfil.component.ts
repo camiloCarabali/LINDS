@@ -25,6 +25,7 @@ export class MostrarPerfilComponent implements OnInit {
 
   onClick() {
     this.menuCtrl.toggle();
+    this.ionViewWillLeave()
   }
 
   perfil() {
@@ -32,6 +33,10 @@ export class MostrarPerfilComponent implements OnInit {
     this.service.user(jwt).subscribe((data: any) => {
       this.perfilList = [data];
     });
+  }
+
+  ionViewWillLeave() {
+    this.menuCtrl.enable(true);
   }
 
   ionViewDidEnter() {

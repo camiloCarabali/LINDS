@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DatetimeCustomEvent } from '@ionic/angular';
 import { SharedService } from 'src/services/shared.service';
 import { UiServiceService } from 'src/services/ui-service.service';
 
@@ -17,6 +16,7 @@ export class CrearEditarViajeComponent implements OnInit {
   camionList: any = [];
   conductorList: any = [];
   mercanciaList: any = [];
+  mercanciaList2: any = [];
 
   @Input() viaje: any;
   id: string = '';
@@ -31,6 +31,9 @@ export class CrearEditarViajeComponent implements OnInit {
   today: any = new Date().toISOString();
 
   ngOnInit() {
+    this.interaction.presentAlert(
+      'Recuerda validar todos los puntos de entrega de tus mercancias antes de crear un viaje.'
+    );
     this.id = this.viaje.id;
     this.fecha = this.viaje.fecha;
     this.estado = this.viaje.estado;
@@ -41,11 +44,10 @@ export class CrearEditarViajeComponent implements OnInit {
     this.cargarCamion();
     this.cargarConductor();
     this.cargarMercancia();
+    this.cargarMercancia2();
   }
 
   add() {
-    let valor = localStorage.getItem('sucursal')!;
-
     var val = {
       fecha: this.today,
       camion: this.camion,
@@ -60,15 +62,13 @@ export class CrearEditarViajeComponent implements OnInit {
       this.service.noDisponibleUsuario(val.usuario).subscribe((res: any) => {});
       this.service.addViaje(val).subscribe((res: any) => {
         for (let i of this.mercancia) {
-          this.service.asignarMercancia(i.replace(/ /g, '_'), res.id).subscribe((data) => {});
+          this.service
+            .asignarMercancia(i.replace(/ /g, '_'), res.viaje.id)
+            .subscribe((data) => {});
         }
-        this.interaction.presentToast('top', 'Viaje Asignado y Cargado');
+        this.interaction.presentToast('top', res.mensaje);
       });
-
       this.service;
-      setTimeout(function () {
-        location.reload();
-      }, 2000);
     }
   }
 
@@ -80,15 +80,20 @@ export class CrearEditarViajeComponent implements OnInit {
       usuario: this.usuario,
       empresa: this.empresa,
       sucursal: this.sucursal,
+      estado: this.estado,
     };
+
     if (confirm('¿Desea actualizar la información del viaje?')) {
       this.service.ocupadoCamion(val.camion).subscribe((res: any) => {});
-      this.service.updateViaje(val).subscribe((res) => {
-        this.interaction.presentToast('top', res.toString());
+      this.service.updateViaje(val).subscribe((res: any) => {
+        this.service.noAsignarMercancia(res.viaje.id).subscribe(() => {});
+        for (let i of this.mercancia) {
+          this.service
+            .asignarMercancia(i.replace(/ /g, '_'), res.viaje.id)
+            .subscribe((data) => {});
+        }
+        this.interaction.presentToast('top', res.mensaje);
       });
-      setTimeout(function () {
-        location.reload();
-      }, 2000);
     }
   }
 
@@ -116,6 +121,16 @@ export class CrearEditarViajeComponent implements OnInit {
       .mostrarMercanciaSinAsignarSucursal(valor.replace(/ /g, '_'))
       .subscribe((data) => {
         this.mercanciaList = data;
+      });
+  }
+
+  cargarMercancia2() {
+    console.log(this.id)
+    let valor = (this.sucursal = localStorage.getItem('sucursal')!);
+    this.service
+      .mostrarMercanciaSinAsignarYCargadoSucursal(valor.replace(/ /g, '_'), this.id)
+      .subscribe((data) => {
+        this.mercanciaList2 = data;
       });
   }
 }

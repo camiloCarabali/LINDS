@@ -27,6 +27,25 @@ export class UiServiceService {
     await alert.present();
   }
 
+  async presentAlert1(message: string) {
+    const alert = await this.alertController.create({
+      header: 'Alerta',
+      subHeader: 'Mensaje Importante',
+      message: message,
+      buttons: this.buttonsOn,
+    });
+    await alert.present();
+  }
+
+  public buttonsOn: any = [
+    {
+      text: 'OK',
+      role: 'confirm',
+      handler: () => {
+      },
+    },
+  ];
+
   async presentToast(position: 'top' | 'middle' | 'bottom', message: string) {
     const toast = await this.toastController.create({
       message: message,
