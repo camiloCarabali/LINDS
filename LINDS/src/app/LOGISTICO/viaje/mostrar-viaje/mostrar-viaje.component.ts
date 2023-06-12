@@ -121,7 +121,7 @@ export class MostrarViajeComponent implements OnInit {
     var inicioFilter = this.inicioFilter;
 
     this.viajeList = this.listWithoutFilter.filter(function (el: any) {
-      return el.inicio
+      return el.usuario
         .toString()
         .toLowerCase()
         .includes(inicioFilter.toString().trim().toLowerCase());
