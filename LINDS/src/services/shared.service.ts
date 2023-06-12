@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class SharedService {
-  readonly APIURL = 'http://18.118.155.123:8000/';
+  readonly APIURL = 'http://18.118.155.123:8080/';
 
   constructor(private http: HttpClient) {}
 
@@ -260,7 +260,11 @@ export class SharedService {
 
   mostrarMercanciaSinAsignarYCargadoSucursal(val: String, val2: String) {
     return this.http.get<any[]>(
-      this.APIURL + 'mostrarMercanciaSinAsignarYCargadoSucursal/' + val + '/' + val2
+      this.APIURL +
+        'mostrarMercanciaSinAsignarYCargadoSucursal/' +
+        val +
+        '/' +
+        val2
     );
   }
 
