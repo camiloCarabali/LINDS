@@ -33,7 +33,7 @@
             <ion-col>{{ dataItem.correo }}</ion-col>
             <ion-col>{{ dataItem.disponibilidad }}</ion-col>
           </ion-row>
-
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
       </ion-col>
     </ion-row>
