@@ -39,6 +39,7 @@
               <ion-icon src="../../../../assets/trash.svg" (click)="delete(dataItem)"></ion-icon>
             </ion-col>
           </ion-row>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
 
           <ion-button class="button-add" id="open-modal" (click)="add()"><ion-icon
               src="../../../../assets/add-outline.svg"></ion-icon></ion-button>
