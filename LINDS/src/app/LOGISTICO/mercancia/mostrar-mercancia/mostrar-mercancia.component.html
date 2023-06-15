@@ -53,8 +53,8 @@
                 </ion-col>
               </ion-card>
             </ng-container>
-            <pagination-controls (pageChange)="p = $event"></pagination-controls>
           </ion-row>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
 
           <ion-button class="button-add" id="open-modal" (click)="add()"><ion-icon src="../../../../assets/add-outline.svg"></ion-icon></ion-button>
           <ion-modal [isOpen]="isModalOpen">
