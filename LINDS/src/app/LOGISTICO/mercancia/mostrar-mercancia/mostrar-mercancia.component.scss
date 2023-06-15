@@ -34,6 +34,12 @@ ion-item {
   font-weight: bold;
 }
 
+pagination-controls{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
 .button-style {
   width: 100%;
   height: 66px;
