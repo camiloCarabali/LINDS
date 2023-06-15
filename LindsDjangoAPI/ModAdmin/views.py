@@ -775,7 +775,6 @@ def mostrarMercanciaSinAsignarSucursal(request, sucursal):
         return JsonResponse(mercancias_serializers.data, safe=False)
 
 @csrf_exempt
-@csrf_exempt
 def mostrarMercanciaSinAsignarYCargadoSucursal(request, sucursal, viaje):
     if request.method == 'GET':
         valor = sucursal.replace("_", " ")
