@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SharedService } from 'src/services/shared.service';
 import { UiServiceService } from 'src/services/ui-service.service';
+import { MostrarViajeComponent } from '../mostrar-viaje/mostrar-viaje.component';
 
 @Component({
   selector: 'app-crear-editar-viaje',
@@ -10,7 +11,8 @@ import { UiServiceService } from 'src/services/ui-service.service';
 export class CrearEditarViajeComponent implements OnInit {
   constructor(
     private service: SharedService,
-    private interaction: UiServiceService
+    private interaction: UiServiceService,
+    private mostrar: MostrarViajeComponent
   ) {}
 
   camionList: any = [];
@@ -63,10 +65,17 @@ export class CrearEditarViajeComponent implements OnInit {
       this.service.addViaje(val).subscribe((res: any) => {
         for (let i of this.mercancia) {
           this.service
-            .asignarMercancia(i.replace(/ /g, '_'), res.viaje.id)
+            .asignarMercancia(
+              i.replace(/ /g, '_'),
+              val.sucursal?.replace(/ /g, '_'),
+              res.viaje.id
+            )
             .subscribe((data) => {});
         }
         this.interaction.presentToast('top', res.mensaje);
+        if (res.mensaje === 'Viaje creado exitosamente.') {
+          this.mostrar.cancel();
+        }
       });
       this.service;
     }
@@ -89,10 +98,17 @@ export class CrearEditarViajeComponent implements OnInit {
         this.service.noAsignarMercancia(res.viaje.id).subscribe(() => {});
         for (let i of this.mercancia) {
           this.service
-            .asignarMercancia(i.replace(/ /g, '_'), res.viaje.id)
+            .asignarMercancia(
+              i.replace(/ /g, '_'),
+              val.sucursal?.replace(/ /g, '_'),
+              res.viaje.id
+            )
             .subscribe((data) => {});
         }
         this.interaction.presentToast('top', res.mensaje);
+        if (res.mensaje === 'Viaje modificado exitosamente.') {
+          this.mostrar.cancel();
+        }
       });
     }
   }
@@ -125,10 +141,13 @@ export class CrearEditarViajeComponent implements OnInit {
   }
 
   cargarMercancia2() {
-    console.log(this.id)
+    console.log(this.id);
     let valor = (this.sucursal = localStorage.getItem('sucursal')!);
     this.service
-      .mostrarMercanciaSinAsignarYCargadoSucursal(valor.replace(/ /g, '_'), this.id)
+      .mostrarMercanciaSinAsignarYCargadoSucursal(
+        valor.replace(/ /g, '_'),
+        this.id
+      )
       .subscribe((data) => {
         this.mercanciaList2 = data;
       });

@@ -775,7 +775,6 @@ def mostrarMercanciaSinAsignarSucursal(request, sucursal):
         return JsonResponse(mercancias_serializers.data, safe=False)
 
 @csrf_exempt
-@csrf_exempt
 def mostrarMercanciaSinAsignarYCargadoSucursal(request, sucursal, viaje):
     if request.method == 'GET':
         valor = sucursal.replace("_", " ")
@@ -813,10 +812,11 @@ def modificarMercancia(request):
 
 
 @csrf_exempt
-def asignarMercancia(request, nombre, id):
+def asignarMercancia(request, nombre, sucursal, id):
     if request.method == 'PUT':
         valor = nombre.replace("_", " ")
-        mercancia = Mercancia.objects.get(nombre=valor)
+        valor2 = sucursal.replace("_", " ")
+        mercancia = Mercancia.objects.get(nombre=valor, estado="Sin Asignar", sucursal=valor2)
         mercancia.viaje = id
         mercancia.carga = True
         mercancia.estado = 'Cargado'

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SharedService } from 'src/services/shared.service';
 import { UiServiceService } from 'src/services/ui-service.service';
+import { MostrarMercanciaComponent } from '../mostrar-mercancia/mostrar-mercancia.component';
 
 @Component({
   selector: 'app-crear-editar-mercancia',
@@ -10,7 +11,8 @@ import { UiServiceService } from 'src/services/ui-service.service';
 export class CrearEditarMercanciaComponent implements OnInit {
   constructor(
     private service: SharedService,
-    private interaction: UiServiceService
+    private interaction: UiServiceService,
+    private mostrar: MostrarMercanciaComponent
   ) {}
 
   puntoEntregaList: any = [];
@@ -74,6 +76,10 @@ export class CrearEditarMercanciaComponent implements OnInit {
   }
 
   add() {
+    var regex = new RegExp(
+      "^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
+    );
+
     if (this.viaje == '') {
       this.viaje = null;
       this.fechaCarga = null!;
@@ -109,41 +115,49 @@ export class CrearEditarMercanciaComponent implements OnInit {
       remitente: this.remitente,
     };
 
-    if (
-      ![
-        val.nombre,
-        val.peso,
-        val.altura,
-        val.ancho,
-        val.largo,
-        val.puntoEntrega,
-        val.destinatario,
-        val.correoDestinatario,
-        val.telefonoDestinatario,
-        val.remitente,
-        val.correoRemitente,
-        val.telefonoRemitente,
-      ].every(Boolean)
-    ) {
-      this.interaction.presentToast('top', 'Por favor llenar todos los campos');
-    } else {
-      if (confirm('¿Desea registrar una nueva mercancia?')) {
-        this.service.addMercancia(val).subscribe((res: any) => {
-          if (res.status === 200) {
-            this.service
-              .correoDestinatario(correo)
-              .subscribe((data: any) => {});
-            this.service.correoRemitente(correo).subscribe((data: any) => {});
-            this.interaction.presentToast(
-              'top',
-              'Recepción de Mercancia Completada'
-            );
-            this.interaction.presentAlert1(
-              'Por favor valide el punto de entrega en el mapa.'
-            );
-          }
-        });
+    if (regex.test(val.correoRemitente) && regex.test(val.correoDestinatario)) {
+      if (
+        ![
+          val.nombre,
+          val.peso,
+          val.altura,
+          val.ancho,
+          val.largo,
+          val.puntoEntrega,
+          val.destinatario,
+          val.correoDestinatario,
+          val.telefonoDestinatario,
+          val.remitente,
+          val.correoRemitente,
+          val.telefonoRemitente,
+        ].every(Boolean)
+      ) {
+        this.interaction.presentToast(
+          'top',
+          'Por favor llenar todos los campos'
+        );
+      } else {
+        if (confirm('¿Desea registrar una nueva mercancia?')) {
+          this.service.addMercancia(val).subscribe((res: any) => {
+            if (res.status === 200) {
+              this.service
+                .correoDestinatario(correo)
+                .subscribe((data: any) => {});
+              this.service.correoRemitente(correo).subscribe((data: any) => {});
+              this.interaction.presentToast(
+                'top',
+                'Recepción de Mercancia Completada'
+              );
+              this.mostrar.cancel();
+              this.interaction.presentAlert1(
+                'Por favor valide el punto de entrega en el mapa.'
+              );
+            }
+          });
+        }
       }
+    } else {
+      this.interaction.presentToast('top', 'Por favor digite un correo valido');
     }
   }
 
@@ -181,6 +195,9 @@ export class CrearEditarMercanciaComponent implements OnInit {
     if (confirm('¿Desea actualizar la informacion de la mercancia?')) {
       this.service.updateMercancia(val).subscribe((res) => {
         this.interaction.presentToast('top', res.toString());
+        if (res.toString() === 'Mercancia modificada') {
+          this.mostrar.cancel();
+        }
       });
       this.interaction.presentAlert1(
         'Por favor valide el punto de entrega en el mapa.'

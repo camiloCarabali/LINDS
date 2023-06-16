@@ -73,7 +73,7 @@ urlpatterns = [
     path('crearMercancia/', views.crearMercancia),
     path('buscarMercancia/<puntoEntrega>', views.buscarMercancia),
     path('modificarMercancia/', views.modificarMercancia),
-    path('asignarMercancia/<nombre>/<id>', views.asignarMercancia),
+    path('asignarMercancia/<nombre>/<sucursal>/<id>', views.asignarMercancia),
     path('noAsignarMercancia/<viaje>', views.noAsignarMercancia),
     path('enviadoMercancia/<viaje>', views.enviadoMercancia),
     path('entregadoMercancia/<nombre>', views.entregadoMercancia),

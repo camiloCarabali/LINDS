@@ -62,6 +62,7 @@
     placeholder="Escriba el correo del remitente"
     [(ngModel)]="correoRemitente"
     type="email"
+    pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
     required="true"
   ></ion-input>
 </ion-item>
@@ -91,6 +92,7 @@
     placeholder="Escriba el correo del destinatario"
     [(ngModel)]="correoDestinatario"
     type="email"
+    pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
     required="true"
   ></ion-input>
 </ion-item>

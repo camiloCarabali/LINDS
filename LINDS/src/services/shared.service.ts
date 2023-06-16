@@ -288,9 +288,9 @@ export class SharedService {
     return this.http.get<any[]>(this.APIURL + 'direccionSucursal/' + val);
   }
 
-  asignarMercancia(val: any, val2: any) {
+  asignarMercancia(val: any, val2: any, val3: any) {
     return this.http.put<any[]>(
-      this.APIURL + 'asignarMercancia/' + val + '/' + val2,
+      this.APIURL + 'asignarMercancia/' + val + '/' + val2 + '/' + val3,
       ''
     );
   }
