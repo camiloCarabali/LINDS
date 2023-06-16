@@ -2,6 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { IonModal } from '@ionic/angular';
 import { SharedService } from 'src/services/shared.service';
 import { UiServiceService } from 'src/services/ui-service.service';
+import { MostrarCamionComponent } from '../mostrar-camion/mostrar-camion.component';
 
 @Component({
   selector: 'app-crear-editar-camion',
@@ -13,7 +14,8 @@ export class CrearEditarCamionComponent implements OnInit {
 
   constructor(
     private service: SharedService,
-    private interaction: UiServiceService
+    private interaction: UiServiceService,
+    private mostrar: MostrarCamionComponent
   ) {}
 
   empresaList: any = [];
@@ -71,6 +73,9 @@ export class CrearEditarCamionComponent implements OnInit {
         if (confirm('¿Desea agregar un nuevo vehiculo?')) {
           this.service.addCamion(val).subscribe((res: any) => {
             this.interaction.presentToast('top', res.toString());
+            if (res.toString() === 'Camion añadido') {
+              this.mostrar.cancel();
+            }
           });
         }
       }
@@ -96,14 +101,10 @@ export class CrearEditarCamionComponent implements OnInit {
     if (confirm('¿Desea actualizar la información del vehiculo?')) {
       this.service.updateCamion(val).subscribe((res: any) => {
         this.interaction.presentToast('top', res.toString());
+        if (res.toString() === 'Camion Modificado') {
+          this.mostrar.cancel();
+        }
       });
     }
-  }
-
-  refreshCamionList() {
-    let valor = (this.sucursal = localStorage.getItem('sucursal')!);
-    this.service.getBuscarCamion(valor.replace(/ /g, '_')).subscribe((data) => {
-      this.camionList = data;
-    });
   }
 }

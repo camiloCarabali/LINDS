@@ -812,10 +812,11 @@ def modificarMercancia(request):
 
 
 @csrf_exempt
-def asignarMercancia(request, nombre, id):
+def asignarMercancia(request, nombre, sucursal, id):
     if request.method == 'PUT':
         valor = nombre.replace("_", " ")
-        mercancia = Mercancia.objects.get(nombre=valor)
+        valor2 = sucursal.replace("_", " ")
+        mercancia = Mercancia.objects.get(nombre=valor, estado="Sin Asignar", sucursal=valor2)
         mercancia.viaje = id
         mercancia.carga = True
         mercancia.estado = 'Cargado'
